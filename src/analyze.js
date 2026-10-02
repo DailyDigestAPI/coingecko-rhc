@@ -54,6 +54,8 @@ function enrich(t) {
       sinceLaunch: young,
       newShare24: nowN ? (nowN - (h24 ?? nowN)) / nowN : null, // share of today's holders that arrived in the last 24h
       newShare6: nowN ? (nowN - (at(6 * H) ?? s[0][1])) / nowN : null, // same, last 6h — what launch-day momentum looks like
+      rate6: rate(s, now - 6 * H, now),                 // holders gained per hour, last 6h
+      rate6prev: rate(s, now - 12 * H, now - 6 * H),     // and the 6h before that
       change7dPct: !young && d7 ? ((nowN - d7) / d7) * 100 : null,
       spanHours,
       series: s,
@@ -138,8 +140,16 @@ function enrich(t) {
 
   const hardFail = flags.some((f) => f.level === 'red');
 
+  const buyersRatio1 = t.tx1.sellers ? t.tx1.buyers / t.tx1.sellers : (t.tx1.buyers ? Infinity : null);
+  const sizing = t.liquidity ? [1_000, 5_000, 20_000].map((usd) => ({ usd, impactPct: priceImpact(usd, t.liquidity) })) : null;
+  // Overhang: the biggest non-contract wallet's bag against the pool. If it sold into the pool, this is the share it would eat.
+  const largestWallet = whales ? whales.list.filter((h) => !/pool|manager|lp|lock|burn|dead|router|vault|bridge|treasury/i.test(h.label || '')).sort((a, b) => (b.valueUsd || 0) - (a.valueUsd || 0))[0] : null;
+  const overhang = largestWallet?.valueUsd && t.liquidity ? { address: largestWallet.address, usd: largestWallet.valueUsd, pctOfPool: (largestWallet.valueUsd / t.liquidity) * 100, impactPct: priceImpact(largestWallet.valueUsd, t.liquidity) } : null;
+  if (overhang && overhang.pctOfPool >= 100) flags.push({ level: 'amber', text: `One wallet holds ${overhang.pctOfPool.toFixed(0)}% of the pool's value` });
+  const top10Usd = whales ? whales.list.filter((h) => !/pool|manager|lp|lock|burn|dead|router|vault|bridge|treasury/i.test(h.label || '')).reduce((a, h) => a + (h.valueUsd || 0), 0) : null;
+
   return {
-    ...t, holders, holdersCount, holdersInflated, momentum, whales, top10Pct, socials, socialCount, buyersRatio, buyersRatio6, turnover, liqToMcap, flags, hardFail,
+    ...t, holders, holdersCount, holdersInflated, momentum, whales, top10Pct, socials, socialCount, buyersRatio, buyersRatio6, buyersRatio1, turnover, liqToMcap, flags, hardFail, sizing, overhang, top10Usd,
     netBuyers24: t.tx24.buyers - t.tx24.sellers,
     netBuyers6: t.tx6.buyers - t.tx6.sellers,
     ageDays: t.ageHours != null ? t.ageHours / 24 : null,
@@ -309,6 +319,21 @@ function buildWallets(wallets) {
 }
 
 // ---------- helpers ----------
+// Holders gained per hour between two timestamps, from a sparse series (null if the series does not cover it)
+function rate(s, from, to) {
+  const inWin = s.filter(([ts]) => ts >= from && ts <= to);
+  const before = [...s].reverse().find(([ts]) => ts < from);
+  if (!inWin.length || !before) return null;
+  const start = before[1], end = inWin.at(-1)[1];
+  return (end - start) / ((to - from) / H);
+}
+// Constant-product estimate of the price impact of a buy of `usd` into a pool with `reserveUsd` total reserve.
+// Roughly half the reserve is the quote side; impact ≈ usd / (quoteSide + usd). An estimate, not a quote.
+export function priceImpact(usd, reserveUsd) {
+  if (!reserveUsd) return null;
+  const q = reserveUsd / 2;
+  return (usd / (q + usd)) * 100;
+}
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, Number.isFinite(v) ? v : lo));
 const num = (v) => (v === null || v === undefined || v === '' || Number.isNaN(Number(v)) ? null : Number(v));
 export const pct = (v) => (v == null ? '—' : `${v > 0 ? '+' : ''}${Math.abs(v) >= 100 ? v.toFixed(0) : v.toFixed(1)}%`);

@@ -8,6 +8,8 @@ import { fileURLToPath } from 'node:url';
 import { CoinGecko } from './cg.js';
 import { collect } from './collect.js';
 import { analyze } from './analyze.js';
+import { deepen, historySnapshot } from './deepen.js';
+import { narrate } from './narrate.js';
 import { render } from './render.js';
 import { CONFIG } from './config.js';
 
@@ -33,10 +35,17 @@ const reportsDir = path.join(root, 'reports');
 fs.mkdirSync(dataDir, { recursive: true });
 fs.mkdirSync(reportsDir, { recursive: true });
 
+const historyDir = path.join(dataDir, 'history');
+fs.mkdirSync(historyDir, { recursive: true });
+
 const raw = await collect(cg, { log });
 const report = analyze(raw);
 report.day = day;
 report.config = CONFIG;
+await deepen(cg, report, { log, historyDir });
+narrate(report);
+report.health = { calls: cg.stats.calls, cached: cg.stats.cached, failed: cg.stats.failed, credits: cg.stats.credits, failures: cg.failures.slice(0, 50) };
+fs.writeFileSync(path.join(historyDir, `${day}.json`), JSON.stringify(historySnapshot(report), null, 1));
 
 const jsonPath = path.join(dataDir, `${day}.json`);
 fs.writeFileSync(jsonPath, JSON.stringify(stripBulk(report), null, 1));

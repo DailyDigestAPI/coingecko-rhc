@@ -1,7 +1,8 @@
 # Robinhood Chain Meme Digest
 
-One command. One page. What happened in Robinhood Chain memes in the last 24 hours, and which tokens
-deserve a look, which are quietly filling up with holders, which are bleeding out, and which to leave alone.
+One command. Two pages. What happened in Robinhood Chain memes in the last 24 hours, which launches deserve a
+look, which existing coins are quietly filling up with holders, which are bleeding out, which to leave alone —
+and a full workup on every pick: trade flow, holders, top traders, price impact, overhang.
 
 Built on [CoinGecko API](https://www.coingecko.com/en/api?utm_source=x&utm_content=riddlerdefi) data.
 Every list, score and flag is computed by this script from that data; none of it is a CoinGecko rating.
@@ -17,7 +18,18 @@ Every list, score and flag is computed by this script from that data; none of it
 | **Quiet accumulation** | Who is adding holders while price sits still? | Holder history (7 days, per token) against 24h price change |
 | **Losing power** | Where are wallets leaving and volume drying up? | Holder history, hourly candles (last 24h vs previous 24h), sellers vs buyers, distance from 48h high |
 | **Avoid** | What is being traded today that failed a hard check? | Honeypot flag, mint/freeze authority, zero sells, extreme wallet concentration, thin liquidity vs FDV |
-| **Who's winning** | Which wallets realized the most PnL across the most traded memes, and what are they holding now? | Top traders per token, wallet balances and PnL on the chain |
+| **Who's winning** | Which wallets realized the most PnL across the most traded memes, and what are they holding now? | Top traders per token, wallet balances and PnL on the chain; bots and insider wallets are tagged and dropped |
+| **Yesterday's picks, today** | Did the previous day's picks hold up? | Each day's picks are stored; the next run re-checks liquidity, price and holders |
+
+**Page 1** is the chain digest plus new launches. **Page 2** is existing coins. Every pick on either page gets a deep dive:
+
+- a written read of the token, generated from the numbers (no model, no adjectives the data can't back)
+- recent flow: the last ~300 trades — $ bought vs sold, biggest trades, top buyers and sellers by wallet
+- top-10 holders with pool / LP / locker contracts labelled
+- top traders on the token with realized PnL, average buy → sell price, and a tag when they sold without buying
+- price impact estimate for a $1k / $5k / $20k buy (constant-product, from pool reserve)
+- overhang: the largest wallet's bag as a share of the pool, and what a full exit would cost
+- holder velocity (new wallets per hour, last 6h vs the 6h before) and buyer skew 1h → 24h
 
 Each pick carries the token address (one-click copy), a CoinGecko or GeckoTerminal link and an explorer link,
 so you can go from "worth a look" to "looking at it" without retyping anything.
@@ -33,7 +45,7 @@ npm run report                # → reports/YYYY-MM-DD.html and reports/latest.h
 
 Requires Node 22+ and nothing else: no dependencies, no build step.
 
-- A full pull is roughly **1,500–2,500 API credits** and takes 2–5 minutes.
+- A full pull is roughly **1,100–1,300 API credits** and takes 3–5 minutes.
 - Responses are cached per day in `data/cache/`, so re-running the same day to tweak rules or styling costs **zero credits**.
 - `npm run report:fresh` ignores the cache and pulls everything again.
 - `node src/index.js --no-render` collects and analyzes only (writes `data/YYYY-MM-DD.json`).
@@ -82,11 +94,13 @@ Not financial advice. Memes on a young chain can go to zero in an afternoon. "Av
 src/cg.js        API client: keep-alive, IPv4-first, retries, 429 handling, per-day disk cache
 src/collect.js   one sweep of the chain → raw data (nothing scored here)
 src/analyze.js   derived fields, flags, scores, the five lists
-src/render.js    one self-contained HTML page, inline SVG sparklines, no external assets
+src/deepen.js    second pass on listed tokens: trade flow, holder/trader tables, yesterday's picks revisited
+src/narrate.js   the written parts, templated from the numbers
+src/render.js    one self-contained HTML document (two pages), inline SVG sparklines, no external assets
 src/config.js    every threshold
 src/index.js     CLI
 reports/         generated pages (sample committed)
-data/            JSON per day + cache (cache is git-ignored)
+data/            JSON per day, history of picks, cache (cache is git-ignored)
 ```
 
 ## CoinGecko API

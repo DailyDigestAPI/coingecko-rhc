@@ -22,6 +22,7 @@ export class CoinGecko {
     this.active = 0;
     this.queue = [];
     this.stats = { calls: 0, cached: 0, failed: 0, credits: 0 };
+    this.failures = []; // endpoints that returned nothing, so the report can say which tokens have partial data
     if (cacheDir) fs.mkdirSync(cacheDir, { recursive: true });
   }
 
@@ -82,6 +83,7 @@ export class CoinGecko {
         if (res.status === 404 || res.status === 400) {
           // Not retryable. Optional endpoints (per-token extras) return null instead of throwing.
           this.stats.failed++;
+          this.failures.push({ endpoint: shortUrl(url), status: res.status });
           if (optional) return null;
           throw new Error(`${res.status} ${url.replace(this.key, '')}: ${(await res.text()).slice(0, 200)}`);
         }
@@ -96,6 +98,7 @@ export class CoinGecko {
       }
     }
     this.stats.failed++;
+    this.failures.push({ endpoint: shortUrl(url), status: lastErr?.name === 'TimeoutError' ? 'timeout' : (lastErr?.message || 'error') });
     if (optional) return null;
     throw lastErr;
   }
