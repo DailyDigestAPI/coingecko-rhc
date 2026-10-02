@@ -220,7 +220,7 @@ function walletCard(w) {
     <div class="price"><b class="${tone(realized)}">${money(realized)}</b><div class="dim">realized${w.pnl.unrealized != null ? ` · <span class="${tone(w.pnl.unrealized)}">${money(w.pnl.unrealized)}</span> open` : ''}</div></div></div>
     <div class="kvline"><span class="k">best</span> ${best}</div>
     <div class="kvline"><span class="k">holds</span> ${bags}</div>
-    ${oneHit != null && oneHit > 0.8 ? `<div class="kvline dim">${(oneHit * 100).toFixed(0)}% of its PnL came from ${esc(w.best[0].symbol)} — one hit, not a track record.</div>` : ''}
+    ${oneHit != null && oneHit > 1 ? `<div class="kvline dim">${esc(w.best[0].symbol)} made more than its entire PnL — everything else it touched lost money.</div>` : oneHit != null && oneHit > 0.8 ? `<div class="kvline dim">${(oneHit * 100).toFixed(0)}% of its PnL came from ${esc(w.best[0].symbol)} — one hit, not a track record.</div>` : ''}
     ${w.tags.length ? `<div class="flags">${w.tags.map((f) => `<span class="flag ${f.level}">${esc(f.text)}</span>`).join('')}</div>` : ''}
   </article>`;
 }

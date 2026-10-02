@@ -194,7 +194,7 @@ function closestToFailing(t, r) {
 
 function avoidStory(t) {
   const s = [`${t.symbol}: ${money(t.vol24)} of volume today with ${money(t.liquidity)} of liquidity.`];
-  for (const x of t.reasons) s.push(x + '.');
+  if (t.reasons.some((x) => /liquidity vs/i.test(x))) s.push(`The market cap figure is a fully-diluted number with almost nothing behind it — ${t.copycats ? 'this is a ticker clone, not the token people are talking about.' : 'nobody could sell into it.'}`);
   if (t.whales?.largestWalletPct > 30) s.push(`One wallet holds ${t.whales.largestWalletPct.toFixed(1)}% — if that is not a labelled contract, that wallet decides the price.`);
   if (t.flow) s.push(`Last ${t.flow.n} trades: ${money(t.flow.buyUsd)} bought vs ${money(t.flow.sellUsd)} sold.`);
   return s;
