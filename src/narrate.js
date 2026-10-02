@@ -35,7 +35,7 @@ function today(r) {
   else if (volDir != null && volDir > 15 && o.buyerSkew < 1) read = 'More volume with more sellers than buyers: distribution. Be careful with anything green on the day.';
   else read = 'Nothing decisive. Selective day — the lists below matter more than the chain-wide read.';
   p.push(read);
-  if (o.launchEveryMin != null) p.push(`Launch pace: a new pool every ${o.launchEveryMin < 1 ? Math.round(o.launchEveryMin * 60) + ' seconds' : o.launchEveryMin.toFixed(1) + ' minutes'} (${o.newPoolsSwept}${o.newPoolsCapped ? '+' : ''} in the last ${o.launchSpan.toFixed(1)}h). Only ${o.survivors7d} tokens launched this week still have $10k of liquidity.`);
+  if (o.launchEveryMin != null) p.push(`Launch pace: a new pool every ${o.launchEveryMin < 1 ? Math.round(o.launchEveryMin * 60) + ' seconds' : o.launchEveryMin.toFixed(1) + ' minutes'} (${o.newPoolsSwept}${o.newPoolsCapped ? '+' : ''} in the last ${o.launchSpan.toFixed(1)}h). ${o.survivors7d} of this week's launches are still trading with $10k+ of liquidity.`);
   if (o.honeypotPct != null) p.push(`Honeypot flags: ${o.honeypots} of ${o.honeypotChecked} checked tokens (${o.honeypotPct.toFixed(1)}%). ${o.honeypotPct < 2 ? 'The obvious scam flag is not the problem on this chain — concentration is, see Avoid.' : 'Check the flag before anything else.'}`);
   if (o.eth) p.push(`ETH at $${o.eth.price.toLocaleString(undefined, { maximumFractionDigits: 0 })} (${pct(o.eth.change24)}) — the quote asset for most of these pools.`);
   return p;
@@ -74,12 +74,13 @@ function fading(r) {
 
 function avoidText(r) {
   const s = [`Only tokens with at least ${money(CONFIG.avoid.minVolumeUsd)} of volume today — this is what people are actually buying, not a list of dead pools.`];
+  const label = (x) => /top-10/i.test(x) ? 'top-10 wallet concentration' : /honeypot/i.test(x) ? 'honeypot flag' : /authority/i.test(x) ? 'mint or freeze authority' : /zero sells/i.test(x) ? 'buys with no sells' : /liquidity vs/i.test(x) ? 'an FDV with no liquidity behind it' : x.toLowerCase();
   const reasons = {};
-  for (const t of r.avoid) for (const x of t.reasons) { const k = x.replace(/[\d.,]+%?/g, 'N'); reasons[k] = (reasons[k] || 0) + 1; }
+  for (const t of r.avoid) for (const x of t.reasons) { const k = label(x); reasons[k] = (reasons[k] || 0) + 1; }
   const top = Object.entries(reasons).sort((a, b) => b[1] - a[1])[0];
-  if (top) s.push(`Most common failure: ${top[0].replace(/N/g, 'X').toLowerCase()} (${top[1]} of ${r.avoid.length}). A red flag here is a hard rule, not a judgement — the token is listed with the exact check it failed and the number behind it.`);
+  if (top) s.push(`Most common failure: ${top[0]} (${top[1]} of ${r.avoid.length}). A red flag here is a hard rule, not a judgement — the token is listed with the exact check it failed and the number behind it.`);
   const vol = r.avoid.reduce((a, t) => a + t.vol24, 0);
-  if (r.avoid.length) s.push(`Combined, these ${r.avoid.length} tokens did ${money(vol)} of volume today. That is the amount of money that went into tokens one wallet group can switch off.`);
+  if (r.avoid.length) s.push(`Combined, these ${r.avoid.length} tokens did ${money(vol)} of volume today. That is how much money went into tokens that fail a check you can run in one API call.`);
   return s;
 }
 
@@ -89,9 +90,11 @@ function walletsText(r) {
   if (W.insiders || W.bots) s.push(`${W.insiders} sold tokens they never bought — team allocations, airdrops or transfers from another wallet — and ${W.bots} are bots or routers doing thousands of swaps. Neither is a trader you can copy, so they are dropped.`);
   if (W.traders.length) {
     const oneHit = W.traders.filter((w) => w.best[0] && w.pnl.realized && w.best[0].realized / w.pnl.realized > 0.8).length;
-    s.push(`${W.traders.length} human-looking wallets remain.` + (oneHit ? ` ${oneHit} of them made 80%+ of their PnL on a single token — one big hit, not a repeatable edge.` : ''));
+    const nTr = W.traders.length;
+    const ofThem = (k) => (k === nTr ? (nTr === 1 ? 'It' : `All ${nTr}`) : `${k} of them`);
+    s.push(`${nTr} human-looking wallet${nTr === 1 ? '' : 's'} remain${nTr === 1 ? 's' : ''}.` + (oneHit ? ` ${ofThem(oneHit)} made 80%+ of their PnL on a single token — one big hit, not a repeatable edge.` : ''));
     const cashed = W.traders.filter((w) => w.bagsChecked && w.bagsTotal < 5_000).length;
-    if (cashed) s.push(`${cashed} of them hold under $5k on-chain right now: they took the money out. Watch what they buy next, not what they bought last.`);
+    if (cashed) s.push(`${ofThem(cashed)} hold${cashed === 1 ? 's' : ''} under $5k on-chain right now: the money is out. Watch what they buy next, not what they bought last.`);
   } else s.push('No human-looking wallet is left after filtering.');
   return s;
 }
@@ -129,7 +132,12 @@ function tokenStory(t, r) {
     if (f.repeatWallets >= 5) s.push(`${f.repeatWallets} wallets traded five or more times in that window; expect bot activity in the tape.`);
   }
   if (t.sizing) s.push(`Sizing: a $1k buy moves price about ${t.sizing[0].impactPct.toFixed(1)}%, $5k about ${t.sizing[1].impactPct.toFixed(1)}%, $20k about ${t.sizing[2].impactPct.toFixed(0)}% (constant-product estimate on ${money(t.liquidity)} of liquidity, before fees and tax).`);
-  if (t.overhang) s.push(`Overhang: the largest wallet holds ${money(t.overhang.usd)}, ${t.overhang.pctOfPool.toFixed(0)}% of the pool's value — a full exit would cost it roughly ${t.overhang.impactPct.toFixed(0)}% of price and take everyone else down with it.`);
+  if (t.overhang) {
+    const o = t.overhang;
+    if (o.pctOfPool >= 50) s.push(`Overhang: the largest wallet holds ${money(o.usd)}, ${o.pctOfPool.toFixed(0)}% of the pool's value — a full exit would cost it roughly ${o.impactPct.toFixed(0)}% of price and take everyone else down with it. That wallet is the price.`);
+    else if (o.pctOfPool >= 15) s.push(`Overhang: the largest wallet holds ${money(o.usd)}, ${o.pctOfPool.toFixed(0)}% of the pool's value — roughly a ${o.impactPct.toFixed(0)}% move if it sold in one go.`);
+    else s.push(`Overhang: the largest wallet holds ${money(o.usd)}, ${o.pctOfPool.toFixed(0)}% of the pool's value — small relative to the pool.`);
+  }
   if (t.holders?.rate6 != null && t.holders.rate6prev != null && t.holders.rate6prev > 0) {
     const chg = ((t.holders.rate6 - t.holders.rate6prev) / t.holders.rate6prev) * 100;
     s.push(`Holder velocity: ${Math.round(t.holders.rate6)} new wallets an hour over the last 6h vs ${Math.round(t.holders.rate6prev)} the 6h before — ${chg >= 25 ? 'accelerating' : chg <= -25 ? 'slowing down' : 'steady'}.`);

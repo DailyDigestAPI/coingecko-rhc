@@ -89,8 +89,11 @@ function enrich(t) {
 
   // Whale concentration excluding pool / LP / locker contracts (they show up in top-10 lists)
   let whales = null;
+  const poolAddrs = new Set(t.pools.map((p) => (p.address || '').toLowerCase()));
+  const isContract = (h) => /pool|manager|\blp\b|lock|burn|dead|router|vault|bridge|treasury|staking|vesting/i.test(h.label || '')
+    || /^0x0+(dead)?$/i.test(h.address) || /^0x0{30,}/i.test(h.address) || /dead$/i.test(h.address) || /^0x(e|f){40}$/i.test(h.address)
+    || poolAddrs.has((h.address || '').toLowerCase());
   if (t.topHolders) {
-    const isContract = (h) => /pool|manager|lp|lock|burn|dead|router|vault|bridge|treasury/i.test(h.label || '') || /^0x0+(dead)?$/i.test(h.address) || /dead$/i.test(h.address);
     const wallets = t.topHolders.filter((h) => !isContract(h));
     whales = {
       top10PctExPool: wallets.reduce((a, h) => a + (h.pct || 0), 0),
@@ -143,10 +146,10 @@ function enrich(t) {
   const buyersRatio1 = t.tx1.sellers ? t.tx1.buyers / t.tx1.sellers : (t.tx1.buyers ? Infinity : null);
   const sizing = t.liquidity ? [1_000, 5_000, 20_000].map((usd) => ({ usd, impactPct: priceImpact(usd, t.liquidity) })) : null;
   // Overhang: the biggest non-contract wallet's bag against the pool. If it sold into the pool, this is the share it would eat.
-  const largestWallet = whales ? whales.list.filter((h) => !/pool|manager|lp|lock|burn|dead|router|vault|bridge|treasury/i.test(h.label || '')).sort((a, b) => (b.valueUsd || 0) - (a.valueUsd || 0))[0] : null;
+  const largestWallet = whales ? whales.list.filter((h) => !isContract(h)).sort((a, b) => (b.valueUsd || 0) - (a.valueUsd || 0))[0] : null;
   const overhang = largestWallet?.valueUsd && t.liquidity ? { address: largestWallet.address, usd: largestWallet.valueUsd, pctOfPool: (largestWallet.valueUsd / t.liquidity) * 100, impactPct: priceImpact(largestWallet.valueUsd, t.liquidity) } : null;
   if (overhang && overhang.pctOfPool >= 100) flags.push({ level: 'amber', text: `One wallet holds ${overhang.pctOfPool.toFixed(0)}% of the pool's value` });
-  const top10Usd = whales ? whales.list.filter((h) => !/pool|manager|lp|lock|burn|dead|router|vault|bridge|treasury/i.test(h.label || '')).reduce((a, h) => a + (h.valueUsd || 0), 0) : null;
+  const top10Usd = whales ? whales.list.filter((h) => !isContract(h)).reduce((a, h) => a + (h.valueUsd || 0), 0) : null;
 
   return {
     ...t, holders, holdersCount, holdersInflated, momentum, whales, top10Pct, socials, socialCount, buyersRatio, buyersRatio6, buyersRatio1, turnover, liqToMcap, flags, hardFail, sizing, overhang, top10Usd,

@@ -1,6 +1,6 @@
 {
  "day": "2026-10-02",
- "generatedAt": "2026-10-02T06:22:04.884Z",
+ "generatedAt": "2026-10-02T06:26:54.150Z",
  "heat": "MIXED",
  "picks": [
   {
@@ -110,18 +110,6 @@
    "holders": 154,
    "vol24": 1502495.62798851,
    "mcap": 102709.435
-  },
-  {
-   "list": "avoid",
-   "symbol": "GENIE",
-   "name": "GENIE AI",
-   "address": "0x7859dfc99f4db48e1aecd8cb1a42f1ba0b0a7012",
-   "pool": "0xcef3b7e11fa0c1849c77021e73a0067d7d5301b072d9e8e3df7c70640b8fb878",
-   "price": 0.01305495466,
-   "liquidity": 774397.1522,
-   "holders": 712,
-   "vol24": 3475945.0202815174,
-   "mcap": 13054954.66
   },
   {
    "list": "avoid",
