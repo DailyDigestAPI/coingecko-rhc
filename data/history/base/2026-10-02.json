@@ -1,8 +1,20 @@
 {
  "day": "2026-10-02",
- "generatedAt": "2026-10-02T06:16:43.973Z",
+ "generatedAt": "2026-10-02T06:22:05.664Z",
  "heat": "MIXED",
  "picks": [
+  {
+   "list": "new launches",
+   "symbol": "XDP",
+   "name": "Doppler",
+   "address": "0x092f3944360a1093aee326941e7494104f533f70",
+   "pool": "0x1326d9a69325dfd8311ce4da0f8852eb6b6eded8402cc6071197f7bffa408233",
+   "price": 0.0005784179265,
+   "liquidity": 103616.1964,
+   "holders": 667,
+   "vol24": 719945.390665116,
+   "mcap": 578417.9265
+  },
   {
    "list": "new launches",
    "symbol": "NDTA",
@@ -26,18 +38,6 @@
    "holders": 3741,
    "vol24": 419575.076878888,
    "mcap": 1048632.721
-  },
-  {
-   "list": "new launches",
-   "symbol": "TRUMP",
-   "name": "TRUMP",
-   "address": "0x45569bc5b81880aae344845186e7a6c5b5d4bb07",
-   "pool": "0x3d0978ef65b93bf9d1db91f1b9d2f21c00181a6b",
-   "price": 0.0001055590876,
-   "liquidity": 10079711.627,
-   "holders": 2925,
-   "vol24": 48891702.5239207,
-   "mcap": 10555908.76
   },
   {
    "list": "accumulation",

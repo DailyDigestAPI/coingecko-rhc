@@ -157,8 +157,31 @@ function tokenStory(t, r) {
     const sellTotal = t.topTraders.reduce((a, w) => a + (w.sellUsd || 0), 0), buyTotal = t.topTraders.reduce((a, w) => a + (w.buyUsd || 0), 0);
     if (buyTotal && sellTotal / buyTotal >= 1.5 && !insiders.length) s.push(`The top traders have sold ${money(sellTotal)} against ${money(buyTotal)} bought: the people who made money here are mostly out.`);
   }
+  const margin = closestToFailing(t, r);
+  if (margin) s.push(`Closest to failing: ${margin}.`);
   if (t.flags.length) s.push(`Flags: ${t.flags.map((f) => f.text).join('; ')}.`);
   return s;
+}
+
+// Which rule the token is nearest to breaking — so a reader knows what would knock it off the list tomorrow.
+function closestToFailing(t, r) {
+  const c = CONFIG;
+  const checks = [];
+  const isLaunch = r.newLaunches.picks.includes(t), isAcc = r.accumulation.picks.includes(t);
+  if (isLaunch) {
+    checks.push({ label: `liquidity ${money(t.liquidity)} vs the $${fmtK(c.newLaunch.minLiquidityUsd)} floor`, room: (t.liquidity - c.newLaunch.minLiquidityUsd) / c.newLaunch.minLiquidityUsd });
+    if (t.whales) checks.push({ label: `top-10 wallets ${t.top10Pct.toFixed(0)}% vs the ${c.newLaunch.maxTop10PctExPool}% cap`, room: (c.newLaunch.maxTop10PctExPool - t.top10Pct) / c.newLaunch.maxTop10PctExPool });
+    if (t.pch.h24 != null) checks.push({ label: `price ${pct(t.pch.h24)} vs the ${c.newLaunch.maxDrawdown24}% day limit`, room: (t.pch.h24 - c.newLaunch.maxDrawdown24) / 100 });
+    checks.push({ label: `${t.tx24.buyers} unique buyers vs the ${c.newLaunch.minBuyers24} minimum`, room: (t.tx24.buyers - c.newLaunch.minBuyers24) / c.newLaunch.minBuyers24 });
+  } else if (isAcc) {
+    if (t.pch.h24 != null) checks.push({ label: `price ${pct(t.pch.h24)} vs the ±${c.accumulation.maxAbsPriceChange24}% band`, room: (c.accumulation.maxAbsPriceChange24 - Math.abs(t.pch.h24)) / c.accumulation.maxAbsPriceChange24 });
+    if (t.holders?.change24Pct != null) checks.push({ label: `holder growth ${pct(t.holders.change24Pct)} vs the ${c.accumulation.minHolderGrowthPct24}% minimum`, room: (t.holders.change24Pct - c.accumulation.minHolderGrowthPct24) / 10 });
+    checks.push({ label: `liquidity ${money(t.liquidity)} vs the $${fmtK(c.accumulation.minLiquidityUsd)} floor`, room: (t.liquidity - c.accumulation.minLiquidityUsd) / c.accumulation.minLiquidityUsd });
+  } else return null;
+  if (t.whales && !isLaunch) checks.push({ label: `top-10 wallets ${t.top10Pct.toFixed(0)}% vs the ${c.avoid.top10PctExPool}% hard limit`, room: (c.avoid.top10PctExPool - t.top10Pct) / c.avoid.top10PctExPool });
+  const tight = checks.filter((x) => Number.isFinite(x.room)).sort((a, b) => a.room - b.room)[0];
+  if (!tight) return null;
+  return tight.room < 0.5 ? tight.label : `nothing — comfortably inside every rule (tightest: ${tight.label})`;
 }
 
 function avoidStory(t) {
