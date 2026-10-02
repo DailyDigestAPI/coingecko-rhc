@@ -1,0 +1,163 @@
+{
+ "day": "2026-10-02-base",
+ "generatedAt": "2026-10-02T06:15:33.820Z",
+ "heat": "MIXED",
+ "picks": [
+  {
+   "list": "new launches",
+   "symbol": "NDTA",
+   "name": "NATIONAL DIGITAL TRUMP ACCOUNT (NDTA)",
+   "address": "0xa3d2020d98f884ce9e3307a7e9b83fe08ff40bb9",
+   "pool": "0x30c05d42014eb3c0230a413da86906f1444a4f1717e2faf627fc0f340a8d2345",
+   "price": 0.0001471876018,
+   "liquidity": 43403.6278,
+   "holders": 337,
+   "vol24": 646630.483749926,
+   "mcap": 147187.6018
+  },
+  {
+   "list": "new launches",
+   "symbol": "boar",
+   "name": "boar",
+   "address": "0x0cbf291ba052174879d90bf781df1a5f2bc5bb07",
+   "pool": "0xef256e214c45aab706ca54d6e2c5d0ca42b87895a43e97b382ea012d13e78e49",
+   "price": 0.00001048632721,
+   "liquidity": 308654.009,
+   "holders": 3741,
+   "vol24": 419575.076878888,
+   "mcap": 1048632.721
+  },
+  {
+   "list": "new launches",
+   "symbol": "TRUMP",
+   "name": "TRUMP",
+   "address": "0x45569bc5b81880aae344845186e7a6c5b5d4bb07",
+   "pool": "0x3d0978ef65b93bf9d1db91f1b9d2f21c00181a6b",
+   "price": 0.0001055590876,
+   "liquidity": 10079711.627,
+   "holders": 2925,
+   "vol24": 48891702.5239207,
+   "mcap": 10555908.76
+  },
+  {
+   "list": "accumulation",
+   "symbol": "wL1",
+   "name": "Wrapped L1coin",
+   "address": "0xe6522a891702cd2e8cc2a5182638c9da1dd44b22",
+   "pool": "0xde9ba4084bf0733a9d69e42e71e5fd140179df71",
+   "price": 0.2869232093,
+   "liquidity": 384406.6585,
+   "holders": 336,
+   "vol24": 157716.255121396,
+   "mcap": 12060075.7552258
+  },
+  {
+   "list": "losing power",
+   "symbol": "ATLAS",
+   "name": "Field Atlas",
+   "address": "0xb462a5039a540883508ee37b5cf3999647557ba3",
+   "pool": "0x73184f3f24a9993aeb4ae040e36997dfe2e927a6742bbb1f24706c421f527330",
+   "price": 0.000002420581056,
+   "liquidity": 78711.8331,
+   "holders": 793,
+   "vol24": 262345.834013369,
+   "mcap": 242058.1056
+  },
+  {
+   "list": "losing power",
+   "symbol": "CATALYST",
+   "name": "CATALYST",
+   "address": "0xca7a1e31b36779cf32acb18714ab26982cf36b05",
+   "pool": "0xf0bac62dd4fd04dc26c9bc9ded68f16c515ab71c09bb87e8e546b7ce83c0ccb9",
+   "price": 1.5409440968,
+   "liquidity": 1218024.1904,
+   "holders": 1331,
+   "vol24": 138555.924221624,
+   "mcap": 1540944.0968
+  },
+  {
+   "list": "losing power",
+   "symbol": "SERVER",
+   "name": "SERVER github.com/bitwarden/SERVER",
+   "address": "0xadf52088bdabbdd9077a0ed70e18226d75bd8d34",
+   "pool": "0xee7f5d10a6b10c8d9ad6279a3b42bd1d26685f93",
+   "price": 0.005777822114,
+   "liquidity": 231958.6131,
+   "holders": 2405,
+   "vol24": 185166.983730237,
+   "mcap": 5777822.114
+  },
+  {
+   "list": "avoid",
+   "symbol": "BSW",
+   "name": "Lydia",
+   "address": "0x3c5cd672b204ba0fc48e93b98c0922920a87912d",
+   "pool": "0x5a74ea01e29115bdd633ed7559802ddbdcc600ba22a778b6d200893c2e7a2690",
+   "price": 0.5102766379,
+   "liquidity": 5925229.4572,
+   "holders": 30,
+   "vol24": 246299483.457023,
+   "mcap": 5102766.379
+  },
+  {
+   "list": "avoid",
+   "symbol": "xdp",
+   "name": "Doppler Finance",
+   "address": "0x07b3d902783c3c12b077508c3b5c00113d1291d0",
+   "pool": "0x2df380544b88adb3ad0a94100dcc45fd705aae2d",
+   "price": 0.01979882804,
+   "liquidity": 2441277.3093999997,
+   "holders": 13766,
+   "vol24": 230061341.03227028,
+   "mcap": 197988280.397077
+  },
+  {
+   "list": "avoid",
+   "symbol": "XDP",
+   "name": "Doppler",
+   "address": "0xa7cef888cd72f47495603dc98621e177bdad6b07",
+   "pool": "0xee0c636907e398fb93ef16d5cc7f164283573b61",
+   "price": 0.00006359682299,
+   "liquidity": 3.8077,
+   "holders": 3132,
+   "vol24": 43814215.8680174,
+   "mcap": 6359682.299
+  },
+  {
+   "list": "avoid",
+   "symbol": "AERO",
+   "name": "Aerodrome",
+   "address": "0x940181a94a35a4569e4529a3cdfb74e38fd98631",
+   "pool": "0x6cdcb1c4a4d1c3c6d054b27ac5b77e89eafb971d",
+   "price": 0.7934384854,
+   "liquidity": 59617106.2838,
+   "holders": 752404,
+   "vol24": 26211472.253464434,
+   "mcap": 793433263.507191
+  },
+  {
+   "list": "avoid",
+   "symbol": "VVV",
+   "name": "Venice Token",
+   "address": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+   "pool": "0x01784ef301d79e4b2df3a21ad9a536d4cf09a5ce",
+   "price": 28.3704928978,
+   "liquidity": 42479214.1636,
+   "holders": 154834,
+   "vol24": 9739480.625767658,
+   "mcap": 1369693896.49807
+  },
+  {
+   "list": "avoid",
+   "symbol": "POD",
+   "name": "Dolphin",
+   "address": "0xed664536023d8e4b1640c394777d34abaff1df8f",
+   "pool": "0x7c84276e317f128b55bd270dbfba3ef94c84b984c124a1de7c4f72da90bfba45",
+   "price": 0.749990827,
+   "liquidity": 4547195.574999999,
+   "holders": 6765,
+   "vol24": 9127383.808173558,
+   "mcap": 62261834.4348999
+  }
+ ]
+}

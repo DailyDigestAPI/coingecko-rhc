@@ -20,11 +20,12 @@ const args = process.argv.slice(2);
 const flag = (f) => args.includes(f);
 const opt = (f, d) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] : d; };
 const day = opt('--date', new Date().toISOString().slice(0, 10));
+const tag = CONFIG.network === 'robinhood' ? '' : `-${CONFIG.network}`; // other chains get their own files and history
 const log = (m) => console.error(`[${new Date().toISOString().slice(11, 19)}] ${m}`);
 
 const cg = new CoinGecko({
   apiKey: process.env.COINGECKO_API_KEY,
-  cacheDir: path.join(root, 'data', 'cache', day),
+  cacheDir: path.join(root, 'data', 'cache', day + tag),
   concurrency: Number(process.env.CG_CONCURRENCY || 4),
   fresh: flag('--fresh'),
   log,
@@ -35,7 +36,7 @@ const reportsDir = path.join(root, 'reports');
 fs.mkdirSync(dataDir, { recursive: true });
 fs.mkdirSync(reportsDir, { recursive: true });
 
-const historyDir = path.join(dataDir, 'history');
+const historyDir = path.join(dataDir, 'history', CONFIG.network);
 fs.mkdirSync(historyDir, { recursive: true });
 
 const raw = await collect(cg, { log });
@@ -47,15 +48,15 @@ narrate(report);
 report.health = { calls: cg.stats.calls, cached: cg.stats.cached, failed: cg.stats.failed, credits: cg.stats.credits, failures: cg.failures.slice(0, 50) };
 fs.writeFileSync(path.join(historyDir, `${day}.json`), JSON.stringify(historySnapshot(report), null, 1));
 
-const jsonPath = path.join(dataDir, `${day}.json`);
+const jsonPath = path.join(dataDir, `${day}${tag}.json`);
 fs.writeFileSync(jsonPath, JSON.stringify(stripBulk(report), null, 1));
 log(`data: ${path.relative(root, jsonPath)}`);
 
 if (!flag('--no-render')) {
   const html = render(report);
-  const out = path.join(reportsDir, `${day}.html`);
+  const out = path.join(reportsDir, `${day}${tag}.html`);
   fs.writeFileSync(out, html);
-  fs.writeFileSync(path.join(reportsDir, 'latest.html'), html);
+  fs.writeFileSync(path.join(reportsDir, `latest${tag}.html`), html);
   log(`report: ${path.relative(root, out)}`);
 }
 log(`api: ${cg.stats.credits} credits spent, ${cg.stats.cached} served from cache, ${cg.stats.failed} failed/empty, ${raw.durationSec}s`);

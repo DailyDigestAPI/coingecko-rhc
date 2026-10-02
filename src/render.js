@@ -203,7 +203,7 @@ function tradersTable(t) {
 function avoidRow(t) {
   return `<article class="avoidcard">
     <div class="head"><span class="noimg small">${esc(t.symbol.slice(0, 1))}</span><div class="title"><div class="sym">${tokenLink(t)} <span class="name">${esc(t.name)}</span></div><div class="dim">${age(t.ageHours)} old · $${fmtK(t.vol24)} vol · $${fmtK(t.liquidity)} liq · $${fmtK(t.mcap || t.fdv)} mcap · ${t.holdersCount != null ? t.holdersCount.toLocaleString() + ' holders' : ''}</div></div></div>
-    <div class="flags">${t.reasons.map((x) => `<span class="flag red">${esc(x)}</span>`).join('')}${t.flags.filter((f) => f.level === 'amber').map((f) => `<span class="flag amber">${esc(f.text)}</span>`).join('')}</div>
+    <div class="flags">${t.reasons.map((x) => `<span class="flag red">${esc(x)}</span>`).join('')}${t.flags.filter((f) => f.level === 'amber' || f.level === 'grey').map((f) => `<span class="flag ${f.level}">${esc(f.text)}</span>`).join('')}</div>
     <div class="prose small">${(t.story || []).slice(1).map((p) => `<p>${esc(p)}</p>`).join('')}</div>
     ${links(t)}
   </article>`;

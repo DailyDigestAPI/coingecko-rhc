@@ -15,6 +15,9 @@ export const CONFIG = {
     maxVolumeUsd: 2_000,
     // "Stock Paired Tokens" are memes paired against a stock token — those stay.
     isRwaCategory: (c) => /tokenized|securit|real world|\brwa\b|stablecoin|bridged|wrapped|exchange-traded/i.test(c) && !/paired/i.test(c),
+    // Only applied when CoinGecko does NOT also tag the coin as a meme
+    isNotMemeCategory: (c) => /decentralized finance|defi|exchange-based|governance|infrastructure|oracle|layer [12]|smart contract platform|liquid staking|lending|derivatives|yield|perpetual|\bdex\b|zero knowledge|restaking|centralized exchange/i.test(c),
+    isMemeCategory: (c) => /meme|launchpad|pump|\.fun|dog|cat|frog|animal|inu|pepe|elon|celebrity|ai agent/i.test(c),
   },
 
   universe: {

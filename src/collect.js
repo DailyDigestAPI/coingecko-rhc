@@ -228,7 +228,12 @@ export async function collect(cg, { network = CONFIG.network, log = () => {} } =
   }));
 
   // Coin-level categories catch what token info missed (e.g. a stablecoin project with a meme-looking ticker)
-  const rwa2 = memes.filter((t) => (t.coin?.categories || []).some(CONFIG.rwa.isRwaCategory));
+  const rwa2 = memes.filter((t) => {
+    const cats = t.coin?.categories || [];
+    if (cats.some(CONFIG.rwa.isRwaCategory)) return true;
+    // CoinGecko tags it as infrastructure / DeFi / exchange / L1-L2 and not as a meme → not a meme
+    return cats.some(CONFIG.rwa.isNotMemeCategory) && !cats.some(CONFIG.rwa.isMemeCategory);
+  });
   if (rwa2.length) { log(`tokens: ${rwa2.length} more excluded by CoinGecko coin category: ${rwa2.map((t) => t.symbol).join(', ')}`); memes = memes.filter((t) => !rwa2.includes(t)); }
 
   // ---- 8. Winning wallets across the chain: aggregate, then look at their other bags ----

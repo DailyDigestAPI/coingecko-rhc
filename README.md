@@ -56,8 +56,10 @@ Requires Node 22+ and nothing else: no dependencies, no build step.
 CG_NETWORK=base CG_NETWORK_LABEL="Base" CG_EXPLORER=https://basescan.org npm run report
 ```
 
-Any network id from `/onchain/networks` works. Holder history and wallet balances vary by chain; where a
-field is missing the report says so instead of hiding the section.
+Any network id from `/onchain/networks` works. Other chains get their own files (`reports/latest-base.html`,
+`data/history/base/`), so two chains never compare against each other's picks. Holder history and wallet
+balances vary by chain; where a field is missing the report says so instead of hiding the section.
+A Base run from the same day is committed as [`reports/2026-10-02-base.html`](reports/2026-10-02-base.html).
 
 ## How the picks are made
 
