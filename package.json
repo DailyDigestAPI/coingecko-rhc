@@ -1,0 +1,14 @@
+{
+  "name": "coingecko-rhc",
+  "version": "1.0.0",
+  "description": "Daily meme-market digest for Robinhood Chain, built on CoinGecko API data",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "report": "node src/index.js",
+    "report:fresh": "node src/index.js --fresh",
+    "render": "node src/index.js"
+  },
+  "license": "MIT"
+}
