@@ -47,7 +47,7 @@ function launches(r) {
   if (!L.picks.length) s.push('Nothing passed today. That happens on a chain that launches a pool every few seconds — most of it is noise by design.');
   else {
     const young = L.picks.filter((t) => t.ageHours < 12).length;
-    if (young) s.push(`${young} of the ${L.picks.length} are under 12 hours old, which means every number on their card is launch-day data. Launch-day numbers are real but unstable: a token that looks like this at hour 3 often looks very different at hour 30.`);
+    if (young) s.push(`${young} of the ${L.picks.length} ${young === 1 ? 'is' : 'are'} under 12 hours old, which means every number on ${young === 1 ? 'its' : 'their'} card is launch-day data. Launch-day numbers are real but unstable: a token that looks like this at hour 3 often looks very different at hour 30.`);
     const cc = L.picks.filter((t) => t.copycats >= 1);
     if (cc.length) s.push(`Ticker clones are live on ${cc.map((t) => `${t.symbol} (${t.copycats} other${t.copycats > 1 ? 's' : ''})`).join(', ')} — check the contract address before buying anything with these names.`);
   }
@@ -92,9 +92,9 @@ function walletsText(r) {
     const oneHit = W.traders.filter((w) => w.best[0] && w.pnl.realized && w.best[0].realized / w.pnl.realized > 0.8).length;
     const nTr = W.traders.length;
     const ofThem = (k) => (k === nTr ? (nTr === 1 ? 'It' : `All ${nTr}`) : `${k} of them`);
-    s.push(`${nTr} human-looking wallet${nTr === 1 ? '' : 's'} remain${nTr === 1 ? 's' : ''}.` + (oneHit ? ` ${ofThem(oneHit)} made 80%+ of their PnL on a single token — one big hit, not a repeatable edge.` : ''));
+    s.push(`${nTr} human-looking wallet${nTr === 1 ? '' : 's'} remain${nTr === 1 ? 's' : ''}.` + (oneHit ? ` ${ofThem(oneHit)} made 80%+ of ${nTr === 1 ? 'its' : 'their'} PnL on a single token — one big hit, not a repeatable edge.` : ''));
     const cashed = W.traders.filter((w) => w.bagsChecked && w.bagsTotal < 5_000).length;
-    if (cashed) s.push(`${ofThem(cashed)} hold${cashed === 1 ? 's' : ''} under $5k on-chain right now: the money is out. Watch what they buy next, not what they bought last.`);
+    if (cashed) s.push(`${ofThem(cashed)} hold${cashed === 1 ? 's' : ''} under $5k on-chain right now: the money is out. Watch what ${cashed === 1 && nTr === 1 ? 'it buys' : 'they buy'} next, not what ${cashed === 1 && nTr === 1 ? 'it' : 'they'} bought last.`);
   } else s.push('No human-looking wallet is left after filtering.');
   return s;
 }
@@ -138,9 +138,11 @@ function tokenStory(t, r) {
     else if (o.pctOfPool >= 15) s.push(`Overhang: the largest wallet holds ${money(o.usd)}, ${o.pctOfPool.toFixed(0)}% of the pool's value — roughly a ${o.impactPct.toFixed(0)}% move if it sold in one go.`);
     else s.push(`Overhang: the largest wallet holds ${money(o.usd)}, ${o.pctOfPool.toFixed(0)}% of the pool's value — small relative to the pool.`);
   }
-  if (t.holders?.rate6 != null && t.holders.rate6prev != null && t.holders.rate6prev > 0) {
-    const chg = ((t.holders.rate6 - t.holders.rate6prev) / t.holders.rate6prev) * 100;
-    s.push(`Holder velocity: ${Math.round(t.holders.rate6)} new wallets an hour over the last 6h vs ${Math.round(t.holders.rate6prev)} the 6h before — ${chg >= 25 ? 'accelerating' : chg <= -25 ? 'slowing down' : 'steady'}.`);
+  if (t.holders?.rate6 != null && t.holders.rate6prev != null && (t.holders.rate6prev > 0 || t.holders.rate6 < 0)) {
+    const chg = t.holders.rate6prev > 0 ? ((t.holders.rate6 - t.holders.rate6prev) / t.holders.rate6prev) * 100 : 0;
+    const r6 = Math.round(t.holders.rate6), r6p = Math.round(t.holders.rate6prev);
+    if (r6 < 0) s.push(`Holder velocity: losing ${Math.abs(r6)} wallets an hour over the last 6h, after gaining ${r6p} an hour the 6h before — the exit has started.`);
+    else s.push(`Holder velocity: ${r6} new wallets an hour over the last 6h vs ${r6p} the 6h before — ${chg >= 25 ? 'accelerating' : chg <= -25 ? 'slowing down' : 'steady'}.`);
   }
   if (t.buyersRatio1 != null && t.buyersRatio != null && t.buyersRatio1 !== Infinity && t.buyersRatio !== Infinity && t.tx1.buyers + t.tx1.sellers >= 20) {
     const d = t.buyersRatio1 - t.buyersRatio;
