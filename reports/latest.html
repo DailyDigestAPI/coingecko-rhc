@@ -13,9 +13,9 @@
 .banner{--pc:var(--c1);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:28px;align-items:end;padding:36px 32px 28px;margin:0 -24px 28px;border-top:8px solid var(--pc);background:linear-gradient(135deg,color-mix(in srgb,var(--pc) 22%,var(--bg)) 0%,var(--bg2) 55%,var(--bg) 100%);border-radius:0 0 24px 24px}
 .banner.pg2{--pc:var(--c2)}.banner.pg3{--pc:var(--c3)}.banner.pg2,.banner.pg3{margin-top:72px}
 .banner-num{font-family:var(--display);font-weight:800;font-size:96px;line-height:.8;color:var(--pc);letter-spacing:-.04em;opacity:.95}
-.banner .kicker{color:var(--pc)}.banner h1{margin:8px 0 6px;font-size:44px;font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.05}.banner .sub{font-size:16px;max-width:62ch}
+.banner .kicker{color:var(--pc)}.banner h1{margin:8px 0 6px;font-size:42px;text-wrap:balance;font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.05}.banner .sub{font-size:16px;max-width:62ch}
 .banner .meta{text-align:right;color:var(--mute);font-size:13px;line-height:1.7}.banner .meta a{color:var(--text)}
-h1,h2,.sym,.banner-num,.tile .value,.big b,.price{font-family:var(--display)}.addr,.copy{font-family:var(--mono)}
+h1,h2,.sym,.banner-num{font-family:var(--display)}.tile .value,.big b,.price{font-family:var(--body);font-weight:800}.addr,.copy{font-family:var(--mono)}
 h2{padding-left:16px;border-left:5px solid var(--pc);line-height:1.15}.kicker{color:var(--pc)}.rank{color:var(--pc)}.lead{border-left-color:var(--pc)}.bar i{background:var(--pc)}details.more summary::before{color:var(--pc)}.deep.kind-launch{border-color:color-mix(in srgb,var(--c2) 45%,transparent)}.links a:hover,.copy:hover{border-color:var(--pc)}
 .sub-h{padding-left:12px;border-left:3px solid var(--pc)}
 a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}a:hover{border-color:var(--accent)}
@@ -29,7 +29,7 @@ h1{margin:6px 0 4px;font-size:36px;letter-spacing:-.025em;display:flex;align-ite
 .lead{font-size:19px;line-height:1.5;font-weight:500;margin:0 0 18px;padding:16px 20px;border-left:4px solid var(--accent);background:var(--bg2);border-radius:0 12px 12px 0}
 .tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
 .tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-.tile .label{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}.tile .value{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px}.tile .sub{font-size:12px;color:var(--mute);line-height:1.35}
+.tile .label{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}.tile .value{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tile .sub{font-size:12px;color:var(--mute);line-height:1.35}
 .tile.up .value{color:var(--up)}.tile.down .value{color:var(--down)}
 .two{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;margin-top:20px;align-items:start}
 .strips{display:flex;flex-direction:column;gap:10px}
@@ -46,10 +46,10 @@ section{margin-top:40px}h2{font-size:26px;margin:0 0 6px;letter-spacing:-.02em}h
 .rank{font-size:14px;color:var(--accent);font-weight:800;flex:none}.title{flex:1}.sym{font-weight:800;font-size:24px;letter-spacing:-.01em}.name{font-weight:400;color:var(--mute);font-size:14px}
 .tag{font-size:11px;color:var(--accent);border:1px solid var(--accent);border-radius:5px;padding:1px 7px;vertical-align:middle;font-weight:600}.tag.grey{color:var(--mute);border-color:var(--line)}.tag.amber{color:var(--amber);border-color:rgba(255,191,92,.5)}
 .price{text-align:right;font-weight:800;white-space:nowrap;flex:none;font-size:22px}.price div{font-size:13px;font-weight:600}sub{font-size:10px;vertical-align:-3px}
-.verdict{margin-top:14px;font-size:17px;font-weight:600;padding:12px 16px;border-radius:12px;background:var(--bg2)}.verdict.up{border-left:4px solid var(--up)}.verdict.down{border-left:4px solid var(--down)}.verdict .dim{font-weight:400;font-size:14px}
-.bignums{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}.big{background:var(--bg2);border-radius:12px;padding:10px 12px}.big span{display:block;font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}.big b{display:block;font-size:20px;letter-spacing:-.01em;margin-top:2px}.big i{display:block;font-style:normal;font-size:12px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.big.up b{color:var(--up)}.big.down b{color:var(--down)}
+.verdict{margin-top:14px;font-size:17px;font-weight:600;padding:12px 16px;border-radius:12px;background:var(--bg2)}.verdict.good{border-left:4px solid var(--up)}.verdict.bad{border-left:4px solid var(--down)}.verdict .dim{font-weight:400;font-size:14px}
+.bignums{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}.big{background:var(--bg2);border-radius:12px;padding:10px 12px}.big span{display:block;font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}.big b{display:block;font-size:20px;letter-spacing:-.01em;margin-top:2px}.big i{display:block;font-style:normal;font-size:12px;color:var(--mute);line-height:1.35}.big.up b{color:var(--up)}.big.down b{color:var(--down)}
 .cols{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;margin-top:18px}
-.callout{padding:12px 16px;border-radius:12px;margin-bottom:12px;font-size:15px;background:var(--bg2)}.callout b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}.callout.up{border:1px solid rgba(67,224,143,.4)}.callout.up b{color:var(--up)}.callout.down{border:1px solid rgba(255,107,127,.4)}.callout.down b{color:var(--down)}
+.callout{padding:12px 16px;border-radius:12px;margin-bottom:12px;font-size:15px;background:var(--bg2)}.callout b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}.callout.good{border:1px solid rgba(75,224,154,.4)}.callout.good b{color:var(--up)}.callout.bad{border:1px solid rgba(255,107,132,.4)}.callout.bad b{color:var(--down)}
 .side-box{background:var(--bg2);border-radius:12px;padding:12px 14px;margin-top:10px;font-size:13.5px;line-height:1.5}.side-box h5{margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)}.impact{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}
 .spark{display:block;width:100%;height:70px;margin:0 0 4px;background:var(--bg2);border-radius:12px;padding:6px}.spark.empty{display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:12px}.sl{font-size:10px;fill:var(--mute)}
 .kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;margin-top:10px}.k{display:flex;flex-direction:column;border-top:1px solid var(--line);padding:7px 0 4px}.k span{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}.k b{font-size:14px}.k i{font-style:normal;font-size:12px;color:var(--mute)}
@@ -90,8 +90,8 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
   </div>
   <div class="meta">
     <div>Data: <a href="https://www.coingecko.com/en/api?utm_source=x&utm_content=riddlerdefi">CoinGecko API</a></div>
-    <div>1,189 pools scanned · 719 memes tracked · 04:44 UTC</div>
-    <div class="dim">1,202 API calls · 0 failed · 0s</div>
+    <div>1,189 pools scanned · 719 memes tracked · 04:45 UTC</div>
+    <div class="dim">1,201 API calls · 0 failed · 0s</div>
   </div>
 </header>
 
@@ -102,13 +102,13 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
     <div class="tile "><div class="label">Meme liquidity</div><div class="value">$117.80M</div><div class="sub">across 719 tokens</div></div>
     <div class="tile "><div class="label">Buyers vs sellers</div><div class="value">0.98×</div><div class="sub">130,814 buying · 133,328 selling</div></div>
     <div class="tile "><div class="label">Breadth</div><div class="value">42%</div><div class="sub">of traded memes up · median -4.0%</div></div>
-    <div class="tile "><div class="label">New pool every</div><div class="value">21s</div><div class="sub">500+ pools created in the last 2.9h</div></div>
+    <div class="tile "><div class="label">New pool every</div><div class="value">21s</div><div class="sub">500+ pools created in the last 3.0h</div></div>
     <div class="tile down"><div class="label">Whale flow</div><div class="value">−$5.24M</div><div class="sub">net, 881 trades ≥ $10.0k on the top 20 tokens</div></div>
   </div>
   <div class="two">
     <div class="prose">
       <h3>Today in short</h3>
-      <p>$411.45M traded across 719 memes in the last 24h, down 50% on the day before.</p><p>130,814 unique wallets bought and 133,328 sold — dead even.</p><p>42% of traded tokens closed up, median move -4.0%.</p><p>Launch pace: a new pool every 21 seconds (500+ in the last 2.9h). 29 of this week&#39;s launches are still trading with $10k+ of liquidity.</p><p>Honeypot flags: 0 of 168 checked tokens (0.0%). The obvious scam flag is not the problem on this chain — concentration is, see Avoid.</p><p>ETH at $2,681 (-1.3%) — the quote asset for most of these pools.</p>
+      <p>$411.45M traded across 719 memes in the last 24h, down 50% on the day before.</p><p>130,814 unique wallets bought and 133,328 sold — dead even.</p><p>42% of traded tokens closed up, median move -4.0%.</p><p>Launch pace: a new pool every 21 seconds (500+ in the last 3.0h). 29 of this week&#39;s launches are still trading with $10k+ of liquidity.</p><p>Honeypot flags: 0 of 168 checked tokens (0.0%). The obvious scam flag is not the problem on this chain — concentration is, see Avoid.</p><p>ETH at $2,681 (-1.3%) — the quote asset for most of these pools.</p>
       <p class="dim">29 of this week's launches still hold $10k+ liquidity · honeypot flags 0 of 168 checked.</p>
     </div>
     <div class="strips">
@@ -267,7 +267,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
       <div class="dim">1h old · uniswap-v4-robinhood · CHIPINU / WETH 0.3% · +1 more pool</div></div>
       <div class="price">$0.0<sub>5</sub>9840<div class="up">+3881% since launch</div><div class="dim">+3881% 1h · +3881% 6h</div></div>
     </div>
-    <div class="verdict up">Early, and the data says demand is real — score 86/100</div>
+    <div class="verdict good">Early, and the data says demand is real — score 86/100</div>
     <div class="bignums">
       <div class="big "><span>Mcap</span><b>$984k</b></div><div class="big "><span>Liquidity</span><b>$138k</b><i>14% of mcap</i></div><div class="big "><span>Vol 24h</span><b>$773k</b><i>5.6× liq</i></div>
       <div class="big up"><span>Buyers / sellers</span><b>452 / 211</b><i>2.14×</i></div>
@@ -314,7 +314,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
       <div class="dim">1h old · uniswap-v4-robinhood · ZPROOF / WETH 0.01%</div></div>
       <div class="price">$0.0<sub>3</sub>3155<div class="up">+1077% since launch</div><div class="dim">+1077% 1h · +1077% 6h</div></div>
     </div>
-    <div class="verdict up">Early, and the data says demand is real — score 64/100</div>
+    <div class="verdict good">Early, and the data says demand is real — score 64/100</div>
     <div class="bignums">
       <div class="big "><span>Mcap</span><b>$316k</b></div><div class="big "><span>Liquidity</span><b>$67.1k</b><i>21% of mcap</i></div><div class="big "><span>Vol 24h</span><b>$368k</b><i>5.5× liq</i></div>
       <div class="big up"><span>Buyers / sellers</span><b>398 / 195</b><i>2.04×</i></div>
@@ -367,63 +367,16 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
     <h1>Existing coins</h1>
     <div class="sub">Older than two days, split by market cap. Best setups by score per band, the bags losing power in the bigger band, then what to avoid.</div>
   </div>
-  <div class="meta"><div>$300k – $5M: 1 setup</div><div>$5M – $25M: 1 setup · 3 to rotate</div><div>6 to avoid</div></div>
+  <div class="meta"><div>$300k – $5M: 0 setups</div><div>$5M – $25M: 1 setup · 3 to rotate</div><div>6 to avoid</div></div>
 </header>
 
 <section class="band">
     <h2>$300k – $5M market cap <span class="count">42 tokens · $12.62M liquidity · $27.67M volume · 43% up</span></h2>
-    <div class="prose"><p>42 tokens sit in the $300k – $5M band and are older than two days; 42 traded today with real liquidity. Together: $12.62M of liquidity, $27.67M of 24h volume, 20,200 buyers vs 23,513 sellers (0.86×), 43% up on the day.</p><p>22 tokens passed the structural gate; 1 scored 55+ on the setup score and are below. </p></div>
+    <div class="prose"><p>42 tokens sit in the $300k – $5M band and are older than two days; 42 traded today with real liquidity. Together: $12.62M of liquidity, $27.67M of 24h volume, 20,200 buyers vs 23,513 sellers (0.86×), 43% up on the day.</p><p>22 tokens passed the structural gate but none scored 55+ today. An empty list beats a weak one — nothing in this band shows demand worth chasing right now.</p></div>
     <details class="more"><summary>Most traded in this band (8)</summary><table class="bandtable"><thead><tr><th>Token</th><th>Age</th><th>Mcap</th><th>Liq</th><th>Vol 24h</th><th>24h</th><th>Buyers / sellers</th><th>Holders</th><th>Top-10</th><th>Flags</th></tr></thead><tbody><tr><td class="sym"><a class="tok" href="https://www.geckoterminal.com/robinhood/pools/0x3416b8d8aa6ae642ffdc2f65165ff479d4bd3007?utm_source=x&utm_content=riddlerdefi">astro</a> <span class="dim">astronaut</span></td><td>24d 11h</td><td>$946k</td><td>$164k</td><td>$7.86M</td><td class="up">+1.9%</td><td>760 / 473</td><td>2,178 <span class="up">+199</span></td><td>22%</td><td><span class="flag amber">Volume is 48× liquidity (churn)</span></td></tr><tr><td class="sym"><a class="tok" href="https://www.geckoterminal.com/robinhood/pools/0x338fce553e60c8b0acccde1956bc378586ef6f2935339ebae5804d429d461e44?utm_source=x&utm_content=riddlerdefi">VRAX</a> <span class="dim">Commander Vrax</span></td><td>3d 5h</td><td>$905k</td><td>$172k</td><td>$1.67M</td><td class="down">-58.4%</td><td>1294 / 1466</td><td>5,279 <span class="down">-423</span></td><td>12%</td><td><span class="flag green">none</span></td></tr><tr><td class="sym"><a class="tok" href="https://www.geckoterminal.com/robinhood/pools/0xa8270528100cf1b8935e10400644ebe2d5737c3983e12bddfb8a162a218315f4?utm_source=x&utm_content=riddlerdefi">SI</a> <span class="dim">Shiba Inu</span></td><td>34d 10h</td><td>$2.55M</td><td>$579k</td><td>$1.65M</td><td class="down">-44.8%</td><td>410 / 697</td><td>2,942 <span class="up">+65</span></td><td>37%</td><td><span class="flag green">none</span></td></tr><tr><td class="sym"><a class="tok" href="https://www.geckoterminal.com/robinhood/pools/0xff7b3bd2db34d9ed8160e6dedf1d448777abaa1fa6fc8a31144930a1a656fd92?utm_source=x&utm_content=riddlerdefi">PRIORS</a> <span class="dim">Priors Agents</span></td><td>13d 9h</td><td>$4.85M</td><td>$910k</td><td>$1.16M</td><td class="down">-26.2%</td><td>513 / 713</td><td>2,645 <span class="up">+2</span></td><td>15%</td><td><span class="flag green">none</span></td></tr><tr><td class="sym"><a class="tok" href="https://www.geckoterminal.com/robinhood/pools/0xa32a077a3e9d1ce561ec2a4b136db701a3166195455da4d8d364d6189443afe1?utm_source=x&utm_content=riddlerdefi">ROBINPEPE</a> <span class="dim">Robin Pepe</span></td><td>7d 12h</td><td>$312k</td><td>$51.7k</td><td>$1.13M</td><td class="down">-15.8%</td><td>6564 / 6866</td><td>13,171 <span class="up">+1719</span></td><td>14%</td><td><span class="flag amber">Volume is 22× liquidity (churn)</span></td></tr><tr><td class="sym"><a class="tok" href="https://www.geckoterminal.com/robinhood/pools/0xc2322605f92ab672c42d05c56f0ca3c09d0c8a471d7e6d8122ca9b42885fce61?utm_source=x&utm_content=riddlerdefi">NOSH</a> <span class="dim">UseNosh</span></td><td>13d 4h</td><td>$2.49M</td><td>$405k</td><td>$1.01M</td><td class="down">-20.2%</td><td>856 / 1343</td><td>3,806 <span class="up">+152</span></td><td>16%</td><td><span class="flag green">none</span></td></tr><tr><td class="sym"><a class="tok" href="https://www.geckoterminal.com/robinhood/pools/0x77ea11bbfb8f1259c702cb0ebc2105b7c007db89cf30c2f1a8776886a4467c07?utm_source=x&utm_content=riddlerdefi">HARMONIC</a> <span class="dim">Harmonic Agent</span></td><td>34d 23h</td><td>$4.04M</td><td>$419k</td><td>$1.01M</td><td class="down">-36.6%</td><td>561 / 565</td><td>2,708 <span class="up">+78</span></td><td>12%</td><td><span class="flag green">none</span></td></tr><tr><td class="sym"><a class="tok" href="https://www.geckoterminal.com/robinhood/pools/0x5237546c0d6d1101ee3a9d2ae9d8a1e9d7c804f861d2d0eda7648e66da2d51f6?utm_source=x&utm_content=riddlerdefi">ANYR</a> <span class="dim">Anyroute</span></td><td>4d 1h</td><td>$855k</td><td>$73.0k</td><td>$955k</td><td class="up">+54.4%</td><td>508 / 606</td><td>764 <span class="up">+299</span></td><td>16%</td><td><span class="flag green">none</span></td></tr></tbody></table></details>
     <h3 class="sub-h">Best setups <span class="count">visible demand in a token you can still get into</span></h3>
     <p class="rule">Rule: older than 48h · liquidity ≥ $25.0k · 24h volume ≥ $20.0k · turnover ≤ 15× · top-10 wallets ≤ 50% · holders not shrinking · no red flags, no airdrop spikes, no ticker clones · score ≥ 55.</p>
-    <article class="deep kind-up">
-    <div class="head">
-      <span class="rank">#1</span>
-      <span class="noimg">V<img src="https://assets.geckoterminal.com/qdg9duh80j703z2lg5dbrclz3hvm" alt="" loading="lazy" onerror="this.remove()"></span>
-      <div class="title"><div class="sym">V4 <span class="name">Programmable</span></div>
-      <div class="dim">29d 2h old · uniswap-v4-robinhood · V4 / WETH · +1 more pool</div></div>
-      <div class="price">$0.001128<div class="up">+38.6% 24h</div><div class="dim">-5.0% 1h · +12.6% 6h</div></div>
-    </div>
-    <div class="verdict up">On a dip with demand still arriving<span class="dim"> — holders +10.6% in 24h · volume +414% vs prev 24h · -55.8% off its 48h high with holders still arriving · score 55</span></div>
-    <div class="bignums">
-      <div class="big "><span>Mcap</span><b>$1.13M</b></div><div class="big "><span>Liquidity</span><b>$148k</b><i>13% of mcap</i></div><div class="big "><span>Vol 24h</span><b>$755k</b><i>5.1× liq</i></div>
-      <div class="big down"><span>Buyers / sellers</span><b>277 / 436</b><i>0.64×</i></div>
-      <div class="big "><span>Holders</span><b>1,179</b><i><span class="up">+113 (+10.6%) 24h</span> · <span class="up">+7.5%</span> 7d</i></div><div class="big up"><span>Top-10 wallets</span><b>17%</b><i>largest 2.3%</i></div>
-    </div>
-    <div class="cols">
-      <div class="col-main">
-        <div class="callout up"><b>Thesis</b>holders +10.6% in 24h, volume +414% vs prev 24h, -55.8% off its 48h high with holders still arriving — setup score 55/100, and it is on sale.</div>
-        <div class="callout down"><b>What breaks it</b>top-10 wallets passing 50% (now 17%); holders turning negative on the day (now +113); a close below the 48h low ($0.000448).</div>
-        <div class="prose"><p>V4 is 29d old with $148k of liquidity across 2 pools and $755k of volume in 24h (5.1× its liquidity).</p><p>1,179 holders, +10.6% in 24h and +7.5% over 7 days; 277 unique buyers vs 436 sellers today.</p><p>Top-10 wallets (pool contracts removed) hold 16.7%, the largest 2.3%; the pool itself holds 13%.</p><p>Last 300 trades (5.1h): $62.6k bought vs $77.6k sold — net selling of $15.0k, 164 wallets, median trade $112.</p><p>10 wallets traded five or more times in that window; expect bot activity in the tape.</p><p>Sizing: a $1k buy moves price about 1.3%, $5k about 6.3%, $20k about 21% (constant-product estimate on $148k of liquidity, before fees and tax).</p><p>Overhang: the largest wallet holds $26.5k, 18% of the pool&#39;s value — roughly a 26% move if it sold in one go.</p><p>Holder velocity: 3 new wallets an hour over the last 6h vs 16 the 6h before — slowing down.</p><p>Volume +414% vs the previous 24h; price -55.8% from its 48h high.</p><p>Not listed as a coin on CoinGecko yet — no exchange tickers, no ATH history.</p><p>Socials: website, twitter.</p><p>7 of the top 10 earners on this token sold without ever buying — $216k of supply came from team, airdrop or transfer wallets. New holders here are absorbing insider supply.</p><p>Closest to failing: setup score 55 vs the 55 minimum.</p></div>
-        <div class="flags"><span class="flag green">no flags</span></div>
-        <div class="links"><a href="https://www.geckoterminal.com/robinhood/pools/0x3df16f271060e4941c0386047def159f42e629dc0455db623c5b363eeacbcc1d?utm_source=x&utm_content=riddlerdefi">GeckoTerminal</a><a href="https://robin.etherscan.io/token/0xc60ba256b44334a0cd2c7242e98b88f031abb006">Explorer</a><button class="copy" data-copy="0xc60ba256b44334a0cd2c7242e98b88f031abb006" title="copy token address">0xc60ba256…abb006 ⧉</button></div>
-      </div>
-      <div class="col-side">
-        <svg class="spark" viewBox="0 0 420 70" preserveAspectRatio="none" aria-label="price history"><polyline points="0.0,67.0 8.9,65.7 17.9,56.2 26.8,57.7 35.7,59.7 44.7,60.5 53.6,60.0 62.6,59.1 71.5,59.5 80.4,61.9 89.4,64.7 98.3,64.1 107.2,62.7 116.2,61.8 125.1,59.6 134.0,51.7 143.0,46.1 151.9,52.0 160.9,51.0 169.8,51.4 178.7,54.3 187.7,48.1 196.6,54.1 205.5,48.9 214.5,41.0 223.4,37.3 232.3,39.1 241.3,43.5 250.2,42.7 259.1,45.5 268.1,44.9 277.0,44.2 286.0,44.1 294.9,47.6 303.8,48.9 312.8,48.9 321.7,52.9 330.6,37.3 339.6,29.3 348.5,26.6 357.4,35.2 366.4,20.0 375.3,3.0 384.3,8.6 393.2,25.6 402.1,29.4 411.1,30.1 420.0,30.5" fill="none" stroke="var(--up)" stroke-width="1.6"/><text x="2" y="69" class="sl">48h · 60m candles</text></svg>
-        <div class="side-box"><h5>Price impact of a buy</h5><div class="impact"><span><b>$1.0k</b> → 1.3%</span><span><b>$5.0k</b> → 6.3%</span><span><b>$20.0k</b> → 21%</span></div><div class="dim">constant-product estimate, before fees</div></div>
-        <div class="side-box"><h5>Largest wallet vs pool</h5><div><b>$26.5k</b> = 18% of the pool · ~26% impact if it sold</div></div>
-        <div class="side-box"><h5>Safety</h5><div>Honeypot: <b>no</b> · mint/freeze: <b>none</b> · GT Score <b>64</b></div><div>Liquidity locked: <b>not found</b> · dev holding: <b>not found</b></div><div>Listings: <b>not on CoinGecko yet</b></div>
-        <div class="socials"><a class="soc on" href="https://programmable.market">web</a><a class="soc on" href="https://x.com/ProgrammableHQ">X</a><span class="soc off">TG</span><span class="soc off">DC</span></div></div>
-      </div>
-    </div>
-    <details class="more"><summary>Full data — flow, holders, traders, every metric</summary>
-      <div class="kv">
-        <div class="k"><span>Vol 1h / 6h</span><b>$7.4k / $184k</b><i><span class="up">+414%</span> vs prev 24h</i></div><div class="k"><span>Buyers / sellers 6h</span><b>103 / 151</b><i>0.68×</i></div>
-        <div class="k"><span>Holder velocity</span><b>3/h</b><i>vs 16/h the 6h before</i></div><div class="k"><span>Buyer skew 1h → 24h</span><b>0.50× → 0.64×</b><i>6 buyers / 12 sellers last hour</i></div>
-        <div class="k"><span>48h range</span><b>$0.0<sub>3</sub>4483 – $0.002554</b><i>-55.8% from high</i></div><div class="k"><span>GT Score detail</span><b>holders 58 · tx 80 · info 0</b></div>
-        <div class="k"><span>Score breakdown</span><b>volume rising, not already pumped, dip with demand, liquidity depth</b><i>weak: holder growth 7d, buyers vs sellers, supply not from insiders</i></div>
-      </div>
-      <p class="desc">“Shape what assets can do” <span class="dim">— token description, as submitted</span></p>
-      <div class="tables"><div class="tbl"><h4>Recent flow <span class="dim">last 300 trades · 5.1h</span></h4>
-    <div class="flowbar"><i class="b" style="width:45%"></i></div>
-    <div class="flowline"><span class="up">bought $62.6k</span> · <span class="down">sold $77.6k</span> · net <b class="down">−$15.0k</b> · 164 wallets · median $112 · price -31.9% in window</div>
-    <table><tbody>
-      <tr><td class="k">Biggest trades</td><td><span class="up">buy $7.3k</span> <a class="addr" href="https://robin.etherscan.io/tx/0x38ea5e161e1d8d335a01e3bacf6c85240d3cc5072145a19ef852e820572332e8">0x6733…a8ae</a> · <span class="down">sell $6.6k</span> <a class="addr" href="https://robin.etherscan.io/tx/0xdf22e99557ba939f9a463d4968762085b51660cbd81bf7ee35afa0ec1e70f74b">0x6733…a8ae</a> · <span class="down">sell $5.1k</span> <a class="addr" href="https://robin.etherscan.io/tx/0xef3fc6177ab2123465feb97917f3f998d675b3c7c78b2e0674cebc399faf53fa">0x4337…7b5f</a></td></tr>
-      <tr><td class="k">Top buyers</td><td><a class="addr" href="https://robin.etherscan.io/address/0x67337a62e42f0e021323d4feeec22ddf431aa8ae">0x6733…a8ae</a> $14.9k <span class="dim">(17 trades)</span> · <a class="addr" href="https://robin.etherscan.io/address/0x93cf03a92091266dbea9242278f1a719622e8215">0x93cf…8215</a> $4.0k · <a class="addr" href="https://robin.etherscan.io/address/0xcc4bc7882d5ec4a3716e589ab3d816b61ae47a1a">0xcc4b…7a1a</a> $3.0k</td></tr>
-      <tr><td class="k">Top sellers</td><td><a class="addr" href="https://robin.etherscan.io/address/0x67337a62e42f0e021323d4feeec22ddf431aa8ae">0x6733…a8ae</a> $6.9k <span class="dim">(17 trades)</span> · <a class="addr" href="https://robin.etherscan.io/address/0x43370513f9a748ee8ee1cd856ea115756b8a7b5f">0x4337…7b5f</a> $5.1k · <a class="addr" href="https://robin.etherscan.io/address/0x4337007ab182ebe9cdb0bc4b96734c32176d44cc">0x4337…44cc</a> $4.3k</td></tr>
-    </tbody></table></div><div class="tbl"><h4>Top holders <span class="dim">share of supply</span></h4><table class="holders"><tbody><tr><td class="k">1</td><td><a class="addr" href="https://robin.etherscan.io/address/0x8366a39cc670b4001a1121b8f6a443a643e40951">0x8366…0951</a> <span class="tag grey">V4 Pool Manager</span></td><td class="num">9.41%</td><td class="num dim">$106k</td></tr><tr><td class="k">2</td><td><a class="addr" href="https://robin.etherscan.io/address/0x000000000000000000000000000000000000dead">0x0000…dead</a></td><td class="num">3.97%</td><td class="num dim">$44.8k</td></tr><tr><td class="k">3</td><td><a class="addr" href="https://robin.etherscan.io/address/0x02dd400392db31dc3ea5bb910c986c51d90a2001">0x02dd…2001</a></td><td class="num">2.35%</td><td class="num dim">$26.5k</td></tr><tr><td class="k">4</td><td><a class="addr" href="https://robin.etherscan.io/address/0x0d8d6c105629e472691f9a970a6f70899195b5e0">0x0d8d…b5e0</a></td><td class="num">2.30%</td><td class="num dim">$25.9k</td></tr><tr><td class="k">5</td><td><a class="addr" href="https://robin.etherscan.io/address/0x54e8b3ba0e123afb71a7a92c665f010da8ac0ca6">0x54e8…0ca6</a></td><td class="num">2.26%</td><td class="num dim">$25.5k</td></tr><tr><td class="k">6</td><td><a class="addr" href="https://robin.etherscan.io/address/0x83538b6e4294f994e9ae2683f198221ca125a492">0x8353…a492</a></td><td class="num">2.17%</td><td class="num dim">$24.5k</td></tr><tr><td class="k">7</td><td><a class="addr" href="https://robin.etherscan.io/address/0xaecfe4eff84a1cd9a24accc1914ac537af7f6e1b">0xaecf…6e1b</a></td><td class="num">1.99%</td><td class="num dim">$22.5k</td></tr><tr><td class="k">8</td><td><a class="addr" href="https://robin.etherscan.io/address/0xb0d8bf106d303f87073a161b6b2a0f92f3a380ca">0xb0d8…80ca</a></td><td class="num">1.88%</td><td class="num dim">$21.2k</td></tr><tr><td class="k">9</td><td><a class="addr" href="https://robin.etherscan.io/address/0xc95a69562f6885c9c4144f5ad3fefa301e8d61f3">0xc95a…61f3</a></td><td class="num">1.87%</td><td class="num dim">$21.1k</td></tr><tr><td class="k">10</td><td><a class="addr" href="https://robin.etherscan.io/address/0xf1254844eb34e52d88cb5018a04d1fd2da8ed3dd">0xf125…d3dd</a></td><td class="num">1.85%</td><td class="num dim">$20.9k</td></tr></tbody></table></div><div class="tbl"><h4>Top traders <span class="dim">realized PnL on this token</span></h4><table class="traders"><tbody><tr><td><a class="addr" href="https://robin.etherscan.io/address/0x728aad5445e7a1727b67b5b30aa153f5851ae274">0x728a…e274</a></td><td class="num up">$41.5k</td><td class="num dim">16b / 28s</td><td class="num dim">avg $0.0<sub>3</sub>7556 → $0.001748</td></tr><tr><td><a class="addr" href="https://robin.etherscan.io/address/0x87aeb03aefef5224513ebbc28eff82fbccd63298">0x87ae…3298</a> <span class="tag amber">sold, never bought</span></td><td class="num up">$35.4k</td><td class="num dim">0b / 17s</td><td class="num dim"></td></tr><tr><td><a class="addr" href="https://robin.etherscan.io/address/0x73c121d572e065c8b6fa6acec6b40deffb62e1df">0x73c1…e1df</a> <span class="tag amber">sold, never bought</span></td><td class="num up">$34.7k</td><td class="num dim">0b / 21s</td><td class="num dim"></td></tr><tr><td><a class="addr" href="https://robin.etherscan.io/address/0x9423e8565cfab041ff3541d65d48e71d1694b54e">0x9423…b54e</a></td><td class="num up">$33.9k</td><td class="num dim">5b / 26s</td><td class="num dim">avg $0.002006 → $0.001953</td></tr><tr><td><a class="addr" href="https://robin.etherscan.io/address/0xa1dae22b11fcf06ff88f7117e41c4a0d4245a223">0xa1da…a223</a> <span class="tag amber">sold, never bought</span></td><td class="num up">$33.5k</td><td class="num dim">0b / 8s</td><td class="num dim"></td></tr></tbody></table></div></div>
-    </details>
-  </article>
+    <div class="empty">22 tokens passed the gate, none scored 55+. Nothing worth chasing in this band today.</div>
     
   </section><section class="band">
     <h2>$5M – $25M market cap <span class="count">20 tokens · $25.58M liquidity · $34.91M volume · 15% up</span></h2>
@@ -439,7 +392,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
       <div class="dim">58d 0h old · uniswap-pools-trade · HOOKR / WETH 0.25% · +2 more pools</div></div>
       <div class="price">$0.02286<div class="up">+18.4% 24h</div><div class="dim">-2.4% 1h · -0.5% 6h</div></div>
     </div>
-    <div class="verdict up">On a dip with demand still arriving<span class="dim"> — volume +146% vs prev 24h · -18.6% off its 48h high with holders still arriving · on LBank, MEXC · score 60</span></div>
+    <div class="verdict good">On a dip with demand still arriving<span class="dim"> — volume +146% vs prev 24h · -18.6% off its 48h high with holders still arriving · on LBank, MEXC · score 60</span></div>
     <div class="bignums">
       <div class="big "><span>Mcap</span><b>$22.86M</b></div><div class="big "><span>Liquidity</span><b>$1.18M</b><i>5% of mcap</i></div><div class="big "><span>Vol 24h</span><b>$3.41M</b><i>2.9× liq</i></div>
       <div class="big down"><span>Buyers / sellers</span><b>1136 / 1490</b><i>0.76×</i></div>
@@ -447,8 +400,8 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
     </div>
     <div class="cols">
       <div class="col-main">
-        <div class="callout up"><b>Thesis</b>volume +146% vs prev 24h, -18.6% off its 48h high with holders still arriving, on LBank, MEXC — setup score 60/100, and it is on sale.</div>
-        <div class="callout down"><b>What breaks it</b>top-10 wallets passing 50% (now 15%); holders turning negative on the day (now +70); a close below the 48h low ($0.0142).</div>
+        <div class="callout good"><b>Thesis</b>volume +146% vs prev 24h, -18.6% off its 48h high with holders still arriving, on LBank, MEXC — setup score 60/100, and it is on sale.</div>
+        <div class="callout bad"><b>What breaks it</b>top-10 wallets passing 50% (now 15%); holders turning negative on the day (now +70); a close below the 48h low ($0.0142).</div>
         <div class="prose"><p>HOOKR is 58d old with $1.18M of liquidity across 3 pools and $3.41M of volume in 24h (2.9× its liquidity).</p><p>8,028 holders, +0.9% in 24h and +4.7% over 7 days; 1,136 unique buyers vs 1,490 sellers today.</p><p>Top-10 wallets (pool contracts removed) hold 14.9%, the largest 3.0%; the pool itself holds 3%.</p><p>Last 300 trades (1.8h): $76.9k bought vs $79.1k sold — net selling of $2.2k, 164 wallets, median trade $140, 2.8 trades a minute.</p><p>8 wallets traded five or more times in that window; expect bot activity in the tape.</p><p>Sizing: a $1k buy moves price about 0.2%, $5k about 0.8%, $20k about 3% (constant-product estimate on $1.18M of liquidity, before fees and tax).</p><p>Overhang: the largest wallet holds $696k, 59% of the pool&#39;s value — a full exit would cost it roughly 54% of price and take everyone else down with it. That wallet is the price.</p><p>Holder velocity: 14 new wallets an hour over the last 6h vs 6 the 6h before — accelerating.</p><p>Buyer skew 0.89× in the last hour vs 0.76× over 24h — no change in the last hour.</p><p>Volume +146% vs the previous 24h; price -18.6% from its 48h high.</p><p>On CoinGecko: -19.8% from ATH · listed on LBank, MEXC · 609 CoinGecko watchlists.</p><p>Socials: website, twitter.</p><p>The top traders have sold $2.72M against $147k bought: the people who made money here are mostly out.</p><p>Closest to failing: holders +70 on the day vs the &quot;not shrinking&quot; rule.</p></div>
         <div class="flags"><span class="flag green">no flags</span></div>
         <div class="links"><a href="https://www.coingecko.com/en/coins/hookr-fun?utm_source=x&utm_content=riddlerdefi">CoinGecko</a><a href="https://www.geckoterminal.com/robinhood/pools/0x590dcb6a87828bf688b48089a62239b693378f1fb64d2286e6a399ed8c005fdf?utm_source=x&utm_content=riddlerdefi">GeckoTerminal</a><a href="https://robin.etherscan.io/token/0x18e674231a58c239dc7daedcffe15ec3a24cff5c">Explorer</a><button class="copy" data-copy="0x18e674231a58c239dc7daedcffe15ec3a24cff5c" title="copy token address">0x18e67423…4cff5c ⧉</button></div>
@@ -489,7 +442,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
       <div class="dim">74d 10h old · bankr-robinhood · MOO / MU · +2 more pools</div></div>
       <div class="price">$0.007738<div class="down">-19.3% 24h</div><div class="dim">+2.8% 1h · +9.8% 6h</div></div>
     </div>
-    <div class="verdict down">Wallets are leaving — if you hold it, read this first<span class="dim"> — holders -1.7% (-167) in 24h · volume -65.9% vs previous 24h · 1065 sellers vs 671 buyers</span></div>
+    <div class="verdict bad">Wallets are leaving — if you hold it, read this first<span class="dim"> — holders -1.7% (-167) in 24h · volume -65.9% vs previous 24h · 1065 sellers vs 671 buyers</span></div>
     <div class="bignums">
       <div class="big "><span>Mcap</span><b>$7.65M</b></div><div class="big "><span>Liquidity</span><b>$1.29M</b><i>17% of mcap</i></div><div class="big "><span>Vol 24h</span><b>$1.52M</b><i>1.2× liq</i></div>
       <div class="big down"><span>Buyers / sellers</span><b>671 / 1065</b><i>0.63×</i></div>
@@ -536,7 +489,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
       <div class="dim">18d 17h old · uniswap-v4-robinhood · GOOSE / WETH</div></div>
       <div class="price">$0.005112<div class="down">-77.2% 24h</div><div class="dim">-0.0% 1h · +2.7% 6h</div></div>
     </div>
-    <div class="verdict down">Wallets are leaving — if you hold it, read this first<span class="dim"> — price -77.2% in 24h · -77.2% from its 48h high</span></div>
+    <div class="verdict bad">Wallets are leaving — if you hold it, read this first<span class="dim"> — price -77.2% in 24h · -77.2% from its 48h high</span></div>
     <div class="bignums">
       <div class="big "><span>Mcap</span><b>$5.11M</b></div><div class="big "><span>Liquidity</span><b>$2.10M</b><i>41% of mcap</i></div><div class="big "><span>Vol 24h</span><b>$8.15M</b><i>3.9× liq</i></div>
       <div class="big "><span>Buyers / sellers</span><b>190 / 191</b><i>0.99×</i></div>
@@ -583,7 +536,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
       <div class="dim">4d 12h old · uniswap-v4-robinhood · PORKU / WETH</div></div>
       <div class="price">$0.0111<div class="down">-64.3% 24h</div><div class="dim">0.0% 1h · +0.6% 6h</div></div>
     </div>
-    <div class="verdict down">Wallets are leaving — if you hold it, read this first<span class="dim"> — price -64.3% in 24h · -64.5% from its 48h high</span></div>
+    <div class="verdict bad">Wallets are leaving — if you hold it, read this first<span class="dim"> — price -64.3% in 24h · -64.5% from its 48h high</span></div>
     <div class="bignums">
       <div class="big "><span>Mcap</span><b>$11.10M</b></div><div class="big "><span>Liquidity</span><b>$1.17M</b><i>11% of mcap</i></div><div class="big "><span>Vol 24h</span><b>$8.18M</b><i>7.0× liq</i></div>
       <div class="big "><span>Buyers / sellers</span><b>322 / 305</b><i>1.06×</i></div>
@@ -664,7 +617,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:v
 <footer>
   <p><b>How to read this.</b> Every number is CoinGecko API data for Robinhood Chain. Every list, score, flag, sentence and the HOT/MIXED/COLD call are computed by <a href="https://github.com/strvcture/coingecko-rhc">this open-source script</a> from that data, using the rules printed above each section. They are not CoinGecko ratings and not financial advice. Memes on a new chain can go to zero in an afternoon; the Avoid list is a floor, not a guarantee.</p>
   <p><b>Glossary.</b> <i>Top-10 wallets</i> — share of supply held by the ten largest holders after removing pool, LP, locker and burn contracts. <i>GT Score</i> — GeckoTerminal's 0–100 token quality score, from CoinGecko. <i>Turnover</i> — 24h volume divided by liquidity; above ~10× usually means bots churning a thin pool. <i>Flow</i> — the last ~300 trades in the main pool, as reported by the API. <i>Whale flow</i> — trades of $10.0k+ on the 20 most traded tokens, in the window the API returns. <i>Holders since launch</i> — for tokens under 24h old, the 24h change is the whole history.</p>
-  <p class="dim">Run health: all 1,202 calls returned data.</p>
+  <p class="dim">Run health: all 1,201 calls returned data.</p>
   <p class="links">CoinGecko API: <a href="https://www.coingecko.com/en/api?utm_source=x&utm_content=riddlerdefi">overview</a> · <a href="https://www.coingecko.com/en/api/pricing?utm_source=x&utm_content=riddlerdefi">pricing</a> · <a href="https://docs.coingecko.com/?utm_source=x&utm_content=riddlerdefi">docs</a> &nbsp;|&nbsp; by <a href="https://x.com/riddlerdefi">@riddlerdefi</a></p>
 </footer>
 </main>
