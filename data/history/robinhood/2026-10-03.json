@@ -1,6 +1,6 @@
 {
  "day": "2026-10-03",
- "generatedAt": "2026-10-03T07:41:27.609Z",
+ "generatedAt": "2026-10-03T07:46:07.257Z",
  "heat": "MIXED",
  "totals": {
   "liquidity": 117796992.49479948,
@@ -19,7 +19,7 @@
    "holders": 2713,
    "cgId": "super-cat",
    "cex": [],
-   "ageHours": 47.00286638888889
+   "ageHours": 47.08056888888889
   },
   {
    "symbol": "PPORT",
@@ -31,7 +31,7 @@
    "holders": 4045,
    "cgId": null,
    "cex": null,
-   "ageHours": 39.453699722222225
+   "ageHours": 39.53140222222222
   },
   {
    "symbol": "SI",
@@ -43,7 +43,7 @@
    "holders": 5432,
    "cgId": "super-iguana",
    "cex": [],
-   "ageHours": 14.960921944444445
+   "ageHours": 15.038624444444444
   },
   {
    "symbol": "RCAP",
@@ -55,7 +55,7 @@
    "holders": 2623,
    "cgId": null,
    "cex": null,
-   "ageHours": 13.114810833333333
+   "ageHours": 13.192513333333334
   },
   {
    "symbol": "VRAX",
@@ -67,7 +67,7 @@
    "holders": 2387,
    "cgId": "commander-vrax-3",
    "cex": [],
-   "ageHours": 54.8689775
+   "ageHours": 54.94668
   },
   {
    "symbol": "EQMODE",
@@ -79,7 +79,7 @@
    "holders": 2930,
    "cgId": null,
    "cex": null,
-   "ageHours": 25.69008861111111
+   "ageHours": 25.767791111111112
   },
   {
    "symbol": "PWPLT",
@@ -91,7 +91,7 @@
    "holders": 2499,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.945366388888889
+   "ageHours": 9.023068888888888
   },
   {
    "symbol": "CHOFF",
@@ -103,7 +103,7 @@
    "holders": 2458,
    "cgId": null,
    "cex": null,
-   "ageHours": 17.00258861111111
+   "ageHours": 17.080291111111112
   },
   {
    "symbol": "PORKU",
@@ -115,7 +115,7 @@
    "holders": 1053,
    "cgId": "hoodpork",
    "cex": [],
-   "ageHours": 111.6939775
+   "ageHours": 111.77168
   },
   {
    "symbol": "GOOSE",
@@ -127,7 +127,7 @@
    "holders": 13179,
    "cgId": "goose-token",
    "cex": [],
-   "ageHours": 452.6253663888889
+   "ageHours": 452.7030688888889
   },
   {
    "symbol": "astro",
@@ -139,7 +139,7 @@
    "holders": 2178,
    "cgId": "astronaut-2",
    "cex": [],
-   "ageHours": 590.6598108333334
+   "ageHours": 590.7375133333334
   },
   {
    "symbol": "PONS",
@@ -160,7 +160,7 @@
     "GIGA V3",
     "Kraken"
    ],
-   "ageHours": 1954.9850886111112
+   "ageHours": 1955.0627911111112
   },
   {
    "symbol": "SI",
@@ -172,7 +172,7 @@
    "holders": 1814,
    "cgId": null,
    "cex": null,
-   "ageHours": 29.55675527777778
+   "ageHours": 29.63445777777778
   },
   {
    "symbol": "SI",
@@ -184,7 +184,7 @@
    "holders": 1931,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.535644166666666
+   "ageHours": 8.613346666666667
   },
   {
    "symbol": "GENIE",
@@ -196,7 +196,7 @@
    "holders": 243,
    "cgId": null,
    "cex": null,
-   "ageHours": 40.20925527777778
+   "ageHours": 40.28695777777778
   },
   {
    "symbol": "ORBIO",
@@ -208,7 +208,7 @@
    "holders": 4014,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.629810833333334
+   "ageHours": 8.707513333333333
   },
   {
    "symbol": "PKROO",
@@ -220,7 +220,7 @@
    "holders": 1802,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.687866388888889
+   "ageHours": 5.765568888888889
   },
   {
    "symbol": "CCLAW",
@@ -232,7 +232,7 @@
    "holders": 2912,
    "cgId": null,
    "cex": null,
-   "ageHours": 18.947310833333333
+   "ageHours": 19.025013333333334
   },
   {
    "symbol": "REVENUE",
@@ -244,7 +244,7 @@
    "holders": 4597,
    "cgId": null,
    "cex": null,
-   "ageHours": 55.37758861111111
+   "ageHours": 55.45529111111111
   },
   {
    "symbol": "HOOKR",
@@ -256,7 +256,7 @@
    "holders": 4103,
    "cgId": null,
    "cex": null,
-   "ageHours": 29.518699722222223
+   "ageHours": 29.59640222222222
   },
   {
    "symbol": "WCRMB",
@@ -268,7 +268,7 @@
    "holders": 2847,
    "cgId": null,
    "cex": null,
-   "ageHours": 28.921199722222223
+   "ageHours": 28.998902222222224
   },
   {
    "symbol": "RBD",
@@ -280,7 +280,7 @@
    "holders": 8002,
    "cgId": null,
    "cex": null,
-   "ageHours": 412.82731083333334
+   "ageHours": 412.90501333333333
   },
   {
    "symbol": "ZERO",
@@ -292,7 +292,7 @@
    "holders": 2429,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.705644166666668
+   "ageHours": 8.783346666666667
   },
   {
    "symbol": "MGHST",
@@ -304,7 +304,7 @@
    "holders": 2240,
    "cgId": null,
    "cex": null,
-   "ageHours": 23.568421944444445
+   "ageHours": 23.646124444444446
   },
   {
    "symbol": "AIGYR",
@@ -316,7 +316,7 @@
    "holders": 61,
    "cgId": null,
    "cex": null,
-   "ageHours": 14.1914775
+   "ageHours": 14.26918
   },
   {
    "symbol": "ZERO",
@@ -328,7 +328,7 @@
    "holders": 2037,
    "cgId": null,
    "cex": null,
-   "ageHours": 6.3275886111111115
+   "ageHours": 6.4052911111111115
   },
   {
    "symbol": "SHRUB",
@@ -340,7 +340,7 @@
    "holders": 187,
    "cgId": "lil-shrub",
    "cex": [],
-   "ageHours": 804.9950886111111
+   "ageHours": 805.0727911111111
   },
   {
    "symbol": "CASHCAT",
@@ -361,7 +361,7 @@
     "CoinW",
     "Toobit"
    ],
-   "ageHours": 2304.677310833333
+   "ageHours": 2304.7550133333334
   },
   {
    "symbol": "MSI",
@@ -373,7 +373,7 @@
    "holders": 881,
    "cgId": null,
    "cex": null,
-   "ageHours": 26.324533055555555
+   "ageHours": 26.402235555555556
   },
   {
    "symbol": "HOOKR",
@@ -388,7 +388,7 @@
     "LBank",
     "MEXC"
    ],
-   "ageHours": 1395.3417552777778
+   "ageHours": 1395.4194577777778
   },
   {
    "symbol": "AI",
@@ -409,7 +409,7 @@
     "BTSE",
     "Arcus"
    ],
-   "ageHours": 1933.8823108333333
+   "ageHours": 1933.9600133333333
   },
   {
    "symbol": "FILLED",
@@ -421,7 +421,7 @@
    "holders": 376,
    "cgId": null,
    "cex": null,
-   "ageHours": 15.023144166666667
+   "ageHours": 15.100846666666667
   },
   {
    "symbol": "OGATE",
@@ -433,7 +433,7 @@
    "holders": 788,
    "cgId": null,
    "cex": null,
-   "ageHours": 21.45425527777778
+   "ageHours": 21.531957777777777
   },
   {
    "symbol": "Cincinnati",
@@ -445,7 +445,7 @@
    "holders": 1109,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.262033055555555
+   "ageHours": 8.339735555555556
   },
   {
    "symbol": "PRIORS",
@@ -457,7 +457,7 @@
    "holders": 1634,
    "cgId": null,
    "cex": null,
-   "ageHours": 30.837588611111112
+   "ageHours": 30.91529111111111
   },
   {
    "symbol": "CREORA",
@@ -469,7 +469,7 @@
    "holders": 746,
    "cgId": null,
    "cex": null,
-   "ageHours": 21.253699722222223
+   "ageHours": 21.331402222222223
   },
   {
    "symbol": "HUMAN",
@@ -481,7 +481,7 @@
    "holders": 777,
    "cgId": null,
    "cex": null,
-   "ageHours": 12.494533055555555
+   "ageHours": 12.572235555555556
   },
   {
    "symbol": "ORE",
@@ -493,7 +493,7 @@
    "holders": 424,
    "cgId": null,
    "cex": null,
-   "ageHours": 7.740366388888889
+   "ageHours": 7.818068888888889
   },
   {
    "symbol": "si.gov",
@@ -505,7 +505,7 @@
    "holders": 721,
    "cgId": null,
    "cex": null,
-   "ageHours": 17.652310833333335
+   "ageHours": 17.730013333333332
   },
   {
    "symbol": "LAUNCH",
@@ -517,7 +517,7 @@
    "holders": 453,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.824811111111111
+   "ageHours": 5.902513333333333
   },
   {
    "symbol": "ORE",
@@ -529,7 +529,7 @@
    "holders": 693,
    "cgId": null,
    "cex": null,
-   "ageHours": 11.068144444444444
+   "ageHours": 11.145846666666667
   },
   {
    "symbol": "AGNET",
@@ -541,7 +541,7 @@
    "holders": 508,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.258144444444444
+   "ageHours": 22.335846666666665
   },
   {
    "symbol": "ORBIO",
@@ -562,7 +562,7 @@
     "Hibt",
     "Poloniex"
    ],
-   "ageHours": 774.9264777777778
+   "ageHours": 775.00418
   },
   {
    "symbol": "CATGPT",
@@ -574,7 +574,7 @@
    "holders": 1715,
    "cgId": null,
    "cex": null,
-   "ageHours": 19.97897777777778
+   "ageHours": 20.05668
   },
   {
    "symbol": "SGT",
@@ -586,7 +586,7 @@
    "holders": 785,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.975644444444445
+   "ageHours": 23.053346666666666
   },
   {
    "symbol": "si.gov",
@@ -598,7 +598,7 @@
    "holders": 694,
    "cgId": null,
    "cex": null,
-   "ageHours": 17.5362
+   "ageHours": 17.613902222222222
   },
   {
    "symbol": "IRAIL",
@@ -610,7 +610,7 @@
    "holders": 2293,
    "cgId": null,
    "cex": null,
-   "ageHours": 36.2962
+   "ageHours": 36.37390222222222
   },
   {
    "symbol": "LUCY",
@@ -622,7 +622,7 @@
    "holders": 798,
    "cgId": null,
    "cex": null,
-   "ageHours": 26.767033333333334
+   "ageHours": 26.844735555555555
   },
   {
    "symbol": "SI",
@@ -634,7 +634,7 @@
    "holders": 2942,
    "cgId": null,
    "cex": null,
-   "ageHours": 829.2400888888889
+   "ageHours": 829.3177911111111
   },
   {
    "symbol": "Moose",
@@ -646,7 +646,7 @@
    "holders": 1077,
    "cgId": null,
    "cex": null,
-   "ageHours": 15.179255555555555
+   "ageHours": 15.256957777777778
   },
   {
    "symbol": "FABLE",
@@ -658,7 +658,7 @@
    "holders": 332,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.764255555555556
+   "ageHours": 8.841957777777777
   },
   {
    "symbol": "ORBIOBOOK",
@@ -670,7 +670,7 @@
    "holders": 688,
    "cgId": null,
    "cex": null,
-   "ageHours": 9.5087
+   "ageHours": 9.586402222222222
   },
   {
    "symbol": "GENIE",
@@ -682,7 +682,7 @@
    "holders": 751,
    "cgId": null,
    "cex": null,
-   "ageHours": 41.54981111111111
+   "ageHours": 41.62751333333333
   },
   {
    "symbol": "BEHALF",
@@ -694,7 +694,7 @@
    "holders": 802,
    "cgId": null,
    "cex": null,
-   "ageHours": 13.0237
+   "ageHours": 13.101402222222223
   },
   {
    "symbol": "ZPROOF",
@@ -706,7 +706,7 @@
    "holders": 398,
    "cgId": null,
    "cex": null,
-   "ageHours": 26.440088888888887
+   "ageHours": 26.517791111111112
   },
   {
    "symbol": "ORANGE",
@@ -718,7 +718,7 @@
    "holders": 375,
    "cgId": null,
    "cex": null,
-   "ageHours": 6.493977777777777
+   "ageHours": 6.57168
   },
   {
    "symbol": "ZERO",
@@ -730,7 +730,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 6.337588888888889
+   "ageHours": 6.415291111111111
   },
   {
    "symbol": "Underdog",
@@ -742,7 +742,7 @@
    "holders": 711,
    "cgId": null,
    "cex": null,
-   "ageHours": 750.6392555555556
+   "ageHours": 750.7169577777778
   },
   {
    "symbol": "VIRTUAL",
@@ -763,7 +763,7 @@
     "WhiteBIT",
     "OKX"
    ],
-   "ageHours": 2236.297866666667
+   "ageHours": 2236.3755688888887
   },
   {
    "symbol": "AGNET",
@@ -775,7 +775,7 @@
    "holders": 834,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.11592222222222
+   "ageHours": 22.193624444444445
   },
   {
    "symbol": "SQUEEZE",
@@ -787,7 +787,7 @@
    "holders": 623,
    "cgId": null,
    "cex": null,
-   "ageHours": 14.262311111111112
+   "ageHours": 14.340013333333333
   },
   {
    "symbol": "ROBINPEPE",
@@ -799,7 +799,7 @@
    "holders": 13171,
    "cgId": "robin-pepe",
    "cex": [],
-   "ageHours": 183.12453333333335
+   "ageHours": 183.20223555555555
   },
   {
    "symbol": "SGT",
@@ -811,7 +811,7 @@
    "holders": 1981,
    "cgId": "sight",
    "cex": [],
-   "ageHours": 39.115922222222224
+   "ageHours": 39.193624444444445
   },
   {
    "symbol": "si.gov",
@@ -823,7 +823,7 @@
    "holders": 535,
    "cgId": null,
    "cex": null,
-   "ageHours": 17.668977777777776
+   "ageHours": 17.74668
   },
   {
    "symbol": "SGT",
@@ -835,7 +835,7 @@
    "holders": 8,
    "cgId": null,
    "cex": null,
-   "ageHours": 23.422866666666668
+   "ageHours": 23.50056888888889
   },
   {
    "symbol": "FOMIES",
@@ -847,7 +847,7 @@
    "holders": 535,
    "cgId": null,
    "cex": null,
-   "ageHours": 6.7037
+   "ageHours": 6.781402222222222
   },
   {
    "symbol": "VRAX",
@@ -859,7 +859,7 @@
    "holders": 5279,
    "cgId": "commander-vrax-2",
    "cex": [],
-   "ageHours": 80.2012
+   "ageHours": 80.27890222222223
   },
   {
    "symbol": "DELAYD",
@@ -871,7 +871,7 @@
    "holders": 659,
    "cgId": null,
    "cex": null,
-   "ageHours": 15.972866666666667
+   "ageHours": 16.05056888888889
   },
   {
    "symbol": "SCRAMBLE",
@@ -883,7 +883,7 @@
    "holders": 949,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.915644444444446
+   "ageHours": 22.993346666666667
   },
   {
    "symbol": "ANYR",
@@ -895,7 +895,7 @@
    "holders": 764,
    "cgId": "anyroute",
    "cex": [],
-   "ageHours": 100.03647777777778
+   "ageHours": 100.11418
   },
   {
    "symbol": "OURS",
@@ -907,7 +907,7 @@
    "holders": 213,
    "cgId": null,
    "cex": null,
-   "ageHours": 12.235644444444445
+   "ageHours": 12.313346666666666
   },
   {
    "symbol": "HARMONIC",
@@ -919,7 +919,7 @@
    "holders": 2708,
    "cgId": "harmonic-agent",
    "cex": [],
-   "ageHours": 842.2598111111112
+   "ageHours": 842.3375133333333
   },
   {
    "symbol": "UBIK",
@@ -933,7 +933,7 @@
    "cex": [
     "LBank"
    ],
-   "ageHours": 759.4270333333334
+   "ageHours": 759.5047355555556
   },
   {
    "symbol": "PRIORS",
@@ -945,7 +945,7 @@
    "holders": 2645,
    "cgId": "priors-agent",
    "cex": [],
-   "ageHours": 324.3384222222222
+   "ageHours": 324.41612444444445
   },
   {
    "symbol": "RHOOKS",
@@ -957,7 +957,7 @@
    "holders": 274,
    "cgId": null,
    "cex": null,
-   "ageHours": 12.196755555555555
+   "ageHours": 12.274457777777778
   },
   {
    "symbol": "RICH",
@@ -969,7 +969,7 @@
    "holders": 670,
    "cgId": null,
    "cex": null,
-   "ageHours": 10.2987
+   "ageHours": 10.376402222222222
   },
   {
    "symbol": "MICRO",
@@ -981,7 +981,7 @@
    "holders": 477,
    "cgId": null,
    "cex": null,
-   "ageHours": 15.898977777777779
+   "ageHours": 15.97668
   },
   {
    "symbol": "MOONLET",
@@ -993,7 +993,7 @@
    "holders": 301,
    "cgId": null,
    "cex": null,
-   "ageHours": 28.600088888888887
+   "ageHours": 28.677791111111112
   },
   {
    "symbol": "EDEL",
@@ -1010,7 +1010,7 @@
     "LBank",
     "Orca"
    ],
-   "ageHours": 417.12592222222224
+   "ageHours": 417.2036244444445
   },
   {
    "symbol": "CRADLE",
@@ -1022,7 +1022,7 @@
    "holders": 461,
    "cgId": null,
    "cex": null,
-   "ageHours": 19.586755555555555
+   "ageHours": 19.664457777777777
   },
   {
    "symbol": "ORBZ",
@@ -1034,7 +1034,7 @@
    "holders": 537,
    "cgId": null,
    "cex": null,
-   "ageHours": 23.7712
+   "ageHours": 23.848902222222222
   },
   {
    "symbol": "CHIPINU",
@@ -1046,7 +1046,7 @@
    "holders": 236,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.188977777777778
+   "ageHours": 4.26668
   },
   {
    "symbol": "ROO",
@@ -1058,7 +1058,7 @@
    "holders": 13135,
    "cgId": "roo",
    "cex": [],
-   "ageHours": 243.67981111111112
+   "ageHours": 243.75751333333332
   },
   {
    "symbol": "V4",
@@ -1070,7 +1070,7 @@
    "holders": 1179,
    "cgId": null,
    "cex": null,
-   "ageHours": 701.7989777777777
+   "ageHours": 701.87668
   },
   {
    "symbol": "FABLE",
@@ -1082,7 +1082,7 @@
    "holders": 756,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.806755555555556
+   "ageHours": 8.884457777777778
   },
   {
    "symbol": "Codync",
@@ -1094,7 +1094,7 @@
    "holders": 295,
    "cgId": null,
    "cex": null,
-   "ageHours": 14.880922222222223
+   "ageHours": 14.958624444444444
   },
   {
    "symbol": "BONER",
@@ -1110,7 +1110,7 @@
     "Gate",
     "Alandale (CL)"
    ],
-   "ageHours": 1042.6948111111112
+   "ageHours": 1042.7725133333333
   },
   {
    "symbol": "fkaAI",
@@ -1122,7 +1122,7 @@
    "holders": 312,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.6512
+   "ageHours": 22.72890222222222
   },
   {
    "symbol": "WALLET",
@@ -1134,7 +1134,7 @@
    "holders": 9872,
    "cgId": null,
    "cex": null,
-   "ageHours": 2046.6564777777778
+   "ageHours": 2046.73418
   },
   {
    "symbol": "MOO",
@@ -1149,7 +1149,7 @@
     "LBank",
     "Up V3"
    ],
-   "ageHours": 1789.1070333333332
+   "ageHours": 1789.1847355555556
   },
   {
    "symbol": "SI",
@@ -1161,7 +1161,7 @@
    "holders": 352,
    "cgId": null,
    "cex": null,
-   "ageHours": 15.944811111111111
+   "ageHours": 16.022513333333332
   },
   {
    "symbol": "ZERO",
@@ -1173,7 +1173,7 @@
    "holders": 417,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.605644444444444
+   "ageHours": 8.683346666666667
   },
   {
    "symbol": "SGT",
@@ -1185,7 +1185,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.180644444444443
+   "ageHours": 22.258346666666668
   },
   {
    "symbol": "SWEENSTEIN",
@@ -1197,7 +1197,7 @@
    "holders": 459,
    "cgId": null,
    "cex": null,
-   "ageHours": 18.779811111111112
+   "ageHours": 18.857513333333333
   },
   {
    "symbol": "AGNET",
@@ -1209,7 +1209,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 21.991755555555557
+   "ageHours": 22.069457777777778
   },
   {
    "symbol": "LAUNCH",
@@ -1221,7 +1221,7 @@
    "holders": 391,
    "cgId": null,
    "cex": null,
-   "ageHours": 6.1762
+   "ageHours": 6.253902222222222
   },
   {
    "symbol": "ORBIOPAD",
@@ -1233,7 +1233,7 @@
    "holders": 135,
    "cgId": null,
    "cex": null,
-   "ageHours": 19.482866666666666
+   "ageHours": 19.560568888888888
   },
   {
    "symbol": "ROTATO",
@@ -1245,7 +1245,7 @@
    "holders": 205,
    "cgId": null,
    "cex": null,
-   "ageHours": 9.419533333333334
+   "ageHours": 9.497235555555555
   },
   {
    "symbol": "ARENA",
@@ -1257,7 +1257,7 @@
    "holders": 263,
    "cgId": null,
    "cex": null,
-   "ageHours": 9.2937
+   "ageHours": 9.371402222222223
   },
   {
    "symbol": "Index",
@@ -1278,7 +1278,7 @@
     "Alandale (CL)",
     "Up V3"
    ],
-   "ageHours": 2024.0437
+   "ageHours": 2024.1214022222223
   },
   {
    "symbol": "ORE",
@@ -1290,7 +1290,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 12.066477777777777
+   "ageHours": 12.14418
   },
   {
    "symbol": "HOODIE",
@@ -1302,7 +1302,7 @@
    "holders": 7291,
    "cgId": "hoodie-4",
    "cex": [],
-   "ageHours": 133.10897777777777
+   "ageHours": 133.18668
   },
   {
    "symbol": "AGNET",
@@ -1314,7 +1314,7 @@
    "holders": 459,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.52008888888889
+   "ageHours": 22.59779111111111
   },
   {
    "symbol": "PARASITE",
@@ -1326,7 +1326,7 @@
    "holders": 64660,
    "cgId": null,
    "cex": null,
-   "ageHours": 69.66675555555555
+   "ageHours": 69.74445777777778
   },
   {
    "symbol": "MEME",
@@ -1345,7 +1345,7 @@
     "BitKan",
     "Poloniex"
    ],
-   "ageHours": 594.1984222222222
+   "ageHours": 594.2761244444445
   },
   {
    "symbol": "ANYPAY",
@@ -1357,7 +1357,7 @@
    "holders": 131,
    "cgId": null,
    "cex": null,
-   "ageHours": 20.927311111111113
+   "ageHours": 21.005013333333334
   },
   {
    "symbol": "ORE",
@@ -1369,7 +1369,7 @@
    "holders": 238,
    "cgId": "hollowfall",
    "cex": [],
-   "ageHours": 12.596755555555555
+   "ageHours": 12.674457777777778
   },
   {
    "symbol": "ZIP",
@@ -1381,7 +1381,7 @@
    "holders": 801,
    "cgId": "zip-2",
    "cex": [],
-   "ageHours": 49.9287
+   "ageHours": 50.00640222222222
   },
   {
    "symbol": "MOONLET",
@@ -1393,7 +1393,7 @@
    "holders": 451,
    "cgId": null,
    "cex": null,
-   "ageHours": 29.114255555555555
+   "ageHours": 29.191957777777777
   },
   {
    "symbol": "SCHIFFY",
@@ -1408,7 +1408,7 @@
     "LBank",
     "MEXC"
    ],
-   "ageHours": 829.2845333333333
+   "ageHours": 829.3622355555556
   },
   {
    "symbol": "AGNET",
@@ -1420,7 +1420,7 @@
    "holders": 320,
    "cgId": null,
    "cex": null,
-   "ageHours": 21.699255555555556
+   "ageHours": 21.776957777777778
   },
   {
    "symbol": "DIG",
@@ -1432,7 +1432,7 @@
    "holders": 100,
    "cgId": null,
    "cex": null,
-   "ageHours": 13.518422222222222
+   "ageHours": 13.596124444444444
   },
   {
    "symbol": "VRAX",
@@ -1444,7 +1444,7 @@
    "holders": 50706,
    "cgId": null,
    "cex": null,
-   "ageHours": 67.18564444444445
+   "ageHours": 67.26334666666666
   },
   {
    "symbol": "PUNT",
@@ -1456,7 +1456,7 @@
    "holders": 306,
    "cgId": null,
    "cex": null,
-   "ageHours": 14.8787
+   "ageHours": 14.956402222222222
   },
   {
    "symbol": "YOLO",
@@ -1470,7 +1470,7 @@
    "cex": [
     "LBank"
    ],
-   "ageHours": 1920.4367555555555
+   "ageHours": 1920.5144577777778
   },
   {
    "symbol": "ANYR",
@@ -1482,7 +1482,7 @@
    "holders": 265,
    "cgId": null,
    "cex": null,
-   "ageHours": 11.558422222222223
+   "ageHours": 11.636124444444444
   },
   {
    "symbol": "富贵",
@@ -1494,7 +1494,7 @@
    "holders": 42399,
    "cgId": null,
    "cex": null,
-   "ageHours": 36.327866666666665
+   "ageHours": 36.40556888888889
   },
   {
    "symbol": "ZZZ",
@@ -1510,7 +1510,7 @@
     "MEXC",
     "KCEX"
    ],
-   "ageHours": 679.7745333333334
+   "ageHours": 679.8522355555556
   },
   {
    "symbol": "BABY",
@@ -1522,7 +1522,7 @@
    "holders": 2006,
    "cgId": null,
    "cex": null,
-   "ageHours": 65.9787
+   "ageHours": 66.05640222222222
   },
   {
    "symbol": "RICH",
@@ -1534,7 +1534,7 @@
    "holders": 49,
    "cgId": null,
    "cex": null,
-   "ageHours": 12.425922222222223
+   "ageHours": 12.503624444444444
   },
   {
    "symbol": "ARMOURS",
@@ -1546,7 +1546,7 @@
    "holders": 401,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.5387
+   "ageHours": 4.616402222222222
   },
   {
    "symbol": "NOSH",
@@ -1558,7 +1558,7 @@
    "holders": 3806,
    "cgId": "usenosh",
    "cex": [],
-   "ageHours": 319.61203333333333
+   "ageHours": 319.68973555555556
   },
   {
    "symbol": "BUN",
@@ -1573,7 +1573,7 @@
     "LBank",
     "Up V3"
    ],
-   "ageHours": 736.0728666666666
+   "ageHours": 736.1505688888889
   },
   {
    "symbol": "AGI",
@@ -1587,7 +1587,7 @@
    "cex": [
     "Clank.trade"
    ],
-   "ageHours": 286.98453333333333
+   "ageHours": 287.06223555555556
   },
   {
    "symbol": "WTH",
@@ -1599,7 +1599,7 @@
    "holders": 1100,
    "cgId": "what-the-hook",
    "cex": [],
-   "ageHours": 1447.2878666666666
+   "ageHours": 1447.365568888889
   },
   {
    "symbol": "Rocket",
@@ -1611,7 +1611,7 @@
    "holders": 87,
    "cgId": null,
    "cex": null,
-   "ageHours": 20.442033333333335
+   "ageHours": 20.519735555555556
   },
   {
    "symbol": "BONER",
@@ -1623,7 +1623,7 @@
    "holders": 20456,
    "cgId": null,
    "cex": null,
-   "ageHours": 21.838144444444445
+   "ageHours": 21.915846666666667
   },
   {
    "symbol": "ORE",
@@ -1635,7 +1635,7 @@
    "holders": 170,
    "cgId": null,
    "cex": null,
-   "ageHours": 10.8037
+   "ageHours": 10.881402222222222
   },
   {
    "symbol": "INU",
@@ -1649,7 +1649,7 @@
    "cex": [
     "MEXC"
    ],
-   "ageHours": 534.7998111111111
+   "ageHours": 534.8775133333334
   },
   {
    "symbol": "THESEAN",
@@ -1661,7 +1661,7 @@
    "holders": 202,
    "cgId": null,
    "cex": null,
-   "ageHours": 16.546477777777778
+   "ageHours": 16.62418
   },
   {
    "symbol": "ZPROOF",
@@ -1673,7 +1673,7 @@
    "holders": 178,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.9892555555555558
+   "ageHours": 4.066957777777778
   },
   {
    "symbol": "SLVR",
@@ -1685,7 +1685,7 @@
    "holders": 2147,
    "cgId": null,
    "cex": null,
-   "ageHours": 1620.8578666666667
+   "ageHours": 1620.9355688888888
   },
   {
    "symbol": "NOVAAI",
@@ -1697,7 +1697,7 @@
    "holders": 10306,
    "cgId": "novaai",
    "cex": [],
-   "ageHours": 1086.9528666666668
+   "ageHours": 1087.0305688888889
   },
   {
    "symbol": "TENDIES",
@@ -1717,7 +1717,7 @@
     "GIGA V3",
     "Rialto"
    ],
-   "ageHours": 2297.597311111111
+   "ageHours": 2297.6750133333335
   },
   {
    "symbol": "SRX",
@@ -1729,7 +1729,7 @@
    "holders": 13,
    "cgId": null,
    "cex": null,
-   "ageHours": 16.687866666666668
+   "ageHours": 16.76556888888889
   },
   {
    "symbol": "SQUEEZE",
@@ -1741,7 +1741,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 14.28758888888889
+   "ageHours": 14.36529111111111
   },
   {
    "symbol": "www",
@@ -1753,7 +1753,7 @@
    "holders": 32884,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.45897777777778
+   "ageHours": 22.53668
   },
   {
    "symbol": "CPAY",
@@ -1765,7 +1765,7 @@
    "holders": 219,
    "cgId": null,
    "cex": null,
-   "ageHours": 18.45231111111111
+   "ageHours": 18.530013333333333
   },
   {
    "symbol": "SHROOM",
@@ -1783,7 +1783,7 @@
     "Up V3",
     "Alandale (CL)"
    ],
-   "ageHours": 713.5342555555555
+   "ageHours": 713.6119577777778
   },
   {
    "symbol": "TIBBIR",
@@ -1797,7 +1797,7 @@
    "cex": [
     "Up V3"
    ],
-   "ageHours": 85.41647777777777
+   "ageHours": 85.49418
   },
   {
    "symbol": "DARK",
@@ -1809,7 +1809,7 @@
    "holders": 2095,
    "cgId": "darkwoods",
    "cex": [],
-   "ageHours": 397.5548111111111
+   "ageHours": 397.63251333333335
   },
   {
    "symbol": "ARENA",
@@ -1821,7 +1821,7 @@
    "holders": 212,
    "cgId": null,
    "cex": null,
-   "ageHours": 9.271477777777777
+   "ageHours": 9.34918
   },
   {
    "symbol": "BNDKS",
@@ -1833,7 +1833,7 @@
    "holders": 246,
    "cgId": null,
    "cex": null,
-   "ageHours": 7.490644444444444
+   "ageHours": 7.568346666666667
   },
   {
    "symbol": "musebook",
@@ -1854,7 +1854,7 @@
     "KCEX",
     "Poloniex"
    ],
-   "ageHours": 409.8375888888889
+   "ageHours": 409.9152911111111
   },
   {
    "symbol": "HER",
@@ -1866,7 +1866,7 @@
    "holders": 248,
    "cgId": null,
    "cex": null,
-   "ageHours": 24.1312
+   "ageHours": 24.20890222222222
   },
   {
    "symbol": "BNDKS",
@@ -1878,7 +1878,7 @@
    "holders": 220,
    "cgId": null,
    "cex": null,
-   "ageHours": 7.473977777777778
+   "ageHours": 7.55168
   },
   {
    "symbol": "PICO",
@@ -1890,7 +1890,7 @@
    "holders": 87,
    "cgId": null,
    "cex": null,
-   "ageHours": 14.365922222222222
+   "ageHours": 14.443624444444444
   },
   {
    "symbol": "SGT",
@@ -1902,7 +1902,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 21.95897777777778
+   "ageHours": 22.03668
   },
   {
    "symbol": "THESEAN",
@@ -1914,7 +1914,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 16.510922222222224
+   "ageHours": 16.588624444444445
   },
   {
    "symbol": "Giko",
@@ -1926,7 +1926,7 @@
    "holders": 21,
    "cgId": null,
    "cex": null,
-   "ageHours": 24.835644444444444
+   "ageHours": 24.913346666666666
   },
   {
    "symbol": "BLOBBY",
@@ -1938,7 +1938,7 @@
    "holders": 61,
    "cgId": null,
    "cex": null,
-   "ageHours": 16.59786666666667
+   "ageHours": 16.67556888888889
   },
   {
    "symbol": "LUCKYDRAGON",
@@ -1950,7 +1950,7 @@
    "holders": 266,
    "cgId": null,
    "cex": null,
-   "ageHours": 6.820922222222222
+   "ageHours": 6.898624444444445
   },
   {
    "symbol": "MONITOR",
@@ -1962,7 +1962,7 @@
    "holders": 2187,
    "cgId": null,
    "cex": null,
-   "ageHours": 750.0534222222223
+   "ageHours": 750.1311244444445
   },
   {
    "symbol": "LEMONDOG",
@@ -1974,7 +1974,7 @@
    "holders": 193,
    "cgId": null,
    "cex": null,
-   "ageHours": 12.834533333333333
+   "ageHours": 12.912235555555556
   },
   {
    "symbol": "BYTE",
@@ -1986,7 +1986,7 @@
    "holders": 212,
    "cgId": null,
    "cex": null,
-   "ageHours": 7.425088888888889
+   "ageHours": 7.502791111111111
   },
   {
    "symbol": "BLORB",
@@ -1998,7 +1998,7 @@
    "holders": 12980,
    "cgId": "blorb",
    "cex": [],
-   "ageHours": 928.5520333333334
+   "ageHours": 928.6297355555556
   },
   {
    "symbol": "COOK",
@@ -2010,7 +2010,7 @@
    "holders": 292,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.6162
+   "ageHours": 5.693902222222222
   },
   {
    "symbol": "MOGU",
@@ -2022,7 +2022,7 @@
    "holders": 44,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.62731111111111
+   "ageHours": 8.705013333333333
   },
   {
    "symbol": "UNHOSTED",
@@ -2034,7 +2034,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 14.811477777777778
+   "ageHours": 14.88918
   },
   {
    "symbol": "YEETR",
@@ -2046,7 +2046,7 @@
    "holders": 328,
    "cgId": null,
    "cex": null,
-   "ageHours": 9.22508888888889
+   "ageHours": 9.30279111111111
   },
   {
    "symbol": "SHIBAGPT",
@@ -2058,7 +2058,7 @@
    "holders": 315,
    "cgId": null,
    "cex": null,
-   "ageHours": 6.2187
+   "ageHours": 6.2964022222222225
   },
   {
    "symbol": "AKERU",
@@ -2070,7 +2070,7 @@
    "holders": 246,
    "cgId": null,
    "cex": null,
-   "ageHours": 11.632311111111111
+   "ageHours": 11.710013333333332
   },
   {
    "symbol": "KAVRA",
@@ -2082,7 +2082,7 @@
    "holders": 96,
    "cgId": null,
    "cex": null,
-   "ageHours": 10.429533333333334
+   "ageHours": 10.507235555555555
   },
   {
    "symbol": "MONTAGE",
@@ -2094,7 +2094,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 14.18981111111111
+   "ageHours": 14.267513333333333
   },
   {
    "symbol": "ERIN",
@@ -2106,7 +2106,7 @@
    "holders": 31,
    "cgId": null,
    "cex": null,
-   "ageHours": 11.0337
+   "ageHours": 11.111402222222223
   },
   {
    "symbol": "HGPU",
@@ -2118,7 +2118,7 @@
    "holders": 97,
    "cgId": null,
    "cex": null,
-   "ageHours": 9.827588888888888
+   "ageHours": 9.905291111111111
   },
   {
    "symbol": "XCATCOIN",
@@ -2130,7 +2130,7 @@
    "holders": 330,
    "cgId": null,
    "cex": null,
-   "ageHours": 12.232033333333334
+   "ageHours": 12.309735555555555
   },
   {
    "symbol": "LMAO",
@@ -2142,7 +2142,7 @@
    "holders": 283,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.024255555555555
+   "ageHours": 8.101957777777777
   },
   {
    "symbol": "ZKD",
@@ -2154,7 +2154,7 @@
    "holders": 379,
    "cgId": null,
    "cex": null,
-   "ageHours": 25.605644444444444
+   "ageHours": 25.683346666666665
   },
   {
    "symbol": "SLOWLY",
@@ -2166,7 +2166,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 13.588977777777778
+   "ageHours": 13.66668
   },
   {
    "symbol": "W0G",
@@ -2178,7 +2178,7 @@
    "holders": 97,
    "cgId": null,
    "cex": null,
-   "ageHours": 349.58953333333335
+   "ageHours": 349.6672355555556
   },
   {
    "symbol": "OGATE",
@@ -2190,7 +2190,7 @@
    "holders": 305,
    "cgId": null,
    "cex": null,
-   "ageHours": 20.530644444444444
+   "ageHours": 20.608346666666666
   },
   {
    "symbol": "LIEGE",
@@ -2202,7 +2202,7 @@
    "holders": 456,
    "cgId": "liege-agents",
    "cex": null,
-   "ageHours": 52.47703333333333
+   "ageHours": 52.55473555555555
   },
   {
    "symbol": "AGNET",
@@ -2214,7 +2214,7 @@
    "holders": 8,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.46008888888889
+   "ageHours": 22.53779111111111
   },
   {
    "symbol": "DUCAT",
@@ -2226,7 +2226,7 @@
    "holders": 11696,
    "cgId": null,
    "cex": null,
-   "ageHours": 90.54286666666667
+   "ageHours": 90.62056888888888
   },
   {
    "symbol": "NVDAx3L",
@@ -2238,7 +2238,7 @@
    "holders": 841,
    "cgId": null,
    "cex": null,
-   "ageHours": 924.9498111111111
+   "ageHours": 925.0275133333333
   },
   {
    "symbol": "CALLINU",
@@ -2250,7 +2250,7 @@
    "holders": 375,
    "cgId": null,
    "cex": null,
-   "ageHours": 15.325088888888889
+   "ageHours": 15.402791111111112
   },
   {
    "symbol": "CGNA",
@@ -2262,7 +2262,7 @@
    "holders": 319,
    "cgId": null,
    "cex": null,
-   "ageHours": 204.70425555555556
+   "ageHours": 204.7819577777778
   },
   {
    "symbol": "BEHALF",
@@ -2274,7 +2274,7 @@
    "holders": 268,
    "cgId": null,
    "cex": null,
-   "ageHours": 13.351755555555556
+   "ageHours": 13.429457777777777
   },
   {
    "symbol": "WOOF",
@@ -2286,7 +2286,7 @@
    "holders": 5554,
    "cgId": "shibinhood",
    "cex": null,
-   "ageHours": 1616.7387
+   "ageHours": 1616.8164022222222
   },
   {
    "symbol": "PARLEY",
@@ -2298,7 +2298,7 @@
    "holders": 890,
    "cgId": null,
    "cex": null,
-   "ageHours": 615.3970333333333
+   "ageHours": 615.4747355555555
   },
   {
    "symbol": "SUSHIDOTS",
@@ -2310,7 +2310,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 15.385366666666666
+   "ageHours": 15.46306888888889
   },
   {
    "symbol": "ORBIOBOOK",
@@ -2322,7 +2322,7 @@
    "holders": 59,
    "cgId": null,
    "cex": null,
-   "ageHours": 9.639255555555556
+   "ageHours": 9.716957777777777
   },
   {
    "symbol": "VEIL",
@@ -2334,7 +2334,7 @@
    "holders": 556,
    "cgId": null,
    "cex": null,
-   "ageHours": 30.79981111111111
+   "ageHours": 30.877513333333333
   },
   {
    "symbol": "CEREBRO",
@@ -2346,7 +2346,7 @@
    "holders": 2025,
    "cgId": "cerebro-2",
    "cex": null,
-   "ageHours": 568.3337
+   "ageHours": 568.4114022222223
   },
   {
    "symbol": "CODEMEN",
@@ -2358,7 +2358,7 @@
    "holders": 645,
    "cgId": "codemen",
    "cex": null,
-   "ageHours": 227.56814444444444
+   "ageHours": 227.64584666666667
   },
   {
    "symbol": "SQUASH",
@@ -2370,7 +2370,7 @@
    "holders": 201,
    "cgId": null,
    "cex": null,
-   "ageHours": 6.607033333333334
+   "ageHours": 6.684735555555555
   },
   {
    "symbol": "SQUEEZE",
@@ -2382,7 +2382,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 14.300644444444444
+   "ageHours": 14.378346666666667
   },
   {
    "symbol": "SI",
@@ -2394,7 +2394,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 27.3312
+   "ageHours": 27.40890222222222
   },
   {
    "symbol": "WORM",
@@ -2406,7 +2406,7 @@
    "holders": null,
    "cgId": "agent-wormhole",
    "cex": null,
-   "ageHours": 588.7525888888889
+   "ageHours": 588.8302911111111
   },
   {
    "symbol": "ORE",
@@ -2418,7 +2418,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 12.250922222222222
+   "ageHours": 12.328624444444445
   },
   {
    "symbol": "si.gov",
@@ -2430,7 +2430,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 15.75758888888889
+   "ageHours": 15.835291111111111
   },
   {
    "symbol": "WHATS",
@@ -2442,7 +2442,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 18.905644444444444
+   "ageHours": 18.983346666666666
   },
   {
    "symbol": "mrna",
@@ -2454,7 +2454,7 @@
    "holders": null,
    "cgId": "moderna-inc-robinhood-token",
    "cex": null,
-   "ageHours": 704.6442555555556
+   "ageHours": 704.7219577777778
   },
   {
    "symbol": "BARRON",
@@ -2466,7 +2466,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.015922222222223
+   "ageHours": 5.093624444444444
   },
   {
    "symbol": "ROYAL",
@@ -2478,7 +2478,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 20.95258888888889
+   "ageHours": 21.03029111111111
   },
   {
    "symbol": "CPU",
@@ -2490,7 +2490,7 @@
    "holders": null,
    "cgId": "cat-processing-unit",
    "cex": null,
-   "ageHours": 536.3950888888888
+   "ageHours": 536.4727911111111
   },
   {
    "symbol": "swordcat",
@@ -2502,7 +2502,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.681477777777778
+   "ageHours": 3.75918
   },
   {
    "symbol": "FRONG",
@@ -2514,7 +2514,7 @@
    "holders": null,
    "cgId": "frong",
    "cex": null,
-   "ageHours": 1547.4078666666667
+   "ageHours": 1547.4855688888888
   },
   {
    "symbol": "KASPAFUN",
@@ -2526,7 +2526,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 26.056755555555554
+   "ageHours": 26.13445777777778
   },
   {
    "symbol": "MINTFOLIO",
@@ -2538,7 +2538,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 65.1887
+   "ageHours": 65.26640222222223
   },
   {
    "symbol": "SLV",
@@ -2550,7 +2550,7 @@
    "holders": null,
    "cgId": "ishares-silver-trust-robinhood-tokenized-stock",
    "cex": null,
-   "ageHours": 962.1003666666667
+   "ageHours": 962.1780688888889
   },
   {
    "symbol": "VRAX",
@@ -2562,7 +2562,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 46.747033333333334
+   "ageHours": 46.824735555555556
   },
   {
    "symbol": "Moose",
@@ -2574,7 +2574,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 15.025644444444444
+   "ageHours": 15.103346666666667
   },
   {
    "symbol": "MEGADUCK",
@@ -2586,7 +2586,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 29.985366666666668
+   "ageHours": 30.06306888888889
   },
   {
    "symbol": "FOMOSEEK",
@@ -2598,7 +2598,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 11.127588888888889
+   "ageHours": 11.20529111111111
   },
   {
    "symbol": "JAY",
@@ -2610,7 +2610,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 17.92258888888889
+   "ageHours": 18.00029111111111
   },
   {
    "symbol": "STONKBROKER",
@@ -2630,7 +2630,7 @@
     "Orvex V4",
     "Arcus"
    ],
-   "ageHours": 1851.8567555555555
+   "ageHours": 1851.9344577777779
   },
   {
    "symbol": "Agrippa",
@@ -2642,7 +2642,7 @@
    "holders": 7911,
    "cgId": "agrippa",
    "cex": [],
-   "ageHours": 375.6628666666667
+   "ageHours": 375.7405688888889
   },
   {
    "symbol": "BEHALF",
@@ -2654,7 +2654,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 13.346755555555555
+   "ageHours": 13.424457777777778
   },
   {
    "symbol": "JUSTIFY",
@@ -2666,7 +2666,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 17.241755555555557
+   "ageHours": 17.319457777777778
   },
   {
    "symbol": "PIPEDOG",
@@ -2678,7 +2678,7 @@
    "holders": null,
    "cgId": "pipedog",
    "cex": null,
-   "ageHours": 1595.1598111111111
+   "ageHours": 1595.2375133333333
   },
   {
    "symbol": "ORBIOBOOK",
@@ -2690,7 +2690,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.202866666666667
+   "ageHours": 8.280568888888888
   },
   {
    "symbol": "IMD",
@@ -2702,7 +2702,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 652.4495333333333
+   "ageHours": 652.5272355555555
   },
   {
    "symbol": "website",
@@ -2714,7 +2714,7 @@
    "holders": null,
    "cgId": "this-is-not-a-website",
    "cex": null,
-   "ageHours": 1452.9684222222222
+   "ageHours": 1453.0461244444443
   },
   {
    "symbol": "VRAX",
@@ -2726,7 +2726,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 80.18203333333334
+   "ageHours": 80.25973555555555
   },
   {
    "symbol": "FABLE",
@@ -2738,7 +2738,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 8.780644444444444
+   "ageHours": 8.858346666666666
   },
   {
    "symbol": "GOLDEN",
@@ -2750,7 +2750,7 @@
    "holders": null,
    "cgId": "golden-kitty",
    "cex": null,
-   "ageHours": 689.8484222222222
+   "ageHours": 689.9261244444444
   },
   {
    "symbol": "glxy",
@@ -2762,7 +2762,7 @@
    "holders": null,
    "cgId": "galaxy-digital-inc-robinhood-token",
    "cex": null,
-   "ageHours": 470.5923111111111
+   "ageHours": 470.6700133333333
   },
   {
    "symbol": "KUDO",
@@ -2774,7 +2774,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 18.142033333333334
+   "ageHours": 18.219735555555555
   },
   {
    "symbol": "BLOBBY",
@@ -2786,7 +2786,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 16.661755555555555
+   "ageHours": 16.739457777777776
   },
   {
    "symbol": "CHUMP",
@@ -2798,7 +2798,7 @@
    "holders": null,
    "cgId": "chump-coin",
    "cex": null,
-   "ageHours": 1541.9489777777778
+   "ageHours": 1542.02668
   },
   {
    "symbol": "AIGYR",
@@ -2810,7 +2810,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 14.242033333333334
+   "ageHours": 14.319735555555555
   },
   {
    "symbol": "pHOOD3x",
@@ -2824,7 +2824,7 @@
    "cex": [
     "Arcus"
    ],
-   "ageHours": 905.3584222222222
+   "ageHours": 905.4361244444444
   },
   {
    "symbol": "BALLS",
@@ -2836,7 +2836,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 11.433422222222223
+   "ageHours": 11.511124444444444
   },
   {
    "symbol": "RHOOKS",
@@ -2848,7 +2848,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 12.227311111111112
+   "ageHours": 12.305013333333333
   },
   {
    "symbol": "Pyre",
@@ -2860,7 +2860,7 @@
    "holders": null,
    "cgId": "pyre-2",
    "cex": null,
-   "ageHours": 266.4100888888889
+   "ageHours": 266.4877911111111
   },
   {
    "symbol": "enu",
@@ -2872,7 +2872,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.430088888888889
+   "ageHours": 5.5077911111111115
   },
   {
    "symbol": "SCRAMBLE",
@@ -2884,7 +2884,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.77231111111111
+   "ageHours": 22.850013333333333
   },
   {
    "symbol": "HKMN",
@@ -2896,7 +2896,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 106.3312
+   "ageHours": 106.40890222222222
   },
   {
    "symbol": "Suited",
@@ -2908,7 +2908,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 80.86508888888889
+   "ageHours": 80.9427911111111
   },
   {
    "symbol": "XRAY",
@@ -2920,7 +2920,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 33.30147777777778
+   "ageHours": 33.37918
   },
   {
    "symbol": "JEVVIS",
@@ -2932,7 +2932,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 16.066477777777777
+   "ageHours": 16.14418
   },
   {
    "symbol": "HMM",
@@ -2944,7 +2944,7 @@
    "holders": null,
    "cgId": "thinking-cat",
    "cex": null,
-   "ageHours": 1823.790088888889
+   "ageHours": 1823.867791111111
   },
   {
    "symbol": "UPTOBER",
@@ -2956,7 +2956,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 18.300644444444444
+   "ageHours": 18.378346666666665
   },
   {
    "symbol": "ARROWFARM",
@@ -2968,7 +2968,7 @@
    "holders": null,
    "cgId": "arrowfarm",
    "cex": null,
-   "ageHours": 153.77564444444445
+   "ageHours": 153.85334666666665
   },
   {
    "symbol": "INCOME",
@@ -2980,7 +2980,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 40.11092222222222
+   "ageHours": 40.18862444444444
   },
   {
    "symbol": "BOW",
@@ -2992,7 +2992,7 @@
    "holders": null,
    "cgId": "longbow-2",
    "cex": null,
-   "ageHours": 939.6625888888889
+   "ageHours": 939.7402911111111
   },
   {
    "symbol": "BEEZIE",
@@ -3004,7 +3004,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 13.897033333333333
+   "ageHours": 13.974735555555556
   },
   {
    "symbol": "FOMIES",
@@ -3016,7 +3016,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.579255555555555
+   "ageHours": 5.6569577777777775
   },
   {
    "symbol": "si.gov",
@@ -3028,7 +3028,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 17.657033333333334
+   "ageHours": 17.734735555555556
   },
   {
    "symbol": "TRENCH",
@@ -3040,7 +3040,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 32.931755555555554
+   "ageHours": 33.009457777777776
   },
   {
    "symbol": "SWOLE",
@@ -3052,7 +3052,7 @@
    "holders": null,
    "cgId": "swole-cat",
    "cex": null,
-   "ageHours": 918.3903666666666
+   "ageHours": 918.4680688888889
   },
   {
    "symbol": "WOOD",
@@ -3064,7 +3064,7 @@
    "holders": null,
    "cgId": "sherwood-protocol",
    "cex": null,
-   "ageHours": 1959.4817555555555
+   "ageHours": 1959.5594577777779
   },
   {
    "symbol": "HOODCATS",
@@ -3076,7 +3076,7 @@
    "holders": null,
    "cgId": "hoodcats",
    "cex": null,
-   "ageHours": 340.29314444444447
+   "ageHours": 340.3708466666667
   },
   {
    "symbol": "RECORD",
@@ -3088,7 +3088,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 391.92064444444446
+   "ageHours": 391.9983466666667
   },
   {
    "symbol": "QUOTRON",
@@ -3100,7 +3100,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 1216.4131444444445
+   "ageHours": 1216.4908466666666
   },
   {
    "symbol": "ONLY",
@@ -3112,7 +3112,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.1731444444444445
+   "ageHours": 5.250846666666667
   },
   {
    "symbol": "FOMOSEEK",
@@ -3124,7 +3124,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 11.094811111111111
+   "ageHours": 11.172513333333333
   },
   {
    "symbol": "DELAYD",
@@ -3136,7 +3136,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 15.9062
+   "ageHours": 15.983902222222222
   },
   {
    "symbol": "HBTC",
@@ -3148,7 +3148,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 954.6267555555555
+   "ageHours": 954.7044577777777
   },
   {
    "symbol": "SCRAMBLE",
@@ -3160,7 +3160,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 23.047033333333335
+   "ageHours": 23.124735555555556
   },
   {
    "symbol": "HHILSS",
@@ -3172,7 +3172,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 22.275644444444445
+   "ageHours": 22.353346666666667
   },
   {
    "symbol": "ORBZ",
@@ -3184,7 +3184,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 25.169255555555555
+   "ageHours": 25.246957777777776
   },
   {
    "symbol": "COBWEB",
@@ -3196,7 +3196,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 12.468144444444444
+   "ageHours": 12.545846666666666
   },
   {
    "symbol": "AMD",
@@ -3208,7 +3208,7 @@
    "holders": null,
    "cgId": "amd-robinhood-tokenized-stock",
    "cex": null,
-   "ageHours": 1524.0684222222221
+   "ageHours": 1524.1461244444445
   },
   {
    "symbol": "UFG",
@@ -3220,7 +3220,7 @@
    "holders": null,
    "cgId": "united-founders-group",
    "cex": null,
-   "ageHours": 777.9414777777778
+   "ageHours": 778.01918
   },
   {
    "symbol": "LL",
@@ -3232,7 +3232,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.608700277777778
+   "ageHours": 3.6864025
   },
   {
    "symbol": "PEPE",
@@ -3244,7 +3244,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6139780555555556
+   "ageHours": 3.691680277777778
   },
   {
    "symbol": "ENTERTAIN",
@@ -3256,7 +3256,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.617311388888889
+   "ageHours": 3.695013611111111
   },
   {
    "symbol": "Ghepe",
@@ -3268,7 +3268,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6189780555555555
+   "ageHours": 3.696680277777778
   },
   {
    "symbol": "GHEPE",
@@ -3280,7 +3280,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6239780555555554
+   "ageHours": 3.7016802777777778
   },
   {
    "symbol": "TAPE",
@@ -3292,7 +3292,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6281447222222223
+   "ageHours": 3.7058469444444446
   },
   {
    "symbol": "제로",
@@ -3304,7 +3304,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6323113888888887
+   "ageHours": 3.710013611111111
   },
   {
    "symbol": "SC",
@@ -3316,7 +3316,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6342558333333335
+   "ageHours": 3.7119580555555554
   },
   {
    "symbol": "PIPE",
@@ -3328,7 +3328,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6387002777777777
+   "ageHours": 3.7164025
   },
   {
    "symbol": "PUMPGU",
@@ -3340,7 +3340,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.644811388888889
+   "ageHours": 3.7225136111111112
   },
   {
    "symbol": "TEST",
@@ -3352,7 +3352,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.646755833333333
+   "ageHours": 3.7244580555555555
   },
   {
    "symbol": "WEIRDS",
@@ -3364,7 +3364,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.649811388888889
+   "ageHours": 3.727513611111111
   },
   {
    "symbol": "ROTUNDA",
@@ -3376,7 +3376,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6503669444444444
+   "ageHours": 3.7280691666666668
   },
   {
    "symbol": "ORE",
@@ -3388,7 +3388,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6506447222222222
+   "ageHours": 3.7283469444444446
   },
   {
    "symbol": "PoD",
@@ -3400,7 +3400,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.658144722222222
+   "ageHours": 3.7358469444444444
   },
   {
    "symbol": "HDTEST",
@@ -3412,7 +3412,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.662033611111111
+   "ageHours": 3.7397358333333335
   },
   {
    "symbol": "TREAT",
@@ -3424,7 +3424,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6689780555555553
+   "ageHours": 3.7466802777777777
   },
   {
    "symbol": "SGT",
@@ -3436,7 +3436,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.669255833333333
+   "ageHours": 3.7469580555555555
   },
   {
    "symbol": "BONK",
@@ -3448,7 +3448,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6709225
+   "ageHours": 3.7486247222222224
   },
   {
    "symbol": "RHOOKS",
@@ -3460,7 +3460,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6745336111111113
+   "ageHours": 3.752235833333333
   },
   {
    "symbol": "TAPE",
@@ -3472,7 +3472,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6784225
+   "ageHours": 3.7561247222222223
   },
   {
    "symbol": "ZERO",
@@ -3484,7 +3484,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.680644722222222
+   "ageHours": 3.7583469444444444
   },
   {
    "symbol": "GALC",
@@ -3496,7 +3496,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.682033611111111
+   "ageHours": 3.7597358333333335
   },
   {
    "symbol": "DOPECAT",
@@ -3508,7 +3508,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.688700277777778
+   "ageHours": 3.7664025
   },
   {
    "symbol": "DUCK",
@@ -3520,7 +3520,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.697311388888889
+   "ageHours": 3.775013611111111
   },
   {
    "symbol": "ORBIO",
@@ -3532,7 +3532,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.6992558333333334
+   "ageHours": 3.7769580555555557
   },
   {
    "symbol": "CHIPINU",
@@ -3544,7 +3544,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.704811388888889
+   "ageHours": 3.7825136111111113
   },
   {
    "symbol": "SLOP",
@@ -3556,7 +3556,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.707033611111111
+   "ageHours": 3.7847358333333334
   },
   {
    "symbol": "PUMPE",
@@ -3568,7 +3568,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7089780555555554
+   "ageHours": 3.7866802777777777
   },
   {
    "symbol": "RHXBT",
@@ -3580,7 +3580,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.711755833333333
+   "ageHours": 3.7894580555555555
   },
   {
    "symbol": "HAMSTER",
@@ -3592,7 +3592,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7131447222222222
+   "ageHours": 3.7908469444444446
   },
   {
    "symbol": "BONK",
@@ -3604,7 +3604,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7189780555555556
+   "ageHours": 3.796680277777778
   },
   {
    "symbol": "SGT",
@@ -3616,7 +3616,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7192558333333334
+   "ageHours": 3.7969580555555558
   },
   {
    "symbol": "ANC",
@@ -3628,7 +3628,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.720644722222222
+   "ageHours": 3.7983469444444444
   },
   {
    "symbol": "ZERO",
@@ -3640,7 +3640,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7217558333333334
+   "ageHours": 3.7994580555555557
   },
   {
    "symbol": "PUMPE",
@@ -3652,7 +3652,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.722589166666667
+   "ageHours": 3.8002913888888887
   },
   {
    "symbol": "ZERO",
@@ -3664,7 +3664,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7228669444444447
+   "ageHours": 3.8005691666666666
   },
   {
    "symbol": "SaQu",
@@ -3676,7 +3676,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7384225
+   "ageHours": 3.8161247222222223
   },
   {
    "symbol": "Hermès",
@@ -3688,7 +3688,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7500891666666667
+   "ageHours": 3.827791388888889
   },
   {
    "symbol": "FADE",
@@ -3700,7 +3700,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7503669444444445
+   "ageHours": 3.828069166666667
   },
   {
    "symbol": "BLUEM",
@@ -3712,7 +3712,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7539780555555557
+   "ageHours": 3.8316802777777776
   },
   {
    "symbol": "SYN",
@@ -3724,7 +3724,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.754255833333333
+   "ageHours": 3.8319580555555555
   },
   {
    "symbol": "BONK",
@@ -3736,7 +3736,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7687002777777776
+   "ageHours": 3.8464025
   },
   {
    "symbol": "COPE",
@@ -3748,7 +3748,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7756447222222222
+   "ageHours": 3.8533469444444446
   },
   {
    "symbol": "TEST",
@@ -3760,7 +3760,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7759225
+   "ageHours": 3.8536247222222224
   },
   {
    "symbol": "REP",
@@ -3772,7 +3772,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7795336111111113
+   "ageHours": 3.857235833333333
   },
   {
    "symbol": "뽀로로",
@@ -3784,7 +3784,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.7934225
+   "ageHours": 3.871124722222222
   },
   {
    "symbol": "Ghosti",
@@ -3796,7 +3796,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.794255833333333
+   "ageHours": 3.8719580555555555
   },
   {
    "symbol": "ClapCat",
@@ -3808,7 +3808,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8053669444444442
+   "ageHours": 3.8830691666666666
   },
   {
    "symbol": "VANTVPN",
@@ -3820,7 +3820,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8064780555555555
+   "ageHours": 3.884180277777778
   },
   {
    "symbol": "swordcat",
@@ -3832,7 +3832,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.816200277777778
+   "ageHours": 3.8939025
   },
   {
    "symbol": "HIT",
@@ -3844,7 +3844,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8325891666666667
+   "ageHours": 3.910291388888889
   },
   {
    "symbol": "Vampcoin",
@@ -3856,7 +3856,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.836755833333333
+   "ageHours": 3.9144580555555555
   },
   {
    "symbol": "PEPE",
@@ -3868,7 +3868,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8503669444444446
+   "ageHours": 3.9280691666666665
   },
   {
    "symbol": "REEAACH",
@@ -3880,7 +3880,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8512002777777776
+   "ageHours": 3.9289025
   },
   {
    "symbol": "UPTOBER",
@@ -3892,7 +3892,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8653669444444443
+   "ageHours": 3.9430691666666666
   },
   {
    "symbol": "BOBBLE",
@@ -3904,7 +3904,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8659225
+   "ageHours": 3.9436247222222223
   },
   {
    "symbol": "ZERO",
@@ -3916,7 +3916,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8731447222222224
+   "ageHours": 3.9508469444444443
   },
   {
    "symbol": "PUMPE",
@@ -3928,7 +3928,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8753669444444445
+   "ageHours": 3.953069166666667
   },
   {
    "symbol": "TD",
@@ -3940,7 +3940,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8834225
+   "ageHours": 3.9611247222222223
   },
   {
    "symbol": "PEPE",
@@ -3952,7 +3952,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8834225
+   "ageHours": 3.9611247222222223
   },
   {
    "symbol": "ROCKETMAN",
@@ -3964,7 +3964,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.884811388888889
+   "ageHours": 3.962513611111111
   },
   {
    "symbol": "enu",
@@ -3976,7 +3976,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8862002777777778
+   "ageHours": 3.9639025
   },
   {
    "symbol": "ZERO",
@@ -3988,7 +3988,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8878669444444443
+   "ageHours": 3.9655691666666666
   },
   {
    "symbol": "PUMPE",
@@ -4000,7 +4000,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.8892558333333334
+   "ageHours": 3.9669580555555557
   },
   {
    "symbol": "ZERO",
@@ -4012,7 +4012,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.889811388888889
+   "ageHours": 3.967513611111111
   },
   {
    "symbol": "RDUC",
@@ -4024,7 +4024,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.889811388888889
+   "ageHours": 3.967513611111111
   },
   {
    "symbol": "Vampcoin",
@@ -4036,7 +4036,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.9028669444444444
+   "ageHours": 3.9805691666666667
   },
   {
    "symbol": "Vampcoin",
@@ -4048,7 +4048,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.9248113888888887
+   "ageHours": 4.0025136111111115
   },
   {
    "symbol": "PBUN",
@@ -4060,7 +4060,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.9334225
+   "ageHours": 4.011124722222222
   },
   {
    "symbol": "LILMUSE",
@@ -4072,7 +4072,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.9367558333333332
+   "ageHours": 4.014458055555555
   },
   {
    "symbol": "제로",
@@ -4084,7 +4084,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.939811388888889
+   "ageHours": 4.017513611111111
   },
   {
    "symbol": "DEGENCAT",
@@ -4096,7 +4096,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.9400891666666666
+   "ageHours": 4.017791388888889
   },
   {
    "symbol": "DICE",
@@ -4108,7 +4108,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.9487002777777778
+   "ageHours": 4.0264025
   },
   {
    "symbol": "Owed",
@@ -4120,7 +4120,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.9514780555555555
+   "ageHours": 4.029180277777778
   },
   {
    "symbol": "PUP",
@@ -4132,7 +4132,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.957033611111111
+   "ageHours": 4.034735833333333
   },
   {
    "symbol": "CALLDROP",
@@ -4144,7 +4144,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.957033611111111
+   "ageHours": 4.034735833333333
   },
   {
    "symbol": "PEPE",
@@ -4156,7 +4156,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.9578669444444445
+   "ageHours": 4.035569166666667
   },
   {
    "symbol": "DGF",
@@ -4168,7 +4168,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.965644722222222
+   "ageHours": 4.043346944444444
   },
   {
    "symbol": "JIM",
@@ -4180,7 +4180,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.9784225
+   "ageHours": 4.056124722222222
   },
   {
    "symbol": "ZERO",
@@ -4192,7 +4192,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 3.989811388888889
+   "ageHours": 4.067513611111111
   },
   {
    "symbol": "ARENA123",
@@ -4204,7 +4204,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.000644722222222
+   "ageHours": 4.078346944444444
   },
   {
    "symbol": "ZPROOF",
@@ -4216,7 +4216,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.027311388888889
+   "ageHours": 4.1050136111111115
   },
   {
    "symbol": "L2",
@@ -4228,7 +4228,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.032311388888889
+   "ageHours": 4.110013611111111
   },
   {
    "symbol": "CME",
@@ -4240,7 +4240,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.033700277777778
+   "ageHours": 4.1114025
   },
   {
    "symbol": "MARCA",
@@ -4252,7 +4252,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.0459225
+   "ageHours": 4.123624722222222
   },
   {
    "symbol": "INSANE LORE",
@@ -4264,7 +4264,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.053978055555556
+   "ageHours": 4.131680277777778
   },
   {
    "symbol": "Agrippa",
@@ -4276,7 +4276,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.054255833333333
+   "ageHours": 4.131958055555556
   },
   {
    "symbol": "ZERO",
@@ -4288,7 +4288,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.054811388888889
+   "ageHours": 4.132513611111111
   },
   {
    "symbol": "PEPE",
@@ -4300,7 +4300,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.055366944444445
+   "ageHours": 4.133069166666667
   },
   {
    "symbol": "ZERO",
@@ -4312,7 +4312,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.056200277777778
+   "ageHours": 4.1339025
   },
   {
    "symbol": "MOMO",
@@ -4324,7 +4324,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.0584225
+   "ageHours": 4.136124722222222
   },
   {
    "symbol": "ZPROOF",
@@ -4336,7 +4336,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.062866944444444
+   "ageHours": 4.140569166666666
   },
   {
    "symbol": "SPOOKS",
@@ -4348,7 +4348,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.067033611111111
+   "ageHours": 4.144735833333334
   },
   {
    "symbol": "SPOOKS",
@@ -4360,7 +4360,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.073144722222223
+   "ageHours": 4.150846944444444
   },
   {
    "symbol": "KPDONE",
@@ -4372,7 +4372,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.079255833333334
+   "ageHours": 4.156958055555555
   },
   {
    "symbol": "ZPROOF",
@@ -4384,7 +4384,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.080366944444444
+   "ageHours": 4.1580691666666665
   },
   {
    "symbol": "INSANE LORE",
@@ -4396,7 +4396,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.081755833333333
+   "ageHours": 4.159458055555556
   },
   {
    "symbol": "AURA",
@@ -4408,7 +4408,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.085089166666667
+   "ageHours": 4.1627913888888886
   },
   {
    "symbol": "INSANE LORE",
@@ -4420,7 +4420,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.087866944444444
+   "ageHours": 4.165569166666667
   },
   {
    "symbol": "CREDITS",
@@ -4432,7 +4432,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.092033611111111
+   "ageHours": 4.169735833333333
   },
   {
    "symbol": "ミズラ",
@@ -4444,7 +4444,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.098144722222222
+   "ageHours": 4.175846944444444
   },
   {
    "symbol": "LEAKBENDER",
@@ -4456,7 +4456,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.121755833333333
+   "ageHours": 4.199458055555556
   },
   {
    "symbol": "FPEVM",
@@ -4468,7 +4468,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.124255833333334
+   "ageHours": 4.201958055555555
   },
   {
    "symbol": "LABH",
@@ -4480,7 +4480,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.1284225
+   "ageHours": 4.2061247222222224
   },
   {
    "symbol": "SNOWBALL",
@@ -4492,7 +4492,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.130089166666667
+   "ageHours": 4.2077913888888885
   },
   {
    "symbol": "SPCA",
@@ -4504,7 +4504,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.141200277777778
+   "ageHours": 4.2189025
   },
   {
    "symbol": "JET",
@@ -4516,7 +4516,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.144255833333333
+   "ageHours": 4.221958055555556
   },
   {
    "symbol": "GM",
@@ -4528,7 +4528,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.144255833333333
+   "ageHours": 4.221958055555556
   },
   {
    "symbol": "TATOES",
@@ -4540,7 +4540,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.166200277777778
+   "ageHours": 4.2439025
   },
   {
    "symbol": "nvk",
@@ -4552,7 +4552,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.1709225
+   "ageHours": 4.248624722222222
   },
   {
    "symbol": "LOAF",
@@ -4564,7 +4564,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.1742558333333335
+   "ageHours": 4.251958055555556
   },
   {
    "symbol": "FIN",
@@ -4576,7 +4576,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.197033611111111
+   "ageHours": 4.274735833333334
   },
   {
    "symbol": "CLICK",
@@ -4588,7 +4588,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.204255833333334
+   "ageHours": 4.281958055555555
   },
   {
    "symbol": "BBG",
@@ -4600,7 +4600,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.212033611111111
+   "ageHours": 4.289735833333333
   },
   {
    "symbol": "UPAI",
@@ -4612,7 +4612,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.2209225
+   "ageHours": 4.298624722222222
   },
   {
    "symbol": "GLITCH",
@@ -4624,7 +4624,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.221200277777778
+   "ageHours": 4.2989025
   },
   {
    "symbol": "CLICK",
@@ -4636,7 +4636,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.222311388888889
+   "ageHours": 4.300013611111111
   },
   {
    "symbol": "ZERO",
@@ -4648,7 +4648,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.223144722222222
+   "ageHours": 4.300846944444444
   },
   {
    "symbol": "PCHN",
@@ -4660,7 +4660,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.2434225
+   "ageHours": 4.321124722222223
   },
   {
    "symbol": "ANYONE",
@@ -4672,7 +4672,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.245366944444444
+   "ageHours": 4.3230691666666665
   },
   {
    "symbol": "GAY",
@@ -4684,7 +4684,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.257311388888889
+   "ageHours": 4.335013611111111
   },
   {
    "symbol": "ZERO",
@@ -4696,7 +4696,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.268144722222222
+   "ageHours": 4.345846944444444
   },
   {
    "symbol": "MUTUAL",
@@ -4708,7 +4708,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.2703669444444445
+   "ageHours": 4.348069166666667
   },
   {
    "symbol": "ROACHY",
@@ -4720,7 +4720,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.2709225
+   "ageHours": 4.3486247222222225
   },
   {
    "symbol": "MA",
@@ -4732,7 +4732,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.274533611111111
+   "ageHours": 4.352235833333333
   },
   {
    "symbol": "AI",
@@ -4744,7 +4744,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.277589166666667
+   "ageHours": 4.3552913888888884
   },
   {
    "symbol": "wifbeater",
@@ -4756,7 +4756,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.2884225
+   "ageHours": 4.366124722222223
   },
   {
    "symbol": "BULL",
@@ -4768,7 +4768,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.298978055555556
+   "ageHours": 4.376680277777778
   },
   {
    "symbol": "wifbeater",
@@ -4780,7 +4780,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.2992558333333335
+   "ageHours": 4.376958055555556
   },
   {
    "symbol": "PUNS",
@@ -4792,7 +4792,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.304811388888889
+   "ageHours": 4.382513611111111
   },
   {
    "symbol": "DUST2",
@@ -4804,7 +4804,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.313144722222222
+   "ageHours": 4.390846944444444
   },
   {
    "symbol": "MIRA",
@@ -4816,7 +4816,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.3153669444444445
+   "ageHours": 4.393069166666667
   },
   {
    "symbol": "GORD",
@@ -4828,7 +4828,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.3209225
+   "ageHours": 4.398624722222222
   },
   {
    "symbol": "home",
@@ -4840,7 +4840,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.324533611111111
+   "ageHours": 4.402235833333333
   },
   {
    "symbol": "VLAD",
@@ -4852,7 +4852,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.327033611111111
+   "ageHours": 4.4047358333333335
   },
   {
    "symbol": "PEMPCAT",
@@ -4864,7 +4864,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.330644722222222
+   "ageHours": 4.408346944444444
   },
   {
    "symbol": "XIU",
@@ -4876,7 +4876,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.3334225
+   "ageHours": 4.4111247222222225
   },
   {
    "symbol": "boar",
@@ -4888,7 +4888,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.339533611111111
+   "ageHours": 4.417235833333334
   },
   {
    "symbol": "ZERO",
@@ -4900,7 +4900,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.3484225
+   "ageHours": 4.426124722222222
   },
   {
    "symbol": "CAT",
@@ -4912,7 +4912,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.350644722222222
+   "ageHours": 4.428346944444445
   },
   {
    "symbol": "CLOCT",
@@ -4924,7 +4924,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.3520336111111115
+   "ageHours": 4.429735833333333
   },
   {
    "symbol": "CORGZ",
@@ -4936,7 +4936,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.357033611111111
+   "ageHours": 4.434735833333334
   },
   {
    "symbol": "TEST",
@@ -4948,7 +4948,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.359811388888889
+   "ageHours": 4.437513611111111
   },
   {
    "symbol": "AI",
@@ -4960,7 +4960,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.363144722222223
+   "ageHours": 4.440846944444444
   },
   {
    "symbol": "TRUMPDROP",
@@ -4972,7 +4972,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.388700277777778
+   "ageHours": 4.4664025
   },
   {
    "symbol": "GLITCH",
@@ -4984,7 +4984,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.3889780555555555
+   "ageHours": 4.466680277777778
   },
   {
    "symbol": "AI",
@@ -4996,7 +4996,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.391200277777778
+   "ageHours": 4.4689025
   },
   {
    "symbol": "ZERO",
@@ -5008,7 +5008,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.391755833333334
+   "ageHours": 4.469458055555555
   },
   {
    "symbol": "NTFS",
@@ -5020,7 +5020,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.3953669444444445
+   "ageHours": 4.473069166666667
   },
   {
    "symbol": "Shoggoth",
@@ -5032,7 +5032,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.396755833333334
+   "ageHours": 4.474458055555556
   },
   {
    "symbol": "REP",
@@ -5044,7 +5044,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.4081447222222225
+   "ageHours": 4.485846944444445
   },
   {
    "symbol": "Ember",
@@ -5056,7 +5056,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.409255833333333
+   "ageHours": 4.486958055555555
   },
   {
    "symbol": "EUNO",
@@ -5068,7 +5068,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.423144722222222
+   "ageHours": 4.5008469444444446
   },
   {
    "symbol": "NBM",
@@ -5080,7 +5080,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.424533611111111
+   "ageHours": 4.502235833333334
   },
   {
    "symbol": "SSS",
@@ -5092,7 +5092,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.426478055555555
+   "ageHours": 4.5041802777777775
   },
   {
    "symbol": "LLA",
@@ -5104,7 +5104,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.430366944444445
+   "ageHours": 4.508069166666667
   },
   {
    "symbol": "CLIPPY",
@@ -5116,7 +5116,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.445644722222222
+   "ageHours": 4.5233469444444445
   },
   {
    "symbol": "MOP",
@@ -5128,7 +5128,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.4467558333333335
+   "ageHours": 4.524458055555556
   },
   {
    "symbol": "LLA",
@@ -5140,7 +5140,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.447589166666667
+   "ageHours": 4.525291388888889
   },
   {
    "symbol": "ZAPE",
@@ -5152,7 +5152,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.451200277777778
+   "ageHours": 4.5289025
   },
   {
    "symbol": "ARMOURS",
@@ -5164,7 +5164,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.758144722222222
+   "ageHours": 4.8358469444444445
   },
   {
    "symbol": "PONCHI",
@@ -5176,7 +5176,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.459255833333334
+   "ageHours": 4.536958055555556
   },
   {
    "symbol": "CLIPPY",
@@ -5188,7 +5188,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.466755833333333
+   "ageHours": 4.544458055555555
   },
   {
    "symbol": "NASA",
@@ -5200,7 +5200,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.467033611111111
+   "ageHours": 4.544735833333333
   },
   {
    "symbol": "ARGON",
@@ -5212,7 +5212,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.472589166666666
+   "ageHours": 4.550291388888889
   },
   {
    "symbol": "GLITCH",
@@ -5224,7 +5224,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.505366944444445
+   "ageHours": 4.583069166666666
   },
   {
    "symbol": "PIPBUN",
@@ -5236,7 +5236,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.505366944444445
+   "ageHours": 4.583069166666666
   },
   {
    "symbol": "PENIS",
@@ -5248,7 +5248,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.505644722222222
+   "ageHours": 4.583346944444444
   },
   {
    "symbol": "Claim",
@@ -5260,7 +5260,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.5092558333333335
+   "ageHours": 4.586958055555556
   },
   {
    "symbol": "synapse",
@@ -5272,7 +5272,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.512033611111111
+   "ageHours": 4.589735833333333
   },
   {
    "symbol": "SENTINEL",
@@ -5284,7 +5284,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.5237002777777775
+   "ageHours": 4.6014025
   },
   {
    "symbol": "CPEPE",
@@ -5296,7 +5296,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.526200277777778
+   "ageHours": 4.6039025
   },
   {
    "symbol": "SI",
@@ -5308,7 +5308,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.554533611111111
+   "ageHours": 4.6322358333333336
   },
   {
    "symbol": "ZERO",
@@ -5320,7 +5320,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.554811388888889
+   "ageHours": 4.632513611111111
   },
   {
    "symbol": "ZERO",
@@ -5332,7 +5332,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.557033611111111
+   "ageHours": 4.634735833333333
   },
   {
    "symbol": "RICK",
@@ -5344,7 +5344,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.557866944444444
+   "ageHours": 4.6355691666666665
   },
   {
    "symbol": "ZERO",
@@ -5356,7 +5356,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.598700277777778
+   "ageHours": 4.6764025
   },
   {
    "symbol": "Dexter",
@@ -5368,7 +5368,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.602866944444444
+   "ageHours": 4.6805691666666664
   },
   {
    "symbol": "HTRIDERUN",
@@ -5380,7 +5380,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.616755833333333
+   "ageHours": 4.694458055555556
   },
   {
    "symbol": "CRUSADE",
@@ -5392,7 +5392,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.6234225
+   "ageHours": 4.7011247222222226
   },
   {
    "symbol": "AI",
@@ -5404,7 +5404,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.6325891666666665
+   "ageHours": 4.710291388888889
   },
   {
    "symbol": "ZERO",
@@ -5416,7 +5416,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.786200277777778
+   "ageHours": 4.8639025
   },
   {
    "symbol": "ZERO",
@@ -5428,7 +5428,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.646200277777778
+   "ageHours": 4.7239025
   },
   {
    "symbol": "ZERO",
@@ -5440,7 +5440,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.652311388888889
+   "ageHours": 4.7300136111111115
   },
   {
    "symbol": "ROBINHOOdSHIT",
@@ -5452,7 +5452,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.6550891666666665
+   "ageHours": 4.732791388888889
   },
   {
    "symbol": "MEME",
@@ -5464,7 +5464,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.659255833333333
+   "ageHours": 4.736958055555555
   },
   {
    "symbol": "MMNK",
@@ -5476,7 +5476,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.659255833333333
+   "ageHours": 4.736958055555555
   },
   {
    "symbol": "CREDITS",
@@ -5488,7 +5488,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.660644722222222
+   "ageHours": 4.738346944444444
   },
   {
    "symbol": "STA",
@@ -5500,7 +5500,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.673978055555556
+   "ageHours": 4.751680277777778
   },
   {
    "symbol": "TOPDESK",
@@ -5512,7 +5512,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.679255833333333
+   "ageHours": 4.756958055555556
   },
   {
    "symbol": "RH",
@@ -5524,7 +5524,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.691755833333334
+   "ageHours": 4.769458055555556
   },
   {
    "symbol": "ZERO",
@@ -5536,7 +5536,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.702033611111111
+   "ageHours": 4.7797358333333335
   },
   {
    "symbol": "COMPUTER",
@@ -5548,7 +5548,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.702589166666667
+   "ageHours": 4.780291388888889
   },
   {
    "symbol": "GFRG",
@@ -5560,7 +5560,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.704533611111111
+   "ageHours": 4.782235833333333
   },
   {
    "symbol": "CREDITS",
@@ -5572,7 +5572,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.705089166666666
+   "ageHours": 4.782791388888889
   },
   {
    "symbol": "MEME",
@@ -5584,7 +5584,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.706755833333333
+   "ageHours": 4.784458055555556
   },
   {
    "symbol": "SICAT",
@@ -5596,7 +5596,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.713700277777778
+   "ageHours": 4.7914025
   },
   {
    "symbol": "ZERO",
@@ -5608,7 +5608,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.722033611111111
+   "ageHours": 4.799735833333333
   },
   {
    "symbol": "ZERO",
@@ -5620,7 +5620,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.723144722222222
+   "ageHours": 4.800846944444444
   },
   {
    "symbol": "STONK",
@@ -5632,7 +5632,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.723144722222222
+   "ageHours": 4.800846944444444
   },
   {
    "symbol": "TPL",
@@ -5644,7 +5644,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.728700277777778
+   "ageHours": 4.8064025
   },
   {
    "symbol": "AI",
@@ -5656,7 +5656,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.729255833333333
+   "ageHours": 4.8069580555555556
   },
   {
    "symbol": "EINK",
@@ -5668,7 +5668,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.734255833333333
+   "ageHours": 4.8119580555555554
   },
   {
    "symbol": "TRUMPISM",
@@ -5680,7 +5680,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.735089166666667
+   "ageHours": 4.812791388888889
   },
   {
    "symbol": "SLUSHFUND",
@@ -5692,7 +5692,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.738700277777777
+   "ageHours": 4.8164025
   },
   {
    "symbol": "COMMUNITY",
@@ -5704,7 +5704,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.739255833333333
+   "ageHours": 4.816958055555555
   },
   {
    "symbol": "VYRA",
@@ -5716,7 +5716,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.742033611111111
+   "ageHours": 4.8197358333333336
   },
   {
    "symbol": "AI",
@@ -5728,7 +5728,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.7434225
+   "ageHours": 4.821124722222223
   },
   {
    "symbol": "DJT",
@@ -5740,7 +5740,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.7484225
+   "ageHours": 4.8261247222222226
   },
   {
    "symbol": "BRETT1",
@@ -5752,7 +5752,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.748978055555556
+   "ageHours": 4.826680277777778
   },
   {
    "symbol": "DMPD",
@@ -5764,7 +5764,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.750366944444444
+   "ageHours": 4.828069166666666
   },
   {
    "symbol": "AI",
@@ -5776,7 +5776,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.750644722222222
+   "ageHours": 4.828346944444444
   },
   {
    "symbol": "MEME",
@@ -5788,7 +5788,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.751478055555555
+   "ageHours": 4.829180277777778
   },
   {
    "symbol": "CREDITS",
@@ -5800,7 +5800,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.754533611111111
+   "ageHours": 4.832235833333334
   },
   {
    "symbol": "REP",
@@ -5812,7 +5812,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.755644722222222
+   "ageHours": 4.833346944444444
   },
   {
    "symbol": "REP",
@@ -5824,7 +5824,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.755644722222222
+   "ageHours": 4.833346944444444
   },
   {
    "symbol": "KEELLABS",
@@ -5836,7 +5836,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.757033611111111
+   "ageHours": 4.834735833333333
   },
   {
    "symbol": "REP",
@@ -5848,7 +5848,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.7634225
+   "ageHours": 4.841124722222222
   },
   {
    "symbol": "AI",
@@ -5860,7 +5860,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.764533611111111
+   "ageHours": 4.8422358333333335
   },
   {
    "symbol": "BABYPEPE",
@@ -5872,7 +5872,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.769533611111111
+   "ageHours": 4.847235833333333
   },
   {
    "symbol": "AI",
@@ -5884,7 +5884,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.772589166666667
+   "ageHours": 4.8502913888888886
   },
   {
    "symbol": "Stynx",
@@ -5896,7 +5896,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.774255833333333
+   "ageHours": 4.8519580555555555
   },
   {
    "symbol": "AI",
@@ -5908,7 +5908,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.782866944444445
+   "ageHours": 4.860569166666667
   },
   {
    "symbol": "GLITCH",
@@ -5920,7 +5920,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.791200277777778
+   "ageHours": 4.8689025
   },
   {
    "symbol": "swordcat",
@@ -5932,7 +5932,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.623700277777778
+   "ageHours": 5.7014025
   },
   {
    "symbol": "MYST",
@@ -5944,7 +5944,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.797033611111111
+   "ageHours": 4.874735833333333
   },
   {
    "symbol": "MEME",
@@ -5956,7 +5956,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.800366944444445
+   "ageHours": 4.878069166666666
   },
   {
    "symbol": "CREDITS",
@@ -5968,7 +5968,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.800644722222223
+   "ageHours": 4.878346944444444
   },
   {
    "symbol": "LEMON",
@@ -5980,7 +5980,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.801200277777777
+   "ageHours": 4.8789025
   },
   {
    "symbol": "TRUMPISM",
@@ -5992,7 +5992,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.812311388888889
+   "ageHours": 4.890013611111111
   },
   {
    "symbol": "SpaceX",
@@ -6004,7 +6004,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.813144722222222
+   "ageHours": 4.890846944444444
   },
   {
    "symbol": "CREDITS",
@@ -6016,7 +6016,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.851200277777778
+   "ageHours": 4.9289025
   },
   {
    "symbol": "Downtober",
@@ -6028,7 +6028,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.853700277777778
+   "ageHours": 4.9314025
   },
   {
    "symbol": "Wig",
@@ -6040,7 +6040,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.858978055555555
+   "ageHours": 4.936680277777778
   },
   {
    "symbol": "SYNAPSE",
@@ -6052,7 +6052,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.8617558333333335
+   "ageHours": 4.939458055555556
   },
   {
    "symbol": "DBC",
@@ -6064,7 +6064,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.862866944444445
+   "ageHours": 4.940569166666666
   },
   {
    "symbol": "RCAT",
@@ -6076,7 +6076,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.8659225
+   "ageHours": 4.943624722222222
   },
   {
    "symbol": "MEME",
@@ -6088,7 +6088,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.871200277777778
+   "ageHours": 4.9489025
   },
   {
    "symbol": "ZERO",
@@ -6100,7 +6100,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.872589166666667
+   "ageHours": 4.950291388888889
   },
   {
    "symbol": "RWA",
@@ -6112,7 +6112,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.873700277777778
+   "ageHours": 4.9514025
   },
   {
    "symbol": "PRIVATE",
@@ -6124,7 +6124,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.874811388888889
+   "ageHours": 4.952513611111111
   },
   {
    "symbol": "ZERO",
@@ -6136,7 +6136,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.882866944444444
+   "ageHours": 4.960569166666667
   },
   {
    "symbol": "PRIVATE",
@@ -6148,7 +6148,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.8859225
+   "ageHours": 4.963624722222222
   },
   {
    "symbol": "ZERO",
@@ -6160,7 +6160,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.886755833333333
+   "ageHours": 4.964458055555555
   },
   {
    "symbol": "PRIVATE",
@@ -6172,7 +6172,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.886755833333333
+   "ageHours": 4.964458055555555
   },
   {
    "symbol": "PCAT",
@@ -6184,7 +6184,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.887033611111111
+   "ageHours": 4.964735833333333
   },
   {
    "symbol": "STOCK",
@@ -6196,7 +6196,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.887311388888889
+   "ageHours": 4.965013611111111
   },
   {
    "symbol": "ZERO",
@@ -6208,7 +6208,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.888144722222222
+   "ageHours": 4.965846944444444
   },
   {
    "symbol": "ZCOIN",
@@ -6220,7 +6220,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.8889780555555555
+   "ageHours": 4.966680277777778
   },
   {
    "symbol": "AI",
@@ -6232,7 +6232,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.8889780555555555
+   "ageHours": 4.966680277777778
   },
   {
    "symbol": "PRIVATE",
@@ -6244,7 +6244,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.889255833333333
+   "ageHours": 4.966958055555556
   },
   {
    "symbol": "PRIVATE",
@@ -6256,7 +6256,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.889533611111111
+   "ageHours": 4.9672358333333335
   },
   {
    "symbol": "ZCAT",
@@ -6268,7 +6268,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.890089166666667
+   "ageHours": 4.967791388888889
   },
   {
    "symbol": "PVE",
@@ -6280,7 +6280,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.890366944444445
+   "ageHours": 4.968069166666667
   },
   {
    "symbol": "PI",
@@ -6292,7 +6292,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.8906447222222225
+   "ageHours": 4.968346944444445
   },
   {
    "symbol": "PCAT",
@@ -6304,7 +6304,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.8906447222222225
+   "ageHours": 4.968346944444445
   },
   {
    "symbol": "PRIVATE",
@@ -6316,7 +6316,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.8909225
+   "ageHours": 4.968624722222223
   },
   {
    "symbol": "PRIVATES",
@@ -6328,7 +6328,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.8909225
+   "ageHours": 4.968624722222223
   },
   {
    "symbol": "PRIVATE",
@@ -6340,7 +6340,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.891478055555556
+   "ageHours": 4.969180277777777
   },
   {
    "symbol": "PULSE",
@@ -6352,7 +6352,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.904533611111111
+   "ageHours": 4.982235833333333
   },
   {
    "symbol": "QRM",
@@ -6364,7 +6364,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.9050891666666665
+   "ageHours": 4.982791388888889
   },
   {
    "symbol": "BILLSCEILING",
@@ -6376,7 +6376,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.913144722222222
+   "ageHours": 4.990846944444445
   },
   {
    "symbol": "CTREKT",
@@ -6388,7 +6388,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.932033611111111
+   "ageHours": 5.009735833333333
   },
   {
    "symbol": "ZERO",
@@ -6400,7 +6400,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.9339780555555555
+   "ageHours": 5.011680277777778
   },
   {
    "symbol": "BASK",
@@ -6412,7 +6412,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.9450891666666665
+   "ageHours": 5.022791388888889
   },
   {
    "symbol": "DJT",
@@ -6424,7 +6424,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.959255833333334
+   "ageHours": 5.036958055555556
   },
   {
    "symbol": "STOCK",
@@ -6436,7 +6436,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.962311388888889
+   "ageHours": 5.040013611111111
   },
   {
    "symbol": "CRADLE",
@@ -6448,7 +6448,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.969811388888889
+   "ageHours": 5.047513611111111
   },
   {
    "symbol": "ENU",
@@ -6460,7 +6460,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.971200277777778
+   "ageHours": 5.0489025
   },
   {
    "symbol": "GEMI",
@@ -6472,7 +6472,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.9803669444444445
+   "ageHours": 5.058069166666667
   },
   {
    "symbol": "LINKEN",
@@ -6484,7 +6484,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.985366944444444
+   "ageHours": 5.063069166666667
   },
   {
    "symbol": "STOCK",
@@ -6496,7 +6496,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.987589166666667
+   "ageHours": 5.065291388888889
   },
   {
    "symbol": "LURZ",
@@ -6508,7 +6508,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.995089166666666
+   "ageHours": 5.072791388888889
   },
   {
    "symbol": "LINKEN",
@@ -6520,7 +6520,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 4.996200277777778
+   "ageHours": 5.0739025
   },
   {
    "symbol": "XED",
@@ -6532,7 +6532,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.002033611111111
+   "ageHours": 5.079735833333333
   },
   {
    "symbol": "VECTIS",
@@ -6544,7 +6544,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.005366944444445
+   "ageHours": 5.083069166666666
   },
   {
    "symbol": "ZERO",
@@ -6556,7 +6556,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.0075891666666665
+   "ageHours": 5.085291388888889
   },
   {
    "symbol": "ZERO",
@@ -6568,7 +6568,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.5828669444444445
+   "ageHours": 5.660569166666667
   },
   {
    "symbol": "RUNG",
@@ -6580,7 +6580,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.024811388888889
+   "ageHours": 5.102513611111111
   },
   {
    "symbol": "PORTNOY",
@@ -6592,7 +6592,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.035644722222222
+   "ageHours": 5.113346944444444
   },
   {
    "symbol": "SYNAPSES",
@@ -6604,7 +6604,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.040644722222222
+   "ageHours": 5.118346944444444
   },
   {
    "symbol": "ZERO",
@@ -6616,7 +6616,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.053144722222222
+   "ageHours": 5.1308469444444444
   },
   {
    "symbol": "VALID",
@@ -6628,7 +6628,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.054255833333333
+   "ageHours": 5.131958055555556
   },
   {
    "symbol": "MIRA",
@@ -6640,7 +6640,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.055089166666667
+   "ageHours": 5.132791388888889
   },
   {
    "symbol": "Olav",
@@ -6652,7 +6652,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.0556447222222225
+   "ageHours": 5.133346944444445
   },
   {
    "symbol": "FABLE",
@@ -6664,7 +6664,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.056200277777778
+   "ageHours": 5.1339025
   },
   {
    "symbol": "hardhat",
@@ -6676,7 +6676,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.058144722222222
+   "ageHours": 5.135846944444444
   },
   {
    "symbol": "PENPE",
@@ -6688,7 +6688,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.059533611111111
+   "ageHours": 5.1372358333333334
   },
   {
    "symbol": "hardhat",
@@ -6700,7 +6700,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.068978055555555
+   "ageHours": 5.146680277777778
   },
   {
    "symbol": "LASTCR",
@@ -6712,7 +6712,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.072866944444445
+   "ageHours": 5.150569166666667
   },
   {
    "symbol": "MADF",
@@ -6724,7 +6724,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.074255833333333
+   "ageHours": 5.151958055555555
   },
   {
    "symbol": "PIT",
@@ -6736,7 +6736,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.075366944444444
+   "ageHours": 5.153069166666667
   },
   {
    "symbol": "PONSFLARE",
@@ -6748,7 +6748,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.075366944444444
+   "ageHours": 5.153069166666667
   },
   {
    "symbol": "ZFLY",
@@ -6760,7 +6760,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.0781447222222225
+   "ageHours": 5.155846944444445
   },
   {
    "symbol": "GLITCH",
@@ -6772,7 +6772,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.0984225
+   "ageHours": 5.176124722222222
   },
   {
    "symbol": "CHORD",
@@ -6784,7 +6784,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.100366944444445
+   "ageHours": 5.178069166666667
   },
   {
    "symbol": "SYNAPSE",
@@ -6796,7 +6796,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.1084225
+   "ageHours": 5.186124722222222
   },
   {
    "symbol": "TASKFUEL",
@@ -6808,7 +6808,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.1214780555555555
+   "ageHours": 5.199180277777778
   },
   {
    "symbol": "DIVIDEND",
@@ -6820,7 +6820,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.122033611111111
+   "ageHours": 5.1997358333333334
   },
   {
    "symbol": "CPEPE",
@@ -6832,7 +6832,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.137311388888889
+   "ageHours": 5.215013611111111
   },
   {
    "symbol": "synapse",
@@ -6844,7 +6844,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.142589166666666
+   "ageHours": 5.220291388888889
   },
   {
    "symbol": "ket",
@@ -6856,7 +6856,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.165366944444444
+   "ageHours": 5.2430691666666664
   },
   {
    "symbol": "BADBOT",
@@ -6868,7 +6868,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.4184225
+   "ageHours": 5.4961247222222225
   },
   {
    "symbol": "SOON",
@@ -6880,7 +6880,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.1712002777777775
+   "ageHours": 5.2489025
   },
   {
    "symbol": "SGT",
@@ -6892,7 +6892,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.1784225
+   "ageHours": 5.256124722222222
   },
   {
    "symbol": "SWAY",
@@ -6904,7 +6904,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.190089166666667
+   "ageHours": 5.267791388888889
   },
   {
    "symbol": "wwp",
@@ -6916,7 +6916,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.198700277777778
+   "ageHours": 5.2764025
   },
   {
    "symbol": "TBUCKS",
@@ -6928,7 +6928,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.201755833333333
+   "ageHours": 5.279458055555556
   },
   {
    "symbol": "UPAY",
@@ -6940,7 +6940,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.2031447222222225
+   "ageHours": 5.280846944444445
   },
   {
    "symbol": "SlabPay",
@@ -6952,7 +6952,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.203700277777778
+   "ageHours": 5.2814025
   },
   {
    "symbol": "FABLE",
@@ -6964,7 +6964,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.210644722222222
+   "ageHours": 5.288346944444444
   },
   {
    "symbol": "INVESTORS",
@@ -6976,7 +6976,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.210644722222222
+   "ageHours": 5.288346944444444
   },
   {
    "symbol": "ROBINTHECHAIN",
@@ -6988,7 +6988,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.2134225
+   "ageHours": 5.291124722222222
   },
   {
    "symbol": "enu",
@@ -7000,7 +7000,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.215089166666667
+   "ageHours": 5.2927913888888884
   },
   {
    "symbol": "ZERO",
@@ -7012,7 +7012,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.215366944444445
+   "ageHours": 5.293069166666666
   },
   {
    "symbol": "FABLE",
@@ -7024,7 +7024,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.217033611111111
+   "ageHours": 5.294735833333333
   },
   {
    "symbol": "SHELF",
@@ -7036,7 +7036,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.2175891666666665
+   "ageHours": 5.295291388888889
   },
   {
    "symbol": "NOM",
@@ -7048,7 +7048,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.220366944444445
+   "ageHours": 5.298069166666667
   },
   {
    "symbol": "enu",
@@ -7060,7 +7060,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.222589166666666
+   "ageHours": 5.300291388888889
   },
   {
    "symbol": "FABLE",
@@ -7072,7 +7072,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.223144722222222
+   "ageHours": 5.300846944444444
   },
   {
    "symbol": "RUNG",
@@ -7084,7 +7084,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.240366944444444
+   "ageHours": 5.318069166666667
   },
   {
    "symbol": "ZUCKY",
@@ -7096,7 +7096,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.241755833333333
+   "ageHours": 5.319458055555556
   },
   {
    "symbol": "RTC",
@@ -7108,7 +7108,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.255366944444445
+   "ageHours": 5.333069166666666
   },
   {
    "symbol": "TNODE",
@@ -7120,7 +7120,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.2584225
+   "ageHours": 5.336124722222222
   },
   {
    "symbol": "synapse",
@@ -7132,7 +7132,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.266478055555556
+   "ageHours": 5.344180277777777
   },
   {
    "symbol": "FABLE",
@@ -7144,7 +7144,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.277033611111111
+   "ageHours": 5.354735833333334
   },
   {
    "symbol": "PRAC",
@@ -7156,7 +7156,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.282033611111111
+   "ageHours": 5.359735833333334
   },
   {
    "symbol": "RMC",
@@ -7168,7 +7168,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.292033611111111
+   "ageHours": 5.369735833333333
   },
   {
    "symbol": "RUNG",
@@ -7180,7 +7180,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.298700277777778
+   "ageHours": 5.3764025
   },
   {
    "symbol": "PONDS",
@@ -7192,7 +7192,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.306200277777778
+   "ageHours": 5.3839025
   },
   {
    "symbol": "TWIGPINE",
@@ -7204,7 +7204,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.315644722222222
+   "ageHours": 5.393346944444445
   },
   {
    "symbol": "synapse",
@@ -7216,7 +7216,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.318700277777777
+   "ageHours": 5.3964025
   },
   {
    "symbol": "HOLD",
@@ -7228,7 +7228,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.319255833333333
+   "ageHours": 5.396958055555555
   },
   {
    "symbol": "GEN",
@@ -7240,7 +7240,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.319533611111111
+   "ageHours": 5.397235833333333
   },
   {
    "symbol": "HYPERPAD",
@@ -7252,7 +7252,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.3200891666666665
+   "ageHours": 5.397791388888889
   },
   {
    "symbol": "MASK",
@@ -7264,7 +7264,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.340366944444445
+   "ageHours": 5.418069166666666
   },
   {
    "symbol": "BENI",
@@ -7276,7 +7276,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.341200277777777
+   "ageHours": 5.4189025
   },
   {
    "symbol": "PURBLE",
@@ -7288,7 +7288,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.343700277777778
+   "ageHours": 5.4214025
   },
   {
    "symbol": "SQUADS",
@@ -7300,7 +7300,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.347589166666666
+   "ageHours": 5.425291388888889
   },
   {
    "symbol": "RUNG",
@@ -7312,7 +7312,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.3484225
+   "ageHours": 5.426124722222222
   },
   {
    "symbol": "Resu",
@@ -7324,7 +7324,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.348700277777778
+   "ageHours": 5.4264025
   },
   {
    "symbol": "BILLSCEILING",
@@ -7336,7 +7336,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.3778669444444445
+   "ageHours": 5.455569166666667
   },
   {
    "symbol": "HOLD",
@@ -7348,7 +7348,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.382866944444444
+   "ageHours": 5.460569166666667
   },
   {
    "symbol": "GLITCH",
@@ -7360,7 +7360,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.385644722222223
+   "ageHours": 5.463346944444444
   },
   {
    "symbol": "HOLD",
@@ -7372,7 +7372,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.3889780555555555
+   "ageHours": 5.466680277777778
   },
   {
    "symbol": "FABLE",
@@ -7384,7 +7384,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.389533611111111
+   "ageHours": 5.4672358333333335
   },
   {
    "symbol": "RUNG",
@@ -7396,7 +7396,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.393700277777778
+   "ageHours": 5.4714025
   },
   {
    "symbol": "BILLSCEILING",
@@ -7408,7 +7408,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.3984225
+   "ageHours": 5.476124722222222
   },
   {
    "symbol": "FSDFSD",
@@ -7420,7 +7420,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.408978055555556
+   "ageHours": 5.4866802777777774
   },
   {
    "symbol": "Run",
@@ -7432,7 +7432,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.410089166666666
+   "ageHours": 5.487791388888889
   },
   {
    "symbol": "ORDERS",
@@ -7444,7 +7444,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.4109225
+   "ageHours": 5.488624722222222
   },
   {
    "symbol": "www",
@@ -7456,7 +7456,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.4145336111111115
+   "ageHours": 5.492235833333333
   },
   {
    "symbol": "BYTE",
@@ -7468,7 +7468,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.415644722222222
+   "ageHours": 5.493346944444444
   },
   {
    "symbol": "OVIO",
@@ -7480,7 +7480,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.415644722222222
+   "ageHours": 5.493346944444444
   },
   {
    "symbol": "XMR20",
@@ -7492,7 +7492,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.418978055555556
+   "ageHours": 5.496680277777778
   },
   {
    "symbol": "LOMO",
@@ -7504,7 +7504,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.420644722222222
+   "ageHours": 5.498346944444444
   },
   {
    "symbol": "FABLE",
@@ -7516,7 +7516,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.425089166666667
+   "ageHours": 5.502791388888889
   },
   {
    "symbol": "SIGF",
@@ -7528,7 +7528,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.428144722222222
+   "ageHours": 5.5058469444444444
   },
   {
    "symbol": "SK",
@@ -7540,7 +7540,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.428978055555556
+   "ageHours": 5.506680277777778
   },
   {
    "symbol": "BRRR",
@@ -7552,7 +7552,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.434811388888889
+   "ageHours": 5.512513611111111
   },
   {
    "symbol": "NULL",
@@ -7564,7 +7564,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.436200277777778
+   "ageHours": 5.5139025
   },
   {
    "symbol": "LUCKY",
@@ -7576,7 +7576,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.441200277777778
+   "ageHours": 5.5189025
   },
   {
    "symbol": "CREZA",
@@ -7588,7 +7588,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.442033611111111
+   "ageHours": 5.519735833333334
   },
   {
    "symbol": "TWEEKS",
@@ -7600,7 +7600,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.442311388888889
+   "ageHours": 5.5200136111111116
   },
   {
    "symbol": "BEAV",
@@ -7612,7 +7612,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.443144722222222
+   "ageHours": 5.520846944444444
   },
   {
    "symbol": "SLEEP",
@@ -7624,7 +7624,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.445644722222222
+   "ageHours": 5.5233469444444445
   },
   {
    "symbol": "synapse",
@@ -7636,7 +7636,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.447589166666667
+   "ageHours": 5.525291388888889
   },
   {
    "symbol": "ARGON",
@@ -7648,7 +7648,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.450366944444444
+   "ageHours": 5.528069166666667
   },
   {
    "symbol": "LAUNCH",
@@ -7660,7 +7660,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.452589166666667
+   "ageHours": 5.530291388888889
   },
   {
    "symbol": "DIT",
@@ -7672,7 +7672,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.462033611111111
+   "ageHours": 5.539735833333333
   },
   {
    "symbol": "PANGE",
@@ -7684,7 +7684,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.473700277777778
+   "ageHours": 5.5514025
   },
   {
    "symbol": "TRUBOT",
@@ -7696,7 +7696,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.4759225
+   "ageHours": 5.553624722222223
   },
   {
    "symbol": "ELSE",
@@ -7708,7 +7708,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.478978055555555
+   "ageHours": 5.556680277777778
   },
   {
    "symbol": "BIDEN",
@@ -7720,7 +7720,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.481478055555556
+   "ageHours": 5.559180277777778
   },
   {
    "symbol": "enu",
@@ -7732,7 +7732,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.4834225
+   "ageHours": 5.561124722222222
   },
   {
    "symbol": "BANK",
@@ -7744,7 +7744,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.4900891666666665
+   "ageHours": 5.567791388888889
   },
   {
    "symbol": "ORE",
@@ -7756,7 +7756,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.502311388888889
+   "ageHours": 5.580013611111111
   },
   {
    "symbol": "BOOST",
@@ -7768,7 +7768,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.515366944444445
+   "ageHours": 5.593069166666667
   },
   {
    "symbol": "SCHOUSE",
@@ -7780,7 +7780,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.524533611111111
+   "ageHours": 5.602235833333333
   },
   {
    "symbol": "HAAR",
@@ -7792,7 +7792,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.524811388888889
+   "ageHours": 5.602513611111111
   },
   {
    "symbol": "puter",
@@ -7804,7 +7804,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.532033611111111
+   "ageHours": 5.609735833333334
   },
   {
    "symbol": "TICKT",
@@ -7816,7 +7816,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.5331447222222225
+   "ageHours": 5.610846944444445
   },
   {
    "symbol": "synapse",
@@ -7828,7 +7828,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.5331447222222225
+   "ageHours": 5.610846944444445
   },
   {
    "symbol": "RUNG",
@@ -7840,7 +7840,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.533422777777778
+   "ageHours": 5.611124722222222
   },
   {
    "symbol": "SNAPSES",
@@ -7852,7 +7852,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.547311666666666
+   "ageHours": 5.625013611111111
   },
   {
    "symbol": "FABLE",
@@ -7864,7 +7864,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.552311666666666
+   "ageHours": 5.630013611111111
   },
   {
    "symbol": "GLITCH",
@@ -7876,7 +7876,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.555367222222222
+   "ageHours": 5.633069166666667
   },
   {
    "symbol": "SWAP",
@@ -7888,7 +7888,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.557033888888889
+   "ageHours": 5.634735833333333
   },
   {
    "symbol": "FABLE",
@@ -7900,7 +7900,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.557867222222222
+   "ageHours": 5.6355691666666665
   },
   {
    "symbol": "CAT6900X",
@@ -7912,7 +7912,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.558978333333333
+   "ageHours": 5.636680277777778
   },
   {
    "symbol": "EYEBALL",
@@ -7924,7 +7924,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.563700555555555
+   "ageHours": 5.6414025
   },
   {
    "symbol": "QUANT",
@@ -7936,7 +7936,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.575367222222222
+   "ageHours": 5.653069166666667
   },
   {
    "symbol": "HORMOZ",
@@ -7948,7 +7948,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.576756111111111
+   "ageHours": 5.654458055555556
   },
   {
    "symbol": "[invalid]",
@@ -7960,7 +7960,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.586756111111111
+   "ageHours": 5.6644580555555555
   },
   {
    "symbol": "UNKNOWN",
@@ -7972,7 +7972,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.595922777777778
+   "ageHours": 5.673624722222222
   },
   {
    "symbol": "MOCHI",
@@ -7984,7 +7984,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.609811666666666
+   "ageHours": 5.687513611111111
   },
   {
    "symbol": "PICKFOLD",
@@ -7996,7 +7996,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.613700555555556
+   "ageHours": 5.6914025
   },
   {
    "symbol": "1STLIVE",
@@ -8008,7 +8008,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.616756111111111
+   "ageHours": 5.694458055555556
   },
   {
    "symbol": "FLOPWARS",
@@ -8020,7 +8020,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.617311666666667
+   "ageHours": 5.695013611111111
   },
   {
    "symbol": "1STLIVE",
@@ -8032,7 +8032,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.617867222222222
+   "ageHours": 5.695569166666667
   },
   {
    "symbol": "ROARINGCAT",
@@ -8044,7 +8044,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.632589444444444
+   "ageHours": 5.710291388888889
   },
   {
    "symbol": "synapse",
@@ -8056,7 +8056,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.6337005555555555
+   "ageHours": 5.7114025
   },
   {
    "symbol": "DUMOCRAT",
@@ -8068,7 +8068,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.638422777777778
+   "ageHours": 5.716124722222222
   },
   {
    "symbol": "ZERO",
@@ -8080,7 +8080,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.638422777777778
+   "ageHours": 5.716124722222222
   },
   {
    "symbol": "KAIJU",
@@ -8092,7 +8092,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.639256111111111
+   "ageHours": 5.716958055555556
   },
   {
    "symbol": "SYNAPSE",
@@ -8104,7 +8104,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.6464783333333335
+   "ageHours": 5.724180277777778
   },
   {
    "symbol": "BUN",
@@ -8116,7 +8116,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.646756111111111
+   "ageHours": 5.724458055555556
   },
   {
    "symbol": "OTL",
@@ -8128,7 +8128,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.653700555555556
+   "ageHours": 5.7314025
   },
   {
    "symbol": "GLITCH",
@@ -8140,7 +8140,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.657033888888889
+   "ageHours": 5.734735833333334
   },
   {
    "symbol": "UPAY",
@@ -8152,7 +8152,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.659811666666666
+   "ageHours": 5.737513611111111
   },
   {
    "symbol": "RUNG",
@@ -8164,7 +8164,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.663422777777778
+   "ageHours": 5.741124722222223
   },
   {
    "symbol": "DYNCANE",
@@ -8176,7 +8176,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.673145
+   "ageHours": 5.7508469444444446
   },
   {
    "symbol": "SAI",
@@ -8188,7 +8188,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.687311666666667
+   "ageHours": 5.765013611111111
   },
   {
    "symbol": "RSI",
@@ -8200,7 +8200,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.691200555555556
+   "ageHours": 5.7689025
   },
   {
    "symbol": "SI",
@@ -8212,7 +8212,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.693145
+   "ageHours": 5.770846944444444
   },
   {
    "symbol": "MYSA",
@@ -8224,7 +8224,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.698145
+   "ageHours": 5.775846944444444
   },
   {
    "symbol": "MYLARQ",
@@ -8236,7 +8236,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.704811666666667
+   "ageHours": 5.782513611111111
   },
   {
    "symbol": "Agency",
@@ -8248,7 +8248,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.774533888888889
+   "ageHours": 5.852235833333333
   },
   {
    "symbol": "synapse",
@@ -8260,7 +8260,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.707311666666667
+   "ageHours": 5.785013611111111
   },
   {
    "symbol": "ÆTHERA",
@@ -8272,7 +8272,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.713422777777778
+   "ageHours": 5.791124722222222
   },
   {
    "symbol": "OLVEKA",
@@ -8284,7 +8284,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.715089444444445
+   "ageHours": 5.7927913888888884
   },
   {
    "symbol": "FIRM",
@@ -8296,7 +8296,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.7170338888888885
+   "ageHours": 5.794735833333333
   },
   {
    "symbol": "POS",
@@ -8308,7 +8308,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.719811666666667
+   "ageHours": 5.797513611111111
   },
   {
    "symbol": "GLITCH",
@@ -8320,7 +8320,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.719811666666667
+   "ageHours": 5.797513611111111
   },
   {
    "symbol": "FABLE",
@@ -8332,7 +8332,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.720089444444445
+   "ageHours": 5.797791388888889
   },
   {
    "symbol": "OPEN",
@@ -8344,7 +8344,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.726200555555556
+   "ageHours": 5.8039025
   },
   {
    "symbol": "POND",
@@ -8356,7 +8356,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.740367222222222
+   "ageHours": 5.818069166666667
   },
   {
    "symbol": "FREEDZ",
@@ -8368,7 +8368,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.772033888888889
+   "ageHours": 5.849735833333333
   },
   {
    "symbol": "MIMIC",
@@ -8380,7 +8380,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.780645
+   "ageHours": 5.8583469444444445
   },
   {
    "symbol": "EI",
@@ -8392,7 +8392,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.785645
+   "ageHours": 5.863346944444444
   },
   {
    "symbol": "homo",
@@ -8404,7 +8404,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.795645
+   "ageHours": 5.873346944444444
   },
   {
    "symbol": "MEME",
@@ -8416,7 +8416,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.798145
+   "ageHours": 5.8758469444444446
   },
   {
    "symbol": "HOLD",
@@ -8428,7 +8428,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.805645
+   "ageHours": 5.883346944444445
   },
   {
    "symbol": "SUBMARINU",
@@ -8440,7 +8440,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.807311666666667
+   "ageHours": 5.885013611111111
   },
   {
    "symbol": "BADGE",
@@ -8452,7 +8452,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.808700555555555
+   "ageHours": 5.8864025
   },
   {
    "symbol": "NEAR",
@@ -8464,7 +8464,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.812311666666667
+   "ageHours": 5.890013611111111
   },
   {
    "symbol": "DJI6930",
@@ -8476,7 +8476,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.821478333333333
+   "ageHours": 5.899180277777778
   },
   {
    "symbol": "FOMIES",
@@ -8488,7 +8488,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.825367222222222
+   "ageHours": 5.903069166666667
   },
   {
    "symbol": "Anthropig",
@@ -8500,7 +8500,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.827867222222222
+   "ageHours": 5.905569166666667
   },
   {
    "symbol": "CRUMBLE",
@@ -8512,7 +8512,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.830645
+   "ageHours": 5.908346944444444
   },
   {
    "symbol": "NLX",
@@ -8524,7 +8524,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.831200555555555
+   "ageHours": 5.9089025
   },
   {
    "symbol": "YIELDFY",
@@ -8536,7 +8536,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.834533888888889
+   "ageHours": 5.912235833333333
   },
   {
    "symbol": "CRUMBLE",
@@ -8548,7 +8548,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.839811666666667
+   "ageHours": 5.9175136111111115
   },
   {
    "symbol": "synapse",
@@ -8560,7 +8560,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.844533888888889
+   "ageHours": 5.922235833333334
   },
   {
    "symbol": "Certius",
@@ -8572,7 +8572,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.852589444444445
+   "ageHours": 5.930291388888889
   },
   {
    "symbol": "LUDI",
@@ -8584,7 +8584,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.853422777777777
+   "ageHours": 5.931124722222222
   },
   {
    "symbol": "Revenue",
@@ -8596,7 +8596,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.8548116666666665
+   "ageHours": 5.932513611111111
   },
   {
    "symbol": "COGN",
@@ -8608,7 +8608,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.8548116666666665
+   "ageHours": 5.932513611111111
   },
   {
    "symbol": "SEEDPAY",
@@ -8620,7 +8620,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.858145
+   "ageHours": 5.935846944444444
   },
   {
    "symbol": "TRUST",
@@ -8632,7 +8632,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.8675894444444445
+   "ageHours": 5.945291388888889
   },
   {
    "symbol": "POKE",
@@ -8644,7 +8644,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.870089444444444
+   "ageHours": 5.947791388888889
   },
   {
    "symbol": "PINATA",
@@ -8656,7 +8656,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.874533888888889
+   "ageHours": 5.952235833333333
   },
   {
    "symbol": "IMBUE",
@@ -8668,7 +8668,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.877867222222222
+   "ageHours": 5.955569166666667
   },
   {
    "symbol": "AI",
@@ -8680,7 +8680,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.882589444444444
+   "ageHours": 5.960291388888889
   },
   {
    "symbol": "ANONT",
@@ -8692,7 +8692,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.883145
+   "ageHours": 5.9608469444444445
   },
   {
    "symbol": "GLITCH",
@@ -8704,7 +8704,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.884256111111111
+   "ageHours": 5.961958055555556
   },
   {
    "symbol": "POND",
@@ -8716,7 +8716,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.885645
+   "ageHours": 5.963346944444444
   },
   {
    "symbol": "FOMIES",
@@ -8728,7 +8728,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.889533888888889
+   "ageHours": 5.9672358333333335
   },
   {
    "symbol": "BASEDBID",
@@ -8740,7 +8740,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.889811666666667
+   "ageHours": 5.967513611111111
   },
   {
    "symbol": "SWAP",
@@ -8752,7 +8752,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.890645
+   "ageHours": 5.968346944444445
   },
   {
    "symbol": "FABLE",
@@ -8764,7 +8764,7 @@
    "holders": null,
    "cgId": null,
    "cex": null,
-   "ageHours": 5.890922777777778
+   "ageHours": 5.968625
   }
  ],
  "picks": [
@@ -8803,18 +8803,6 @@
    "holders": 14438,
    "vol24": 456739.734730857,
    "mcap": 1305756.765
-  },
-  {
-   "list": "best setups",
-   "symbol": "HARMONIC",
-   "name": "Harmonic Agent",
-   "address": "0xdee52f2ab639b6942b0d0f0565400b93b7a0fbe5",
-   "pool": "0x77ea11bbfb8f1259c702cb0ebc2105b7c007db89cf30c2f1a8776886a4467c07",
-   "price": 0.004903300831,
-   "liquidity": 419334.1561,
-   "holders": 2708,
-   "vol24": 1011824.99335287,
-   "mcap": 4042858.95771102
   },
   {
    "list": "best setups",

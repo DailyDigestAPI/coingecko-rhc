@@ -45,47 +45,47 @@ export function render(r) {
 <section class="overview">
   <div class="lead">${esc(r.story.today[3] || '')}</div>
   <div class="tiles">
-    ${tile('24h meme volume', '$' + fmtK(o.totalVolume24), o.volPrev24 ? delta((o.volLast24 - o.volPrev24) / o.volPrev24 * 100, 'vs prev 24h') : 'from ' + o.tradeable + ' traded tokens')}
-    ${tile('Meme liquidity', '$' + fmtK(o.totalLiquidity), `across ${o.memesTracked} tokens`)}
-    ${tile('Buyers vs sellers', o.buyerSkew != null ? o.buyerSkew.toFixed(2) + '×' : '—', `${o.buyers24.toLocaleString()} buying · ${o.sellers24.toLocaleString()} selling`, o.buyerSkew == null ? '' : o.buyerSkew >= 1.1 ? 'up' : o.buyerSkew <= 0.9 ? 'down' : '')}
-    ${tile('Breadth', o.breadthPct != null ? o.breadthPct.toFixed(0) + '%' : '—', `of traded memes up · median ${pct(o.medianChange24)}`, o.breadthPct == null ? '' : o.breadthPct >= 55 ? 'up' : o.breadthPct <= 40 ? 'down' : '')}
-    ${tile('New pool every', o.launchEveryMin != null ? (o.launchEveryMin < 1 ? `${Math.round(o.launchEveryMin * 60)}s` : `${o.launchEveryMin.toFixed(1)} min`) : '—', o.launchSpan ? `${o.newPoolsSwept}${o.newPoolsCapped ? '+' : ''} pools created in the last ${o.launchSpan < 10 ? o.launchSpan.toFixed(1) : o.launchSpan.toFixed(0)}h` : 'no launch data')}
-    ${tile('Whale flow', n.whaleTotal.n ? money(n.whaleTotal.buyUsd - n.whaleTotal.sellUsd) : '—', n.whaleTotal.n ? `net, ${n.whaleTotal.n} trades ≥ $${fmtK(CONFIG.notable.whaleTradeUsd)} on the top ${n.whaleTotal.tokens} tokens` : 'no large trades returned', n.whaleTotal.n ? (n.whaleTotal.buyUsd >= n.whaleTotal.sellUsd ? 'up' : 'down') : '')}
+    ${tile('💵 24h meme volume', '$' + fmtK(o.totalVolume24), o.volPrev24 ? delta((o.volLast24 - o.volPrev24) / o.volPrev24 * 100, 'vs prev 24h') : 'from ' + o.tradeable + ' traded tokens')}
+    ${tile('💧 Meme liquidity', '$' + fmtK(o.totalLiquidity), `across ${o.memesTracked} tokens`)}
+    ${tile('⚖️ Buyers vs sellers', o.buyerSkew != null ? o.buyerSkew.toFixed(2) + '×' : '—', `${o.buyers24.toLocaleString()} buying · ${o.sellers24.toLocaleString()} selling`, o.buyerSkew == null ? '' : o.buyerSkew >= 1.1 ? 'up' : o.buyerSkew <= 0.9 ? 'down' : '')}
+    ${tile('📈 Breadth', o.breadthPct != null ? o.breadthPct.toFixed(0) + '%' : '—', `of traded memes up · median ${pct(o.medianChange24)}`, o.breadthPct == null ? '' : o.breadthPct >= 55 ? 'up' : o.breadthPct <= 40 ? 'down' : '')}
+    ${tile('🧪 New pool every', o.launchEveryMin != null ? (o.launchEveryMin < 1 ? `${Math.round(o.launchEveryMin * 60)}s` : `${o.launchEveryMin.toFixed(1)} min`) : '—', o.launchSpan ? `${o.newPoolsSwept}${o.newPoolsCapped ? '+' : ''} pools created in the last ${o.launchSpan < 10 ? o.launchSpan.toFixed(1) : o.launchSpan.toFixed(0)}h` : 'no launch data')}
+    ${tile('🐳 Whale flow', n.whaleTotal.n ? money(n.whaleTotal.buyUsd - n.whaleTotal.sellUsd) : '—', n.whaleTotal.n ? `net, ${n.whaleTotal.n} trades ≥ $${fmtK(CONFIG.notable.whaleTradeUsd)} on the top ${n.whaleTotal.tokens} tokens` : 'no large trades returned', n.whaleTotal.n ? (n.whaleTotal.buyUsd >= n.whaleTotal.sellUsd ? 'up' : 'down') : '')}
   </div>
   <div class="two">
     <div class="prose">
-      <h3>Today in short</h3>
-      ${r.story.today.filter((_, k) => k !== 3).map((p) => `<p>${esc(p)}</p>`).join('')}
+      <h3>📌 Today in short</h3>
+      <ul class="bul">${r.story.today.filter((_, k) => k !== 3).map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
       <p class="dim">${o.survivors7d} of this week's launches still hold $10k+ liquidity · honeypot flags ${o.honeypots} of ${o.honeypotChecked} checked.</p>
     </div>
     <div class="strips">
-      ${strip('Most traded', o.byVolume.map((t) => chip(t, '$' + fmtK(t.vol24))))}
-      ${strip('Trending on GeckoTerminal', o.trending.map((t) => chip(t, '')))}
-      ${strip('Market cap mix', [`<span class="chip"><b>${o.sizeBuckets.micro}</b> under $100k</span>`, `<span class="chip"><b>${o.sizeBuckets.small}</b> $100k–1M</span>`, `<span class="chip"><b>${o.sizeBuckets.mid}</b> $1M–10M</span>`, `<span class="chip"><b>${o.sizeBuckets.large}</b> over $10M</span>`, o.eth ? `<span class="chip dim">ETH $${o.eth.price.toLocaleString(undefined, { maximumFractionDigits: 0 })} ${pct(o.eth.change24)}</span>` : ''])}
+      ${strip('🔥 Most traded', o.byVolume.map((t) => chip(t, '$' + fmtK(t.vol24))))}
+      ${strip('📡 Trending on GeckoTerminal', o.trending.map((t) => chip(t, '')))}
+      ${strip('🧩 Market cap mix', [`<span class="chip"><b>${o.sizeBuckets.micro}</b> under $100k</span>`, `<span class="chip"><b>${o.sizeBuckets.small}</b> $100k–1M</span>`, `<span class="chip"><b>${o.sizeBuckets.mid}</b> $1M–10M</span>`, `<span class="chip"><b>${o.sizeBuckets.large}</b> over $10M</span>`, o.eth ? `<span class="chip dim">ETH $${o.eth.price.toLocaleString(undefined, { maximumFractionDigits: 0 })} ${pct(o.eth.change24)}</span>` : ''])}
     </div>
   </div>
 </section>
 
 <section>
-  <h2>What's happening <span class="count">headlines and on-chain events — what changed, not how much traded</span></h2>
+  <h2>📰 What's happening <span class="count">headlines and on-chain events — what changed, not how much traded</span></h2>
   <div class="prose">${r.story.news.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
   ${newsBlock(r)}
 </section>
 
 <section>
-  <h2>Notable today <span class="count">movers, flows and listings worth knowing before the lists</span></h2>
+  <h2>🔥 Notable today <span class="count">movers, flows and listings worth knowing before the lists</span></h2>
   <div class="prose">${r.story.notable.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
   <div class="notable">
-    ${noteList('Most new holders', n.holderGainers, (t) => `<b class="up">+${t.holders.change24.toLocaleString()}</b> <span class="dim">${t.holders.now.toLocaleString()} total · price ${pct(t.pch.h24)}</span>`)}
-    ${noteList('Volume surges', n.volumeSurges, (t) => `<b class="up">${pct(t.momentum.volChangePct)}</b> <span class="dim">$${fmtK(t.vol24)} · price ${pct(t.pch.h24)}</span>`)}
-    ${noteList('Top gainers 24h', n.gainers, (t) => `<b class="up">${pct(t.pch.h24)}</b> <span class="dim">$${fmtK(t.liquidity)} liq</span>`)}
-    ${noteList('Top losers 24h', n.losers, (t) => `<b class="down">${pct(t.pch.h24)}</b> <span class="dim">$${fmtK(t.liquidity)} liq</span>`)}
+    ${noteList('👥 Most new holders', n.holderGainers, (t) => `<b class="up">+${t.holders.change24.toLocaleString()}</b> <span class="dim">${t.holders.now.toLocaleString()} total · price ${pct(t.pch.h24)}</span>`)}
+    ${noteList('📊 Volume surges', n.volumeSurges, (t) => `<b class="up">${pct(t.momentum.volChangePct)}</b> <span class="dim">$${fmtK(t.vol24)} · price ${pct(t.pch.h24)}</span>`)}
+    ${noteList('🟢 Top gainers 24h', n.gainers, (t) => `<b class="up">${pct(t.pch.h24)}</b> <span class="dim">$${fmtK(t.liquidity)} liq</span>`)}
+    ${noteList('🔴 Top losers 24h', n.losers, (t) => `<b class="down">${pct(t.pch.h24)}</b> <span class="dim">$${fmtK(t.liquidity)} liq</span>`)}
   </div>
   <details class="more"><summary>More movers — volume collapses, wallets leaving, CEX-listed, near ATH</summary><div class="notable">
-    ${noteList('Volume collapses', n.volumeCollapses, (t) => `<b class="down">${pct(t.momentum.volChangePct)}</b> <span class="dim">$${fmtK(t.vol24)} · price ${pct(t.pch.h24)}</span>`)}
-    ${noteList('Most wallets leaving', n.holderLosers, (t) => `<b class="down">${t.holders.change24.toLocaleString()}</b> <span class="dim">${t.holders.now.toLocaleString()} left · price ${pct(t.pch.h24)}</span>`)}
-    ${noteList('On a CEX', n.cexListed, (t) => `<span class="dim">${esc(t.coin.cexListings.slice(0, 3).join(', '))}${t.coin.cexListings.length > 3 ? ` +${t.coin.cexListings.length - 3}` : ''}</span>`)}
-    ${noteList('Near all-time high', n.nearAth, (t) => `<b class="up">${pct(t.coin.athChangePct)}</b> <span class="dim">from ATH</span>`, 'Nothing within 15% of its ATH today.')}
+    ${noteList('🫧 Volume collapses', n.volumeCollapses, (t) => `<b class="down">${pct(t.momentum.volChangePct)}</b> <span class="dim">$${fmtK(t.vol24)} · price ${pct(t.pch.h24)}</span>`)}
+    ${noteList('🚶 Most wallets leaving', n.holderLosers, (t) => `<b class="down">${t.holders.change24.toLocaleString()}</b> <span class="dim">${t.holders.now.toLocaleString()} left · price ${pct(t.pch.h24)}</span>`)}
+    ${noteList('🏦 On a CEX', n.cexListed, (t) => `<span class="dim">${esc(t.coin.cexListings.slice(0, 3).join(', '))}${t.coin.cexListings.length > 3 ? ` +${t.coin.cexListings.length - 3}` : ''}</span>`)}
+    ${noteList('🏔️ Near all-time high', n.nearAth, (t) => `<b class="up">${pct(t.coin.athChangePct)}</b> <span class="dim">from ATH</span>`, 'Nothing within 15% of its ATH today.')}
     ${n.newOnCoinGecko.length ? noteList('New on CoinGecko this week', n.newOnCoinGecko, (t) => `<span class="dim">listed ${new Date(t.coin.listedAt).toISOString().slice(0, 10)}</span>`) : ''}
   </div></details>
   ${whaleTable(n)}
@@ -93,13 +93,13 @@ export function render(r) {
 
 <div class="grid2">
 <section>
-  <h2>Who's actually winning <span class="count">top realized PnL across the ${Math.min(CONFIG.wallets.maxTokens, r.tokens.filter((t) => t.topTraders).length)} most traded memes</span></h2>
+  <h2>🏆 Who's actually winning <span class="count">top realized PnL across the ${Math.min(CONFIG.wallets.maxTokens, r.tokens.filter((t) => t.topTraders).length)} most traded memes</span></h2>
   <div class="prose">${r.story.wallets.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
   ${r.wallets.traders.length ? r.wallets.traders.map(walletCard).join('') : empty(`Every one of the ${r.wallets.checked} top-PnL wallets checked today is a bot, router or insider wallet.`)}
   ${r.wallets.biggest && r.wallets.biggest.kind !== 'trader' ? `<p class="rule">For scale: the single largest realized PnL belongs to <a href="${esc(r.wallets.biggest.explorer || '#')}">${short(r.wallets.biggest.address)}</a> at <b>${money(r.wallets.biggest.pnl.realized ?? r.wallets.biggest.realizedPnl)}</b> — ${esc(r.wallets.biggest.tags[0]?.text || '')}.</p>` : ''}
 </section>
 <section>
-  <h2>Yesterday's picks, today <span class="count">${r.yesterday ? `listed on ${r.yesterday.day}` : 'tracking starts today'}</span></h2>
+  <h2>🔁 Yesterday's picks, today <span class="count">${r.yesterday ? `listed on ${r.yesterday.day}` : 'tracking starts today'}</span></h2>
   <div class="prose">${r.story.yesterday.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
   ${r.yesterday ? `<table class="revisit"><thead><tr><th>List</th><th>Token</th><th>Liquidity then → now</th><th>Price</th><th>Status</th><th>Today</th></tr></thead><tbody>${r.yesterday.rows.map(revisitRow).join('')}</tbody></table>` : ''}
 </section>
@@ -118,7 +118,7 @@ export function render(r) {
 </header>
 
 <section>
-  <h2>New launches worth a look <span class="count">${r.newLaunches.picks.length} picked · ${r.newLaunches.early} in the early window · ${r.newLaunches.passed} passed the bar · ${r.newLaunches.candidates} launched this week</span></h2>
+  <h2>🚀 New launches worth a look <span class="count">${r.newLaunches.picks.length} picked · ${r.newLaunches.early} in the early window · ${r.newLaunches.passed} passed the bar · ${r.newLaunches.candidates} launched this week</span></h2>
   <p class="rule">Rule: ${esc(r.newLaunches.rule)}. Ranked by holder growth, buyer skew, unique buyers, depth, turnover, range, GT Score and socials.</p>
   <div class="prose lead-p">${r.story.launches.slice(0, 1).map((p) => `<p>${esc(p)}</p>`).join('')}</div>
   <div class="prose small">${r.story.launches.slice(1).map((p) => `<p>${esc(p)}</p>`).join('')}</div>
@@ -142,7 +142,7 @@ export function render(r) {
 ${r.bands.map(bandSection).join('')}
 
 <section>
-  <h2>Avoid <span class="count">traded today, failed a hard check</span></h2>
+  <h2>⛔ Avoid <span class="count">traded today, failed a hard check</span></h2>
   <div class="prose">${r.story.avoid.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
   <div class="grid2">${r.avoid.length ? r.avoid.map(avoidRow).join('') : empty('No traded token failed a hard check today.')}</div>
 </section>
@@ -184,7 +184,7 @@ function noteList(title, items, fmt, emptyText = '') {
 
 function whaleTable(n) {
   if (!n.whaleTrades.length) return '';
-  return `<div class="tbl whales"><h4>Biggest trades <span class="dim">≥ $${fmtK(CONFIG.notable.whaleTradeUsd)} on the ${n.whaleTotal.tokens} most traded tokens · ${n.whaleTotal.n} trades · <span class="up">${money(n.whaleTotal.buyUsd)} bought</span> · <span class="down">${money(n.whaleTotal.sellUsd)} sold</span></span></h4>
+  return `<div class="tbl whales"><h4>🐳 Biggest trades <span class="dim">≥ $${fmtK(CONFIG.notable.whaleTradeUsd)} on the ${n.whaleTotal.tokens} most traded tokens · ${n.whaleTotal.n} trades · <span class="up">${money(n.whaleTotal.buyUsd)} bought</span> · <span class="down">${money(n.whaleTotal.sellUsd)} sold</span></span></h4>
     <div class="grid2">
       <table><tbody>${n.whaleTrades.slice(0, 6).map((x) => `<tr><td class="${x.kind === 'buy' ? 'up' : 'down'}">${x.kind}</td><td><b>${money(x.usd)}</b></td><td><a class="tok" href="https://www.geckoterminal.com/${CONFIG.network}/pools/${esc(x.pool)}?${UTM}">${esc(x.symbol)}</a></td><td><a class="addr" href="${CONFIG.explorer}/tx/${esc(x.tx)}">${short(x.wallet)}</a></td><td class="dim num">${new Date(x.ts).toISOString().slice(11, 16)}</td></tr>`).join('')}</tbody></table>
       <div><div class="dim" style="margin-bottom:4px">Most active large wallets</div><table><tbody>${n.whaleWallets.map((w) => `<tr><td><a class="addr" href="${CONFIG.explorer}/address/${esc(w.wallet)}">${short(w.wallet)}</a></td><td><span class="up">${money(w.buy)}</span> / <span class="down">${money(w.sell)}</span></td><td class="dim">${w.n} trade${w.n > 1 ? 's' : ''} · ${w.tokens.map(esc).join(', ')}</td></tr>`).join('')}</tbody></table></div>
@@ -195,13 +195,13 @@ function whaleTable(n) {
 function bandSection(b) {
   const story = (b.story || []).map((p) => `<p>${esc(p)}</p>`).join('');
   return `<section class="band">
-    <h2>${esc(b.label)} market cap <span class="count">${b.count} tokens · $${fmtK(b.liquidity)} liquidity · $${fmtK(b.volume)} volume · ${b.traded ? Math.round((b.up / b.traded) * 100) : 0}% up</span></h2>
+    <h2>${b.rotate ? '🐋' : '💎'} ${esc(b.label)} market cap <span class="count">${b.count} tokens · $${fmtK(b.liquidity)} liquidity · $${fmtK(b.volume)} volume · ${b.traded ? Math.round((b.up / b.traded) * 100) : 0}% up</span></h2>
     <div class="prose">${story}</div>
     ${b.table.length ? `<details class="more"><summary>Most traded in this band (${b.table.length})</summary><table class="bandtable"><thead><tr><th>Token</th><th>Age</th><th>Mcap</th><th>Liq</th><th>Vol 24h</th><th>24h</th><th>Buyers / sellers</th><th>Holders</th><th>Top-10</th><th>Flags</th></tr></thead><tbody>${b.table.map(bandRow).join('')}</tbody></table></details>` : empty('No token in this band traded with real liquidity today.')}
-    <h3 class="sub-h">Best setups <span class="count">visible demand in a token you can still get into</span></h3>
+    <h3 class="sub-h">🎯 Best setups <span class="count">visible demand in a token you can still get into</span></h3>
     <p class="rule">Rule: ${esc(b.setups.rule)}.</p>
     ${b.setups.picks.length ? b.setups.picks.map((t, i) => deepCard(t, i + 1, 'up', `${t.why} · score ${t.score.toFixed(0)}`)).join('') : empty(`${b.setups.gated} tokens passed the gate, none scored ${CONFIG.setups.minScore}+. Nothing worth chasing in this band today.`)}
-    ${b.rotate ? `<h3 class="sub-h">Consider rotating out <span class="count">bags losing power — wallets leaving, volume drying up</span></h3>
+    ${b.rotate ? `<h3 class="sub-h">🚪 Consider rotating out <span class="count">bags losing power — wallets leaving, volume drying up</span></h3>
     <p class="rule">Rule: ${esc(b.fading.rule)}.</p>
     ${b.fading.picks.length ? b.fading.picks.map((t, i) => deepCard(t, i + 1, 'down', t.reasons.join(' · '))).join('') : empty(`Checked ${b.fading.checked} tokens in this band. Nothing is bleeding on two fronts at once today.`)}` : ''}
   </section>`;
@@ -222,7 +222,7 @@ function deepCard(t, n, kind, headline = '') {
   const thesis = story.find((x) => x.startsWith('Thesis:'));
   const breaks = story.find((x) => x.startsWith('What breaks it:'));
   const rest = story.filter((x) => x !== thesis && x !== breaks);
-  const verdict = kind === 'launch' ? `Early, and the data says demand is real — score ${t.score.toFixed(0)}/100` : kind === 'up' ? (t.inDip ? 'On a dip with demand still arriving' : 'Demand is visible and it is still tradeable') : 'Wallets are leaving — if you hold it, read this first';
+  const verdict = kind === 'launch' ? `🚀 Early, and the data says demand is real — score ${t.score.toFixed(0)}/100` : kind === 'up' ? (t.inDip ? '🎯 On a dip with demand still arriving' : '🎯 Demand is visible and it is still tradeable') : '📉 Wallets are leaving — if you hold it, read this first';
   return `<article class="deep kind-${kind}">
     <div class="head">
       <span class="rank">#${n}</span>
@@ -239,21 +239,21 @@ function deepCard(t, n, kind, headline = '') {
     </div>
     <div class="cols">
       <div class="col-main">
-        ${thesis ? `<div class="callout good"><b>Thesis</b>${esc(thesis.replace(/^Thesis:\s*/, ''))}</div>` : ''}
-        ${breaks ? `<div class="callout bad"><b>What breaks it</b>${esc(breaks.replace(/^What breaks it:\s*/, ''))}</div>` : ''}
+        ${thesis ? `<div class="callout good"><b>✅ Thesis</b>${esc(thesis.replace(/^Thesis:\s*/, ''))}</div>` : ''}
+        ${breaks ? `<div class="callout bad"><b>⚠️ What breaks it</b>${esc(breaks.replace(/^What breaks it:\s*/, ''))}</div>` : ''}
         <div class="prose">${rest.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
         ${flags(t.flags)}
         ${links(t)}
       </div>
       <div class="col-side">
         ${spark(t, 420, 70)}
-        ${t.sizing ? `<div class="side-box"><h5>Price impact of a buy</h5><div class="impact">${t.sizing.map((x) => `<span><b>$${fmtK(x.usd)}</b> → ${x.impactPct < 10 ? x.impactPct.toFixed(1) : x.impactPct.toFixed(0)}%</span>`).join('')}</div><div class="dim">constant-product estimate, before fees</div></div>` : ''}
-        ${t.overhang ? `<div class="side-box"><h5>Largest wallet vs pool</h5><div><b>$${fmtK(t.overhang.usd)}</b> = ${t.overhang.pctOfPool.toFixed(0)}% of the pool · ~${t.overhang.impactPct.toFixed(0)}% impact if it sold</div></div>` : ''}
-        <div class="side-box"><h5>Safety</h5><div>Honeypot: <b>${i.honeypot === true ? 'YES' : i.honeypot === false ? 'no' : 'unknown'}</b> · mint/freeze: <b>${i.mintAuthority || i.freezeAuthority ? 'ACTIVE' : 'none'}</b> · GT Score <b>${i.gtScore != null ? i.gtScore.toFixed(0) : '—'}</b></div><div>Liquidity locked: <b>${locked}</b> · dev holding: <b>${dev}</b></div><div>Listings: <b>${esc(listings)}</b>${t.coin?.athChangePct != null ? ` · ${pct(t.coin.athChangePct)} from ATH` : ''}</div>
+        ${t.sizing ? `<div class="side-box"><h5>💸 Price impact of a buy</h5><div class="impact">${t.sizing.map((x) => `<span><b>$${fmtK(x.usd)}</b> → ${x.impactPct < 10 ? x.impactPct.toFixed(1) : x.impactPct.toFixed(0)}%</span>`).join('')}</div><div class="dim">constant-product estimate, before fees</div></div>` : ''}
+        ${t.overhang ? `<div class="side-box"><h5>🐋 Largest wallet vs pool</h5><div><b>$${fmtK(t.overhang.usd)}</b> = ${t.overhang.pctOfPool.toFixed(0)}% of the pool · ~${t.overhang.impactPct.toFixed(0)}% impact if it sold</div></div>` : ''}
+        <div class="side-box"><h5>🛡️ Safety</h5><div>Honeypot: <b>${i.honeypot === true ? 'YES' : i.honeypot === false ? 'no' : 'unknown'}</b> · mint/freeze: <b>${i.mintAuthority || i.freezeAuthority ? 'ACTIVE' : 'none'}</b> · GT Score <b>${i.gtScore != null ? i.gtScore.toFixed(0) : '—'}</b></div><div>Liquidity locked: <b>${locked}</b> · dev holding: <b>${dev}</b></div><div>Listings: <b>${esc(listings)}</b>${t.coin?.athChangePct != null ? ` · ${pct(t.coin.athChangePct)} from ATH` : ''}</div>
         <div class="socials">${social('web', t.socials.website)}${social('X', t.socials.twitter && 'https://x.com/' + t.socials.twitter)}${social('TG', t.socials.telegram && 'https://t.me/' + t.socials.telegram)}${social('DC', t.socials.discord)}${t.coin?.watchlistUsers ? `<span class="dim">${t.coin.watchlistUsers} watchlists</span>` : ''}</div></div>
       </div>
     </div>
-    <details class="more"><summary>Full data — flow, holders, traders, every metric</summary>
+    <details class="more"><summary>🔍 Full data — flow, holders, traders, every metric</summary>
       <div class="kv">
         ${kv('Vol 1h / 6h', `$${fmtK(t.vol1)} / $${fmtK(t.vol6)}`, t.momentum?.volChangePct != null ? `<span class="${tone(t.momentum.volChangePct)}">${pct(t.momentum.volChangePct)}</span> vs prev 24h` : '')}${kv('Buyers / sellers 6h', `${t.tx6.buyers} / ${t.tx6.sellers}`, t.buyersRatio6 != null && t.buyersRatio6 !== Infinity ? t.buyersRatio6.toFixed(2) + '×' : '')}
         ${t.holders?.rate6 != null ? kv('Holder velocity', `${Math.round(t.holders.rate6)}/h`, t.holders.rate6prev != null ? `vs ${Math.round(t.holders.rate6prev)}/h the 6h before` : 'last 6h') : ''}${t.buyersRatio1 != null && t.buyersRatio1 !== Infinity ? kv('Buyer skew 1h → 24h', `${t.buyersRatio1.toFixed(2)}× → ${t.buyersRatio != null && t.buyersRatio !== Infinity ? t.buyersRatio.toFixed(2) : '∞'}×`, `${t.tx1.buyers} buyers / ${t.tx1.sellers} sellers last hour`) : ''}
@@ -271,7 +271,7 @@ function flowTable(t) {
   const f = t.flow;
   if (!f) return `<div class="tbl"><h4>Recent flow</h4><div class="dim">no trades returned</div></div>`;
   const win = f.spanMin < 90 ? `${Math.round(f.spanMin)} min` : `${(f.spanMin / 60).toFixed(1)}h`;
-  return `<div class="tbl"><h4>Recent flow <span class="dim">last ${f.n} trades · ${win}</span></h4>
+  return `<div class="tbl"><h4>🌊 Recent flow <span class="dim">last ${f.n} trades · ${win}</span></h4>
     <div class="flowbar"><i class="b" style="width:${(f.buyUsd / Math.max(1, f.buyUsd + f.sellUsd) * 100).toFixed(0)}%"></i></div>
     <div class="flowline"><span class="up">bought ${money(f.buyUsd)}</span> · <span class="down">sold ${money(f.sellUsd)}</span> · net <b class="${tone(f.netUsd)}">${money(f.netUsd)}</b> · ${f.wallets} wallets · median ${money(f.medianUsd)}${f.driftPct != null ? ` · price ${pct(f.driftPct)} in window` : ''}</div>
     <table><tbody>
@@ -283,13 +283,13 @@ function flowTable(t) {
 
 function holdersTable(t) {
   if (!t.topHolders) return `<div class="tbl"><h4>Top holders</h4><div class="dim">holder list not available</div></div>`;
-  return `<div class="tbl"><h4>Top holders <span class="dim">share of supply</span></h4><table class="holders"><tbody>${t.topHolders.slice(0, 10).map((h) => `<tr><td class="k">${h.rank}</td><td><a class="addr" href="${CONFIG.explorer}/address/${esc(h.address)}">${short(h.address)}</a>${h.label ? ` <span class="tag grey">${esc(h.label)}</span>` : ''}</td><td class="num">${h.pct != null ? h.pct.toFixed(2) + '%' : '—'}</td><td class="num dim">${h.valueUsd != null ? '$' + fmtK(h.valueUsd) : ''}</td></tr>`).join('')}</tbody></table></div>`;
+  return `<div class="tbl"><h4>👛 Top holders <span class="dim">share of supply</span></h4><table class="holders"><tbody>${t.topHolders.slice(0, 10).map((h) => `<tr><td class="k">${h.rank}</td><td><a class="addr" href="${CONFIG.explorer}/address/${esc(h.address)}">${short(h.address)}</a>${h.label ? ` <span class="tag grey">${esc(h.label)}</span>` : ''}</td><td class="num">${h.pct != null ? h.pct.toFixed(2) + '%' : '—'}</td><td class="num dim">${h.valueUsd != null ? '$' + fmtK(h.valueUsd) : ''}</td></tr>`).join('')}</tbody></table></div>`;
 }
 
 function tradersTable(t) {
   if (!t.topTraders) return `<div class="tbl"><h4>Top traders</h4><div class="dim">trader list not available</div></div>`;
   const rows = [...t.topTraders].sort((a, b) => (b.realizedPnl || 0) - (a.realizedPnl || 0)).slice(0, 5);
-  return `<div class="tbl"><h4>Top traders <span class="dim">realized PnL on this token</span></h4><table class="traders"><tbody>${rows.map((w) => `<tr><td><a class="addr" href="${esc(w.explorer || CONFIG.explorer + '/address/' + w.address)}">${short(w.address)}</a>${w.buys === 0 && (w.sellUsd || 0) > 1000 ? ' <span class="tag amber">sold, never bought</span>' : ''}</td><td class="num ${tone(w.realizedPnl)}">${money(w.realizedPnl)}</td><td class="num dim">${w.buys}b / ${w.sells}s</td><td class="num dim">${w.avgBuy && w.avgSell ? `avg ${price(w.avgBuy)} → ${price(w.avgSell)}` : ''}</td></tr>`).join('')}</tbody></table></div>`;
+  return `<div class="tbl"><h4>🧠 Top traders <span class="dim">realized PnL on this token</span></h4><table class="traders"><tbody>${rows.map((w) => `<tr><td><a class="addr" href="${esc(w.explorer || CONFIG.explorer + '/address/' + w.address)}">${short(w.address)}</a>${w.buys === 0 && (w.sellUsd || 0) > 1000 ? ' <span class="tag amber">sold, never bought</span>' : ''}</td><td class="num ${tone(w.realizedPnl)}">${money(w.realizedPnl)}</td><td class="num dim">${w.buys}b / ${w.sells}s</td><td class="num dim">${w.avgBuy && w.avgSell ? `avg ${price(w.avgBuy)} → ${price(w.avgSell)}` : ''}</td></tr>`).join('')}</tbody></table></div>`;
 }
 
 function avoidRow(t) {
@@ -499,5 +499,37 @@ details.more{border:1px dashed var(--line);background:#fff}details.more summary{
 .heat{background:transparent}.heat-hot{color:#4be09a;border-color:#4be09a}.heat-cold{color:#ff6b84;border-color:#ff6b84}.heat-mixed{color:#ffb454;border-color:#ffb454}
 footer{color:var(--mute);border-top-color:var(--line)}footer a{color:var(--ink)}
 a{border-bottom-color:var(--line)}
+
+/* ---- V0.1 colour bump (+20–30%): stronger page hues, tinted surfaces behind each page, bolder state tints ---- */
+:root{--c1:#0a66ff;--c2:#2f9a00;--c3:#e06a00;--up:#0f9a4f;--down:#e0213f;--amber:#d85f00;--c1b:#4cc9ff;--c2b:#b9ff3b;--c3b:#ffac3c}
+/* every section below a banner sits on a faint wash of that page's colour */
+.banner ~ section{background:color-mix(in srgb,var(--pc) 7%,#fff);border:1px solid color-mix(in srgb,var(--pc) 22%,var(--line));border-radius:18px;padding:22px 24px;margin-top:28px}
+.banner ~ .grid2{margin-top:28px}.grid2>section{margin-top:0}
+.banner ~ .band{background:color-mix(in srgb,var(--pc) 9%,#fff);border-top:1px solid color-mix(in srgb,var(--pc) 22%,var(--line))}
+h2{border-left-width:7px}.prose h3,.strip .label,.note h4,.tbl h4,.side-box h5,.bandtable th,.revisit th{color:var(--pc)}
+.lead{border-left-width:8px}
+.tile{border:2px solid color-mix(in srgb,var(--pcb) 55%,var(--inkline))}.tile .label{color:var(--pcb)}.tile.up{border-color:#4be09a}.tile.down{border-color:#ff6b84}
+.chip{background:color-mix(in srgb,var(--pc) 10%,#fff);border-color:color-mix(in srgb,var(--pc) 40%,var(--line))}
+.note{background:#fff;border:2px solid color-mix(in srgb,var(--pc) 35%,var(--line))}
+.deep{border-width:3px;background:#fff}.deep.kind-launch{border-color:var(--c2);box-shadow:0 18px 40px -26px color-mix(in srgb,var(--c2) 60%,transparent)}.deep.kind-up{border-color:var(--up);box-shadow:0 18px 40px -26px color-mix(in srgb,var(--up) 60%,transparent)}.deep.kind-down{border-color:var(--down);box-shadow:0 18px 40px -26px color-mix(in srgb,var(--down) 60%,transparent)}
+.big{background:color-mix(in srgb,var(--pc) 8%,#fff);border:1px solid color-mix(in srgb,var(--pc) 25%,var(--line))}.big.up{background:#d9f5e6;border-color:#58c98f}.big.down{background:#fde0e6;border-color:#f28ca0}
+.callout.good{background:#d9f5e6;border-color:#58c98f}.callout.bad{background:#fde0e6;border-color:#f28ca0}
+.side-box{background:color-mix(in srgb,var(--pc) 8%,#fff);border-color:color-mix(in srgb,var(--pc) 28%,var(--line))}.spark{background:color-mix(in srgb,var(--pc) 6%,#fff);border-color:color-mix(in srgb,var(--pc) 28%,var(--line))}
+.flag.red{background:#fde0e6;border-color:#f28ca0}.flag.amber{background:#ffe9cc;border-color:#f3b36a}.flag.green{background:#d9f5e6;border-color:#58c98f}
+.links a{border:2px solid color-mix(in srgb,var(--pc) 40%,var(--line));background:#fff}
+details.more{border:2px dashed color-mix(in srgb,var(--pc) 40%,var(--line));background:#fff}details.more summary{color:var(--ink)}
+.tbl{background:#fff;border:1px solid color-mix(in srgb,var(--pc) 28%,var(--line))}
+.avoidcard{border-color:#f28ca0;background:#fff7f8}.walletcard{border:2px solid color-mix(in srgb,var(--pc) 35%,var(--line));background:#fff}
+.bandtable tr:nth-child(even) td{background:color-mix(in srgb,var(--pc) 8%,#fff)}
+.empty{border-color:color-mix(in srgb,var(--pc) 45%,var(--line));background:#fff}
+.rank{background:var(--pc)}.tag{font-weight:700}
+.sub-h{border-left-width:5px}.band>h2{border-left-width:10px}
+.heat-hot{background:rgba(75,224,154,.15)}.heat-cold{background:rgba(255,107,132,.15)}.heat-mixed{background:rgba(255,172,60,.15)}
+footer{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 24px}
+
+ul.bul{list-style:none;margin:0 0 10px;padding:0}ul.bul li{position:relative;padding:4px 0 4px 22px;margin:0}ul.bul li::before{content:"▸";position:absolute;left:4px;color:var(--pc);font-weight:800}
+.flag.red::before{content:"⛔ "}.flag.amber::before{content:"⚠️ "}.flag.green::before{content:"✅ "}.flag.grey::before{content:"ℹ️ "}
+.chip b.up::before{content:"▲ "}.chip b.down::before{content:"▼ "}.big.up b::before{content:"▲ "}.big.down b::before{content:"▼ "}
+.note li b.up::before{content:"▲ "}.note li b.down::before{content:"▼ "}
 @media print{.banner{-webkit-print-color-adjust:exact;print-color-adjust:exact}.page{padding:0}a{border:0}.pagebreak{page-break-after:always;break-after:page}.top.second{margin-top:0;border-top:0}.deep,.avoidcard,.walletcard{break-inside:avoid}details.more{display:none}}
 `;
