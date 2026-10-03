@@ -114,6 +114,10 @@ export async function collect(cg, { network = CONFIG.network, log = () => {} } =
   const bySymbol = new Map();
   for (const t of memes) { const k = (t.symbol || '').toUpperCase(); bySymbol.set(k, (bySymbol.get(k) || 0) + 1); }
   for (const t of memes) t.copycats = (bySymbol.get((t.symbol || '').toUpperCase()) || 1) - 1;
+  // If a much bigger token shares the ticker, say so — the small one is usually riding the name
+  const biggestBySymbol = new Map();
+  for (const t of memes) { const k = (t.symbol || '').toUpperCase(); const cap = t.mcap || t.fdv || 0; if (!biggestBySymbol.has(k) || cap > (biggestBySymbol.get(k).mcap || biggestBySymbol.get(k).fdv || 0)) biggestBySymbol.set(k, t); }
+  for (const t of memes) { const big = biggestBySymbol.get((t.symbol || '').toUpperCase()); const cap = t.mcap || t.fdv || 0; t.biggerTwin = big && big !== t && (big.mcap || big.fdv || 0) > 3 * cap && big.liquidity >= 50_000 ? { address: big.address, pool: big.pool.address, mcap: big.mcap || big.fdv, ageHours: big.ageHours, liquidity: big.liquidity } : null; }
   const newestSpanHours = Math.max(0, ...newest.map((p) => hoursSince(p.attributes.pool_created_at) || 0));
 
   // ---- 4. Per-token detail, only where it can matter ----
@@ -221,6 +225,7 @@ export async function collect(cg, { network = CONFIG.network, log = () => {} } =
       twitter: c.links?.twitter_screen_name || null,
       telegram: c.links?.telegram_channel_identifier || null,
       homepage: (c.links?.homepage || []).filter(Boolean)[0] || null,
+      listedAt: c.listing_timestamp || null,
       tickersTotal: tickers.length,
       cexListings: dedupe(cex.map((k) => k.market)).slice(0, 8),
       dexCount: tickers.length - cex.length,
@@ -259,6 +264,18 @@ export async function collect(cg, { network = CONFIG.network, log = () => {} } =
     w.pnlRaw = pnl?.data ?? null;
   }));
 
+  // ---- 8b. Whale trades: big swaps today across the most traded tokens ----
+  const whaleTargets = [...memes].sort((a, b) => b.vol24 - a.vol24).slice(0, CONFIG.notable.whaleTradeTokens);
+  log(`whales: trades ≥ $${CONFIG.notable.whaleTradeUsd.toLocaleString()} across the ${whaleTargets.length} most traded tokens`);
+  const bigTrades = [];
+  await Promise.all(whaleTargets.map(async (t) => {
+    const res = await cg.get(`${net}/pools/${t.pool.address}/trades`, { trade_volume_in_usd_greater_than: CONFIG.notable.whaleTradeUsd }, { optional: true });
+    for (const r of res?.data || []) {
+      const a = r.attributes;
+      bigTrades.push({ symbol: t.symbol, address: t.address, pool: t.pool.address, ts: a.block_timestamp, kind: a.kind, usd: N(a.volume_in_usd) ?? 0, wallet: a.tx_from_address, tx: a.tx_hash });
+    }
+  }));
+
   // ---- 9. Native + global context ----
   const eth = await cg.get('/simple/price', { ids: 'ethereum', vs_currencies: 'usd', include_24hr_change: 'true' }, { optional: true });
 
@@ -270,6 +287,7 @@ export async function collect(cg, { network = CONFIG.network, log = () => {} } =
     infraExcluded: infra,
     eth: eth?.ethereum ? { price: eth.ethereum.usd, change24: eth.ethereum.usd_24h_change } : null,
     tokens: memes,
+    bigTrades,
     wallets,
     stats: cg.stats,
   };

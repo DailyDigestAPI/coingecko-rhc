@@ -17,6 +17,7 @@ export function render(r) {
   const day = new Date(r.generatedAt);
   const dateStr = day.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   const timeStr = day.toISOString().slice(11, 16) + ' UTC';
+  const n = r.notable;
 
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -24,10 +25,10 @@ export function render(r) {
 <style>${CSS}</style></head>
 <body><main class="page">
 
-<!-- ============================== PAGE 1 ============================== -->
+<!-- ============================== PAGE 1 · DIGEST ============================== -->
 <header class="top">
   <div>
-    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · page 1 of 2</div>
+    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · page 1 of 3 · the chain today</div>
     <h1>${dateStr} <span class="heat heat-${o.heat.toLowerCase()}">${o.heat}</span></h1>
     <div class="sub">${o.heatWhy.map(esc).join(' · ')}</div>
   </div>
@@ -47,7 +48,7 @@ export function render(r) {
     ${tile('New pool every', o.launchEveryMin != null ? (o.launchEveryMin < 1 ? `${Math.round(o.launchEveryMin * 60)}s` : `${o.launchEveryMin.toFixed(1)} min`) : '—', o.launchSpan ? `${o.newPoolsSwept}${o.newPoolsCapped ? '+' : ''} pools created in the last ${o.launchSpan < 10 ? o.launchSpan.toFixed(1) : o.launchSpan.toFixed(0)}h` : 'no launch data')}
     ${tile('Launches still alive', o.survivors7d.toLocaleString(), `tokens 1–7 days old with ≥ $10k liquidity (of ${o.newOlderThan24h} seen)`)}
     ${tile('Honeypot rate', o.honeypotPct != null ? o.honeypotPct.toFixed(1) + '%' : '—', `${o.honeypots} of ${o.honeypotChecked} checked tokens`, o.honeypotPct > 10 ? 'down' : '')}
-    ${tile('Holders gained 24h', o.holdersGained24 != null ? (o.holdersGained24 >= 0 ? '+' : '') + o.holdersGained24.toLocaleString() : 'n/a', o.holdersGained24 != null ? `net new wallets across ${o.holdersTracked} tokens, airdrop spikes excluded` : 'no holder history yet', o.holdersGained24 == null ? '' : o.holdersGained24 > 0 ? 'up' : 'down')}
+    ${tile('Whale flow', n.whaleTotal.n ? money(n.whaleTotal.buyUsd - n.whaleTotal.sellUsd) : '—', n.whaleTotal.n ? `net, ${n.whaleTotal.n} trades ≥ $${fmtK(CONFIG.notable.whaleTradeUsd)} on the top ${n.whaleTotal.tokens} tokens` : 'no large trades returned', n.whaleTotal.n ? (n.whaleTotal.buyUsd >= n.whaleTotal.sellUsd ? 'up' : 'down') : '')}
   </div>
   <div class="two">
     <div class="prose">
@@ -56,13 +57,53 @@ export function render(r) {
     </div>
     <div class="strips">
       ${strip('Most traded', o.byVolume.map((t) => chip(t, '$' + fmtK(t.vol24))))}
-      ${strip('Top gainers', o.gainers.map((t) => chip(t, pct(t.pch.h24), 'up')))}
-      ${strip('Top losers', o.losers.map((t) => chip(t, pct(t.pch.h24), 'down')))}
       ${strip('Trending on GeckoTerminal', o.trending.map((t) => chip(t, '')))}
       ${strip('Market cap mix', [`<span class="chip"><b>${o.sizeBuckets.micro}</b> under $100k</span>`, `<span class="chip"><b>${o.sizeBuckets.small}</b> $100k–1M</span>`, `<span class="chip"><b>${o.sizeBuckets.mid}</b> $1M–10M</span>`, `<span class="chip"><b>${o.sizeBuckets.large}</b> over $10M</span>`, o.eth ? `<span class="chip dim">ETH $${o.eth.price.toLocaleString(undefined, { maximumFractionDigits: 0 })} ${pct(o.eth.change24)}</span>` : ''])}
     </div>
   </div>
 </section>
+
+<section>
+  <h2>Notable today <span class="count">movers, flows and listings worth knowing before the lists</span></h2>
+  <div class="prose">${r.story.notable.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
+  <div class="notable">
+    ${noteList('Top gainers 24h', n.gainers, (t) => `<b class="up">${pct(t.pch.h24)}</b> <span class="dim">$${fmtK(t.liquidity)} liq</span>`)}
+    ${noteList('Top losers 24h', n.losers, (t) => `<b class="down">${pct(t.pch.h24)}</b> <span class="dim">$${fmtK(t.liquidity)} liq</span>`)}
+    ${noteList('Volume surges', n.volumeSurges, (t) => `<b class="up">${pct(t.momentum.volChangePct)}</b> <span class="dim">$${fmtK(t.vol24)} · price ${pct(t.pch.h24)}</span>`)}
+    ${noteList('Volume collapses', n.volumeCollapses, (t) => `<b class="down">${pct(t.momentum.volChangePct)}</b> <span class="dim">$${fmtK(t.vol24)} · price ${pct(t.pch.h24)}</span>`)}
+    ${noteList('Most new holders', n.holderGainers, (t) => `<b class="up">+${t.holders.change24.toLocaleString()}</b> <span class="dim">${t.holders.now.toLocaleString()} total · price ${pct(t.pch.h24)}</span>`)}
+    ${noteList('Most wallets leaving', n.holderLosers, (t) => `<b class="down">${t.holders.change24.toLocaleString()}</b> <span class="dim">${t.holders.now.toLocaleString()} left · price ${pct(t.pch.h24)}</span>`)}
+    ${noteList('On a CEX', n.cexListed, (t) => `<span class="dim">${esc(t.coin.cexListings.slice(0, 3).join(', '))}${t.coin.cexListings.length > 3 ? ` +${t.coin.cexListings.length - 3}` : ''}</span>`)}
+    ${noteList('Near all-time high', n.nearAth, (t) => `<b class="up">${pct(t.coin.athChangePct)}</b> <span class="dim">from ATH</span>`, 'Nothing within 15% of its ATH today.')}
+    ${n.newOnCoinGecko.length ? noteList('New on CoinGecko this week', n.newOnCoinGecko, (t) => `<span class="dim">listed ${new Date(t.coin.listedAt).toISOString().slice(0, 10)}</span>`) : ''}
+  </div>
+  ${whaleTable(n)}
+</section>
+
+<div class="grid2">
+<section>
+  <h2>Who's actually winning <span class="count">top realized PnL across the ${Math.min(CONFIG.wallets.maxTokens, r.tokens.filter((t) => t.topTraders).length)} most traded memes</span></h2>
+  <div class="prose">${r.story.wallets.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
+  ${r.wallets.traders.length ? r.wallets.traders.map(walletCard).join('') : empty(`Every one of the ${r.wallets.checked} top-PnL wallets checked today is a bot, router or insider wallet.`)}
+  ${r.wallets.biggest && r.wallets.biggest.kind !== 'trader' ? `<p class="rule">For scale: the single largest realized PnL belongs to <a href="${esc(r.wallets.biggest.explorer || '#')}">${short(r.wallets.biggest.address)}</a> at <b>${money(r.wallets.biggest.pnl.realized ?? r.wallets.biggest.realizedPnl)}</b> — ${esc(r.wallets.biggest.tags[0]?.text || '')}.</p>` : ''}
+</section>
+<section>
+  <h2>Yesterday's picks, today <span class="count">${r.yesterday ? `listed on ${r.yesterday.day}` : 'tracking starts today'}</span></h2>
+  <div class="prose">${r.story.yesterday.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
+  ${r.yesterday ? `<table class="revisit"><thead><tr><th>List</th><th>Token</th><th>Liquidity then → now</th><th>Price</th><th>Status</th><th>Today</th></tr></thead><tbody>${r.yesterday.rows.map(revisitRow).join('')}</tbody></table>` : ''}
+</section>
+</div>
+
+<!-- ============================== PAGE 2 · NEW LAUNCHES ============================== -->
+<div class="pagebreak"></div>
+<header class="top second">
+  <div>
+    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · page 2 of 3</div>
+    <h1>New launches</h1>
+    <div class="sub">Everything that launched in the last 7 days, filtered to what clears a structural bar, ranked, and taken apart.</div>
+  </div>
+  <div class="meta"><div>${dateStr} · ${timeStr}</div><div>Data: <a href="${CG_LINKS.api}">CoinGecko API</a></div></div>
+</header>
 
 <section>
   <h2>New launches worth a look <span class="count">${r.newLaunches.picks.length} of ${r.newLaunches.candidates} launched this week · ${r.newLaunches.passed} passed the bar</span></h2>
@@ -72,60 +113,69 @@ export function render(r) {
   ${r.newLaunches.runnersUp.length ? `<div class="runners"><span class="label">Also passed</span> ${r.newLaunches.runnersUp.map((t) => miniChip(t)).join(' ')}</div>` : ''}
 </section>
 
-<!-- ============================== PAGE 2 ============================== -->
+<!-- ============================== PAGE 3 · EXISTING COINS ============================== -->
 <div class="pagebreak"></div>
 <header class="top second">
   <div>
-    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · page 2 of 2</div>
+    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · page 3 of 3</div>
     <h1>Existing coins</h1>
-    <div class="sub">Tokens older than two days with real liquidity: who is quietly accumulating, who is bleeding, what to avoid, and who is actually making money.</div>
+    <div class="sub">Tokens older than two days, split by market cap. Per band: the most traded names, who is quietly accumulating, who is bleeding. Then the avoid list.</div>
   </div>
   <div class="meta"><div>${dateStr} · ${timeStr}</div><div>Data: <a href="${CG_LINKS.api}">CoinGecko API</a></div></div>
 </header>
 
-<section>
-  <h2>Quiet accumulation <span class="count">price flat, wallets growing</span></h2>
-  <p class="rule">Rule: ${esc(r.accumulation.rule)}.</p>
-  <div class="prose">${r.story.accumulation.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
-  ${r.accumulation.picks.length ? r.accumulation.picks.map((t, i) => deepCard(t, i + 1, 'up', t.why)).join('') : empty('No token fits the pattern today.')}
-</section>
+${r.bands.map(bandSection).join('')}
 
-<section>
-  <h2>Losing power <span class="count">wallets leaving, volume drying up</span></h2>
-  <p class="rule">Rule: ${esc(r.fading.rule)}.</p>
-  <div class="prose">${r.story.fading.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
-  ${r.fading.picks.length ? r.fading.picks.map((t, i) => deepCard(t, i + 1, 'down', t.reasons.join(' · '))).join('') : empty(`Checked ${r.fading.checked} tokens with real liquidity. Nothing is bleeding on two fronts at once today.`)}
-</section>
-
-<div class="grid2">
 <section>
   <h2>Avoid <span class="count">traded today, failed a hard check</span></h2>
   <div class="prose">${r.story.avoid.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
-  ${r.avoid.length ? r.avoid.map(avoidRow).join('') : empty('No traded token failed a hard check today.')}
-</section>
-<section>
-  <h2>Who's actually winning <span class="count">top realized PnL across the ${Math.min(CONFIG.wallets.maxTokens, r.tokens.filter((t) => t.topTraders).length)} most traded memes</span></h2>
-  <div class="prose">${r.story.wallets.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
-  ${r.wallets.traders.length ? r.wallets.traders.map(walletCard).join('') : empty(`Every one of the ${r.wallets.checked} top-PnL wallets checked today is a bot, router or insider wallet.`)}
-  ${r.wallets.biggest && r.wallets.biggest.kind !== 'trader' ? `<p class="rule">For scale: the single largest realized PnL belongs to <a href="${esc(r.wallets.biggest.explorer || '#')}">${short(r.wallets.biggest.address)}</a> at <b>${money(r.wallets.biggest.pnl.realized ?? r.wallets.biggest.realizedPnl)}</b> — ${esc(r.wallets.biggest.tags[0]?.text || '')}.</p>` : ''}
-</section>
-</div>
-
-<section>
-  <h2>Yesterday's picks, today <span class="count">${r.yesterday ? `listed on ${r.yesterday.day}` : 'tracking starts today'}</span></h2>
-  <div class="prose">${r.story.yesterday.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
-  ${r.yesterday ? `<table class="revisit"><thead><tr><th>List</th><th>Token</th><th>Liquidity then → now</th><th>Price</th><th>Holders</th><th>Status</th><th>Today</th></tr></thead><tbody>${r.yesterday.rows.map(revisitRow).join('')}</tbody></table>` : ''}
+  <div class="grid2">${r.avoid.length ? r.avoid.map(avoidRow).join('') : empty('No traded token failed a hard check today.')}</div>
 </section>
 
 <footer>
   <p><b>How to read this.</b> Every number is CoinGecko API data for ${esc(CONFIG.networkLabel)}. Every list, score, flag, sentence and the HOT/MIXED/COLD call are computed by <a href="https://github.com/strvcture/coingecko-rhc">this open-source script</a> from that data, using the rules printed above each section. They are not CoinGecko ratings and not financial advice. Memes on a new chain can go to zero in an afternoon; the Avoid list is a floor, not a guarantee.</p>
-  <p><b>Glossary.</b> <i>Top-10 wallets</i> — share of supply held by the ten largest holders after removing pool, LP, locker and burn contracts. <i>GT Score</i> — GeckoTerminal's 0–100 token quality score, from CoinGecko. <i>Turnover</i> — 24h volume divided by liquidity; above ~10× usually means bots churning a thin pool. <i>Flow</i> — the last ~300 trades in the main pool, as reported by the API. <i>Holders since launch</i> — for tokens under 24h old, the 24h change is the whole history.</p>
+  <p><b>Glossary.</b> <i>Top-10 wallets</i> — share of supply held by the ten largest holders after removing pool, LP, locker and burn contracts. <i>GT Score</i> — GeckoTerminal's 0–100 token quality score, from CoinGecko. <i>Turnover</i> — 24h volume divided by liquidity; above ~10× usually means bots churning a thin pool. <i>Flow</i> — the last ~300 trades in the main pool, as reported by the API. <i>Whale flow</i> — trades of $${fmtK(CONFIG.notable.whaleTradeUsd)}+ on the ${CONFIG.notable.whaleTradeTokens} most traded tokens, in the window the API returns. <i>Holders since launch</i> — for tokens under 24h old, the 24h change is the whole history.</p>
   ${r.health.failed ? `<p class="dim">Run health: ${r.health.failed} of ${r.health.calls + r.health.cached} calls returned nothing (${[...new Set(r.health.failures.map((f) => f.endpoint.split('/').slice(-1)[0]))].slice(0, 6).join(', ')}). Affected tokens show "not available" for that field rather than a guess.</p>` : `<p class="dim">Run health: all ${(r.health.calls + r.health.cached).toLocaleString()} calls returned data.</p>`}
   <p class="links">CoinGecko API: <a href="${CG_LINKS.api}">overview</a> · <a href="${CG_LINKS.pricing}">pricing</a> · <a href="${CG_LINKS.docs}">docs</a> &nbsp;|&nbsp; by <a href="https://x.com/${CONFIG.handle}">@${CONFIG.handle}</a></p>
 </footer>
 </main>
 <script>${JS}</script>
 </body></html>`;
+}
+
+// ---------- page 1 blocks ----------
+function noteList(title, items, fmt, emptyText = '') {
+  if (!items.length && !emptyText) return '';
+  return `<div class="note"><h4>${esc(title)}</h4>${items.length ? `<ul>${items.map((t) => `<li>${tokenLink(t)} ${fmt(t)}</li>`).join('')}</ul>` : `<div class="dim">${esc(emptyText)}</div>`}</div>`;
+}
+
+function whaleTable(n) {
+  if (!n.whaleTrades.length) return '';
+  return `<div class="tbl whales"><h4>Biggest trades <span class="dim">≥ $${fmtK(CONFIG.notable.whaleTradeUsd)} on the ${n.whaleTotal.tokens} most traded tokens · ${n.whaleTotal.n} trades · <span class="up">${money(n.whaleTotal.buyUsd)} bought</span> · <span class="down">${money(n.whaleTotal.sellUsd)} sold</span></span></h4>
+    <div class="grid2">
+      <table><tbody>${n.whaleTrades.map((x) => `<tr><td class="${x.kind === 'buy' ? 'up' : 'down'}">${x.kind}</td><td><b>${money(x.usd)}</b></td><td><a class="tok" href="https://www.geckoterminal.com/${CONFIG.network}/pools/${esc(x.pool)}?${UTM}">${esc(x.symbol)}</a></td><td><a class="addr" href="${CONFIG.explorer}/tx/${esc(x.tx)}">${short(x.wallet)}</a></td><td class="dim num">${new Date(x.ts).toISOString().slice(11, 16)}</td></tr>`).join('')}</tbody></table>
+      <div><div class="dim" style="margin-bottom:4px">Most active large wallets</div><table><tbody>${n.whaleWallets.map((w) => `<tr><td><a class="addr" href="${CONFIG.explorer}/address/${esc(w.wallet)}">${short(w.wallet)}</a></td><td><span class="up">${money(w.buy)}</span> / <span class="down">${money(w.sell)}</span></td><td class="dim">${w.n} trade${w.n > 1 ? 's' : ''} · ${w.tokens.map(esc).join(', ')}</td></tr>`).join('')}</tbody></table></div>
+    </div></div>`;
+}
+
+// ---------- page 3 blocks ----------
+function bandSection(b) {
+  const story = (b.story || []).map((p) => `<p>${esc(p)}</p>`).join('');
+  return `<section class="band">
+    <h2>${esc(b.label)} market cap <span class="count">${b.count} tokens · $${fmtK(b.liquidity)} liquidity · $${fmtK(b.volume)} volume · ${b.traded ? Math.round((b.up / b.traded) * 100) : 0}% up</span></h2>
+    <div class="prose">${story}</div>
+    ${b.table.length ? `<table class="bandtable"><thead><tr><th>Token</th><th>Age</th><th>Mcap</th><th>Liq</th><th>Vol 24h</th><th>24h</th><th>Buyers / sellers</th><th>Holders</th><th>Top-10</th><th>Flags</th></tr></thead><tbody>${b.table.map(bandRow).join('')}</tbody></table>` : empty('No token in this band traded with real liquidity today.')}
+    <h3 class="sub-h">Quiet accumulation <span class="count">price flat, wallets growing</span></h3>
+    <p class="rule">Rule: ${esc(b.accumulation.rule)}.</p>
+    ${b.accumulation.picks.length ? b.accumulation.picks.map((t, i) => deepCard(t, i + 1, 'up', t.why)).join('') : empty(b.accumulation.mode === 'none' ? `Holder history exists for ${b.accumulation.checked} tokens in this band; none is adding wallets while price sits still today.` : 'No token in this band fits the pattern today.')}
+    <h3 class="sub-h">Losing power <span class="count">wallets leaving, volume drying up</span></h3>
+    <p class="rule">Rule: ${esc(b.fading.rule)}.</p>
+    ${b.fading.picks.length ? b.fading.picks.map((t, i) => deepCard(t, i + 1, 'down', t.reasons.join(' · '))).join('') : empty(`Checked ${b.fading.checked} tokens in this band. Nothing is bleeding on two fronts at once today.`)}
+  </section>`;
+}
+function bandRow(t) {
+  const fl = t.flags.filter((f) => f.level !== 'grey').slice(0, 2);
+  return `<tr><td class="sym">${tokenLink(t)} <span class="dim">${esc(t.name)}</span></td><td>${age(t.ageHours)}</td><td>$${fmtK(t.mcap || t.fdv)}</td><td>$${fmtK(t.liquidity)}</td><td>$${fmtK(t.vol24)}</td><td class="${tone(t.pch.h24)}">${pct(t.pch.h24)}</td><td>${t.tx24.buyers} / ${t.tx24.sellers}</td><td>${t.holdersCount != null ? t.holdersCount.toLocaleString() : '—'}${t.holders?.change24 != null && !t.holders.sinceLaunch ? ` <span class="${tone(t.holders.change24)}">${t.holders.change24 >= 0 ? '+' : ''}${t.holders.change24}</span>` : ''}</td><td>${t.top10Pct != null ? t.top10Pct.toFixed(0) + '%' : '—'}</td><td>${fl.length ? fl.map((f) => `<span class="flag ${f.level}">${esc(f.text)}</span>`).join(' ') : '<span class="flag green">none</span>'}</td></tr>`;
 }
 
 // ---------- the deep-dive card ----------
@@ -139,7 +189,7 @@ function deepCard(t, n, kind, headline = '') {
     <div class="head">
       <span class="rank">#${n}</span>
       ${avatar(t)}
-      <div class="title"><div class="sym">${esc(t.symbol)} <span class="name">${esc(t.name)}</span>${t.trending ? ' <span class="tag">trending</span>' : ''}${t.copycats >= 1 ? ` <span class="tag grey">${t.copycats} clone${t.copycats > 1 ? 's' : ''}</span>` : ''}</div>
+      <div class="title"><div class="sym">${esc(t.symbol)} <span class="name">${esc(t.name)}</span>${t.trending ? ' <span class="tag">trending</span>' : ''}${t.biggerTwin ? ` <span class="tag amber">clone of a $${fmtK(t.biggerTwin.mcap)} ${esc(t.symbol)}</span>` : t.copycats >= 1 ? ` <span class="tag grey">${t.copycats} clone${t.copycats > 1 ? 's' : ''}</span>` : ''}</div>
       <div class="dim">${age(t.ageHours)} old · ${esc(t.pool.dex || '')} · ${esc(t.pool.name || '')}${t.pools.length > 1 ? ` · +${t.pools.length - 1} more pool${t.pools.length > 2 ? 's' : ''}` : ''}</div></div>
       <div class="price">${price(t.price)}<div class="${tone(t.pch.h24)}">${pct(t.pch.h24)} ${sinceLabel}</div>${t.pch.h1 != null ? `<div class="dim">${pct(t.pch.h1)} 1h · ${pct(t.pch.h6)} 6h</div>` : ''}</div>
     </div>
@@ -230,7 +280,6 @@ function revisitRow(x) {
   return `<tr><td class="dim">${esc(x.list)}</td><td class="sym"><a href="https://www.geckoterminal.com/${CONFIG.network}/pools/${esc(x.pool)}?${UTM}">${esc(x.symbol)}</a></td>
     <td>$${fmtK(x.liquidity)} → ${x.now.liquidity != null ? '$' + fmtK(x.now.liquidity) : '—'} <span class="${tone(x.liqChange)}">${pct(x.liqChange)}</span></td>
     <td class="${tone(x.priceChange)}">${pct(x.priceChange)}</td>
-    <td>${x.holdersChange != null ? `<span class="${tone(x.holdersChange)}">${x.holdersChange >= 0 ? '+' : ''}${x.holdersChange.toLocaleString()}</span>` : '—'}</td>
     <td><span class="flag ${st === 'down' ? 'red' : st === 'up' ? 'green' : 'grey'}">${esc(x.status)}</span></td>
     <td class="dim">${x.listedToday.length ? esc(x.listedToday.join(', ')) : x.inUniverse ? 'unlisted' : 'out of universe'}</td></tr>`;
 }
@@ -343,7 +392,11 @@ table.revisit{width:100%;border-collapse:collapse;font-size:12.5px}.revisit th{t
 .empty{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:14px;color:var(--mute);font-size:12.5px}
 footer{margin-top:30px;padding-top:12px;border-top:1px solid var(--line);color:var(--mute);font-size:11.5px}footer a{color:var(--text)}footer .links{line-height:1.8}
 .pagebreak{height:0}
-@media(max-width:1000px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}.two{grid-template-columns:minmax(0,1fr)}.grid2{grid-template-columns:minmax(0,1fr)}.body{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:600px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.top{flex-direction:column;align-items:flex-start}.meta{text-align:left}h1{font-size:22px}.head{flex-wrap:wrap}.price{margin-left:auto}.chip{white-space:normal}}
+.notable{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}.note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}.note h4{margin:0 0 6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}.note ul{list-style:none;margin:0;padding:0;font-size:12.5px}.note li{padding:3px 0;border-top:1px solid var(--line);display:flex;gap:6px;flex-wrap:wrap;align-items:baseline}.note li:first-child{border-top:0}
+.whales{margin-top:12px}.whales table{font-size:12px}.whales td{padding:3px 6px}
+.band{margin-top:30px;padding-top:6px}.sub-h{font-size:15px;margin:18px 0 2px}.sub-h .count{font-size:12px;font-weight:500;color:var(--mute);margin-left:8px}
+table.bandtable{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0 4px}.bandtable th{text-align:left;font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;padding:5px 6px;border-bottom:1px solid var(--line)}.bandtable td{padding:6px;border-top:1px solid var(--line);vertical-align:top;white-space:nowrap}.bandtable td.sym{white-space:normal}.bandtable td:last-child{white-space:normal}
+@media(max-width:1000px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}.notable{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:minmax(0,1fr)}.grid2{grid-template-columns:minmax(0,1fr)}.body{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.notable{grid-template-columns:minmax(0,1fr)}.bandtable{display:block;overflow-x:auto}.top{flex-direction:column;align-items:flex-start}.meta{text-align:left}h1{font-size:22px}.head{flex-wrap:wrap}.price{margin-left:auto}.chip{white-space:normal}}
 @media print{body{background:#fff;color:#111}:root{--bg:#fff;--card:#fff;--card2:#f3f5f8;--line:#d8dee6;--text:#111;--mute:#555}.page{padding:0}a{border:0}.pagebreak{page-break-after:always;break-after:page}.top.second{margin-top:0;border-top:0}.deep,.avoidcard,.walletcard{break-inside:avoid}}
 `;

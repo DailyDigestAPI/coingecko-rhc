@@ -1,0 +1,163 @@
+{
+ "day": "2026-10-03",
+ "generatedAt": "2026-10-03T04:14:24.370Z",
+ "heat": "MIXED",
+ "picks": [
+  {
+   "list": "new launches",
+   "symbol": "ORBIO",
+   "name": "Orbio",
+   "address": "0xf9d7691a78b96b7a1e4bb2d1f15fe63fabef885b",
+   "pool": "0xb1c2beeeaa20fa384ce963d987550fa6b616683e",
+   "price": 0.005078647289,
+   "liquidity": 232094.6196,
+   "holders": 4014,
+   "vol24": 6313892.68309694,
+   "mcap": 5078647.289
+  },
+  {
+   "list": "new launches",
+   "symbol": "ZERO",
+   "name": "zerotrace",
+   "address": "0xcb142bca82c9c852ef33c5100a6f26577ad40f3c",
+   "pool": "0xaa2c335d31afc107dd0fbdfa50d86e8c4127d89e",
+   "price": 0.001267484977,
+   "liquidity": 114717.7568,
+   "holders": 2037,
+   "vol24": 3465553.76115919,
+   "mcap": 1267484.977
+  },
+  {
+   "list": "new launches",
+   "symbol": "PKROO",
+   "name": "Pocket Roo",
+   "address": "0x05ce35504212ff63eaedf54e01821cba12022584",
+   "pool": "0x355b90d1d8518e94fbcd5148b9f12d7108b3b76b5de451837f9a37cd24d942d1",
+   "price": 0.0000156906974,
+   "liquidity": 203349.53340000001,
+   "holders": 1802,
+   "vol24": 5968681.078301258,
+   "mcap": 1569069.74
+  },
+  {
+   "list": "losing power",
+   "symbol": "VRAX",
+   "name": "Commander Vrax",
+   "address": "0x94641b97010608c3827fb058074889f19868ff33",
+   "pool": "0x338fce553e60c8b0acccde1956bc378586ef6f2935339ebae5804d429d461e44",
+   "price": 0.0009854490115,
+   "liquidity": 171778.1795,
+   "holders": 5279,
+   "vol24": 1673484.770644803,
+   "mcap": 905004.194295027
+  },
+  {
+   "list": "losing power",
+   "symbol": "DARK",
+   "name": "Darkwoods",
+   "address": "0xdc45b71d7203c2e8baafc43a19bca0eb993bb54e",
+   "pool": "0x99c8f9fb1f73ccd0977fd39ff3508c387223b3be27aa984c09dd06c2f4674e4e",
+   "price": 0.004154194489,
+   "liquidity": 285894.7757,
+   "holders": 2095,
+   "vol24": 349135.419252997,
+   "mcap": 3760759.35396753
+  },
+  {
+   "list": "losing power",
+   "symbol": "MOO",
+   "name": "Memory cow Moo",
+   "address": "0xd9db30bb0d2b8d2eae3826a1372117e058791e18",
+   "pool": "0xc3cc877a8a7d28efdb5dbec9ae71724652431e6411aa1a9fc8928028da554aa1",
+   "price": 0.007737890801,
+   "liquidity": 1285763.174,
+   "holders": 9910,
+   "vol24": 1520681.970089175,
+   "mcap": 7646487.69108854
+  },
+  {
+   "list": "losing power",
+   "symbol": "GOOSE",
+   "name": "Goose Token",
+   "address": "0x348cc963411fb82cd6e0b64345714fec94f242cb",
+   "pool": "0x7138f96a6fb1aa0ebaa9fab58016d0eaa6536dca64127b87e9dc5feb6e9aecfd",
+   "price": 0.005112317906,
+   "liquidity": 2100303.3005,
+   "holders": 13179,
+   "vol24": 8148808.8382291,
+   "mcap": 5112317.906
+  },
+  {
+   "list": "avoid",
+   "symbol": "PPORT",
+   "name": "PositionPort",
+   "address": "0x52090044b98bacba07693b464e11cbdf69313351",
+   "pool": "0x16685ac21446db3cd46a2c622dcb491ae79a957d54a63946f9c9e10faf52ecde",
+   "price": 0.0000218200537,
+   "liquidity": 0,
+   "holders": 4045,
+   "vol24": 16438424.123018,
+   "mcap": 2182005.37
+  },
+  {
+   "list": "avoid",
+   "symbol": "EQMODE",
+   "name": "Equity Mode",
+   "address": "0xafdc93ae51e4d9640534f4e44789561c182cdab9",
+   "pool": "0x5909ce71c6d1d697075a77d0f0e5df30d9bb91e5079f826a4af81ca605fe3cbc",
+   "price": 0.00002029932033,
+   "liquidity": 0,
+   "holders": 2930,
+   "vol24": 9833753.6446532,
+   "mcap": 2029932.033
+  },
+  {
+   "list": "avoid",
+   "symbol": "ZERO",
+   "name": "zerotrace",
+   "address": "0x6f35c8f1b3ea2766697ee6cd82e0506eca4c6467",
+   "pool": "0xa8ef4d3879f21e20968a647b1a7c8dba2548442cbddf8c50b7bedac4da08dd04",
+   "price": 0.005642229613,
+   "liquidity": 0.8037000000000001,
+   "holders": null,
+   "vol24": 1320442.2684869606,
+   "mcap": 5642229.613
+  },
+  {
+   "list": "avoid",
+   "symbol": "BUN",
+   "name": "Bundle Cat",
+   "address": "0x07ebb29a38fbcb41563817e5e19f2cec619c90d2",
+   "pool": "0x06e308b77bdafd691d179645296ce8c40e33c6af4a879a913efc7eedc402581c",
+   "price": 0.06607878175,
+   "liquidity": 1478347.7114,
+   "holders": 4342,
+   "vol24": 1081676.432771986,
+   "mcap": 13690914.020672
+  },
+  {
+   "list": "avoid",
+   "symbol": "DUCAT",
+   "name": "Ducat",
+   "address": "0xd0ca71118ca21d674f9018a53026a38a0ab54dbf",
+   "pool": "0xc3fc1d3d70d94772c6f6b3491af14bbc11b5f75ae2bd66b63890bd89ee830b19",
+   "price": 54.9146851281,
+   "liquidity": 321659.92360000004,
+   "holders": 11696,
+   "vol24": 533537.706848401,
+   "mcap": 2713364.56482707
+  },
+  {
+   "list": "avoid",
+   "symbol": "TIBBIR",
+   "name": "Ribbita",
+   "address": "0x4db7374e966097be94c6680d49156d580f097bbf",
+   "pool": "0xbf7dc545ff6d3b0e23f6264f7c23d4fa16a0f3bb1b26eda350593bd63a94da97",
+   "price": 0.2519423969,
+   "liquidity": 1241365.4590999999,
+   "holders": 2420,
+   "vol24": 514023.88487657707,
+   "mcap": 251918407.801916
+  }
+ ]
+}

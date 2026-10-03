@@ -1,6 +1,6 @@
 # Robinhood Chain Meme Digest
 
-One command. Two pages. What happened in Robinhood Chain memes in the last 24 hours, which launches deserve a
+One command. Three pages. What happened in Robinhood Chain memes in the last 24 hours, which launches deserve a
 look, which existing coins are quietly filling up with holders, which are bleeding out, which to leave alone —
 and a full workup on every pick: trade flow, holders, top traders, price impact, overhang.
 
@@ -36,19 +36,53 @@ so you can go from "worth a look" to "looking at it" without retyping anything.
 
 ## Run it
 
+Nothing to install beyond Node. No dependencies, no build step, no server. The output is a single HTML file you
+open in your browser.
+
+**You need, once:**
+
+1. **Node 22 or newer.** Download it from [nodejs.org](https://nodejs.org) (the LTS build) and run the installer.
+   Check with `node -v` in a terminal; it should print `v22` or higher.
+2. **Git** — or skip it: on the repo page click **Code → Download ZIP** and unzip the folder.
+3. **A CoinGecko API key** on the Analyst plan or above
+   ([get one here](https://www.coingecko.com/en/api?utm_source=x&utm_content=riddlerdefi), [pricing](https://www.coingecko.com/en/api/pricing?utm_source=x&utm_content=riddlerdefi)).
+   The onchain wallet, holder and megafilter endpoints this report uses are not on the free tier.
+
+**Then, in a terminal** (Terminal on macOS, PowerShell on Windows):
+
 ```bash
 git clone https://github.com/strvcture/coingecko-rhc
 cd coingecko-rhc
-cp .env.example .env          # add your CoinGecko API key
-npm run report                # → reports/YYYY-MM-DD.html and reports/latest.html
+cp .env.example .env
 ```
 
-Requires Node 22+ and nothing else: no dependencies, no build step.
+Open the new `.env` file in any text editor and replace `your-key-here` with your CoinGecko API key. Save it.
+(On Windows PowerShell use `copy .env.example .env` instead of `cp`.)
+
+```bash
+npm run report
+```
+
+It runs for 3–5 minutes and prints progress as it goes. When it finishes, open **`reports/latest.html`** in your
+browser — double-click the file, nothing else is needed. A dated copy is kept as `reports/YYYY-MM-DD.html`
+so you can look back at earlier days.
+
+**Daily use:** run `npm run report` once a day. Yesterday's picks are re-checked automatically in the
+"Yesterday's picks, today" section.
+
+**Cost and cache:**
 
 - A full pull is roughly **1,100–1,300 API credits** and takes 3–5 minutes.
-- Responses are cached per day in `data/cache/`, so re-running the same day to tweak rules or styling costs **zero credits**.
+- Responses are cached per day in `data/cache/`, so re-running the same day costs **zero credits**.
 - `npm run report:fresh` ignores the cache and pulls everything again.
 - `node src/index.js --no-render` collects and analyzes only (writes `data/YYYY-MM-DD.json`).
+
+**If something goes wrong:**
+
+- `COINGECKO_API_KEY missing` — the `.env` file is missing or the key line still says `your-key-here`.
+- Repeated `retry … (HTTP 401)` or `(HTTP 403)` lines — the key is wrong, or the plan does not include the onchain endpoints. Check your plan on the pricing page above.
+- `429 rate limited` lines — the script waits and retries on its own. If it keeps happening, set `CG_CONCURRENCY=2` in `.env`.
+- Blank or missing sections — the report says so in place. Some chains do not expose holder history or wallet balances.
 
 ### Point it at another chain
 
@@ -77,16 +111,12 @@ The defaults:
 - **Avoid**: any red flag on a token with ≥ $3k volume today.
 - **Heat** (HOT / MIXED / COLD): breadth, buyer skew and volume momentum, combined into one score.
 
-## What comes from CoinGecko and what this code computes
+## What comes from CoinGecko
 
-**CoinGecko API supplies:** pool prices, liquidity, volume, buy/sell counts, pool age, token info (GT Score,
+CoinGecko API supplies the pool prices, liquidity, volume, buy/sell counts, pool age, token info (GT Score,
 honeypot flag, mint/freeze authority, developer holding, holder count and distribution, socials), holder
 history, OHLCV candles, top holders, top traders with realized PnL, locked liquidity %, wallet balances, and
 coin-level tickers / ATH for tokens listed on CoinGecko.
-
-**This code computes:** the universe (which pools count), the meme filter (stables and wrapped majors are
-dropped), top-10 wallet share excluding pool contracts, holder change over 24h/7d, volume momentum from
-candles, every flag, every score, every list and the HOT/MIXED/COLD call.
 
 Not financial advice. Memes on a young chain can go to zero in an afternoon. "Avoid" is a floor, not a guarantee.
 
@@ -98,7 +128,7 @@ src/collect.js   one sweep of the chain → raw data (nothing scored here)
 src/analyze.js   derived fields, flags, scores, the five lists
 src/deepen.js    second pass on listed tokens: trade flow, holder/trader tables, yesterday's picks revisited
 src/narrate.js   the written parts, templated from the numbers
-src/render.js    one self-contained HTML document (two pages), inline SVG sparklines, no external assets
+src/render.js    one self-contained HTML document (three pages), inline SVG sparklines, no external assets
 src/config.js    every threshold
 src/index.js     CLI
 reports/         generated pages (sample committed)

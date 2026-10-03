@@ -1,0 +1,139 @@
+{
+ "day": "2026-10-03",
+ "generatedAt": "2026-10-03T04:19:03.024Z",
+ "heat": "MIXED",
+ "picks": [
+  {
+   "list": "new launches",
+   "symbol": "ANYONE",
+   "name": "Anyone Token",
+   "address": "0x3a512627b7a23bf9dd38597925267f4f42fa0ba3",
+   "pool": "0xa96f46b537a19c672e3576ce79d4fcf971972c230a32f5189b501405746b2476",
+   "price": 0.000001183548319,
+   "liquidity": 31795.3617,
+   "holders": 290,
+   "vol24": 380427.32137923146,
+   "mcap": 118354.8319
+  },
+  {
+   "list": "new launches",
+   "symbol": "NORV",
+   "name": "Norventa",
+   "address": "0xad43ce0d1c8b4464acff230eb43fec331d446c9d",
+   "pool": "0x756808666dd91cd708043751f97290a7a087e9f4",
+   "price": 0.000001191130468,
+   "liquidity": 257988.2184,
+   "holders": 179882,
+   "vol24": 208268.230442443,
+   "mcap": 0
+  },
+  {
+   "list": "new launches",
+   "symbol": "OZAK",
+   "name": "Ozak AI",
+   "address": "0x64746f9d970d93f28055c8cd93d7e3839f37d36c",
+   "pool": "0x70106e519d9b4f8debfa34f217b892374e274dff",
+   "price": 1.401332728e-7,
+   "liquidity": 86058.5091,
+   "holders": 33798,
+   "vol24": 143357.585659325,
+   "mcap": 0
+  },
+  {
+   "list": "losing power",
+   "symbol": "SPIKE",
+   "name": "SPIKE",
+   "address": "0xb20000000000000000000070f6c1a66d7c1e4d01",
+   "pool": "0xbedfdb1c91ccfd3269d5aec696c95e96457205ab9cab1ebe6be608e295a3a0a5",
+   "price": 0.001644394936,
+   "liquidity": 296900.23419999995,
+   "holders": 2221,
+   "vol24": 415531.8945622568,
+   "mcap": 1644394.936
+  },
+  {
+   "list": "losing power",
+   "symbol": "CUBE",
+   "name": "CUBES OS",
+   "address": "0x33f5658a7c4614fc714059643b3e0e5a37408b02",
+   "pool": "0xdfe35cf198606eac7021964eb44fa803dc07ec59",
+   "price": 0.3309242491,
+   "liquidity": 43763.9654,
+   "holders": 116,
+   "vol24": 153589.225026433,
+   "mcap": 330924.2491
+  },
+  {
+   "list": "avoid",
+   "symbol": "Muse",
+   "name": "Muse",
+   "address": "0x7d6ba87fb76c82896db24aa29608268ac0e4db07",
+   "pool": "0x9f20f2f439567544a24aa3ab34c085e69b9f265e",
+   "price": 0.0001007958895,
+   "liquidity": 0.001956995824,
+   "holders": 3139,
+   "vol24": 51875194.0183435,
+   "mcap": 10079588.95
+  },
+  {
+   "list": "avoid",
+   "symbol": "TRUMP",
+   "name": "TRUMP",
+   "address": "0x45569bc5b81880aae344845186e7a6c5b5d4bb07",
+   "pool": "0x3d0978ef65b93bf9d1db91f1b9d2f21c00181a6b",
+   "price": 0.0001193528412,
+   "liquidity": 17.6967,
+   "holders": 2925,
+   "vol24": 48891709.1992713,
+   "mcap": 11935284.12
+  },
+  {
+   "list": "avoid",
+   "symbol": "BSW",
+   "name": "Lydia",
+   "address": "0x3c5cd672b204ba0fc48e93b98c0922920a87912d",
+   "pool": "0x5a74ea01e29115bdd633ed7559802ddbdcc600ba22a778b6d200893c2e7a2690",
+   "price": 0.5115752361,
+   "liquidity": 5836686.8465,
+   "holders": 30,
+   "vol24": 39614145.0555385,
+   "mcap": 5115752.361
+  },
+  {
+   "list": "avoid",
+   "symbol": "VVV",
+   "name": "Venice Token",
+   "address": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+   "pool": "0x01784ef301d79e4b2df3a21ad9a536d4cf09a5ce",
+   "price": 27.6021094644,
+   "liquidity": 41100969.1799,
+   "holders": 154994,
+   "vol24": 15353873.648331184,
+   "mcap": 1333530799.48785
+  },
+  {
+   "list": "avoid",
+   "symbol": "POD",
+   "name": "Dolphin",
+   "address": "0xed664536023d8e4b1640c394777d34abaff1df8f",
+   "pool": "0x7c84276e317f128b55bd270dbfba3ef94c84b984c124a1de7c4f72da90bfba45",
+   "price": 0.7576253636,
+   "liquidity": 4820260.8211,
+   "holders": 6575,
+   "vol24": 15325491.543674726,
+   "mcap": 63350030.3474783
+  },
+  {
+   "list": "avoid",
+   "symbol": "Muse",
+   "name": "Muse",
+   "address": "0x1c90a02c39c274ed47d973693830c26be0cb6b07",
+   "pool": "0x30840cc602f796afa33a92fa65b3734e50d2bc03",
+   "price": 0.0001007539034,
+   "liquidity": 0.00007225336644,
+   "holders": 7,
+   "vol24": 8338565.41239384,
+   "mcap": 10075390.34
+  }
+ ]
+}

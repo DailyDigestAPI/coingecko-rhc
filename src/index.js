@@ -74,5 +74,7 @@ function stripBulk(r) {
   const slim = (t) => { const { candles, holdersSeries, holders, info, momentum, topHolders, topTraders, whales, ...rest } = t; return { ...rest, holders: holders ? { ...holders, series: undefined } : null, info: info ? { ...info, description: undefined } : null, momentum: momentum ? { ...momentum, closes: undefined } : null, whales: whales ? { ...whales, list: undefined } : null }; };
   return { ...r, tokens: r.tokens.filter((t) => t.info).map(slim), overview: { ...r.overview, gainers: r.overview.gainers.map(slim), losers: r.overview.losers.map(slim), byVolume: r.overview.byVolume.map(slim), trending: r.overview.trending.map(slim) },
     newLaunches: { ...r.newLaunches, picks: r.newLaunches.picks.map(slim), runnersUp: r.newLaunches.runnersUp.map(slim) },
-    accumulation: { ...r.accumulation, picks: r.accumulation.picks.map(slim) }, fading: { ...r.fading, picks: r.fading.picks.map(slim) }, avoid: r.avoid.map(slim) };
+    accumulation: { ...r.accumulation, picks: r.accumulation.picks.map(slim) }, fading: { ...r.fading, picks: r.fading.picks.map(slim) }, avoid: r.avoid.map(slim),
+    bands: r.bands.map((b) => ({ ...b, table: b.table.map(slim), accumulation: { ...b.accumulation, picks: b.accumulation.picks.map(slim) }, fading: { ...b.fading, picks: b.fading.picks.map(slim) } })),
+    notable: Object.fromEntries(Object.entries(r.notable).map(([k, v]) => [k, Array.isArray(v) && v[0]?.pools ? v.map(slim) : v])) };
 }

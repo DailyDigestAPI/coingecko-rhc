@@ -10,9 +10,26 @@ export function analyze(raw) {
 
   const overview = buildOverview(raw, tokens, tradeable);
   const newLaunches = pickNewLaunches(tokens);
-  const accumulation = pickAccumulation(tokens);
-  const fading = pickFading(tokens);
+
+  // Page 3: existing coins by market-cap band. Each band gets its own accumulation / fading picks.
+  const cap = (t) => t.mcap || t.fdv || 0;
+  const bands = CONFIG.bands.map((b) => {
+    const subset = tokens.filter((t) => cap(t) >= b.min && cap(t) < b.max && t.ageHours > CONFIG.accumulation.minAgeHours);
+    const traded = subset.filter((t) => t.liquidity >= 5_000 && t.vol24 >= 1_000);
+    return {
+      ...b, count: subset.length, traded: traded.length,
+      liquidity: traded.reduce((a, t) => a + t.liquidity, 0), volume: traded.reduce((a, t) => a + t.vol24, 0),
+      buyers: traded.reduce((a, t) => a + t.tx24.buyers, 0), sellers: traded.reduce((a, t) => a + t.tx24.sellers, 0),
+      up: traded.filter((t) => t.pch.h24 > 0).length,
+      table: [...traded].sort((x, y) => y.vol24 - x.vol24).slice(0, CONFIG.bandTableRows),
+      accumulation: pickAccumulation(subset, CONFIG.picksPerBand),
+      fading: pickFading(subset, CONFIG.picksPerBand),
+    };
+  });
+  const accumulation = { mode: bands.some((b) => b.accumulation.mode === 'holders') ? 'holders' : bands[0].accumulation.mode, checked: bands.reduce((a, b) => a + b.accumulation.checked, 0), picks: bands.flatMap((b) => b.accumulation.picks), rule: bands[0].accumulation.rule };
+  const fading = { checked: bands.reduce((a, b) => a + b.fading.checked, 0), picks: bands.flatMap((b) => b.fading.picks), rule: bands[0].fading.rule };
   const avoid = pickAvoid(tokens);
+  const notable = buildNotable(raw, tokens);
   const allWallets = buildWallets(raw.wallets);
   const wallets = {
     checked: allWallets.length,
@@ -22,7 +39,7 @@ export function analyze(raw) {
     biggest: allWallets[0] || null, // the single largest realized PnL, whatever kind it is
   };
 
-  return { ...raw, tokens, overview, newLaunches, accumulation, fading, avoid, wallets };
+  return { ...raw, tokens, overview, newLaunches, bands, accumulation, fading, avoid, wallets, notable };
 }
 
 // ---------- derived fields ----------
@@ -239,22 +256,24 @@ function pickNewLaunches(tokens) {
     rule: `first pool between ${c.minAgeHours}h and ${c.maxAgeHours / 24} days old · liquidity ≥ $${fmtK(c.minLiquidityUsd)} · 24h volume ≥ $${fmtK(c.minVolumeUsd)} · ≥ ${c.minBuyers24} unique buyers · ≥ ${c.minHolders} holders · top-10 wallets ≤ ${c.maxTop10PctExPool}% · not down more than ${Math.abs(c.maxDrawdown24)}% on the day · no red flags` };
 }
 
-function pickAccumulation(tokens) {
+function pickAccumulation(tokens, n = CONFIG.picks) {
   const c = CONFIG.accumulation;
-  const base = tokens.filter((t) => !t.hardFail && t.ageHours >= c.minAgeHours && t.liquidity >= c.minLiquidityUsd && t.vol24 >= c.minVolumeUsd && t.pch.h24 != null && Math.abs(t.pch.h24) <= c.maxAbsPriceChange24);
+  const quiet = (t) => Math.abs(t.pch.h24) <= c.maxAbsPriceChange24 && (t.pch.h6 == null || Math.abs(t.pch.h6) <= c.maxAbsPriceChange6) && (t.momentum?.fromHiPct == null || t.momentum.fromHiPct >= c.maxFromHi48) && (t.holders?.rate6 == null || t.holders.rate6 >= 0);
+  const base = tokens.filter((t) => !t.hardFail && t.ageHours >= c.minAgeHours && t.liquidity >= c.minLiquidityUsd && t.vol24 >= c.minVolumeUsd && t.pch.h24 != null && quiet(t));
   const withHolders = base.filter((t) => t.holders?.change24Pct != null);
   const primary = withHolders.filter((t) => !t.holdersInflated && t.holders.change24Pct >= c.minHolderGrowthPct24 && t.holders.change24 >= c.minHolderGrowthAbs24)
     .map((t) => ({ ...t, score: t.holders.change24Pct * Math.log10(Math.max(10, t.holders.now)) + Math.max(0, t.netBuyers24) / 20, why: `holders +${t.holders.change24Pct.toFixed(1)}% (+${t.holders.change24}) in 24h while price moved ${pct(t.pch.h24)}` }))
     .sort((a, b) => b.score - a.score);
-  if (primary.length) return { mode: 'holders', picks: primary.slice(0, CONFIG.picks), checked: withHolders.length, rule: `price within ±${c.maxAbsPriceChange24}% on the day · holders up ≥ ${c.minHolderGrowthPct24}% and ≥ ${c.minHolderGrowthAbs24} wallets in 24h · new holders explained by unique buyers (no airdrop spikes) · liquidity ≥ $${fmtK(c.minLiquidityUsd)} · older than ${c.minAgeHours}h` };
+  if (primary.length) return { mode: 'holders', picks: primary.slice(0, n), checked: withHolders.length, rule: `price within ±${c.maxAbsPriceChange24}% on the day and ±${c.maxAbsPriceChange6}% over 6h · no more than ${Math.abs(c.maxFromHi48)}% off the 48h high · holders up ≥ ${c.minHolderGrowthPct24}% and ≥ ${c.minHolderGrowthAbs24} wallets in 24h, still growing in the last 6h · new holders explained by unique buyers (no airdrop spikes) · liquidity ≥ $${fmtK(c.minLiquidityUsd)} · older than ${c.minAgeHours}h` };
+  if (withHolders.length) return { mode: 'none', picks: [], checked: withHolders.length, rule: `price within ±${c.maxAbsPriceChange24}% on the day and ±${c.maxAbsPriceChange6}% over 6h · no more than ${Math.abs(c.maxFromHi48)}% off the 48h high · holders up ≥ ${c.minHolderGrowthPct24}% and ≥ ${c.minHolderGrowthAbs24} wallets in 24h, still growing in the last 6h · new holders explained by unique buyers · liquidity ≥ $${fmtK(c.minLiquidityUsd)} · older than ${c.minAgeHours}h` };
   // Fallback: no holder history for this chain yet → flat price + more unique buyers than sellers
   const fallback = base.filter((t) => t.buyersRatio != null && t.buyersRatio >= 1.3 && t.tx24.buyers >= 20)
     .map((t) => ({ ...t, score: (t.buyersRatio === Infinity ? 5 : t.buyersRatio) * Math.log10(Math.max(10, t.tx24.buyers)), why: `${t.tx24.buyers} unique buyers vs ${t.tx24.sellers} sellers while price moved ${pct(t.pch.h24)}` }))
     .sort((a, b) => b.score - a.score);
-  return { mode: withHolders.length ? 'none' : 'fallback', picks: fallback.slice(0, CONFIG.picks), checked: withHolders.length, rule: `price within ±${c.maxAbsPriceChange24}% on the day · unique buyers ≥ 1.3× sellers · ≥ 20 buyers · liquidity ≥ $${fmtK(c.minLiquidityUsd)}` };
+  return { mode: 'fallback', picks: fallback.slice(0, n), checked: withHolders.length, rule: `price within ±${c.maxAbsPriceChange24}% on the day · unique buyers ≥ 1.3× sellers · ≥ 20 buyers · liquidity ≥ $${fmtK(c.minLiquidityUsd)}` };
 }
 
-function pickFading(tokens) {
+function pickFading(tokens, n = CONFIG.picks) {
   const c = CONFIG.fading;
   const base = tokens.filter((t) => t.liquidity >= c.minLiquidityUsd && t.vol24 >= c.minVolumeUsd && t.ageHours > 24);
   const scored = base.map((t) => {
@@ -270,7 +289,7 @@ function pickFading(tokens) {
     return { ...t, score, reasons };
   }).filter((t) => t.reasons.length >= 2 || (t.reasons.length === 1 && t.holders?.change24Pct != null && t.holders.change24Pct <= c.holderDropPct24 * 2))
     .sort((a, b) => b.score - a.score);
-  return { picks: scored.slice(0, CONFIG.picks), checked: base.length, rule: `two or more of: holders down ≥ ${Math.abs(c.holderDropPct24)}% in 24h · volume down ≥ ${Math.abs(c.volumeDropPct)}% vs previous 24h · sellers ≥ ${c.sellersToBuyersRatio}× buyers · price −25% · −40% from 48h high — liquidity ≥ $${fmtK(c.minLiquidityUsd)}` };
+  return { picks: scored.slice(0, n), checked: base.length, rule: `two or more of: holders down ≥ ${Math.abs(c.holderDropPct24)}% in 24h · volume down ≥ ${Math.abs(c.volumeDropPct)}% vs previous 24h · sellers ≥ ${c.sellersToBuyersRatio}× buyers · price −25% · −40% from 48h high — liquidity ≥ $${fmtK(c.minLiquidityUsd)}` };
 }
 
 function pickAvoid(tokens) {
@@ -279,6 +298,33 @@ function pickAvoid(tokens) {
     .map((t) => ({ ...t, reasons: t.flags.filter((f) => f.level === 'red').map((f) => f.text) }))
     .sort((a, b) => b.vol24 - a.vol24)
     .slice(0, CONFIG.avoidMax);
+}
+
+// ---------- notable today (page 1) ----------
+function buildNotable(raw, tokens) {
+  const c = CONFIG.notable;
+  const liquid = tokens.filter((t) => t.liquidity >= c.minLiquidityUsd && t.ageHours > 24 && t.vol24 >= 10_000);
+  const byPch = [...liquid].filter((t) => t.pch.h24 != null).sort((a, b) => b.pch.h24 - a.pch.h24);
+  const withMom = liquid.filter((t) => t.momentum?.volChangePct != null && t.momentum.volPrev24 >= 20_000);
+  const holders = tokens.filter((t) => t.holders?.change24 != null && !t.holdersInflated && t.liquidity >= 10_000 && t.ageHours > 24);
+  const now = Date.now();
+  const trades = [...(raw.bigTrades || [])].sort((a, b) => b.usd - a.usd);
+  const tradeWallets = new Map();
+  for (const x of raw.bigTrades || []) { const k = x.wallet; const cur = tradeWallets.get(k) || { wallet: k, buy: 0, sell: 0, n: 0, tokens: new Set() }; if (x.kind === 'buy') cur.buy += x.usd; else cur.sell += x.usd; cur.n++; cur.tokens.add(x.symbol); tradeWallets.set(k, cur); }
+  return {
+    gainers: byPch.slice(0, 5),
+    losers: byPch.slice(-5).reverse(),
+    volumeSurges: withMom.filter((t) => t.momentum.volChangePct >= 100).sort((a, b) => b.momentum.volChangePct - a.momentum.volChangePct).slice(0, 5),
+    volumeCollapses: withMom.filter((t) => t.momentum.volChangePct <= -60).sort((a, b) => a.momentum.volChangePct - b.momentum.volChangePct).slice(0, 5),
+    holderGainers: [...holders].sort((a, b) => b.holders.change24 - a.holders.change24).slice(0, 5),
+    holderLosers: [...holders].filter((t) => t.holders.change24 < 0).sort((a, b) => a.holders.change24 - b.holders.change24).slice(0, 5),
+    cexListed: tokens.filter((t) => t.coin?.cexListings?.length && t.vol24 >= 10_000).sort((a, b) => b.vol24 - a.vol24).slice(0, 6),
+    nearAth: tokens.filter((t) => t.coin?.athChangePct != null && t.coin.athChangePct >= -15 && t.liquidity >= c.minLiquidityUsd).sort((a, b) => b.coin.athChangePct - a.coin.athChangePct).slice(0, 5),
+    newOnCoinGecko: tokens.filter((t) => t.coin?.listedAt && now - Date.parse(t.coin.listedAt) <= 7 * 24 * H).sort((a, b) => Date.parse(b.coin.listedAt) - Date.parse(a.coin.listedAt)).slice(0, 6),
+    whaleTrades: trades.slice(0, c.maxWhaleTrades),
+    whaleTotal: { n: trades.length, buyUsd: trades.filter((x) => x.kind === 'buy').reduce((a, x) => a + x.usd, 0), sellUsd: trades.filter((x) => x.kind !== 'buy').reduce((a, x) => a + x.usd, 0), tokens: raw.counts ? Math.min(c.whaleTradeTokens, tokens.length) : 0 },
+    whaleWallets: [...tradeWallets.values()].map((w) => ({ ...w, tokens: [...w.tokens] })).sort((a, b) => (b.buy + b.sell) - (a.buy + a.sell)).slice(0, 5),
+  };
 }
 
 // ---------- wallets ----------

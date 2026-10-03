@@ -12,7 +12,10 @@ export function narrate(r) {
     avoid: avoidText(r),
     wallets: walletsText(r),
     yesterday: yesterdayText(r),
+    notable: notableText(r),
+    bands: Object.fromEntries(r.bands.map((b) => [b.key, bandText(b, r)])),
   };
+  for (const b of r.bands) b.story = r.story.bands[b.key];
   for (const t of [...r.newLaunches.picks, ...r.accumulation.picks, ...r.fading.picks]) t.story = tokenStory(t, r);
   for (const t of r.avoid) t.story = avoidStory(t);
   return r;
@@ -99,6 +102,31 @@ function walletsText(r) {
   return s;
 }
 
+function notableText(r) {
+  const n = r.notable, s = [];
+  const w = n.whaleTotal;
+  if (w.n) {
+    const skew = w.sellUsd ? w.buyUsd / w.sellUsd : null;
+    s.push(`${w.n} trades of $${fmtK(CONFIG.notable.whaleTradeUsd)} or more hit the ${w.tokens} most traded tokens in the window the API returns: ${money(w.buyUsd)} bought vs ${money(w.sellUsd)} sold${skew != null ? skew < 0.7 ? ' — big money is leaving, not arriving.' : skew > 1.4 ? ' — big money is buying.' : ' — roughly balanced.' : '.'}`);
+    const top = n.whaleWallets[0];
+    if (top) s.push(`Biggest single wallet in that flow: ${top.wallet.slice(0, 6)}…${top.wallet.slice(-4)} with ${money(top.buy + top.sell)} across ${top.n} trade${top.n > 1 ? 's' : ''} in ${top.tokens.join(', ')}${top.buy === 0 ? ' — all sells' : top.sell === 0 ? ' — all buys' : ''}.`);
+  }
+  if (n.volumeSurges.length) s.push(`Volume surges vs the previous 24h: ${n.volumeSurges.slice(0, 3).map((t) => `${t.symbol} ${pct(t.momentum.volChangePct)}`).join(', ')}. A surge with price flat is accumulation or a bot; a surge with price up is a move; a surge with price down is an exit.`);
+  if (n.holderGainers.length) s.push(`Most new holders (airdrop spikes excluded): ${n.holderGainers.slice(0, 3).map((t) => `${t.symbol} +${t.holders.change24.toLocaleString()}`).join(', ')}.` + (n.holderLosers.length ? ` Most wallets leaving: ${n.holderLosers.slice(0, 3).map((t) => `${t.symbol} ${t.holders.change24.toLocaleString()}`).join(', ')}.` : ''));
+  if (n.cexListed.length) s.push(`Tradeable on a centralized exchange: ${n.cexListed.map((t) => `${t.symbol} (${t.coin.cexListings.slice(0, 2).join(', ')}${t.coin.cexListings.length > 2 ? ', +' + (t.coin.cexListings.length - 2) : ''})`).join('; ')}. CEX access widens the buyer pool and gives you an exit that is not the pool.`);
+  if (n.nearAth.length) s.push(`Within 15% of all-time high: ${n.nearAth.map((t) => `${t.symbol} (${pct(t.coin.athChangePct)})`).join(', ')}.`);
+  if (n.newOnCoinGecko.length) s.push(`Newly listed on CoinGecko this week: ${n.newOnCoinGecko.map((t) => t.symbol).join(', ')}.`);
+  return s;
+}
+
+function bandText(b, r) {
+  const s = [];
+  const skew = b.sellers ? b.buyers / b.sellers : null;
+  s.push(`${b.count} tokens sit in the ${b.label} band and are older than two days; ${b.traded} traded today with real liquidity. Together: ${money(b.liquidity)} of liquidity, ${money(b.volume)} of 24h volume, ${b.buyers.toLocaleString()} buyers vs ${b.sellers.toLocaleString()} sellers${skew != null ? ` (${skew.toFixed(2)}×)` : ''}, ${b.traded ? Math.round((b.up / b.traded) * 100) : 0}% up on the day.`);
+  if (!b.accumulation.picks.length && !b.fading.picks.length) s.push('Nothing in this band is quietly accumulating or visibly fading by the rules today — the table is the whole story.');
+  return s;
+}
+
 function yesterdayText(r) {
   const Y = r.yesterday;
   if (!Y) return ['First run on record. From tomorrow this section shows how the previous day\'s picks held up: liquidity, price and holders since they were listed.'];
@@ -106,7 +134,10 @@ function yesterdayText(r) {
   const by = (list) => rows.filter((x) => x.list === list);
   const s = [`${rows.length} tokens were listed on ${Y.day}. Here is where they are now.`];
   const nl = by('new launches');
-  if (nl.length) s.push(`New launches: ${nl.filter((x) => ['holding', 'up'].includes(x.status)).length} of ${nl.length} still hold their liquidity, ${nl.filter((x) => ['rugged', 'gone'].includes(x.status)).length} are gone or under $5k.`);
+  if (nl.length) {
+    const dead = nl.filter((x) => ['rugged', 'gone'].includes(x.status)).length;
+    s.push(`New launches: ${nl.filter((x) => ['holding', 'up'].includes(x.status)).length} of ${nl.length} still hold their liquidity, ${dead} are gone or under $5k.` + (dead === nl.length ? ' Every launch-day pick died within a day. That is the base rate on this chain, and it is why the launch page says "worth a look", never "buy".' : dead ? ' Launch-day picks die fast here; the structural bar filters scams, not failure.' : ''));
+  }
   const av = by('avoid');
   if (av.length) s.push(`Avoid list: ${av.filter((x) => ['rugged', 'gone', 'bleeding', 'down'].includes(x.status)).length} of ${av.length} are down 25%+, bleeding liquidity or gone.`);
   return s;
@@ -167,6 +198,7 @@ function tokenStory(t, r) {
     const sellTotal = t.topTraders.reduce((a, w) => a + (w.sellUsd || 0), 0), buyTotal = t.topTraders.reduce((a, w) => a + (w.buyUsd || 0), 0);
     if (buyTotal && sellTotal / buyTotal >= 1.5 && !insiders.length) s.push(`The top traders have sold ${money(sellTotal)} against ${money(buyTotal)} bought: the people who made money here are mostly out.`);
   }
+  if (t.biggerTwin) s.push(`A much bigger ${t.symbol} already exists — ${money(t.biggerTwin.mcap)} market cap, ${Math.floor(t.biggerTwin.ageHours / 24)}d old, ${money(t.biggerTwin.liquidity)} of liquidity. This is not that token; check the contract address before you act on the name.`);
   const margin = closestToFailing(t, r);
   if (margin) s.push(`Closest to failing: ${margin}.`);
   if (t.flags.length) s.push(`Flags: ${t.flags.map((f) => f.text).join('; ')}.`);

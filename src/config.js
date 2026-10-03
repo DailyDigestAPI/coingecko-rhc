@@ -49,6 +49,8 @@ export const CONFIG = {
   accumulation: {
     minAgeHours: 48,
     maxAbsPriceChange24: 15,
+    maxAbsPriceChange6: 20,   // a pump-and-dump inside the 24h window is not quiet
+    maxFromHi48: -50,         // and neither is a token that just lost half its value
     minHolderGrowthPct24: 2,
     minHolderGrowthAbs24: 15,
     minLiquidityUsd: 10_000,
@@ -82,4 +84,20 @@ export const CONFIG = {
 
   picks: 3,
   avoidMax: 6,
+
+  // Page 3: existing coins, split by market cap (FDV where mcap is missing)
+  bands: [
+    { key: 'small', label: '$300k – $5M', min: 300_000, max: 5_000_000 },
+    { key: 'mid', label: '$5M – $25M', min: 5_000_000, max: 25_000_000 },
+  ],
+  picksPerBand: 2,
+  bandTableRows: 8,
+
+  // Page 1: notable today
+  notable: {
+    minLiquidityUsd: 50_000,
+    whaleTradeUsd: 10_000,   // trades at or above this, across the most traded tokens
+    whaleTradeTokens: 20,
+    maxWhaleTrades: 10,
+  },
 };
