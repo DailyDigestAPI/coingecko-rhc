@@ -22,14 +22,17 @@ export function render(r) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${CONFIG.networkLabel} Meme Digest · ${r.day}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>${CSS}</style></head>
 <body><main class="page">
 
 <!-- ============================== PAGE 1 · DIGEST ============================== -->
-<header class="top">
-  <div>
-    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · page 1 of 3 · the chain today</div>
-    <h1>${dateStr} <span class="heat heat-${o.heat.toLowerCase()}">${o.heat}</span></h1>
+<header class="banner pg1">
+  <div class="banner-num">01</div>
+  <div class="banner-body">
+    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · ${dateStr}</div>
+    <h1>The chain today <span class="heat heat-${o.heat.toLowerCase()}">${o.heat}</span></h1>
     <div class="sub">${o.heatWhy.map(esc).join(' · ')}</div>
   </div>
   <div class="meta">
@@ -40,20 +43,20 @@ export function render(r) {
 </header>
 
 <section class="overview">
+  <div class="lead">${esc(r.story.today[3] || '')}</div>
   <div class="tiles">
     ${tile('24h meme volume', '$' + fmtK(o.totalVolume24), o.volPrev24 ? delta((o.volLast24 - o.volPrev24) / o.volPrev24 * 100, 'vs prev 24h') : 'from ' + o.tradeable + ' traded tokens')}
     ${tile('Meme liquidity', '$' + fmtK(o.totalLiquidity), `across ${o.memesTracked} tokens`)}
     ${tile('Buyers vs sellers', o.buyerSkew != null ? o.buyerSkew.toFixed(2) + '×' : '—', `${o.buyers24.toLocaleString()} buying · ${o.sellers24.toLocaleString()} selling`, o.buyerSkew == null ? '' : o.buyerSkew >= 1.1 ? 'up' : o.buyerSkew <= 0.9 ? 'down' : '')}
     ${tile('Breadth', o.breadthPct != null ? o.breadthPct.toFixed(0) + '%' : '—', `of traded memes up · median ${pct(o.medianChange24)}`, o.breadthPct == null ? '' : o.breadthPct >= 55 ? 'up' : o.breadthPct <= 40 ? 'down' : '')}
     ${tile('New pool every', o.launchEveryMin != null ? (o.launchEveryMin < 1 ? `${Math.round(o.launchEveryMin * 60)}s` : `${o.launchEveryMin.toFixed(1)} min`) : '—', o.launchSpan ? `${o.newPoolsSwept}${o.newPoolsCapped ? '+' : ''} pools created in the last ${o.launchSpan < 10 ? o.launchSpan.toFixed(1) : o.launchSpan.toFixed(0)}h` : 'no launch data')}
-    ${tile('Launches still alive', o.survivors7d.toLocaleString(), `tokens 1–7 days old with ≥ $10k liquidity (of ${o.newOlderThan24h} seen)`)}
-    ${tile('Honeypot rate', o.honeypotPct != null ? o.honeypotPct.toFixed(1) + '%' : '—', `${o.honeypots} of ${o.honeypotChecked} checked tokens`, o.honeypotPct > 10 ? 'down' : '')}
     ${tile('Whale flow', n.whaleTotal.n ? money(n.whaleTotal.buyUsd - n.whaleTotal.sellUsd) : '—', n.whaleTotal.n ? `net, ${n.whaleTotal.n} trades ≥ $${fmtK(CONFIG.notable.whaleTradeUsd)} on the top ${n.whaleTotal.tokens} tokens` : 'no large trades returned', n.whaleTotal.n ? (n.whaleTotal.buyUsd >= n.whaleTotal.sellUsd ? 'up' : 'down') : '')}
   </div>
   <div class="two">
     <div class="prose">
       <h3>Today in short</h3>
-      ${r.story.today.map((p) => `<p>${esc(p)}</p>`).join('')}
+      ${r.story.today.filter((_, k) => k !== 3).map((p) => `<p>${esc(p)}</p>`).join('')}
+      <p class="dim">${o.survivors7d} of this week's launches still hold $10k+ liquidity · honeypot flags ${o.honeypots} of ${o.honeypotChecked} checked.</p>
     </div>
     <div class="strips">
       ${strip('Most traded', o.byVolume.map((t) => chip(t, '$' + fmtK(t.vol24))))}
@@ -64,19 +67,27 @@ export function render(r) {
 </section>
 
 <section>
+  <h2>What's happening <span class="count">headlines and on-chain events — what changed, not how much traded</span></h2>
+  <div class="prose">${r.story.news.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
+  ${newsBlock(r)}
+</section>
+
+<section>
   <h2>Notable today <span class="count">movers, flows and listings worth knowing before the lists</span></h2>
   <div class="prose">${r.story.notable.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
   <div class="notable">
+    ${noteList('Most new holders', n.holderGainers, (t) => `<b class="up">+${t.holders.change24.toLocaleString()}</b> <span class="dim">${t.holders.now.toLocaleString()} total · price ${pct(t.pch.h24)}</span>`)}
+    ${noteList('Volume surges', n.volumeSurges, (t) => `<b class="up">${pct(t.momentum.volChangePct)}</b> <span class="dim">$${fmtK(t.vol24)} · price ${pct(t.pch.h24)}</span>`)}
     ${noteList('Top gainers 24h', n.gainers, (t) => `<b class="up">${pct(t.pch.h24)}</b> <span class="dim">$${fmtK(t.liquidity)} liq</span>`)}
     ${noteList('Top losers 24h', n.losers, (t) => `<b class="down">${pct(t.pch.h24)}</b> <span class="dim">$${fmtK(t.liquidity)} liq</span>`)}
-    ${noteList('Volume surges', n.volumeSurges, (t) => `<b class="up">${pct(t.momentum.volChangePct)}</b> <span class="dim">$${fmtK(t.vol24)} · price ${pct(t.pch.h24)}</span>`)}
+  </div>
+  <details class="more"><summary>More movers — volume collapses, wallets leaving, CEX-listed, near ATH</summary><div class="notable">
     ${noteList('Volume collapses', n.volumeCollapses, (t) => `<b class="down">${pct(t.momentum.volChangePct)}</b> <span class="dim">$${fmtK(t.vol24)} · price ${pct(t.pch.h24)}</span>`)}
-    ${noteList('Most new holders', n.holderGainers, (t) => `<b class="up">+${t.holders.change24.toLocaleString()}</b> <span class="dim">${t.holders.now.toLocaleString()} total · price ${pct(t.pch.h24)}</span>`)}
     ${noteList('Most wallets leaving', n.holderLosers, (t) => `<b class="down">${t.holders.change24.toLocaleString()}</b> <span class="dim">${t.holders.now.toLocaleString()} left · price ${pct(t.pch.h24)}</span>`)}
     ${noteList('On a CEX', n.cexListed, (t) => `<span class="dim">${esc(t.coin.cexListings.slice(0, 3).join(', '))}${t.coin.cexListings.length > 3 ? ` +${t.coin.cexListings.length - 3}` : ''}</span>`)}
     ${noteList('Near all-time high', n.nearAth, (t) => `<b class="up">${pct(t.coin.athChangePct)}</b> <span class="dim">from ATH</span>`, 'Nothing within 15% of its ATH today.')}
     ${n.newOnCoinGecko.length ? noteList('New on CoinGecko this week', n.newOnCoinGecko, (t) => `<span class="dim">listed ${new Date(t.coin.listedAt).toISOString().slice(0, 10)}</span>`) : ''}
-  </div>
+  </div></details>
   ${whaleTable(n)}
 </section>
 
@@ -96,32 +107,36 @@ export function render(r) {
 
 <!-- ============================== PAGE 2 · NEW LAUNCHES ============================== -->
 <div class="pagebreak"></div>
-<header class="top second">
-  <div>
-    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · page 2 of 3</div>
+<header class="banner pg2">
+  <div class="banner-num">02</div>
+  <div class="banner-body">
+    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · ${dateStr}</div>
     <h1>New launches</h1>
-    <div class="sub">Everything that launched in the last 7 days, filtered to what clears a structural bar, ranked, and taken apart.</div>
+    <div class="sub">What launched this week, still early ($${fmtK(CONFIG.newLaunch.mcapMin)}–$${fmtK(CONFIG.newLaunch.mcapMax)} market cap), cleared the safety bar, and scored highest on demand.</div>
   </div>
-  <div class="meta"><div>${dateStr} · ${timeStr}</div><div>Data: <a href="${CG_LINKS.api}">CoinGecko API</a></div></div>
+  <div class="meta"><div>${r.newLaunches.picks.length} pick${r.newLaunches.picks.length === 1 ? '' : 's'} · ${r.newLaunches.early} in the window</div><div>${r.newLaunches.passed} passed · ${r.newLaunches.candidates} launched</div></div>
 </header>
 
 <section>
   <h2>New launches worth a look <span class="count">${r.newLaunches.picks.length} picked · ${r.newLaunches.early} in the early window · ${r.newLaunches.passed} passed the bar · ${r.newLaunches.candidates} launched this week</span></h2>
   <p class="rule">Rule: ${esc(r.newLaunches.rule)}. Ranked by holder growth, buyer skew, unique buyers, depth, turnover, range, GT Score and socials.</p>
-  <div class="prose">${r.story.launches.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
+  <div class="prose lead-p">${r.story.launches.slice(0, 1).map((p) => `<p>${esc(p)}</p>`).join('')}</div>
+  <div class="prose small">${r.story.launches.slice(1).map((p) => `<p>${esc(p)}</p>`).join('')}</div>
   ${r.newLaunches.picks.length ? r.newLaunches.picks.map((t, i) => deepCard(t, i + 1, 'launch')).join('') : empty('Nothing in the early window clears the bar today. An empty list beats chasing — the filters are strict on purpose.')}
-  ${r.newLaunches.runnersUp.length ? `<div class="runners"><span class="label">Also passed</span> ${r.newLaunches.runnersUp.map((t) => miniChip(t)).join(' ')}</div>` : ''}
+  ${r.newLaunches.runnersUp.length ? `<details class="more"><summary>Also in the window, lower score (${r.newLaunches.runnersUp.length})</summary><div class="runners">${r.newLaunches.runnersUp.map((t) => miniChip(t)).join(' ')}</div></details>` : ''}
+  ${r.newLaunches.outsideWindow?.length ? `<details class="more"><summary>Already ran past the window (${r.newLaunches.outsideWindow.length}) — strong, but late</summary><div class="runners">${r.newLaunches.outsideWindow.map((t) => miniChip(t)).join(' ')}</div></details>` : ''}
 </section>
 
 <!-- ============================== PAGE 3 · EXISTING COINS ============================== -->
 <div class="pagebreak"></div>
-<header class="top second">
-  <div>
-    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · page 3 of 3</div>
+<header class="banner pg3">
+  <div class="banner-num">03</div>
+  <div class="banner-body">
+    <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · ${dateStr}</div>
     <h1>Existing coins</h1>
-    <div class="sub">Tokens older than two days, split by market cap. Per band: the most traded names and the best setups by score. The $5M–25M band also lists bags losing power. Then the avoid list.</div>
+    <div class="sub">Older than two days, split by market cap. Best setups by score per band, the bags losing power in the bigger band, then what to avoid.</div>
   </div>
-  <div class="meta"><div>${dateStr} · ${timeStr}</div><div>Data: <a href="${CG_LINKS.api}">CoinGecko API</a></div></div>
+  <div class="meta">${r.bands.map((b) => `<div>${esc(b.label)}: ${b.setups.picks.length} setup${b.setups.picks.length === 1 ? '' : 's'}${b.rotate ? ` · ${b.fading.picks.length} to rotate` : ''}</div>`).join('')}<div>${r.avoid.length} to avoid</div></div>
 </header>
 
 ${r.bands.map(bandSection).join('')}
@@ -144,6 +159,24 @@ ${r.bands.map(bandSection).join('')}
 }
 
 // ---------- page 1 blocks ----------
+function newsBlock(r) {
+  const N = r.news;
+  if (!N) return '';
+  const toneCls = (t) => (t === 'good' ? 'up' : t === 'bad' ? 'down' : 'dim');
+  const toneWord = (t) => (t === 'good' ? 'good' : t === 'bad' ? 'bad' : 'neutral');
+  const ago = (h) => (h < 1 ? `${Math.round(h * 60)}m ago` : h < 48 ? `${Math.floor(h)}h ago` : `${Math.floor(h / 24)}d ago`);
+  const head = N.items.length
+    ? `<ul class="news">${N.items.map((i) => `<li><span class="pill ${toneCls(i.tone)}">${toneWord(i.tone)}</span><a href="${esc(i.url)}">${esc(i.title)}</a><span class="dim">${esc(i.source || '')} · ${ago(i.hoursAgo)}${i.tokens.length ? ' · ' : ''}</span>${i.tokens.map((t) => tokenLink(t)).join(' ')}</li>`).join('')}</ul>`
+    : empty(`No headline in the last ${CONFIG.news.windowHours}h mentions ${CONFIG.networkLabel} or a tracked coin. ${N.feed.scanned.toLocaleString()} items scanned.`);
+  const ev = N.events.length
+    ? `<ul class="news">${N.events.map((e) => `<li><span class="pill ${toneCls(e.tone)}">${toneWord(e.tone)}</span><span>${esc(e.text)}</span>${e.token ? tokenLink(e.token) : ''}</li>`).join('')}</ul>`
+    : empty(N.hasPrevUniverse ? `Nothing structural changed since ${esc(N.prevDay)}.` : 'On-chain events start tomorrow — today is the first run that stores the full universe.');
+  return `<div class="grid2 newsgrid">
+    <div class="note"><h4>Headlines <span class="dim">CoinGecko news feed · matched on "${esc(CONFIG.news.match.source)}" or a tracked coin</span></h4>${head}</div>
+    <div class="note"><h4>On-chain since ${esc(N.prevDay || 'last run')} <span class="dim">arrivals, launches, liquidity in/out, levels, listings</span></h4>${ev}</div>
+  </div>`;
+}
+
 function noteList(title, items, fmt, emptyText = '') {
   if (!items.length && !emptyText) return '';
   return `<div class="note"><h4>${esc(title)}</h4>${items.length ? `<ul>${items.map((t) => `<li>${tokenLink(t)} ${fmt(t)}</li>`).join('')}</ul>` : `<div class="dim">${esc(emptyText)}</div>`}</div>`;
@@ -153,7 +186,7 @@ function whaleTable(n) {
   if (!n.whaleTrades.length) return '';
   return `<div class="tbl whales"><h4>Biggest trades <span class="dim">≥ $${fmtK(CONFIG.notable.whaleTradeUsd)} on the ${n.whaleTotal.tokens} most traded tokens · ${n.whaleTotal.n} trades · <span class="up">${money(n.whaleTotal.buyUsd)} bought</span> · <span class="down">${money(n.whaleTotal.sellUsd)} sold</span></span></h4>
     <div class="grid2">
-      <table><tbody>${n.whaleTrades.map((x) => `<tr><td class="${x.kind === 'buy' ? 'up' : 'down'}">${x.kind}</td><td><b>${money(x.usd)}</b></td><td><a class="tok" href="https://www.geckoterminal.com/${CONFIG.network}/pools/${esc(x.pool)}?${UTM}">${esc(x.symbol)}</a></td><td><a class="addr" href="${CONFIG.explorer}/tx/${esc(x.tx)}">${short(x.wallet)}</a></td><td class="dim num">${new Date(x.ts).toISOString().slice(11, 16)}</td></tr>`).join('')}</tbody></table>
+      <table><tbody>${n.whaleTrades.slice(0, 6).map((x) => `<tr><td class="${x.kind === 'buy' ? 'up' : 'down'}">${x.kind}</td><td><b>${money(x.usd)}</b></td><td><a class="tok" href="https://www.geckoterminal.com/${CONFIG.network}/pools/${esc(x.pool)}?${UTM}">${esc(x.symbol)}</a></td><td><a class="addr" href="${CONFIG.explorer}/tx/${esc(x.tx)}">${short(x.wallet)}</a></td><td class="dim num">${new Date(x.ts).toISOString().slice(11, 16)}</td></tr>`).join('')}</tbody></table>
       <div><div class="dim" style="margin-bottom:4px">Most active large wallets</div><table><tbody>${n.whaleWallets.map((w) => `<tr><td><a class="addr" href="${CONFIG.explorer}/address/${esc(w.wallet)}">${short(w.wallet)}</a></td><td><span class="up">${money(w.buy)}</span> / <span class="down">${money(w.sell)}</span></td><td class="dim">${w.n} trade${w.n > 1 ? 's' : ''} · ${w.tokens.map(esc).join(', ')}</td></tr>`).join('')}</tbody></table></div>
     </div></div>`;
 }
@@ -164,7 +197,7 @@ function bandSection(b) {
   return `<section class="band">
     <h2>${esc(b.label)} market cap <span class="count">${b.count} tokens · $${fmtK(b.liquidity)} liquidity · $${fmtK(b.volume)} volume · ${b.traded ? Math.round((b.up / b.traded) * 100) : 0}% up</span></h2>
     <div class="prose">${story}</div>
-    ${b.table.length ? `<table class="bandtable"><thead><tr><th>Token</th><th>Age</th><th>Mcap</th><th>Liq</th><th>Vol 24h</th><th>24h</th><th>Buyers / sellers</th><th>Holders</th><th>Top-10</th><th>Flags</th></tr></thead><tbody>${b.table.map(bandRow).join('')}</tbody></table>` : empty('No token in this band traded with real liquidity today.')}
+    ${b.table.length ? `<details class="more"><summary>Most traded in this band (${b.table.length})</summary><table class="bandtable"><thead><tr><th>Token</th><th>Age</th><th>Mcap</th><th>Liq</th><th>Vol 24h</th><th>24h</th><th>Buyers / sellers</th><th>Holders</th><th>Top-10</th><th>Flags</th></tr></thead><tbody>${b.table.map(bandRow).join('')}</tbody></table></details>` : empty('No token in this band traded with real liquidity today.')}
     <h3 class="sub-h">Best setups <span class="count">visible demand in a token you can still get into</span></h3>
     <p class="rule">Rule: ${esc(b.setups.rule)}.</p>
     ${b.setups.picks.length ? b.setups.picks.map((t, i) => deepCard(t, i + 1, 'up', `${t.why} · score ${t.score.toFixed(0)}`)).join('') : empty(`${b.setups.gated} tokens passed the gate, none scored ${CONFIG.setups.minScore}+. Nothing worth chasing in this band today.`)}
@@ -185,6 +218,11 @@ function deepCard(t, n, kind, headline = '') {
   const locked = !t.pool.lockedChecked ? 'not checked' : t.pool.lockedLiquidityPct == null ? 'not found' : t.pool.lockedLiquidityPct.toFixed(0) + '%';
   const dev = i.devHoldingPct != null ? i.devHoldingPct.toFixed(1) + '%' : 'not found';
   const sinceLabel = t.ageHours < 24 ? 'since launch' : '24h';
+  const story = (t.story || []);
+  const thesis = story.find((x) => x.startsWith('Thesis:'));
+  const breaks = story.find((x) => x.startsWith('What breaks it:'));
+  const rest = story.filter((x) => x !== thesis && x !== breaks);
+  const verdict = kind === 'launch' ? `Early, and the data says demand is real — score ${t.score.toFixed(0)}/100` : kind === 'up' ? (t.inDip ? 'On a dip with demand still arriving' : 'Demand is visible and it is still tradeable') : 'Wallets are leaving — if you hold it, read this first';
   return `<article class="deep kind-${kind}">
     <div class="head">
       <span class="rank">#${n}</span>
@@ -193,37 +231,41 @@ function deepCard(t, n, kind, headline = '') {
       <div class="dim">${age(t.ageHours)} old · ${esc(t.pool.dex || '')} · ${esc(t.pool.name || '')}${t.pools.length > 1 ? ` · +${t.pools.length - 1} more pool${t.pools.length > 2 ? 's' : ''}` : ''}</div></div>
       <div class="price">${price(t.price)}<div class="${tone(t.pch.h24)}">${pct(t.pch.h24)} ${sinceLabel}</div>${t.pch.h1 != null ? `<div class="dim">${pct(t.pch.h1)} 1h · ${pct(t.pch.h6)} 6h</div>` : ''}</div>
     </div>
-    ${headline ? `<div class="why why-${kind}">${esc(headline)}</div>` : ''}
-    <div class="body">
-      <div class="left">
-        ${spark(t, 420, 56)}
-        <div class="kv">
-          ${kv('Mcap', '$' + fmtK(t.mcap || t.fdv))}${kv('Liquidity', '$' + fmtK(t.liquidity), t.liqToMcap != null ? (t.liqToMcap * 100).toFixed(0) + '% of mcap' : '')}
-          ${kv('Vol 24h', '$' + fmtK(t.vol24), t.turnover != null ? t.turnover.toFixed(1) + '× liq' : '')}${kv('Vol 1h / 6h', `$${fmtK(t.vol1)} / $${fmtK(t.vol6)}`, t.momentum?.volChangePct != null ? `<span class="${tone(t.momentum.volChangePct)}">${pct(t.momentum.volChangePct)}</span> vs prev 24h` : '')}
-          ${kv('Buyers / sellers 24h', `${t.tx24.buyers} / ${t.tx24.sellers}`, t.buyersRatio != null && t.buyersRatio !== Infinity ? t.buyersRatio.toFixed(2) + '× buyers' : '')}${kv('Buyers / sellers 6h', `${t.tx6.buyers} / ${t.tx6.sellers}`, t.buyersRatio6 != null && t.buyersRatio6 !== Infinity ? t.buyersRatio6.toFixed(2) + '×' : '')}
-          ${kv('Holders', t.holdersCount != null ? t.holdersCount.toLocaleString() : '—', holdersSub(t))}${kv('Top-10 wallets', t.top10Pct != null ? t.top10Pct.toFixed(0) + '%' : '—', t.whales ? `largest ${t.whales.largestWalletPct.toFixed(1)}%${t.whales.poolPct ? ` · pool ${t.whales.poolPct.toFixed(0)}%` : ''}` : 'incl. pool')}
-          ${kv('Liquidity locked', locked)}${kv('Dev holding', dev)}
-          ${kv('GT Score', i.gtScore != null ? i.gtScore.toFixed(0) + '/100' : '—', i.gtScoreDetails ? `holders ${num0(i.gtScoreDetails.holders)} · tx ${num0(i.gtScoreDetails.transaction)} · info ${num0(i.gtScoreDetails.info)}` : '')}${kv('Listings', listings, t.coin?.athChangePct != null ? `${pct(t.coin.athChangePct)} from ATH` : '')}
-          ${t.sizing ? kv('Price impact est.', t.sizing.map((x) => `$${fmtK(x.usd)}→${x.impactPct < 10 ? x.impactPct.toFixed(1) : x.impactPct.toFixed(0)}%`).join(' · '), 'constant-product, before fees') : ''}${t.overhang ? kv('Largest wallet vs pool', `$${fmtK(t.overhang.usd)} = ${t.overhang.pctOfPool.toFixed(0)}% of pool`, `~${t.overhang.impactPct.toFixed(0)}% impact if it sold`) : kv('Largest wallet vs pool', '—')}
-          ${t.holders?.rate6 != null ? kv('Holder velocity', `${Math.round(t.holders.rate6)}/h`, t.holders.rate6prev != null ? `vs ${Math.round(t.holders.rate6prev)}/h the 6h before` : 'last 6h') : ''}${t.buyersRatio1 != null && t.buyersRatio1 !== Infinity ? kv('Buyer skew 1h → 24h', `${t.buyersRatio1.toFixed(2)}× → ${t.buyersRatio != null && t.buyersRatio !== Infinity ? t.buyersRatio.toFixed(2) : '∞'}×`, `${t.tx1.buyers} buyers / ${t.tx1.sellers} sellers last hour`) : ''}
-          ${kv('Honeypot', i.honeypot === true ? 'YES' : i.honeypot === false ? 'no' : 'unknown', [i.mintAuthority ? 'mint authority' : '', i.freezeAuthority ? 'freeze authority' : ''].filter(Boolean).join(' · ') || 'no mint / freeze authority')}${kv('48h range', t.momentum ? `${price(t.momentum.lo48)} – ${price(t.momentum.hi48)}` : '—', t.momentum?.fromHiPct != null ? `${pct(t.momentum.fromHiPct)} from high` : '')}
-        </div>
-        <div class="socials">${social('web', t.socials.website)}${social('X', t.socials.twitter && 'https://x.com/' + t.socials.twitter)}${social('TG', t.socials.telegram && 'https://t.me/' + t.socials.telegram)}${social('DC', t.socials.discord)}${t.coin?.watchlistUsers ? `<span class="dim">${t.coin.watchlistUsers} CoinGecko watchlists</span>` : ''}${i.categories?.length ? `<span class="dim">· ${i.categories.slice(0, 3).map(esc).join(', ')}</span>` : ''}</div>
+    <div class="verdict ${kind === 'down' ? 'down' : 'up'}">${esc(verdict)}${headline ? `<span class="dim"> — ${esc(headline)}</span>` : ''}</div>
+    <div class="bignums">
+      ${big('Mcap', '$' + fmtK(t.mcap || t.fdv))}${big('Liquidity', '$' + fmtK(t.liquidity), t.liqToMcap != null ? (t.liqToMcap * 100).toFixed(0) + '% of mcap' : '')}${big('Vol 24h', '$' + fmtK(t.vol24), t.turnover != null ? t.turnover.toFixed(1) + '× liq' : '')}
+      ${big('Buyers / sellers', `${t.tx24.buyers} / ${t.tx24.sellers}`, t.buyersRatio != null && t.buyersRatio !== Infinity ? t.buyersRatio.toFixed(2) + '×' : '', t.buyersRatio != null && t.buyersRatio !== Infinity ? (t.buyersRatio >= 1.2 ? 'up' : t.buyersRatio <= 0.85 ? 'down' : '') : '')}
+      ${big('Holders', t.holdersCount != null ? t.holdersCount.toLocaleString() : '—', holdersSub(t))}${big('Top-10 wallets', t.top10Pct != null ? t.top10Pct.toFixed(0) + '%' : '—', t.whales ? `largest ${t.whales.largestWalletPct.toFixed(1)}%` : 'incl. pool', t.top10Pct == null ? '' : t.top10Pct <= 20 ? 'up' : t.top10Pct >= 45 ? 'down' : '')}
+    </div>
+    <div class="cols">
+      <div class="col-main">
+        ${thesis ? `<div class="callout up"><b>Thesis</b>${esc(thesis.replace(/^Thesis:\s*/, ''))}</div>` : ''}
+        ${breaks ? `<div class="callout down"><b>What breaks it</b>${esc(breaks.replace(/^What breaks it:\s*/, ''))}</div>` : ''}
+        <div class="prose">${rest.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
         ${flags(t.flags)}
-        ${t.scoreParts ? `<div class="score"><div class="bar"><i style="width:${t.score.toFixed(0)}%"></i></div><span>${t.score.toFixed(0)}/100 · ${t.scoreParts.filter((p) => p.v >= 0.7).map((p) => p.label).slice(0, 3).join(', ') || 'no standout factor'}${t.scoreParts.filter((p) => p.v <= 0.2).length ? ` · weak: ${t.scoreParts.filter((p) => p.v <= 0.2).map((p) => p.label).slice(0, 2).join(', ')}` : ''}</span></div>` : ''}
         ${links(t)}
       </div>
-      <div class="right">
-        <div class="prose">${(t.story || []).map((p) => `<p>${esc(p)}</p>`).join('')}${i.description ? `<p class="desc">“${esc(i.description.slice(0, 260))}${i.description.length > 260 ? '…' : ''}” <span class="dim">— token description, as submitted</span></p>` : ''}</div>
-        <div class="tables">
-          ${flowTable(t)}
-          ${holdersTable(t)}
-          ${tradersTable(t)}
-        </div>
+      <div class="col-side">
+        ${spark(t, 420, 70)}
+        ${t.sizing ? `<div class="side-box"><h5>Price impact of a buy</h5><div class="impact">${t.sizing.map((x) => `<span><b>$${fmtK(x.usd)}</b> → ${x.impactPct < 10 ? x.impactPct.toFixed(1) : x.impactPct.toFixed(0)}%</span>`).join('')}</div><div class="dim">constant-product estimate, before fees</div></div>` : ''}
+        ${t.overhang ? `<div class="side-box"><h5>Largest wallet vs pool</h5><div><b>$${fmtK(t.overhang.usd)}</b> = ${t.overhang.pctOfPool.toFixed(0)}% of the pool · ~${t.overhang.impactPct.toFixed(0)}% impact if it sold</div></div>` : ''}
+        <div class="side-box"><h5>Safety</h5><div>Honeypot: <b>${i.honeypot === true ? 'YES' : i.honeypot === false ? 'no' : 'unknown'}</b> · mint/freeze: <b>${i.mintAuthority || i.freezeAuthority ? 'ACTIVE' : 'none'}</b> · GT Score <b>${i.gtScore != null ? i.gtScore.toFixed(0) : '—'}</b></div><div>Liquidity locked: <b>${locked}</b> · dev holding: <b>${dev}</b></div><div>Listings: <b>${esc(listings)}</b>${t.coin?.athChangePct != null ? ` · ${pct(t.coin.athChangePct)} from ATH` : ''}</div>
+        <div class="socials">${social('web', t.socials.website)}${social('X', t.socials.twitter && 'https://x.com/' + t.socials.twitter)}${social('TG', t.socials.telegram && 'https://t.me/' + t.socials.telegram)}${social('DC', t.socials.discord)}${t.coin?.watchlistUsers ? `<span class="dim">${t.coin.watchlistUsers} watchlists</span>` : ''}</div></div>
       </div>
     </div>
+    <details class="more"><summary>Full data — flow, holders, traders, every metric</summary>
+      <div class="kv">
+        ${kv('Vol 1h / 6h', `$${fmtK(t.vol1)} / $${fmtK(t.vol6)}`, t.momentum?.volChangePct != null ? `<span class="${tone(t.momentum.volChangePct)}">${pct(t.momentum.volChangePct)}</span> vs prev 24h` : '')}${kv('Buyers / sellers 6h', `${t.tx6.buyers} / ${t.tx6.sellers}`, t.buyersRatio6 != null && t.buyersRatio6 !== Infinity ? t.buyersRatio6.toFixed(2) + '×' : '')}
+        ${t.holders?.rate6 != null ? kv('Holder velocity', `${Math.round(t.holders.rate6)}/h`, t.holders.rate6prev != null ? `vs ${Math.round(t.holders.rate6prev)}/h the 6h before` : 'last 6h') : ''}${t.buyersRatio1 != null && t.buyersRatio1 !== Infinity ? kv('Buyer skew 1h → 24h', `${t.buyersRatio1.toFixed(2)}× → ${t.buyersRatio != null && t.buyersRatio !== Infinity ? t.buyersRatio.toFixed(2) : '∞'}×`, `${t.tx1.buyers} buyers / ${t.tx1.sellers} sellers last hour`) : ''}
+        ${kv('48h range', t.momentum ? `${price(t.momentum.lo48)} – ${price(t.momentum.hi48)}` : '—', t.momentum?.fromHiPct != null ? `${pct(t.momentum.fromHiPct)} from high` : '')}${kv('GT Score detail', i.gtScoreDetails ? `holders ${num0(i.gtScoreDetails.holders)} · tx ${num0(i.gtScoreDetails.transaction)} · info ${num0(i.gtScoreDetails.info)}` : '—')}
+        ${t.scoreParts ? kv('Score breakdown', t.scoreParts.filter((p) => p.v >= 0.7).map((p) => p.label).join(', ') || 'no standout factor', t.scoreParts.filter((p) => p.v <= 0.2).length ? `weak: ${t.scoreParts.filter((p) => p.v <= 0.2).map((p) => p.label).join(', ')}` : '') : ''}${i.categories?.length ? kv('Categories', i.categories.slice(0, 4).map(esc).join(', ')) : ''}
+      </div>
+      ${i.description ? `<p class="desc">“${esc(i.description.slice(0, 300))}${i.description.length > 300 ? '…' : ''}” <span class="dim">— token description, as submitted</span></p>` : ''}
+      <div class="tables">${flowTable(t)}${holdersTable(t)}${tradersTable(t)}</div>
+    </details>
   </article>`;
 }
+function big(label, value, sub = '', toneCls = '') { return `<div class="big ${toneCls}"><span>${esc(label)}</span><b>${value}</b>${sub ? `<i>${sub}</i>` : ''}</div>`; }
 
 function flowTable(t) {
   const f = t.flow;
@@ -342,61 +384,77 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '
 const JS = `document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);const t=b.textContent;b.textContent='copied';setTimeout(()=>b.textContent=t,1200)}catch(e){prompt('token address',b.dataset.copy)}}));`;
 
 const CSS = `
-:root{--bg:#0b0e13;--card:#131922;--card2:#182130;--line:#223042;--text:#e8eef5;--mute:#8d9bab;--up:#3ddc84;--down:#ff5c72;--amber:#ffb648;--accent:#c3f73a;--red:#ff5c72}
-*{box-sizing:border-box;min-width:0}html{color-scheme:dark}html,body{overflow-x:hidden}body{margin:0;background:var(--bg);color:var(--text);font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+/* Layout: three stacked pages, each opened by a full-width colour-coded banner; everything below a banner inherits its colour as --pc. */
+:root{--bg:#0d1017;--bg2:#131720;--card:#161b26;--card2:#1c2230;--line:#262d3b;--text:#eef1f6;--mute:#929eb0;--up:#4be09a;--down:#ff6b84;--amber:#ffb454;--red:#ff6b84;
+  --c1:#5fd3ff;--c2:#c6ff5a;--c3:#ffb454;--pc:var(--c1);--accent:var(--pc);
+  --display:"Syne","Avenir Next",system-ui,sans-serif;--body:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box;min-width:0}html,body{overflow-x:hidden}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 var(--body);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.banner.pg1 ~ *{--pc:var(--c1)}.banner.pg2 ~ *{--pc:var(--c2)}.banner.pg3 ~ *{--pc:var(--c3)}
+.banner{--pc:var(--c1);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:28px;align-items:end;padding:36px 32px 28px;margin:0 -24px 28px;border-top:8px solid var(--pc);background:linear-gradient(135deg,color-mix(in srgb,var(--pc) 22%,var(--bg)) 0%,var(--bg2) 55%,var(--bg) 100%);border-radius:0 0 24px 24px}
+.banner.pg2{--pc:var(--c2)}.banner.pg3{--pc:var(--c3)}.banner.pg2,.banner.pg3{margin-top:72px}
+.banner-num{font-family:var(--display);font-weight:800;font-size:96px;line-height:.8;color:var(--pc);letter-spacing:-.04em;opacity:.95}
+.banner .kicker{color:var(--pc)}.banner h1{margin:8px 0 6px;font-size:44px;font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.05}.banner .sub{font-size:16px;max-width:62ch}
+.banner .meta{text-align:right;color:var(--mute);font-size:13px;line-height:1.7}.banner .meta a{color:var(--text)}
+h1,h2,.sym,.banner-num,.tile .value,.big b,.price{font-family:var(--display)}.addr,.copy{font-family:var(--mono)}
+h2{padding-left:16px;border-left:5px solid var(--pc);line-height:1.15}.kicker{color:var(--pc)}.rank{color:var(--pc)}.lead{border-left-color:var(--pc)}.bar i{background:var(--pc)}details.more summary::before{color:var(--pc)}.deep.kind-launch{border-color:color-mix(in srgb,var(--c2) 45%,transparent)}.links a:hover,.copy:hover{border-color:var(--pc)}
+.sub-h{padding-left:12px;border-left:3px solid var(--pc)}
 a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}a:hover{border-color:var(--accent)}
-.page{max-width:1240px;margin:0 auto;padding:22px 16px 30px}
-.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:14px}.top.second{margin-top:36px;padding-top:24px;border-top:2px solid var(--line)}
-.kicker{text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--mute)}
-h1{margin:4px 0 2px;font-size:28px;letter-spacing:-.02em;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.sub{color:var(--mute);overflow-wrap:anywhere}.meta{text-align:right;color:var(--mute);font-size:12px;line-height:1.5;flex:none}.meta a{color:var(--text)}
-.heat{font-size:12px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:999px;border:1px solid}
-.heat-hot{color:var(--up);border-color:var(--up);background:rgba(61,220,132,.08)}.heat-cold{color:var(--down);border-color:var(--down);background:rgba(255,92,114,.08)}.heat-mixed{color:var(--amber);border-color:var(--amber);background:rgba(255,182,72,.08)}
-.tiles{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
-.tile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.tile .label{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}.tile .value{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:2px 0}.tile .sub{font-size:11px;color:var(--mute);line-height:1.3}
+.page{max-width:1120px;margin:0 auto;padding:32px 24px 48px}
+.top{display:none}
+.kicker{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--accent);font-weight:600}
+h1{margin:6px 0 4px;font-size:36px;letter-spacing:-.025em;display:flex;align-items:center;gap:14px;flex-wrap:wrap;line-height:1.15}
+.sub{color:var(--mute);overflow-wrap:anywhere;font-size:15px}.meta{text-align:right;color:var(--mute);font-size:13px;line-height:1.6;flex:none}.meta a{color:var(--text)}
+.heat{font-size:13px;font-weight:800;letter-spacing:.12em;padding:6px 14px;border-radius:999px;border:2px solid}
+.heat-hot{color:var(--up);border-color:var(--up);background:rgba(67,224,143,.1)}.heat-cold{color:var(--down);border-color:var(--down);background:rgba(255,107,127,.1)}.heat-mixed{color:var(--amber);border-color:var(--amber);background:rgba(255,191,92,.1)}
+.lead{font-size:19px;line-height:1.5;font-weight:500;margin:0 0 18px;padding:16px 20px;border-left:4px solid var(--accent);background:var(--bg2);border-radius:0 12px 12px 0}
+.tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.tile .label{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}.tile .value{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px}.tile .sub{font-size:12px;color:var(--mute);line-height:1.35}
 .tile.up .value{color:var(--up)}.tile.down .value{color:var(--down)}
-.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;margin-top:14px;align-items:start}
-.strips{display:flex;flex-direction:column;gap:8px}
-.strip{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.strip .label{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-right:4px;white-space:nowrap}
-.chip{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-size:12px}.chip b{margin-left:4px}.chip.dim{color:var(--mute)}
+.two{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;margin-top:20px;align-items:start}
+.strips{display:flex;flex-direction:column;gap:10px}
+.strip{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.strip .label{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-right:4px;white-space:nowrap}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:13px}.chip b{margin-left:4px}.chip.dim{color:var(--mute)}
 .up{color:var(--up)}.down{color:var(--down)}.dim{color:var(--mute)}
-.prose{font-size:13px;line-height:1.55}.prose h3{margin:0 0 6px;font-size:14px}.prose p{margin:0 0 8px}.prose.small{font-size:12px;color:var(--mute)}.prose .desc{color:var(--mute);font-style:italic}
-section{margin-top:26px}h2{font-size:19px;margin:0 0 4px;letter-spacing:-.01em}h2 .count{font-size:12px;font-weight:500;color:var(--mute);margin-left:8px}
-.rule{margin:0 0 10px;font-size:11.5px;color:var(--mute);overflow-wrap:anywhere}
-.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
-.deep{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
-.head{display:flex;gap:10px;align-items:center}
-.noimg{position:relative;width:36px;height:36px;border-radius:50%;background:var(--card2);flex:none;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:var(--mute);border:1px solid var(--line);overflow:hidden}.noimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.noimg.small{width:28px;height:28px;font-size:12px}
-.rank{font-size:12px;color:var(--accent);font-weight:700;flex:none}.title{flex:1}.sym{font-weight:700;font-size:17px}.name{font-weight:400;color:var(--mute);font-size:12px}
-.tag{font-size:10px;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:0 5px;vertical-align:middle;font-weight:600}.tag.grey{color:var(--mute);border-color:var(--line)}.tag.amber{color:var(--amber);border-color:rgba(255,182,72,.5)}
-.price{text-align:right;font-weight:700;white-space:nowrap;flex:none}.price div{font-size:11px;font-weight:600}sub{font-size:9px;vertical-align:-3px}
-.why{margin-top:8px;font-size:13px;font-weight:600}.why-up{color:var(--up)}.why-down{color:var(--down)}
-.body{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;margin-top:10px}
-.spark{display:block;width:100%;height:56px;margin:0 0 8px}.spark.empty{display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:11px;background:var(--card2);border-radius:6px}.sl{font-size:9px;fill:var(--mute)}
-.kv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 10px}.k{display:flex;flex-direction:column;border-top:1px solid var(--line);padding:5px 0 3px}.k span{font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}.k b{font-size:13px}.k i{font-style:normal;font-size:11px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.socials{display:flex;gap:6px;align-items:center;margin-top:8px;font-size:11px;flex-wrap:wrap}.soc{font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:4px;border:1px solid var(--line)}.soc.on{color:var(--up);border-color:rgba(61,220,132,.4)}.soc.off{color:#4e5a68;text-decoration:line-through}
-.flags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}.flag{font-size:10.5px;padding:2px 7px;border-radius:4px;border:1px solid}
-.flag.red{color:var(--red);border-color:rgba(255,92,114,.45);background:rgba(255,92,114,.08)}.flag.amber{color:var(--amber);border-color:rgba(255,182,72,.45);background:rgba(255,182,72,.08)}.flag.grey{color:var(--mute);border-color:var(--line)}.flag.green{color:var(--up);border-color:rgba(61,220,132,.35)}
-.score{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;color:var(--mute)}.bar{flex:0 0 90px;height:6px;background:var(--card2);border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent)}
-.links{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;font-size:11.5px;align-items:center}.links a{border:1px solid var(--line);border-radius:5px;padding:2px 8px}.links a:hover{border-color:var(--accent)}
-.copy{font:inherit;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--mute);background:var(--card2);border:1px solid var(--line);border-radius:5px;padding:2px 8px;cursor:pointer}.copy:hover{color:var(--text)}
-.runners{margin-top:10px;font-size:12px;color:var(--mute);display:flex;flex-wrap:wrap;gap:6px;align-items:center}.runners .label{font-size:11px;text-transform:uppercase;letter-spacing:.06em}
-.tables{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:6px}.tbl{background:var(--card2);border-radius:10px;padding:10px 12px}.tbl h4{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.06em}.tbl h4 .dim{text-transform:none;letter-spacing:0;font-weight:500;margin-left:6px}
-.tbl table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}.tbl td{padding:3px 4px;vertical-align:top;border-top:1px solid var(--line)}.tbl tr:first-child td{border-top:0}.tbl td.k{color:var(--mute);width:26%;white-space:nowrap}.tbl td.num{text-align:right;white-space:nowrap}.holders td:first-child{width:22px}.holders td:nth-child(3){width:70px}.holders td:nth-child(4){width:70px}.traders td:nth-child(2){width:80px}.traders td:nth-child(3){width:70px}
-.addr{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;border:0;color:var(--text)}
-.flowbar{height:6px;background:rgba(255,92,114,.35);border-radius:3px;overflow:hidden;margin:2px 0 6px}.flowbar .b{display:block;height:100%;background:var(--up)}.flowline{font-size:12px;margin-bottom:6px}
-.avoidcard,.walletcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}
-.kvline{font-size:12px;margin-top:5px}.kvline .k{color:var(--mute);text-transform:uppercase;font-size:10.5px;letter-spacing:.05em;margin-right:6px}
-table.revisit{width:100%;border-collapse:collapse;font-size:12.5px}.revisit th{text-align:left;font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;padding:6px;border-bottom:1px solid var(--line)}.revisit td{padding:7px 6px;border-top:1px solid var(--line);vertical-align:top}
-.empty{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:14px;color:var(--mute);font-size:12.5px}
-footer{margin-top:30px;padding-top:12px;border-top:1px solid var(--line);color:var(--mute);font-size:11.5px}footer a{color:var(--text)}footer .links{line-height:1.8}
+.prose{font-size:15px;line-height:1.6}.prose h3{margin:0 0 8px;font-size:16px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}.prose p{margin:0 0 10px}.prose.small{font-size:13.5px;color:var(--mute)}.prose.lead-p{font-size:16px}.desc{color:var(--mute);font-style:italic;font-size:13.5px}
+section{margin-top:40px}h2{font-size:26px;margin:0 0 6px;letter-spacing:-.02em}h2 .count{display:block;font-size:13px;font-weight:500;color:var(--mute);margin:2px 0 0;letter-spacing:0}
+.rule{margin:0 0 14px;font-size:12.5px;color:var(--mute);overflow-wrap:anywhere}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.deep{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:18px 0}.deep.kind-launch{border-color:rgba(210,255,77,.35)}.deep.kind-up{border-color:rgba(67,224,143,.35)}.deep.kind-down{border-color:rgba(255,107,127,.35)}
+.head{display:flex;gap:14px;align-items:center}
+.noimg{position:relative;width:48px;height:48px;border-radius:50%;background:var(--card2);flex:none;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:var(--mute);border:1px solid var(--line);overflow:hidden}.noimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.noimg.small{width:32px;height:32px;font-size:13px}
+.rank{font-size:14px;color:var(--accent);font-weight:800;flex:none}.title{flex:1}.sym{font-weight:800;font-size:24px;letter-spacing:-.01em}.name{font-weight:400;color:var(--mute);font-size:14px}
+.tag{font-size:11px;color:var(--accent);border:1px solid var(--accent);border-radius:5px;padding:1px 7px;vertical-align:middle;font-weight:600}.tag.grey{color:var(--mute);border-color:var(--line)}.tag.amber{color:var(--amber);border-color:rgba(255,191,92,.5)}
+.price{text-align:right;font-weight:800;white-space:nowrap;flex:none;font-size:22px}.price div{font-size:13px;font-weight:600}sub{font-size:10px;vertical-align:-3px}
+.verdict{margin-top:14px;font-size:17px;font-weight:600;padding:12px 16px;border-radius:12px;background:var(--bg2)}.verdict.up{border-left:4px solid var(--up)}.verdict.down{border-left:4px solid var(--down)}.verdict .dim{font-weight:400;font-size:14px}
+.bignums{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}.big{background:var(--bg2);border-radius:12px;padding:10px 12px}.big span{display:block;font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}.big b{display:block;font-size:20px;letter-spacing:-.01em;margin-top:2px}.big i{display:block;font-style:normal;font-size:12px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.big.up b{color:var(--up)}.big.down b{color:var(--down)}
+.cols{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;margin-top:18px}
+.callout{padding:12px 16px;border-radius:12px;margin-bottom:12px;font-size:15px;background:var(--bg2)}.callout b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}.callout.up{border:1px solid rgba(67,224,143,.4)}.callout.up b{color:var(--up)}.callout.down{border:1px solid rgba(255,107,127,.4)}.callout.down b{color:var(--down)}
+.side-box{background:var(--bg2);border-radius:12px;padding:12px 14px;margin-top:10px;font-size:13.5px;line-height:1.5}.side-box h5{margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)}.impact{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}
+.spark{display:block;width:100%;height:70px;margin:0 0 4px;background:var(--bg2);border-radius:12px;padding:6px}.spark.empty{display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:12px}.sl{font-size:10px;fill:var(--mute)}
+.kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;margin-top:10px}.k{display:flex;flex-direction:column;border-top:1px solid var(--line);padding:7px 0 4px}.k span{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}.k b{font-size:14px}.k i{font-style:normal;font-size:12px;color:var(--mute)}
+.socials{display:flex;gap:6px;align-items:center;margin-top:8px;font-size:12px;flex-wrap:wrap}.soc{font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;border:1px solid var(--line)}.soc.on{color:var(--up);border-color:rgba(67,224,143,.4)}.soc.off{color:#5b6878;text-decoration:line-through}
+.flags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.flag{font-size:12px;padding:3px 9px;border-radius:6px;border:1px solid}
+.flag.red{color:var(--red);border-color:rgba(255,107,127,.45);background:rgba(255,107,127,.08)}.flag.amber{color:var(--amber);border-color:rgba(255,191,92,.45);background:rgba(255,191,92,.08)}.flag.grey{color:var(--mute);border-color:var(--line)}.flag.green{color:var(--up);border-color:rgba(67,224,143,.35)}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:13px;align-items:center}.links a{border:1px solid var(--line);border-radius:7px;padding:5px 12px;background:var(--bg2)}.links a:hover{border-color:var(--accent)}
+.copy{font:inherit;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--text);background:var(--bg2);border:1px solid var(--line);border-radius:7px;padding:5px 12px;cursor:pointer}.copy:hover{border-color:var(--accent)}
+.runners{font-size:13px;color:var(--mute);display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 0}
+details.more{margin-top:14px;border:1px dashed var(--line);border-radius:12px;padding:0 16px}details.more summary{cursor:pointer;padding:12px 0;font-size:13.5px;color:var(--mute);list-style:none;display:flex;align-items:center;gap:8px}details.more summary::before{content:"▸";color:var(--accent)}details.more[open] summary::before{content:"▾"}details.more[open]{padding-bottom:14px}
+.tables{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:12px}.tbl{background:var(--bg2);border-radius:12px;padding:12px 14px}.tbl h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.06em}.tbl h4 .dim{text-transform:none;letter-spacing:0;font-weight:500;margin-left:6px}
+.tbl table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}.tbl td{padding:5px 4px;vertical-align:top;border-top:1px solid var(--line)}.tbl tr:first-child td{border-top:0}.tbl td.k{color:var(--mute);width:26%;white-space:nowrap}.tbl td.num{text-align:right;white-space:nowrap}.holders td:first-child{width:24px}.holders td:nth-child(3){width:76px}.holders td:nth-child(4){width:76px}.traders td:nth-child(2){width:84px}.traders td:nth-child(3){width:74px}
+.addr{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;border:0;color:var(--text)}
+.flowbar{height:8px;background:rgba(255,107,127,.35);border-radius:4px;overflow:hidden;margin:2px 0 8px}.flowbar .b{display:block;height:100%;background:var(--up)}.flowline{font-size:13px;margin-bottom:8px}
+.notable{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}.note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}.note h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}.note ul{list-style:none;margin:0;padding:0;font-size:14px}.note li{padding:5px 0;border-top:1px solid var(--line);display:flex;gap:6px;flex-wrap:wrap;align-items:baseline}.note li:first-child{border-top:0}
+.whales{margin-top:14px}.whales table{font-size:13px}.whales td{padding:4px 6px}
+.avoidcard,.walletcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0}
+.kvline{font-size:13.5px;margin-top:6px}.kvline .k{color:var(--mute);text-transform:uppercase;font-size:11px;letter-spacing:.05em;margin-right:6px}
+table.revisit{width:100%;border-collapse:collapse;font-size:13.5px}.revisit th{text-align:left;font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;padding:8px 6px;border-bottom:1px solid var(--line)}.revisit td{padding:8px 6px;border-top:1px solid var(--line);vertical-align:top}
+.band{margin-top:48px;padding-top:24px;border-top:1px solid var(--line)}.sub-h{font-size:20px;margin:26px 0 4px;letter-spacing:-.01em}.sub-h .count{display:block;font-size:13px;font-weight:500;color:var(--mute)}
+table.bandtable{width:100%;border-collapse:collapse;font-size:13px;margin:4px 0 8px}.bandtable th{text-align:left;font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;padding:6px;border-bottom:1px solid var(--line)}.bandtable td{padding:8px 6px;border-top:1px solid var(--line);vertical-align:top;white-space:nowrap}.bandtable td.sym{white-space:normal}.bandtable td:last-child{white-space:normal}.bandtable tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:18px;color:var(--mute);font-size:14px}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px;line-height:1.6}footer a{color:var(--text)}footer .links{line-height:1.8}
 .pagebreak{height:0}
-.notable{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}.note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}.note h4{margin:0 0 6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}.note ul{list-style:none;margin:0;padding:0;font-size:12.5px}.note li{padding:3px 0;border-top:1px solid var(--line);display:flex;gap:6px;flex-wrap:wrap;align-items:baseline}.note li:first-child{border-top:0}
-.whales{margin-top:12px}.whales table{font-size:12px}.whales td{padding:3px 6px}
-.band{margin-top:30px;padding-top:6px}.sub-h{font-size:15px;margin:18px 0 2px}.sub-h .count{font-size:12px;font-weight:500;color:var(--mute);margin-left:8px}
-table.bandtable{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0 4px}.bandtable th{text-align:left;font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;padding:5px 6px;border-bottom:1px solid var(--line)}.bandtable td{padding:6px;border-top:1px solid var(--line);vertical-align:top;white-space:nowrap}.bandtable td.sym{white-space:normal}.bandtable td:last-child{white-space:normal}
-@media(max-width:1000px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}.notable{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:minmax(0,1fr)}.grid2{grid-template-columns:minmax(0,1fr)}.body{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:600px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.notable{grid-template-columns:minmax(0,1fr)}.bandtable{display:block;overflow-x:auto}.top{flex-direction:column;align-items:flex-start}.meta{text-align:left}h1{font-size:22px}.head{flex-wrap:wrap}.price{margin-left:auto}.chip{white-space:normal}}
-@media print{body{background:#fff;color:#111}:root{--bg:#fff;--card:#fff;--card2:#f3f5f8;--line:#d8dee6;--text:#111;--mute:#555}.page{padding:0}a{border:0}.pagebreak{page-break-after:always;break-after:page}.top.second{margin-top:0;border-top:0}.deep,.avoidcard,.walletcard{break-inside:avoid}}
+@media(max-width:1000px){.banner{grid-template-columns:auto minmax(0,1fr)}.banner .meta{grid-column:1/-1;text-align:left}.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.two{grid-template-columns:minmax(0,1fr)}.grid2{grid-template-columns:minmax(0,1fr)}.cols{grid-template-columns:minmax(0,1fr)}.bignums{grid-template-columns:repeat(3,minmax(0,1fr))}.notable{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.page{padding:20px 16px 40px}.banner{grid-template-columns:minmax(0,1fr);margin:0 -16px 20px;padding:24px 16px 20px;gap:10px}.banner-num{font-size:56px}.banner h1{font-size:32px}.banner .meta{text-align:left}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.top{flex-direction:column;align-items:flex-start}.meta{text-align:left}h1{font-size:28px}.head{flex-wrap:wrap}.price{margin-left:auto}.chip{white-space:normal}.notable{grid-template-columns:minmax(0,1fr)}.bignums{grid-template-columns:repeat(2,minmax(0,1fr))}.bandtable{display:block;overflow-x:auto}.lead{font-size:17px}}
+@media print{body{background:#fff;color:#111}:root{--bg:#fff;--bg2:#f3f5f8;--card:#fff;--card2:#f3f5f8;--line:#d8dee6;--text:#111;--mute:#555}.page{padding:0}a{border:0}.pagebreak{page-break-after:always;break-after:page}.top.second{margin-top:0;border-top:0}.deep,.avoidcard,.walletcard{break-inside:avoid}details.more{display:none}}
 `;

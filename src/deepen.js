@@ -27,7 +27,7 @@ export async function deepen(cg, report, { log = () => {}, historyDir } = {}) {
       t.topHolders = holders.data.attributes.holders.map((h) => ({ rank: h.rank, address: h.address, label: h.label || null, pct: N(h.percentage), valueUsd: N(h.value) }));
     }
     if (coin) t.coin = mapCoin(coin);
-    t.tickers = (coin?.tickers || []).map((k) => ({ market: k.market?.name, volumeUsd: N(k.converted_volume?.usd), url: k.trade_url || null, isDex: /uniswap|pancake|raydium|sushi|curve|aerodrome|velodrome|dex|swap|pons/i.test(k.market?.name || '') })).sort((a, b) => (b.volumeUsd || 0) - (a.volumeUsd || 0));
+    t.tickers = (coin?.tickers || []).map((k) => ({ market: k.market?.name, volumeUsd: N(k.converted_volume?.usd), url: k.trade_url || null, isDex: /uniswap|pancake|raydium|sushi|curve|aerodrome|velodrome|ramses|dex|swap|pons|\(robinhood\)/i.test(k.market?.name || '') })).sort((a, b) => (b.volumeUsd || 0) - (a.volumeUsd || 0));
   }));
 
   // Smart-money overlap: do any of today's human winners hold a listed token right now?
@@ -122,6 +122,9 @@ export function historySnapshot(report) {
   const row = (t, list) => ({ list, symbol: t.symbol, name: t.name, address: t.address, pool: t.pool.address, price: t.price, liquidity: t.liquidity, holders: t.holdersCount, vol24: t.vol24, mcap: t.mcap || t.fdv });
   return {
     day: report.day, generatedAt: report.generatedAt, heat: report.overview.heat,
+    // Chain totals and a slim row per tracked meme, so tomorrow's run can say what changed (page 1, what's happening)
+    totals: { liquidity: report.overview.totalLiquidity, volume: report.overview.totalVolume24, memes: report.overview.memesTracked, pools: report.overview.poolsScanned },
+    universe: report.tokens.map((t) => ({ symbol: t.symbol, address: t.address, pool: t.pool.address, liquidity: t.liquidity, mcap: t.mcap || t.fdv, vol24: t.vol24, holders: t.holdersCount ?? null, cgId: t.cgId || null, cex: t.coin ? t.coin.cexListings || [] : null, ageHours: t.ageHours })),
     picks: [
       ...report.newLaunches.picks.map((t) => row(t, 'new launches')),
       ...report.accumulation.picks.map((t) => row(t, 'best setups')),
@@ -134,7 +137,7 @@ export function historySnapshot(report) {
 const mapTrader = (w) => ({ address: w.address, realizedPnl: N(w.realized_pnl_usd), unrealizedPnl: N(w.unrealized_pnl_usd), buys: w.total_buy_count, sells: w.total_sell_count, buyUsd: N(w.total_buy_usd), sellUsd: N(w.total_sell_usd), avgBuy: N(w.average_buy_price_usd), avgSell: N(w.average_sell_price_usd), explorer: w.explorer_url || null });
 function mapCoin(c) {
   const md = c.market_data || {};
-  const tickers = (c.tickers || []).map((k) => ({ market: k.market?.name, isDex: /uniswap|pancake|raydium|sushi|curve|aerodrome|velodrome|dex|swap|pons/i.test(k.market?.name || '') }));
+  const tickers = (c.tickers || []).map((k) => ({ market: k.market?.name, isDex: /uniswap|pancake|raydium|sushi|curve|aerodrome|velodrome|ramses|dex|swap|pons|\(robinhood\)/i.test(k.market?.name || '') }));
   const cex = tickers.filter((k) => !k.isDex);
   return { id: c.id, categories: c.categories || [], athUsd: N(md.ath?.usd), athChangePct: N(md.ath_change_percentage?.usd), athDate: md.ath_date?.usd || null, mcapRank: c.market_cap_rank || null, sentimentUp: N(c.sentiment_votes_up_percentage), watchlistUsers: N(c.watchlist_portfolio_users), twitter: c.links?.twitter_screen_name || null, telegram: c.links?.telegram_channel_identifier || null, homepage: (c.links?.homepage || []).filter(Boolean)[0] || null, tickersTotal: tickers.length, cexListings: [...new Set(cex.map((k) => k.market).filter(Boolean))].slice(0, 8), dexCount: tickers.length - cex.length };
 }

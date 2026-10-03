@@ -111,6 +111,30 @@ export const CONFIG = {
   picksPerBand: 3,
   bandTableRows: 8,
 
+  // Page 1: what's happening — headlines and on-chain events
+  news: {
+    pages: 20,              // /news pages pulled per run (20 items each; the API caps both at 20). Roughly the last half day.
+    windowHours: 48,        // headlines shown if posted within this window (the store makes older runs' matches available)
+    keepDays: 14,           // how long matched headlines stay in data/news/<network>.json
+    maxItems: 12,
+    maxEvents: 12,
+    // A headline is kept when its title matches this, or when CoinGecko tags it with a coin we track on this chain
+    match: new RegExp(process.env.CG_NEWS_MATCH || 'robinhood|\\bhood\\b|robin\\s?chain', 'i'),
+    exclude: /\bHOOD stock price prediction\b/i,
+    bad: /hack|exploit|rug|drain|liquidat|lawsuit|sue[sd]?\b|\bsec\b|ban(ned|s)?\b|halt|outage|scam|fraud|arrest|dump|crash|delist|shut|freeze|phish|stolen|loss|probe|investigat|charge[sd]?\b|fine[sd]?\b|warn/i,
+    good: /launch|list(ed|ing|s)?\b|partner|integrat|deploy|migrat|expand|record|surge|rall|all-time|\bath\b|fund|rais|acqui|support|adds?\b|live\b|milestone|million|billion|9-figure|growth|grow/i,
+    arrivedMaxAgeHours: 48,     // "existing coin arrived": first pool here is this new…
+    arrivedMinListedDays: 7,    // …and CoinGecko has listed the coin for at least this long
+    bigLaunchLiquidityUsd: 100_000,
+    pulledMinLiquidityUsd: 50_000,
+    pulledDropPct: 80,
+    addedMinUsd: 50_000,
+    addedMinPct: 30,
+    mcapThresholds: [1_000_000, 10_000_000, 50_000_000],
+    chainLiquidityPct: 10,      // chain-wide meme liquidity change worth a line
+    chainTokensDelta: 40,
+  },
+
   // Page 1: notable today
   notable: {
     minLiquidityUsd: 50_000,

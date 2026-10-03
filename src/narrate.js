@@ -13,6 +13,7 @@ export function narrate(r) {
     wallets: walletsText(r),
     yesterday: yesterdayText(r),
     notable: notableText(r),
+    news: newsText(r),
     bands: Object.fromEntries(r.bands.map((b) => [b.key, bandText(b, r)])),
   };
   for (const b of r.bands) b.story = r.story.bands[b.key];
@@ -125,6 +126,26 @@ function notableText(r) {
   if (n.cexListed.length) s.push(`Tradeable on a centralized exchange: ${n.cexListed.map((t) => `${t.symbol} (${t.coin.cexListings.slice(0, 2).join(', ')}${t.coin.cexListings.length > 2 ? ', +' + (t.coin.cexListings.length - 2) : ''})`).join('; ')}. CEX access widens the buyer pool and gives you an exit that is not the pool.`);
   if (n.nearAth.length) s.push(`Within 15% of all-time high: ${n.nearAth.map((t) => `${t.symbol} (${pct(t.coin.athChangePct)})`).join(', ')}.`);
   if (n.newOnCoinGecko.length) s.push(`Newly listed on CoinGecko this week: ${n.newOnCoinGecko.map((t) => t.symbol).join(', ')}.`);
+  return s;
+}
+
+function newsText(r) {
+  const N = r.news, s = [];
+  if (!N) return s;
+  const f = N.feed;
+  const good = N.items.filter((i) => i.tone === 'good').length, bad = N.items.filter((i) => i.tone === 'bad').length;
+  if (N.items.length) s.push(`${N.items.length} headline${N.items.length === 1 ? '' : 's'} about ${CONFIG.networkLabel} or a coin traded here in the last ${CONFIG.news.windowHours}h, out of ${f.scanned.toLocaleString()} scanned from CoinGecko's news feed${f.spanHours ? ` (the feed reaches back ${f.spanHours.toFixed(0)}h; earlier matches come from the stored log)` : ''}.${bad ? ` ${bad} read${bad === 1 ? 's' : ''} as bad news on the keyword rule.` : ''}${good ? ` ${good} as good.` : ''}`);
+  else s.push(`No headline in the last ${CONFIG.news.windowHours}h mentions ${CONFIG.networkLabel} or a coin traded here, out of ${f.scanned.toLocaleString()} scanned from CoinGecko's news feed. Quiet is information too: nothing is pulling outside attention to the chain today.`);
+  const E = N.events;
+  if (E.length) {
+    const kinds = {};
+    for (const e of E) kinds[e.kind] = (kinds[e.kind] || 0) + 1;
+    const label = { arrived: ['existing coin deployed here', 'existing coins deployed here'], 'big-launch': ['big day-one launch', 'big day-one launches'], pulled: ['liquidity pull', 'liquidity pulls'], added: ['liquidity add', 'liquidity adds'], 'crossed-up': ['market-cap level crossed up', 'market-cap levels crossed up'], 'crossed-down': ['market-cap level lost', 'market-cap levels lost'], listed: ['new exchange listing', 'new exchange listings'], chain: ['chain-wide change', 'chain-wide changes'], trending: ['token trending on CoinGecko globally', 'tokens trending on CoinGecko globally'], rug: ['launch pick gone', 'launch picks gone'] };
+    s.push(`On-chain since ${N.prevDay || 'the last run'}: ${Object.entries(kinds).map(([k, n]) => `${n} ${(label[k] || [k, k])[n > 1 ? 1 : 0]}`).join(', ')}. These come from comparing today's universe with yesterday's snapshot — no feed involved.`);
+    const worst = E.find((e) => e.tone === 'bad'), best = E.find((e) => e.tone === 'good');
+    if (worst && best) s.push(`Biggest negative: ${worst.text} Biggest positive: ${best.text}`);
+  } else if (!N.hasPrevUniverse) s.push('On-chain events start tomorrow: today\'s run is the first to store the full universe, so there is nothing to compare against yet.');
+  else s.push(`Nothing structural moved since ${N.prevDay}: no big liquidity in or out, no market-cap level crossed, no new exchange listing among tracked tokens.`);
   return s;
 }
 

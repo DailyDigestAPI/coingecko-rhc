@@ -9,6 +9,7 @@ import { CoinGecko } from './cg.js';
 import { collect } from './collect.js';
 import { analyze } from './analyze.js';
 import { deepen, historySnapshot } from './deepen.js';
+import { buildNews } from './news.js';
 import { narrate } from './narrate.js';
 import { render } from './render.js';
 import { CONFIG } from './config.js';
@@ -44,6 +45,7 @@ const report = analyze(raw);
 report.day = day;
 report.config = CONFIG;
 await deepen(cg, report, { log, historyDir });
+buildNews(report, raw, { log, historyDir, dataDir });
 narrate(report);
 report.health = { calls: cg.stats.calls, cached: cg.stats.cached, failed: cg.stats.failed, credits: cg.stats.credits, failures: cg.failures.slice(0, 50) };
 fs.writeFileSync(path.join(historyDir, `${day}.json`), JSON.stringify(historySnapshot(report), null, 1));
@@ -76,5 +78,6 @@ function stripBulk(r) {
     newLaunches: { ...r.newLaunches, picks: r.newLaunches.picks.map(slim), runnersUp: r.newLaunches.runnersUp.map(slim), outsideWindow: r.newLaunches.outsideWindow.map(slim), belowWindow: r.newLaunches.belowWindow.map(slim) },
     accumulation: { ...r.accumulation, picks: r.accumulation.picks.map(slim) }, fading: { ...r.fading, picks: r.fading.picks.map(slim) }, avoid: r.avoid.map(slim),
     bands: r.bands.map((b) => ({ ...b, table: b.table.map(slim), setups: { ...b.setups, picks: b.setups.picks.map(slim), runnersUp: b.setups.runnersUp.map(slim) }, fading: { ...b.fading, picks: b.fading.picks.map(slim) } })),
+    news: r.news ? { ...r.news, items: r.news.items.map(({ tokens, ...i }) => ({ ...i, tokens: tokens.map((t) => t.symbol) })), events: r.news.events.map(({ token, ...e }) => ({ ...e, token: token?.symbol || null })) } : null,
     notable: Object.fromEntries(Object.entries(r.notable).map(([k, v]) => [k, Array.isArray(v) && v[0]?.pools ? v.map(slim) : v])) };
 }

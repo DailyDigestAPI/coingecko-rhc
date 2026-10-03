@@ -13,6 +13,7 @@ Every list, score and flag is computed by this script from that data; none of it
 
 | Section | Question it answers | Raw data it is built from |
 |---|---|---|
+| **What's happening** | What is the news on the chain today — launches, listings, things arriving, things dying? | CoinGecko's `/news` feed (20 pages, ~half a day) filtered to the chain keywords or a tracked coin id, with matches stored across runs; plus a day-over-day diff of the tracked universe: existing coins deployed here, big day-one launches, liquidity pulled or added, market-cap levels crossed, new exchange listings, chain-wide liquidity change, global trending overlap, launch picks that died |
 | **Market overview** | Is the chain hot or cold today? | 24h volume vs the previous 24h, unique buyers vs sellers, % of tokens up, new pools, 7-day survivor rate, honeypot rate, net holders gained |
 | **New launches worth a look** | Which of this week's launches are still early *and* clear a safety + traction bar? | Market cap in the $200k–500k window (to $1M on an exceptional score), pool age, liquidity, volume, buyers/sellers, holder growth, top-10 wallet share, distance from launch high, GT Score, socials |
 | **Best setups** (per cap band) | Where is demand visible in a token you can still get into — and ideally on a dip? | Holder growth 24h/7d, buyers vs sellers and its 1h trend, volume momentum, dip from 48h high with holders arriving, depth, concentration, share of top-trader supply that came from insiders, listings, GT Score; a +100% day is penalised |
@@ -23,7 +24,7 @@ Every list, score and flag is computed by this script from that data; none of it
 
 | **Notable today** | What moved, where big money went, what got listed? | Top gainers/losers, volume surges and collapses, holder gains/losses, CEX listings, near-ATH, and every trade ≥ $10k on the 20 most traded tokens |
 
-**Page 1** is the chain digest: tiles, today in short, notable today, who's winning, yesterday's picks. **Page 2** is new
+**Page 1** is the chain digest: tiles, today in short, what's happening (headlines + on-chain events), notable today, who's winning, yesterday's picks. **Page 2** is new
 launches in the early window. **Page 3** is existing coins in two market-cap bands ($300k–5M and $5M–25M), each with a
 table of the most traded names and its best setups by score; the $5M–25M band also lists bags losing power. Then the
 avoid list. Lists are allowed to be short or empty — a weak pick is worth less than no pick. Every pick gets a deep dive:
@@ -125,7 +126,9 @@ The defaults:
 CoinGecko API supplies the pool prices, liquidity, volume, buy/sell counts, pool age, token info (GT Score,
 honeypot flag, mint/freeze authority, developer holding, holder count and distribution, socials), holder
 history, OHLCV candles, top holders, top traders with realized PnL, locked liquidity %, wallet balances, and
-coin-level tickers / ATH for tokens listed on CoinGecko.
+coin-level tickers / ATH for tokens listed on CoinGecko, the global `/news` feed (title, source, time, related coin
+ids) and `/search/trending`. Everything on the "what's happening" block is a keyword or threshold rule applied to
+that data — the good/bad tone on a headline is a word list, not sentiment analysis, and is printed so you can disagree.
 
 Not financial advice. Memes on a young chain can go to zero in an afternoon. "Avoid" is a floor, not a guarantee.
 
@@ -136,12 +139,13 @@ src/cg.js        API client: keep-alive, IPv4-first, retries, 429 handling, per-
 src/collect.js   one sweep of the chain → raw data (nothing scored here)
 src/analyze.js   derived fields, flags, scores, the five lists
 src/deepen.js    second pass on listed tokens: trade flow, holder/trader tables, yesterday's picks revisited
+src/news.js      page 1 "what's happening": filtered headlines + day-over-day on-chain events
 src/narrate.js   the written parts, templated from the numbers
 src/render.js    one self-contained HTML document (three pages), inline SVG sparklines, no external assets
 src/config.js    every threshold
 src/index.js     CLI
 reports/         generated pages (sample committed)
-data/            JSON per day, history of picks, cache (cache is git-ignored)
+data/            JSON per day, history of picks + universe snapshot, matched headlines (data/news), cache (git-ignored)
 ```
 
 ## CoinGecko API

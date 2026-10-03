@@ -216,7 +216,7 @@ export async function collect(cg, { network = CONFIG.network, log = () => {} } =
     const c = await cg.get(`/coins/${t.cgId}`, { localization: 'false', tickers: 'true', market_data: 'true', community_data: 'false', developer_data: 'false', sparkline: 'false' }, { optional: true });
     if (!c) return;
     const md = c.market_data || {};
-    const tickers = (c.tickers || []).map((k) => ({ market: k.market?.name, identifier: k.market?.identifier, volumeUsd: N(k.converted_volume?.usd), trust: k.trust_score || null, url: k.trade_url || null, isDex: /uniswap|pancake|raydium|sushi|curve|aerodrome|velodrome|dex|swap|pons/i.test(k.market?.name || '') }));
+    const tickers = (c.tickers || []).map((k) => ({ market: k.market?.name, identifier: k.market?.identifier, volumeUsd: N(k.converted_volume?.usd), trust: k.trust_score || null, url: k.trade_url || null, isDex: /uniswap|pancake|raydium|sushi|curve|aerodrome|velodrome|ramses|dex|swap|pons|\(robinhood\)/i.test(k.market?.name || '') }));
     const cex = tickers.filter((k) => !k.isDex);
     t.coin = {
       id: c.id,
@@ -283,6 +283,13 @@ export async function collect(cg, { network = CONFIG.network, log = () => {} } =
   // ---- 9. Native + global context ----
   const eth = await cg.get('/simple/price', { ids: 'ethereum', vs_currencies: 'usd', include_24hr_change: 'true' }, { optional: true });
 
+  // ---- 10. Headlines: CoinGecko's global news feed, filtered later by chain keywords and tracked coin ids ----
+  log(`news: ${CONFIG.news.pages} pages of /news + global trending`);
+  const newsPages = await Promise.all(Array.from({ length: CONFIG.news.pages }, (_, i) => cg.get('/news', { per_page: 20, page: i + 1 }, { optional: true })));
+  const news = newsPages.flatMap((p) => (Array.isArray(p) ? p : p?.data || []));
+  const trendingGlobalRes = await cg.get('/search/trending', {}, { optional: true });
+  const trendingGlobal = (trendingGlobalRes?.coins || []).map((c) => c.item?.id).filter(Boolean);
+
   return {
     network,
     generatedAt: new Date().toISOString(),
@@ -293,6 +300,8 @@ export async function collect(cg, { network = CONFIG.network, log = () => {} } =
     tokens: memes,
     bigTrades,
     wallets,
+    news,
+    trendingGlobal,
     stats: cg.stats,
   };
 }
