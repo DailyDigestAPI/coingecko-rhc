@@ -57,7 +57,7 @@ open in your browser.
 **Then, in a terminal** (Terminal on macOS, PowerShell on Windows):
 
 ```bash
-git clone https://github.com/strvcture/coingecko-rhc
+git clone https://github.com/DailyDigestAPI/coingecko-rhc
 cd coingecko-rhc
 cp .env.example .env
 ```
