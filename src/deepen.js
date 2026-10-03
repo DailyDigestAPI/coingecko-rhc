@@ -112,7 +112,7 @@ async function revisit(cg, report, { historyDir, log, net }) {
 function listsFor(t, report) {
   const out = [];
   if (report.newLaunches.picks.some((x) => x.address === t.address)) out.push('new launches');
-  if (report.accumulation.picks.some((x) => x.address === t.address)) out.push('accumulation');
+  if (report.accumulation.picks.some((x) => x.address === t.address)) out.push('best setups');
   if (report.fading.picks.some((x) => x.address === t.address)) out.push('losing power');
   if (report.avoid.some((x) => x.address === t.address)) out.push('avoid');
   return out;
@@ -124,7 +124,7 @@ export function historySnapshot(report) {
     day: report.day, generatedAt: report.generatedAt, heat: report.overview.heat,
     picks: [
       ...report.newLaunches.picks.map((t) => row(t, 'new launches')),
-      ...report.accumulation.picks.map((t) => row(t, 'accumulation')),
+      ...report.accumulation.picks.map((t) => row(t, 'best setups')),
       ...report.fading.picks.map((t) => row(t, 'losing power')),
       ...report.avoid.map((t) => row(t, 'avoid')),
     ],

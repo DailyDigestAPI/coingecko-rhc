@@ -14,9 +14,9 @@ Every list, score and flag is computed by this script from that data; none of it
 | Section | Question it answers | Raw data it is built from |
 |---|---|---|
 | **Market overview** | Is the chain hot or cold today? | 24h volume vs the previous 24h, unique buyers vs sellers, % of tokens up, new pools, 7-day survivor rate, honeypot rate, net holders gained |
-| **New launches worth a look** | Which of this week's launches clear a safety + traction bar? | Pool age, liquidity, volume, buyers/sellers, holder count and growth, top-10 wallet share, locked liquidity, dev holding, GT Score, socials, exchange listings |
-| **Quiet accumulation** | Who is adding holders while price sits still? | Holder history (7 days, per token) against 24h price change |
-| **Losing power** | Where are wallets leaving and volume drying up? | Holder history, hourly candles (last 24h vs previous 24h), sellers vs buyers, distance from 48h high |
+| **New launches worth a look** | Which of this week's launches are still early *and* clear a safety + traction bar? | Market cap in the $200k–500k window (to $1M on an exceptional score), pool age, liquidity, volume, buyers/sellers, holder growth, top-10 wallet share, distance from launch high, GT Score, socials |
+| **Best setups** (per cap band) | Where is demand visible in a token you can still get into — and ideally on a dip? | Holder growth 24h/7d, buyers vs sellers and its 1h trend, volume momentum, dip from 48h high with holders arriving, depth, concentration, share of top-trader supply that came from insiders, listings, GT Score; a +100% day is penalised |
+| **Consider rotating out** ($5M–25M) | Which bags are losing power? | Holder history, hourly candles (last 24h vs previous 24h), sellers vs buyers, distance from 48h high |
 | **Avoid** | What is being traded today that failed a hard check? | Honeypot flag, mint/freeze authority, zero sells, extreme wallet concentration, thin liquidity vs FDV |
 | **Who's winning** | Which wallets realized the most PnL across the most traded memes, and what are they holding now? | Top traders per token, wallet balances and PnL on the chain; bots and insider wallets are tagged and dropped |
 | **Yesterday's picks, today** | Did the previous day's picks hold up? | Each day's picks are stored; the next run re-checks liquidity, price and holders |
@@ -24,8 +24,9 @@ Every list, score and flag is computed by this script from that data; none of it
 | **Notable today** | What moved, where big money went, what got listed? | Top gainers/losers, volume surges and collapses, holder gains/losses, CEX listings, near-ATH, and every trade ≥ $10k on the 20 most traded tokens |
 
 **Page 1** is the chain digest: tiles, today in short, notable today, who's winning, yesterday's picks. **Page 2** is new
-launches. **Page 3** is existing coins in two market-cap bands ($300k–5M and $5M–25M), each with a table of the most
-traded names plus accumulation and fading picks, then the avoid list. Every pick gets a deep dive:
+launches in the early window. **Page 3** is existing coins in two market-cap bands ($300k–5M and $5M–25M), each with a
+table of the most traded names and its best setups by score; the $5M–25M band also lists bags losing power. Then the
+avoid list. Lists are allowed to be short or empty — a weak pick is worth less than no pick. Every pick gets a deep dive:
 
 - a written read of the token, generated from the numbers (no model, no adjectives the data can't back)
 - recent flow: the last ~300 trades — $ bought vs sold, biggest trades, top buyers and sellers by wallet
@@ -105,12 +106,14 @@ A Base run from the same day is committed as [`reports/2026-10-02-base.html`](re
 All thresholds live in [`src/config.js`](src/config.js) and are printed above each section of the report.
 The defaults:
 
-- **New launch**: first pool under 7 days old · liquidity ≥ $15k · 24h volume ≥ $10k · ≥ 30 unique buyers
-  · ≥ 100 holders · top-10 wallets (excluding pool/LP contracts) ≤ 45% · no red flag. Survivors are ranked
-  0–100 on holder growth, buyer skew, unique buyers, depth, turnover, GT Score, socials/listing and clean flags.
-- **Quiet accumulation**: price within ±15% on the day and ±20% over 6h · no more than 50% off the 48h high ·
-  holders up ≥ 2% and ≥ 15 wallets in 24h and still growing in the last 6h · older than 48h. If a chain has no
-  holder history at all, the list falls back to unique buyers ≥ 1.3× sellers and says so.
+- **New launch**: market cap $200k–$500k (up to $1M only with a score of 80+) · first pool 1h–7d old · liquidity
+  ≥ $15k · 24h volume ≥ $10k · ≥ 30 unique buyers · ≥ 100 holders · top-10 wallets (excluding pool/LP contracts)
+  ≤ 45% · not more than 60% off its high · not a clone of a bigger token · no red flag · score ≥ 60. Ranked 0–100
+  on holder growth, buyer skew, unique buyers, depth, turnover, range, GT Score, socials/listing and clean flags.
+  Launches that already ran past the window are listed for reference, not picked.
+- **Best setups**: older than 48h · liquidity ≥ $25k · 24h volume ≥ $20k · turnover ≤ 15× · top-10 wallets ≤ 50%
+  · holders not shrinking · no red flags, airdrop spikes or ticker clones · insider-sourced supply ≤ 60% of
+  top-trader sells · score ≥ 55. Each pick states its thesis and what would break it.
 - **Losing power**: two or more of — holders down ≥ 1.5% in 24h · volume down ≥ 50% vs the previous 24h ·
   sellers ≥ 1.4× buyers · price −25% · −40% from the 48h high. Weighted by liquidity so a fade on a $2M
   token outranks one on a $20k token.

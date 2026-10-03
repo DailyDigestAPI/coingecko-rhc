@@ -189,7 +189,11 @@ export async function collect(cg, { network = CONFIG.network, log = () => {} } =
   }));
 
   // ---- 6. Who is making money: top traders of the most active tokens ----
-  const traderTargets = worthDetailKept.filter((t) => t.vol24 >= CONFIG.wallets.minTokenVolumeUsd).slice(0, CONFIG.wallets.maxTokens);
+  // Top traders: the most traded tokens (for the wallet leaderboard) plus every existing-coin setup candidate,
+  // because the setup score needs to know how much of the sold supply came from wallets that never bought.
+  const byVol = worthDetailKept.filter((t) => t.vol24 >= CONFIG.wallets.minTokenVolumeUsd).slice(0, CONFIG.wallets.maxTokens);
+  const setupCands = worthDetailKept.filter((t) => t.ageHours >= CONFIG.setups.minAgeHours && t.liquidity >= CONFIG.setups.minLiquidityUsd && t.vol24 >= CONFIG.setups.minVolumeUsd);
+  const traderTargets = [...new Set([...byVol, ...setupCands])].slice(0, CONFIG.wallets.maxTokens + 60);
   log(`wallets: top traders for ${traderTargets.length} tokens`);
   await Promise.all(traderTargets.map(async (t) => {
     const res = await cg.get(`${net}/tokens/${t.address}/top_traders`, {}, { optional: true });
@@ -243,7 +247,7 @@ export async function collect(cg, { network = CONFIG.network, log = () => {} } =
 
   // ---- 8. Winning wallets across the chain: aggregate, then look at their other bags ----
   const walletAgg = new Map();
-  for (const t of traderTargets) for (const w of t.topTraders || []) {
+  for (const t of byVol) for (const w of t.topTraders || []) {
     if (w.realizedPnl === null) continue;
     const key = w.address.toLowerCase();
     const cur = walletAgg.get(key) || { address: w.address, explorer: w.explorer, realizedPnl: 0, tokens: [], trades: 0, buyUsd: 0, sellUsd: 0 };

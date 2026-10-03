@@ -22,6 +22,7 @@ export function narrate(r) {
 }
 
 const money = (v) => '$' + fmtK(v);
+const fmtPrice = (p) => (p >= 1 ? '$' + p.toFixed(p >= 100 ? 2 : 4) : '$' + Number(p.toPrecision(3)));
 const n = (v) => (v == null ? '—' : Math.round(v).toLocaleString());
 
 function today(r) {
@@ -46,8 +47,11 @@ function today(r) {
 
 function launches(r) {
   const L = r.newLaunches;
-  const s = [`${L.candidates} tokens launched in the last 7 days. ${L.passed} cleared the structural bar (liquidity, buyers, holders, concentration, no red flags). The three below ranked highest on the score; the rest of the passers are listed as "also passed".`];
-  if (!L.picks.length) s.push('Nothing passed today. That happens on a chain that launches a pool every few seconds — most of it is noise by design.');
+  const c = CONFIG.newLaunch;
+  const s = [`${L.candidates} tokens launched in the last 7 days. ${L.passed} cleared the structural bar (liquidity, buyers, holders, concentration, no red flags, not a clone). ${L.early} of those ${L.early === 1 ? 'sits' : 'sit'} in the early window — $${fmtK(c.mcapMin)}–$${fmtK(c.mcapMax)} market cap, where there is still room to run. The picks are the highest-scoring tokens inside that window.`];
+  if (!L.picks.length) s.push(`Nothing in the window scored today.${L.outsideWindow?.length ? ` The strongest launches already ran past it: ${L.outsideWindow.slice(0, 3).map((t) => `${t.symbol} ($${fmtK(t.mcap || t.fdv)})`).join(', ')} — late, not early.` : ''} An empty list beats chasing.`);
+  else if (L.outsideWindow?.length) s.push(`Already past the window, for reference: ${L.outsideWindow.slice(0, 4).map((t) => `${t.symbol} ($${fmtK(t.mcap || t.fdv)}, score ${t.score.toFixed(0)})`).join(', ')}. Strong launches, but the easy part of the move is gone.`);
+  if (L.belowWindow?.length) s.push(`Still too small to call: ${L.belowWindow.map((t) => `${t.symbol} ($${fmtK(t.mcap || t.fdv)}, score ${t.score.toFixed(0)})`).join(', ')} — under $${fmtK(c.mcapMin)}, worth a watch, not a position.`);
   else {
     const young = L.picks.filter((t) => t.ageHours < 12).length;
     if (young) s.push(`${young} of the ${L.picks.length} ${young === 1 ? 'is' : 'are'} under 12 hours old, which means every number on ${young === 1 ? 'its' : 'their'} card is launch-day data. Launch-day numbers are real but unstable: a token that looks like this at hour 3 often looks very different at hour 30.`);
@@ -60,6 +64,11 @@ function launches(r) {
 function accumulation(r) {
   const A = r.accumulation;
   const s = [];
+  if (A.mode === 'setups') {
+    s.push(`Every token older than two days is scored on visible demand: holder growth, buyers vs sellers and whether that is improving, volume momentum, a dip with holders still arriving, depth, concentration, how much of the top-trader supply came from insiders, listings and GT Score. Red flags, airdrop spikes, shrinking holder counts and ticker clones are out before scoring.`);
+    s.push(`A high score is not a buy signal; it means the demand is real and the token is still tradeable. Each pick carries a thesis and the thing that would break it.`);
+    return s;
+  }
   if (A.mode === 'holders') s.push(`Holder history exists for ${A.checked} tokens that are older than two days and traded today. The three below are adding wallets while price is flat, and the new holders are explained by unique buyers — airdrop spikes are filtered out.`);
   else if (A.mode === 'fallback') s.push('Holder history is not available on this chain yet, so this list uses buyer counts instead: flat price, clearly more unique buyers than sellers.');
   else s.push(`Holder history exists for ${A.checked} tokens, but none of them is adding wallets while price sits still today.`);
@@ -123,7 +132,10 @@ function bandText(b, r) {
   const s = [];
   const skew = b.sellers ? b.buyers / b.sellers : null;
   s.push(`${b.count} tokens sit in the ${b.label} band and are older than two days; ${b.traded} traded today with real liquidity. Together: ${money(b.liquidity)} of liquidity, ${money(b.volume)} of 24h volume, ${b.buyers.toLocaleString()} buyers vs ${b.sellers.toLocaleString()} sellers${skew != null ? ` (${skew.toFixed(2)}×)` : ''}, ${b.traded ? Math.round((b.up / b.traded) * 100) : 0}% up on the day.`);
-  if (!b.accumulation.picks.length && !b.fading.picks.length) s.push('Nothing in this band is quietly accumulating or visibly fading by the rules today — the table is the whole story.');
+  const S = b.setups;
+  if (S.picks.length) s.push(`${S.gated} tokens passed the structural gate; ${S.picks.length} scored ${CONFIG.setups.minScore}+ on the setup score and are below. ${S.runnersUp.length ? `Next in line: ${S.runnersUp.map((t) => `${t.symbol} (${t.score.toFixed(0)})`).join(', ')}.` : ''}`);
+  else s.push(`${S.gated} tokens passed the structural gate but none scored ${CONFIG.setups.minScore}+ today. An empty list beats a weak one — nothing in this band shows demand worth chasing right now.`);
+  if (b.rotate) s.push(b.fading.picks.length ? `Below the setups: the names in this band that are losing power. If you hold one, that is the list to read first.` : 'Nothing in this band is bleeding on two fronts at once today.');
   return s;
 }
 
@@ -198,6 +210,15 @@ function tokenStory(t, r) {
     const sellTotal = t.topTraders.reduce((a, w) => a + (w.sellUsd || 0), 0), buyTotal = t.topTraders.reduce((a, w) => a + (w.buyUsd || 0), 0);
     if (buyTotal && sellTotal / buyTotal >= 1.5 && !insiders.length) s.push(`The top traders have sold ${money(sellTotal)} against ${money(buyTotal)} bought: the people who made money here are mostly out.`);
   }
+  if (t.setupReasons) {
+    const inv = [];
+    if (t.top10Pct != null) inv.push(`top-10 wallets passing ${CONFIG.setups.maxTop10Pct}% (now ${t.top10Pct.toFixed(0)}%)`);
+    inv.push(`holders turning negative on the day${t.holders?.change24 != null ? ` (now ${t.holders.change24 >= 0 ? '+' : ''}${t.holders.change24})` : ''}`);
+    if (t.momentum?.lo48) inv.push(`a close below the 48h low (${fmtPrice(t.momentum.lo48)})`);
+    inv.push(`liquidity under $${fmtK(CONFIG.setups.minLiquidityUsd)} (now $${fmtK(t.liquidity)})`);
+    s.push(`Thesis: ${t.setupReasons.length ? t.setupReasons.join(', ') : 'steady demand without a chart move'} — setup score ${t.score.toFixed(0)}/100${t.inDip ? ', and it is on sale' : ''}.`);
+    s.push(`What breaks it: ${inv.slice(0, 3).join('; ')}.`);
+  }
   if (t.biggerTwin) s.push(`A much bigger ${t.symbol} already exists — ${money(t.biggerTwin.mcap)} market cap, ${Math.floor(t.biggerTwin.ageHours / 24)}d old, ${money(t.biggerTwin.liquidity)} of liquidity. This is not that token; check the contract address before you act on the name.`);
   const margin = closestToFailing(t, r);
   if (margin) s.push(`Closest to failing: ${margin}.`);
@@ -216,11 +237,14 @@ function closestToFailing(t, r) {
     if (t.pch.h24 != null) checks.push({ label: `price ${pct(t.pch.h24)} vs the ${c.newLaunch.maxDrawdown24}% day limit`, room: (t.pch.h24 - c.newLaunch.maxDrawdown24) / 100 });
     checks.push({ label: `${t.tx24.buyers} unique buyers vs the ${c.newLaunch.minBuyers24} minimum`, room: (t.tx24.buyers - c.newLaunch.minBuyers24) / c.newLaunch.minBuyers24 });
   } else if (isAcc) {
-    if (t.pch.h24 != null) checks.push({ label: `price ${pct(t.pch.h24)} vs the ±${c.accumulation.maxAbsPriceChange24}% band`, room: (c.accumulation.maxAbsPriceChange24 - Math.abs(t.pch.h24)) / c.accumulation.maxAbsPriceChange24 });
-    if (t.holders?.change24Pct != null) checks.push({ label: `holder growth ${pct(t.holders.change24Pct)} vs the ${c.accumulation.minHolderGrowthPct24}% minimum`, room: (t.holders.change24Pct - c.accumulation.minHolderGrowthPct24) / 10 });
-    checks.push({ label: `liquidity ${money(t.liquidity)} vs the $${fmtK(c.accumulation.minLiquidityUsd)} floor`, room: (t.liquidity - c.accumulation.minLiquidityUsd) / c.accumulation.minLiquidityUsd });
+    const sc = c.setups;
+    checks.push({ label: `setup score ${t.score.toFixed(0)} vs the ${sc.minScore} minimum`, room: (t.score - sc.minScore) / 30 });
+    if (t.top10Pct != null) checks.push({ label: `top-10 wallets ${t.top10Pct.toFixed(0)}% vs the ${sc.maxTop10Pct}% cap`, room: (sc.maxTop10Pct - t.top10Pct) / sc.maxTop10Pct });
+    if (t.turnover != null) checks.push({ label: `turnover ${t.turnover.toFixed(1)}× vs the ${sc.maxTurnover}× cap`, room: (sc.maxTurnover - t.turnover) / sc.maxTurnover });
+    checks.push({ label: `liquidity ${money(t.liquidity)} vs the $${fmtK(sc.minLiquidityUsd)} floor`, room: (t.liquidity - sc.minLiquidityUsd) / sc.minLiquidityUsd });
+    if (t.holders?.change24 != null) checks.push({ label: `holders ${t.holders.change24 >= 0 ? '+' : ''}${t.holders.change24} on the day vs the "not shrinking" rule`, room: t.holders.change24 / Math.max(50, t.holdersCount * 0.05) });
+    if (t.insiderShare != null) checks.push({ label: `${(t.insiderShare * 100).toFixed(0)}% of top-trader sells from wallets that never bought vs the ${(sc.maxInsiderShare * 100).toFixed(0)}% cap`, room: (sc.maxInsiderShare - t.insiderShare) / sc.maxInsiderShare });
   } else return null;
-  if (t.whales && !isLaunch) checks.push({ label: `top-10 wallets ${t.top10Pct.toFixed(0)}% vs the ${c.avoid.top10PctExPool}% hard limit`, room: (c.avoid.top10PctExPool - t.top10Pct) / c.avoid.top10PctExPool });
   const tight = checks.filter((x) => Number.isFinite(x.room)).sort((a, b) => a.room - b.room)[0];
   if (!tight) return null;
   return tight.room < 0.5 ? tight.label : `nothing — comfortably inside every rule (tightest: ${tight.label})`;

@@ -106,10 +106,10 @@ export function render(r) {
 </header>
 
 <section>
-  <h2>New launches worth a look <span class="count">${r.newLaunches.picks.length} of ${r.newLaunches.candidates} launched this week · ${r.newLaunches.passed} passed the bar</span></h2>
+  <h2>New launches worth a look <span class="count">${r.newLaunches.picks.length} picked · ${r.newLaunches.early} in the early window · ${r.newLaunches.passed} passed the bar · ${r.newLaunches.candidates} launched this week</span></h2>
   <p class="rule">Rule: ${esc(r.newLaunches.rule)}. Ranked by holder growth, buyer skew, unique buyers, depth, turnover, range, GT Score and socials.</p>
   <div class="prose">${r.story.launches.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
-  ${r.newLaunches.picks.length ? r.newLaunches.picks.map((t, i) => deepCard(t, i + 1, 'launch')).join('') : empty('Nothing launched this week clears the bar today. The filters are strict on purpose.')}
+  ${r.newLaunches.picks.length ? r.newLaunches.picks.map((t, i) => deepCard(t, i + 1, 'launch')).join('') : empty('Nothing in the early window clears the bar today. An empty list beats chasing — the filters are strict on purpose.')}
   ${r.newLaunches.runnersUp.length ? `<div class="runners"><span class="label">Also passed</span> ${r.newLaunches.runnersUp.map((t) => miniChip(t)).join(' ')}</div>` : ''}
 </section>
 
@@ -119,7 +119,7 @@ export function render(r) {
   <div>
     <div class="kicker">${esc(CONFIG.networkLabel)} · daily meme digest · page 3 of 3</div>
     <h1>Existing coins</h1>
-    <div class="sub">Tokens older than two days, split by market cap. Per band: the most traded names, who is quietly accumulating, who is bleeding. Then the avoid list.</div>
+    <div class="sub">Tokens older than two days, split by market cap. Per band: the most traded names and the best setups by score. The $5M–25M band also lists bags losing power. Then the avoid list.</div>
   </div>
   <div class="meta"><div>${dateStr} · ${timeStr}</div><div>Data: <a href="${CG_LINKS.api}">CoinGecko API</a></div></div>
 </header>
@@ -165,12 +165,12 @@ function bandSection(b) {
     <h2>${esc(b.label)} market cap <span class="count">${b.count} tokens · $${fmtK(b.liquidity)} liquidity · $${fmtK(b.volume)} volume · ${b.traded ? Math.round((b.up / b.traded) * 100) : 0}% up</span></h2>
     <div class="prose">${story}</div>
     ${b.table.length ? `<table class="bandtable"><thead><tr><th>Token</th><th>Age</th><th>Mcap</th><th>Liq</th><th>Vol 24h</th><th>24h</th><th>Buyers / sellers</th><th>Holders</th><th>Top-10</th><th>Flags</th></tr></thead><tbody>${b.table.map(bandRow).join('')}</tbody></table>` : empty('No token in this band traded with real liquidity today.')}
-    <h3 class="sub-h">Quiet accumulation <span class="count">price flat, wallets growing</span></h3>
-    <p class="rule">Rule: ${esc(b.accumulation.rule)}.</p>
-    ${b.accumulation.picks.length ? b.accumulation.picks.map((t, i) => deepCard(t, i + 1, 'up', t.why)).join('') : empty(b.accumulation.mode === 'none' ? `Holder history exists for ${b.accumulation.checked} tokens in this band; none is adding wallets while price sits still today.` : 'No token in this band fits the pattern today.')}
-    <h3 class="sub-h">Losing power <span class="count">wallets leaving, volume drying up</span></h3>
+    <h3 class="sub-h">Best setups <span class="count">visible demand in a token you can still get into</span></h3>
+    <p class="rule">Rule: ${esc(b.setups.rule)}.</p>
+    ${b.setups.picks.length ? b.setups.picks.map((t, i) => deepCard(t, i + 1, 'up', `${t.why} · score ${t.score.toFixed(0)}`)).join('') : empty(`${b.setups.gated} tokens passed the gate, none scored ${CONFIG.setups.minScore}+. Nothing worth chasing in this band today.`)}
+    ${b.rotate ? `<h3 class="sub-h">Consider rotating out <span class="count">bags losing power — wallets leaving, volume drying up</span></h3>
     <p class="rule">Rule: ${esc(b.fading.rule)}.</p>
-    ${b.fading.picks.length ? b.fading.picks.map((t, i) => deepCard(t, i + 1, 'down', t.reasons.join(' · '))).join('') : empty(`Checked ${b.fading.checked} tokens in this band. Nothing is bleeding on two fronts at once today.`)}
+    ${b.fading.picks.length ? b.fading.picks.map((t, i) => deepCard(t, i + 1, 'down', t.reasons.join(' · '))).join('') : empty(`Checked ${b.fading.checked} tokens in this band. Nothing is bleeding on two fronts at once today.`)}` : ''}
   </section>`;
 }
 function bandRow(t) {

@@ -44,6 +44,24 @@ export const CONFIG = {
     minHolders: 100,
     maxTop10PctExPool: 45, // top-10 wallets excluding pool/LP contracts
     maxDrawdown24: -50,    // down more than this on the day = the launch already failed
+    maxFromHi: -60,        // more than this off the launch high = the move already happened
+    minScore: 60,          // below this, show nothing rather than something
+    mcapMin: 200_000,      // the "early" window: big enough to be real, small enough to still run
+    mcapMax: 500_000,
+    mcapStretch: 1_000_000, // allowed up to here only when the score is exceptional
+    stretchScore: 80,
+  },
+
+  // Existing coins: what makes a setup worth a look (page 3)
+  setups: {
+    minAgeHours: 48,
+    minLiquidityUsd: 25_000,
+    minVolumeUsd: 20_000,
+    maxTurnover: 15,         // volume/liquidity above this is bot churn, not demand
+    maxTop10Pct: 50,
+    maxInsiderShare: 0.6,    // share of top-trader sell $ from wallets that never bought
+    dipFrom48hHigh: [-60, -12], // "in a dip" = this far off the 48h high, with holders still arriving
+    minScore: 55,            // below this nothing is shown; an empty list beats a weak one
   },
 
   accumulation: {
@@ -87,10 +105,10 @@ export const CONFIG = {
 
   // Page 3: existing coins, split by market cap (FDV where mcap is missing)
   bands: [
-    { key: 'small', label: '$300k – $5M', min: 300_000, max: 5_000_000 },
-    { key: 'mid', label: '$5M – $25M', min: 5_000_000, max: 25_000_000 },
+    { key: 'small', label: '$300k – $5M', min: 300_000, max: 5_000_000, rotate: false },
+    { key: 'mid', label: '$5M – $25M', min: 5_000_000, max: 25_000_000, rotate: true }, // also lists "losing power" — bags people may want to rotate out of
   ],
-  picksPerBand: 2,
+  picksPerBand: 3,
   bandTableRows: 8,
 
   // Page 1: notable today
