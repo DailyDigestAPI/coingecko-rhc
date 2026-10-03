@@ -21,7 +21,11 @@ Every list, score and flag is computed by this script from that data; none of it
 | **Who's winning** | Which wallets realized the most PnL across the most traded memes, and what are they holding now? | Top traders per token, wallet balances and PnL on the chain; bots and insider wallets are tagged and dropped |
 | **Yesterday's picks, today** | Did the previous day's picks hold up? | Each day's picks are stored; the next run re-checks liquidity, price and holders |
 
-**Page 1** is the chain digest plus new launches. **Page 2** is existing coins. Every pick on either page gets a deep dive:
+| **Notable today** | What moved, where big money went, what got listed? | Top gainers/losers, volume surges and collapses, holder gains/losses, CEX listings, near-ATH, and every trade ≥ $10k on the 20 most traded tokens |
+
+**Page 1** is the chain digest: tiles, today in short, notable today, who's winning, yesterday's picks. **Page 2** is new
+launches. **Page 3** is existing coins in two market-cap bands ($300k–5M and $5M–25M), each with a table of the most
+traded names plus accumulation and fading picks, then the avoid list. Every pick gets a deep dive:
 
 - a written read of the token, generated from the numbers (no model, no adjectives the data can't back)
 - recent flow: the last ~300 trades — $ bought vs sold, biggest trades, top buyers and sellers by wallet
@@ -73,6 +77,7 @@ so you can look back at earlier days.
 **Cost and cache:**
 
 - A full pull is roughly **1,100–1,300 API credits** and takes 3–5 minutes.
+- Market-cap bands, picks per band and the whale-trade threshold are in `src/config.js`.
 - Responses are cached per day in `data/cache/`, so re-running the same day costs **zero credits**.
 - `npm run report:fresh` ignores the cache and pulls everything again.
 - `node src/index.js --no-render` collects and analyzes only (writes `data/YYYY-MM-DD.json`).
@@ -103,8 +108,9 @@ The defaults:
 - **New launch**: first pool under 7 days old · liquidity ≥ $15k · 24h volume ≥ $10k · ≥ 30 unique buyers
   · ≥ 100 holders · top-10 wallets (excluding pool/LP contracts) ≤ 45% · no red flag. Survivors are ranked
   0–100 on holder growth, buyer skew, unique buyers, depth, turnover, GT Score, socials/listing and clean flags.
-- **Quiet accumulation**: price within ±15% on the day · holders up ≥ 2% and ≥ 15 wallets in 24h · older
-  than 48h. If a chain has no holder history, the list falls back to unique buyers ≥ 1.3× sellers and says so.
+- **Quiet accumulation**: price within ±15% on the day and ±20% over 6h · no more than 50% off the 48h high ·
+  holders up ≥ 2% and ≥ 15 wallets in 24h and still growing in the last 6h · older than 48h. If a chain has no
+  holder history at all, the list falls back to unique buyers ≥ 1.3× sellers and says so.
 - **Losing power**: two or more of — holders down ≥ 1.5% in 24h · volume down ≥ 50% vs the previous 24h ·
   sellers ≥ 1.4× buyers · price −25% · −40% from the 48h high. Weighted by liquidity so a fade on a $2M
   token outranks one on a $20k token.
